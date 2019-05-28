@@ -119,3 +119,4 @@ with tf.Session() as s:
     print()
     print("w1: \n", s.run(w1))
     print("w2: \n", s.run(w2))
+    

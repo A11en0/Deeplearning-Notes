@@ -1,0 +1,90 @@
+Hacking News
+Hacking News
+Hacking News
+Attackers using Linux Vulnerability to Hijack VPN Connections
+Hacking News
+Attackers using Linux Vulnerability to Hijack VPN Connections
+December 6, 2019
+Linux operating system
+“CVE-2019-14899”
+Linux Kernel security, Google, Apple, Systemd, WireGuard, and OpenVPN.
+This flaw majorly impacts Linux based OS, but attackers can use the vulnerability to attack other users. Here is a partial list of all such OS –
+Ubuntu 19.10 (systemd)
+Fedora (systemd)
+Debian 10.2 (systemd)
+Arch 2019.05 (systemd)
+Manjaro 18.1.1 (systemd)
+Devuan (sysV init)
+MX Linux 19 (Mepis+antiX)
+Void Linux (runit)
+Slackware 14.2 (rc.d)
+Deepin (rc.d)
+FreeBSD (rc.d)
+OpenBSD (rc.d)
+How do attackers use this flaw?
+This security flaw allows a network adjacent attacker to know if another user is connected to the same VPN server. The attacker can also find whether or not if the user is connected to a given website. Plus, they can determine the exact sequence and acknowledged numbers. After which they examine the packet send back, which leads to injecting of data and eventually hijacking the connection.
+Linux Vulnerability
+Researchers found out that the VPN technology has no protection against such an attack even when then responses they receive were encrypted. As the attacker can examine the data packets to find their type. The most vulnerable to this attack are most of the Linux distros. Amazon has stated that they are the only ones who aren’t affected by this vulnerability.
+How to stay safe from this attack?
+There is a very simple solution for this; all you need is to turn reverse path filtering on by using bogon filtering. Or by using filtering bogus IP address or encrypt packet size and timing. We suggest that you change this setting as quickly as possible; otherwise, you will be exposed to big vulnerability.
+Critical Vulnerability
+Vulnerability
+Previous article
+Instagram, Facebook DOWN for Users Globally: Error: ‘Sorry, Something Went Wrong’
+Next article
+Spotify Wrapped 2019: Stats to Let Users Know Their Music Trends
+Aritra Sen is the CEO of DigitalHawk and Eduneer and is an avid reader, coder and a tech geek. He has had varied experience in this realm has developed many apps on several platforms. He is a digital marketing expert who always keeps up with the latest trends of the industry and loves to meet people and connect
+RELATED ARTICLES
+MORE FROM AUTHOR
+FBI Recommends Citizens To Secure Their Smart TVs and IoT to Avoid Hacking
+Discord Server DOWN? Global Outage Keep Gamers from Using App
+Discord DOWN: Users Face “Can’t Send Messages” Error
+Cancel reply
+Please enter your comment!
+Please enter your name here
+You have entered an incorrect email address!
+Please enter your email address here
+Save my name, email, and website in this browser for the next time I comment.
+Stay Connected
+Jack Dorsey Uses DuckDuckGo: Says Experience is Much Better Than Google
+Manikanta Immanni
+December 1, 2019
+Attackers using Linux Vulnerability to Hijack VPN Connections
+December 6, 2019
+Facebook and Instagram Down: Social Media Sites Crash for Users across...
+Harsh Sharma
+December 5, 2019
+TikTok in Crisis for Leaking Data to the Chinese Agencies
+December 3, 2019
+New MacOS Malware Using ‘Fileless’ Technique to Remain Stealthy
+Manikanta Immanni
+December 7, 2019
+Latest Posts
+FBI Recommends Citizens To Secure Their Smart TVs and IoT to...
+December 7, 2019
+AWS DeepComposer: AI Based Musical Keyboard For Developers
+December 2, 2019
+ZTE Unveils MiFavor 10 OS Based on Android 10 with Dark...
+December 1, 2019
+Huawei To Become Top Smartphone Brand Even without Google
+December 1, 2019
+New macOS Threat: Affected by Cryptocurrency Trading Platform ‘Union Crypto Trader’
+December 4, 2019
+YouTube CEO Limits Her Children To YouTube Kids Only
+December 2, 2019
+Jack Dorsey Uses DuckDuckGo: Says Experience is Much Better Than Google
+December 1, 2019
+Privacy Policy
+ © TechDator Copyright 2019. · All Logos & Trademark Belongs To Their Respective Owners
+I Understand
+Privacy & Cookies Policy
+Privacy Overview
+This website uses cookies to improve your experience while you navigate through the website. Out of these cookies, the cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities of the website. We also use third-party cookies that help us analyze and understand how you use this website. These cookies will be stored in your browser only with your consent. You also have the option to opt-out of these cookies. But opting out of some of these cookies may have an effect on your browsing experience.
+ Privacy Overview 
+This website uses cookies to improve your experience while you navigate through the website. Out of these cookies, the cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities of the website. We also use third-party cookies that help us analyze and understand how you use this website. These cookies will be stored in your browser only with your consent. You also have the option to opt-out of these cookies. But opting out of some of these cookies may have an effect on your browsing experience.
+ Necessary 
+Always Enabled
+Necessary cookies are absolutely essential for the website to function properly. This category only includes cookies that ensures basic functionalities and security features of the website. These cookies do not store any personal information.
+ Non-necessary 
+Non-necessary
+Any cookies that may not be particularly necessary for the website to function and is used specifically to collect user personal data via analytics, ads, other embedded contents are termed as non-necessary cookies. It is mandatory to procure user consent prior to running these cookies on your website.

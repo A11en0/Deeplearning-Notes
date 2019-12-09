@@ -1,0 +1,33 @@
+The Power of the XDG Base Directory Specification
+Max Strübing
+The Power of the XDG Base Directory Specification
+I'm writing this article because I have the feeling that not many people know about this convention even if it exists for years and can lead to a very clear directory structure and file paths instead of a cluttered home directory with thousands of files.
+ls -la | wc -l 
+XDG Base Directory Specification to the rescue
+The XDG Base Directory Specification is a widely used specification which specifies where your files should be located depending on their usage published by the freedesktop.org-organization. 
+But what is freedesktop.org?
+freedesktop.org, formerly known as X Desktop Group (XDG), is an organization which has many open source projects including the X Window System, Wayland or systemd.
+What does the specification say?
+They published a specification which mainly consists of three important points:
+$XDG_DATA_HOME
+$XDG_CONFIG_HOME
+$XDG_CACHE_HOME
+If these environment variables are not set, the specification says it should go in these directories:
+$XDG_DATA_HOME
+$HOME/.local/share
+$XDG_CONFIG_HOME
+$HOME/.config
+$XDG_CACHE_HOME
+$HOME/.cache
+$XDG_RUNTIME_DIR
+$XDG_CONFIG_DIRS
+$XDG_DATA_DIRS
+Read environment variable or use fallback
+Create a directory with your program name in this directory
+Place your caching/data/configuration files there.
+$XDG_CONFIG_HOME/x
+$HOME/.config/x
+https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
+Lasst uns sprechen!
+Nachricht schreiben
+Datenschutz

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1" name="viewport"><link href="/favicon.ico" rel="icon"><title>Linux exists only because of a happy accident (August Lilleaas' blog)</title><link href="/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css"><link href="/stylesheets/dark-mode.css" media="screen" rel="stylesheet" type="text/css"><link href="/atom.xml" rel="alternate" title="August Lilleaas&apos; blog" type="application/atom+xml"><meta content="Linux exists only because of a happy accident" property="og:title"><meta content="summary" name="twitter:card"><meta content="Linux exists only because of a happy accident" name="twitter:title"><meta content="The CRUD blog" property="og:description"><meta content="The CRUD blog" name="twitter:description"><meta content="/blog/2019/linus_and_linux_happy_accident" property="og:url"></head><body><div class="site-content"><p><a class="take-me-home" href="/">Take me home</a></p></div><div class="site-content site-content-main"><div class="article" id="article"><h1>Linux exists only because of a happy accident</h1><p class="timestamp">Published December 05, 2019</p><div class="series">This post is part of a series: <a href="/series/advent_calendar_2019">Advent Calendar 2019</a></div><p>EDIT: Discussion <a href="https://www.reddit.com/r/linux/comments/e6fvj0/linux_exists_only_because_of_a_happy_accident/">here</a>, <a href="https://www.reddit.com/r/programming/comments/e6kn97/linux_exists_only_because_of_a_happy_accident/">here</a> and <a href="https://news.ycombinator.com/item?id=21711572">here</a>.</p>
+<p>You should read the book <a href="https://www.amazon.com/Just-Fun-Story-Accidental-Revolutionary/dp/0066620732">Just For Fun</a>, Linus Torvalds' autobiography.</p>
+<p>I also make a podcast, in Norwegian. This post is based on an episode of that podcast, so if you understand Norwegian, or just want to pretend you do, you should also <a href="https://utviklingslandet.no/ep/2019-06-26/">listen to the episode we made</a> about the same subject as this blog post.</p>
+<p>It's story time.</p>
+<h2>How Linus Torvalds accidentally created Linux</h2>
+<p>It's 1990, and Linus Torvalds was an unhappy Minix user.</p>
+<p>After owning a few interesting computers (a VIC-20 and a Sinclair QL), Linus saved up some money and bought a very grey and uninteresting IBM compatible PC. With it was bundled a version of DOS, which he immediately replaced with Minix.</p>
+<p>By &quot;immediately&quot;, I mean &quot;spent the better part of a week installing it&quot;.</p>
+<p>Minix was reasonably popular at the time, and also free, which was a killer combo for a poor university student in Helsinki, Finland. Linus ordered Minix in advance. A month later, it arrived - in the form of 16 floppy disks.</p>
+<p>Designed by Andrew Tanenbaum, Minix was meant as a teaching aide at mr. Tanenbaum's professorate at an Amsterdam university. It was gimped by design, and not really a full blown OS. There were patches floating around to improve its usefulness, and one of the more popular and useful were made by Bruce Evans, an Australian.</p>
+<p>16 floppy disks, manual patching - no wonder it took Linus almost a week to set it up.</p>
+<p>Linus was reasonably happy with Minix, but it lacked some of the things he needed. Linus being Linus, he wrote his own.</p>
+<p>His main project was a terminal emulator, for calling up the university computers to go online, or just use the more powerful computers available to students. He wanted to learn the inns and outs of his IBM PC, so he wrote the terminal emulator on the hardware level.</p>
+<p>No OS.</p>
+<p>This terminal emulator was the beginning of Linux.</p>
+<p>He wrote a disk driver, so he could save his work while he was outside Minix land. Eventually, his terminal emulator was able to launch BASH. (Yes, BASH is that old.) Linus called it his &quot;gnu-emacs of terminal emulation programs&quot;.</p>
+<p>It's fall, 1991.</p>
+<p>Linus now considers shelving his terminal emulator. He's reasonably happy with it, and it does what he needs it to do.</p>
+<p>In other words: Linus became bored with a project he was working on. Boy, do I recognize that feeling.</p>
+<p>Then, Linus <strong>accidentally deleted his Minix partition</strong></p>
+<p>In Linus' own words:</p>
+<blockquote>
+<p>I probably would have stopped by the end of 1991. I had done a lot of things I thought were interesting. Everything didnât really work perfectly, but in a software kind of world I find that once you solve the fundamental problems of a project, itâs easy to lose interest. And thatâs what was happening to me. Trying to debug software is not very engaging.</p>
+<p>[...]</p>
+<p>Back then, I was booting into Linux but used Minix as the main development environment. Most of what I was doing under Linux was reading email and news from the universityâs computer via the terminal emulator I had written. The university computer was constantly busy, so I had written a program that auto-dialed into it. But in December, I mistakenly auto-dialed my hard disk instead of my modem. I was trying to auto-dial /dev/tty1 [...]. But by mistake I auto-dialed /dev/hda1, which is the hard disk device. The end result was that I inadvertently overwrote some of the most critical parts of the partition where I had Minix. Yes, that meant I couldnât boot Minix anymore.</p>
+<p>That was the point where I had a decision to make: I could reinstall Minix, or I could bite the bullet and acknowledge that Linux was good enough that I didnât need Minix. I would write the programs to compile Linux, under itself, and whenever I felt I needed Minix, I would just add the desired feature to Linux.</p>
+</blockquote>
+<p>So there you have it.</p>
+<p>Who knows, if Linus didn't accidentally ruin his Minix partition, Linux might never have seen the light of day.</p>
+<p>Here's to happy accidents!</p>
+<hr class="post-sep"><p>Questions or comments?</p><p>Feel free to contact me on Twitter, <a href="http://twitter.com/augustl">@augustl</a>, or e-mail me at <a href="mailto:august@augustl.com">august@augustl.com</a>.</p></div></div></body></html>

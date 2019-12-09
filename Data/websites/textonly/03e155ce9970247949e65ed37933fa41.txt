@@ -1,0 +1,168 @@
+Skip to content
+Space and Meaning
+Tobias Bernard's GNOME Blog
+Menu and widgets
+Search for:
+Recent Posts
+There is no “Linux” Platform (Part 1)
+GNOME Shell Hackfest 2019
+GUADEC 2019
+Naming Your App
+Select Month
+ December 2019 
+ September 2019 
+ April 2019 
+ March 2019 
+ February 2019 
+ December 2018 
+ October 2018 
+ August 2018 
+ April 2018 
+ January 2018 
+ November 2017 
+There is no “Linux” Platform (Part 1)
+Jordan Petridis
+“The Future of Apps on Linux”
+Linux App Summit
+“designed to accelerate the growth of the Linux application ecosystem”
+But what does that actually mean? What does a healthy app ecosystem look like? And why don’t we have one?
+I think the core of the problem is actually the layer below that: Before we can have healthy ecosystems, we need healthy platforms to build them on.
+What is a Platform?
+The word “platform” is often used without a clear definition of what exactly that entails. If we look at other successful platforms there are a ton of different things enabling their success, which are easy to miss when you just look at the surface.
+On the developer side you need an operating system developers can use to make apps. You also need a developer SDK and tooling which are integrated with the operating system. You need developer documentation, tutorials, etc. so people can learn how to develop for the platform. And of course once the apps are built there needs to be an app store to submit them to.
+Developers can’t make great apps all by themselves, for that you also need designers. Designers need tools to mock up and prototype apps, platform UI patterns for things like layout and navigation, so every app doesn’t have to reinvent the wheel, and a visual design language so designers can make their app fit in with the rest of the system visually. You also need Human Interface Guidelines documenting all of the above, as well as tutorials and other educational resources to help people learn to design for the platform.
+On the end user side you need a consumer OS with an integrated app store, where people can get the great apps developers make. The consumer OS can be the same as the developer OS, but doesn’t have to be (e.g. it isn’t for Android or iOS).  You also need a way for people to get help/support when they have problems with their system (whether that’s physical stores, a help website, or just easily google-able Stackoverflow questions).
+That’s a lot of different things, but we can group them into four major pieces which are needed in order for something to be a real platform:
+Operating System
+Developer Platform
+Design Language
+So if we look at the free software world, where are the platforms?
+Linux is a kernel, which can be used to build OSes, which can be used to build platforms. Some people (e.g. Google with Android) have done so, but a kernel by itself clearly doesn’t have any the four things outlined above, and therefore is not a platform.
+FreeDesktop.org?
+FreeDesktop.org
+What about distributions? Ubuntu is one of the most popular ones, and unlike others it has its own app store. It still isn’t a platform though, because it doesn’t have the most critical pieces: a developer SDK/technology stack, and a design language.
+Other distributions are in a similar but worse position because they don’t have an app store.
+Elementary?
+Despite being a relatively small project, elementary is attracting third party developers making apps specifically for their platform
+Interestingly, the only project which currently has all the pieces is elementary. It has an OS, an SDK, a HIG, and an app store to submit apps to. The OS is largely Ubuntu and the technology stack largely GNOME, but it develops its own desktop and apps on top of that, and does the integration work to make it into a complete consumer product.
+This begs the question, why is elementary the only one?
+The Means of Distribution
+The reasons for this are largely historical. In the early days, free software desktops were a bunch of independently developed components. They were not necessarily designed for each other, or well integrated. This meant in order to have a usable system, someone needed to curate these components and assemble them into an operating system: The first distributions were born.
+Over the last decades this landscape has changed drastically, however. While GNOME 1 was a set of loosely coupled components, GNOME 2 was already much more cohesive and GNOME 3 is now essentially an integrated product. The shell, core apps, and underlying technologies are all designed with each other in mind, and provide a complete OS experience.
+Desktops like GNOME have expanded their scope to cover most of the responsibilities of platforms, and are in effect platforms now, minus the OS part. They have a very clear vision of how the system should work, and app developers target them directly.
+The elementary project has taken this development to its logical end point, and made its own vertically integrated OS and app store. This is why it’s the only “real” platform in the free software space at the moment.
+GNOME has a relatively vibrant ecosystem of nice third party apps now, despite not being a complete platform (yet). This gives us a glimpse of the potential of this ecosystem.
+Distributions, on the other hand, have not really changed since the 90s. They still do integration work on desktop components, package system and applications, set defaults, and make UX decisions. They still operate as if they’re making a product from independent components, even though the actual product work is happening at the desktop layer now.
+This disconnect has led to tensions in many areas, which affect both the quality of the system user experience, and the health of the app ecosystem.
+What’s interesting about this situation is that desktop developers are now in the same situation app developers have always been in. Unlike desktops, apps have always been complete products. Because of this they have always suffered from the fragmentation and disconnect between developers and users introduced by distribution packaging.
+Because of this, app developers and desktop developers now more or less share a common set of grievances with the distribution model, which include:
+Release schedule
+Packaging errors
+Overriding upstream decisions
+Distro Theming
+This blog post
+The Wrong Incentives
+The reason for a lot of these issues is the incentives on the distribution side. Distributions are shipping software directly to end users, so it’s very tempting to solve any issues they find downstream and just ship them directly. But because the distributions don’t actually develop the software this leads to a number of other problems:
+Perpetual rebasing
+Incoherent user experience
+Ecosystem fragmentation
+huge rebases
+every release
+This situation is clearly bad for everyone involved: Distributions spend a ton of resources rebasing their patches forever, app developers don’t have a clear target, and end users get a sub-par experience.
+December 4, 2019
+Tobias Bernard
+Categories 
+Distributions
+
+			18 thoughts on “There is no “Linux” Platform (Part 1)”		
+
+								December 5, 2019 at 7:34 am							
+> Distributions, on the other hand, have not really changed since the 90s. They still do integration work on desktop components, package system and applications, set defaults, and make UX decisions. They still operate as if they’re making a product from independent components, even though the actual product work is happening at the desktop layer now.
+I’m not sure I agree with that — because it seems to ignore the fact that the major distros are also the major contributors to the desktops. Not meaning to dismiss the efforts of independent developers, but an awful lot of the work on projects like Gnome is done by people paid by the likes of RedHat and Canonical. 
+And it’s been that way for a long time… in the early days of dbus and HAL and NetworkManager, a lot of work was being done to transform Gnome from just a UI shell, to something that could integrate with the OS and hardware. And again, much of that work, both in Gnome and in the stack below it, was being done by developers working for the big distros. Today, the same thing is happening with integrating the likes of Systemd, Flatpak, etc.
+So yeah, while I agree with your conclusions about the lack of a defined “platform”, I think you’re drawing a false division between desktops and distros… because to a large degree, it’s the same people doing both.
+Tobias Bernard
+
+								December 5, 2019 at 10:03 am							
+> I think you’re drawing a false division between desktops and distros… because to a large degree, it’s the same people doing both.
+Yes and no. It’s true that many of the people who work upstream also work on distributions (myself included). and in fact those are largely the people who have been moving desktops towards being platforms because they know better than anyone that the status quo isn’t working.
+Just because the same people are doing work on both things, that doesn’t make the desktop/distro divide any less real in terms of outcomes.
+Issues like release cadence mismatch or downstream UX changes can apply even when most of the downstream people want to work upstream, because they don’t control everything about how the distribution is put together (e.g. for technical or business reasons). 
+Christopher
+
+								December 6, 2019 at 6:52 am							
+How about a “Linux” distro, with a “Linux” desktop, a “Linux” theme, a ” Linux” packaging system, a “Linux” SDK, etc… all using the Linux kernel… And we call *it* Linux?
+Focuse on it being able to run on older hardware… select core elements that are the least resource hogging.
+Establish a set desktop environment that doesn’t change on it’s face.
+Obviously it would be able to install all software packages and people can tweet it to their liking… but all these distros and desktops constantly making superficial changes is quite hellish for end users and probably more so for developers.
+Linux, out of the box, 100%
+The rest is vanity and hubris…
+
+								December 5, 2019 at 9:16 am							
+Many downstream changes [not flowing upstream] base on a strong disagreement between upstream and downstream, usually upstream outright rejecting the change, or demanding more work nobody feels justified downstream. Some even result a fork since it’s so impossible to find a common ground.
+Some fine example may be Devuan (since Debian basically forced systemd down on people’s throat) or MATE (since Gnome basically forced Gnome [s]hell down on people’s throat). I’m not sure such problems could be easily solved to prevent fragmentation, and the hard solutions nobody’s really eager to get done.
+
+								December 5, 2019 at 9:53 am							
+No ones shoving anything down anyone’s throat, you’re not forced to use Debian or GNOME.
+
+								December 5, 2019 at 10:01 am							
+You can have a mature platform without a centralized “app store”. If we’ve learned anything from app stores it’s that they inevitably get cluttered with malware and/or bloatware.
+The problem of distributing Linux programs to multiple distributions has already been solved by things like appImages, flatpaks, snaps and so on. The classic repositories due require extra maintenance work but it keeps the ecosystem free of bloatware.
+A centralized solution isn’t required as it would only disrupt that which makes Linux different and popular.
+The “let’s do it because everybody else is doing it” mentality doesn’t always yield the best solution. It only artificially limits innovation and creates security and reliability problems for the sake of theoretical convenience.
+Windows hasn’t had an app store for the better part of its existence and people still avoid the app store as its full of bloatware.
+Taking an already successful OS like Linux and changing it to be like the others won’t bolster its success. On the contrary. You will only take away that which made it successful in the first place.
+
+								December 6, 2019 at 3:58 pm							
+>A centralized solution isn’t required as it would only disrupt that which makes Linux different and popular.
+Linux is popular?
+
+								December 6, 2019 at 7:25 pm							
+Zbigniew Jędrzejewski-Szmek
+
+								December 5, 2019 at 12:20 pm							
+> When distributions disagree with upstream decisions, they sometimes keep old version of software, or apply downstream patches that override the author’s intentions. This is very frustrating if you’re an app developer, because users never experience your app as you intended it to be.
+I’d say this cuts both ways. The distro maintainers give us independent review and evaluation of upstream decisions and act as a sanity check on upstreams, making things uniform and removing the crazy parts and undoing the worst decisions. Upstreams can be very idiosyncratic and each upstream has different design goals, and the role of the distribution is to coerce software designed with different priorities into one coherent set. The fact that there are different sets of principles is one of the reasons why we have so many distributions.
+Occasionally, distro packagers make mistakes, no doubt, but this doesn’t change the fact that the packaging guidelines, QE, communal testing of binary packages, and standarized packaging provide value to users. You can’t build a system using e.g. gnome alone, at least not a practical one. Most people want many many other applications that are developed externally, and the distro is the source that makes them easily available.
+>  Developers don’t have control over the pace at which people get updates to their software.
+This is a good thing. The release cadence for Fedora is never going to be the same as the release cadence for RHEL, and it shouldn’t be. Slowness is the price that is paid for extensive testing and stability. Some people chose to chose that.
+In the theoretical future where e.g. gnome was fully regression free, distros would be more likely to push newer versions into stable releases more often. Once that happens, that issue will be resolved automatically. But it is very hard to provide that kind of stability with software that is undergoing strong development, and we’re clearly not there yet.
+Sławomir Lach
+
+								December 5, 2019 at 3:52 pm							
+What about KDE Neon. It has nearly everything, but App Center/Shop.
+
+								December 6, 2019 at 7:37 pm							
+Tobias Bernard
+
+								December 6, 2019 at 7:52 pm							
+KDE Neon seems like a step in the right direction, but when I last talked to KDE people about it they said they think about it primarily as a tool for development, rather than a consumer product. Would be cool if they pushed it in more of a product direction.
+bruce davidson
+
+								December 5, 2019 at 5:24 pm							
+Your analysis is spot on. I thik you identify why the ‘year of linux desktop’ has not come to pass. Windows 8 was a failure, but linux had no platform to fill the gap. As an end user, I want the stability and ease of use that a platform implies. I’m tired of all the infernal, never ending tweaking that the typical distro requires. And the confusing proliferation of package managers has not filled the gap of an app store.
+ElementaryOS is going in the right direction. I used it for years, but unfortunately all of those cool custom apps are full of bugs, and fixing them has not been a priority. After waiting through 3 releases for them to fix their bugs, I’ve moved on.
+I now use Windows Linux Subsystem and Crostini to run any linux apps I require. Windows and ChromeOS both expose the linux kernal as a component that is easy to use. Crostini, in particular makes it easy to use linux desktop apps. I view it as Debian with a Chrome Desktop Environment. After years of distro surfing, it finally fills the ‘platform void’ for me as an end user. I’m not a true believer of free and open source – I honestly don’t care. I just want something that works and is easy to use. I think most consumers feel the same way.
+
+								December 6, 2019 at 1:23 am							
+Gnome really needs to control the full stack, the experience still feels like something I used in 2003, It’s much improved but still feels like bits and pieces are bolted on.
+
+								December 6, 2019 at 7:50 pm							
+
+								December 6, 2019 at 9:15 am							
+Fabio Valentini (decathorpe)
+
+								December 6, 2019 at 1:12 pm							
+I think some of the statements are a bit unfair wrt. distribution packagers.
+I am the maintainer of elementary / Pantheon (plus some 200+ other packages) on fedora, and a member of the Fedora Packaging Committee, so I do have “some” experience in that area. At least for fedora, it’s usually preferred to 1. write downstream patches in a way that makes it possible to send them back upstream, and 2. to actually send them upstream. You’ll probably find at least one commit by me in almost all elementary git repositories, since I’ve tried to actively collaborate with them, and – I agree – maintaining downstream patches is painful, and only introduces points of failure. Still, the result is that – with only very few minor exceptions – the packages for elementary components are as close to the upstream preferences as possible.
+Additionally, while packagers might not know the project as well as the upstream maintainer, they usually *do* know the intricacies of (distribution) packaging better. This doesn’t apply to flatpak (et al.) of course – but these tools also have a learning curve. *Somebody* has to learn how to distribute software effectively, efficiently, and correctly, no matter the distribution method (deb, rpm, flatpak, etc.) – distribution packagers (and the tooling they use) just have a head start here because that’s what they’ve been doing for literally decades.
+
+								December 6, 2019 at 7:11 pm							
+Cancel reply
+Your email address will not be published.
+Learn how your comment data is processed
+Post navigation
+Previous post:
+GNOME Shell Hackfest 2019
+
+				Proudly powered by WordPress			

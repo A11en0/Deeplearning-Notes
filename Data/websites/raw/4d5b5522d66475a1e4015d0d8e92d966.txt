@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tails - Tails 4.1 is out</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="icon" href="../../favicon.ico" type="image/x-icon" />
+
+<link rel="stylesheet" href="../../style.css" type="text/css" />
+
+<link rel="stylesheet" href="../../local.css?reload-2019-09-20" type="text/css" />
+
+
+<script src="../../lib/js/mirror-dispatcher.js" type="text/javascript"></script>
+
+
+
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/ikiwiki.cgi?do=edit&amp;page=news%2Fversion_4.1" />
+
+
+
+<meta name="date" content="Tue, 03 Dec 2019 12:34:56 +0000" />
+
+
+
+</head>
+
+
+<body class="en">
+
+
+<div class="searchform">
+
+
+<form method="get" action="/ikiwiki.cgi" id="searchform">
+<div>
+<input type="text" id="searchbox" name="P" value="" size="16"
+  placeholder="search" />
+</div>
+</form>
+
+
+
+</div>
+
+<div class="banner" role="banner">
+  <a class="tails" href="../../index.en.html">
+    <span class="acronym">Tails</span><br/>
+    <span class="slogan">The Amnesic Incognito Live System</span>
+  </a>
+</div>
+
+<a id="donate-banner" href="https://tails.boum.org/donate/index.en.html?r=banner">
+  <div class="donate-en">
+    <span class="first">Tails helps thousands of people stay safe online every day. And it's free.</span>
+    <span class="second">Donate today to protect and sustain Tails!</span>
+  </div>
+
+  <div class="donate-es">
+    <span class="first">Tails ayuda a miles de personas a navegar con seguridad cada dÃ­a y es gratis.</span>
+    <span class="second">Â¡Dona hoy para apoyar y proteger Tails!</span>
+  </div>
+
+  <div class="donate-de">
+    <span class="first">Tails hilft tÃ¤glich tausenden Menschen sicher im Netz zu sein, und das unentgeltlich.</span>
+    <span class="second">Spende heute, um Tails am Leben zu halten!</span>
+  </div>
+
+  <div class="donate-fa">
+    <span class="first">Tails helps thousands of people stay safe online every day. And it's free.</span>
+    <span class="second">Donate today to protect and sustain Tails!</span>
+  </div>
+
+  <div class="donate-fr">
+    <span class="first">Chaque jour, Tails protÃ¨ge gratuitement des milliers de personnes sur le net.</span>
+    <span class="second">Donnez aujourd'hui pour soutenir et protÃ©ger Tails&nbsp;!</span>
+  </div>
+
+  <div class="donate-it">
+    <span class="first">Tails helps thousands of people stay safe online every day. And it's free.</span>
+    <span class="second">Donate today to protect and sustain Tails!</span>
+  </div>
+
+  <div class="donate-pt">
+    <span class="first">Tails ajuda milhares de pessoas a se protegerem na Internet todos os dias, e Ã© gratuito.</span>
+    <!-- FaÃ§a uma doaÃ§Ã£o para ajudar o Tails a continuar a existir! -->
+    <span class="second">Donate today to protect and sustain Tails!</span>
+  </div>
+</a>
+
+<div class="page">
+
+<div class="pageheader">
+<div class="header">
+<span>
+<span class="parentlinks">
+<ul id="crumbs">
+<li><a href="../../index.en.html"><img src="../../lib/home.png"></a></li>
+
+
+
+
+
+
+
+<li><a href="../index.en.html">news</a></li>
+
+
+
+
+<li>Tails 4.1 is out</li>
+
+</ul>
+</span>
+<span class="title">
+Tails 4.1 is out
+</span>
+<span class="date">2019-12-03</span>
+</span>
+</div>
+
+
+<div class="actions">
+<ul>
+
+
+<li><a href="/ikiwiki.cgi?do=edit&amp;page=news%2Fversion_4.1" rel="nofollow">Edit</a></li>
+
+
+
+<li><a href="../../recentchanges/">RecentChanges</a></li>
+
+
+<li><a href="https://salsa.debian.org/tails-team/tails/commits/master/wiki/src/news/version_4.1.mdwn">History</a></li>
+
+
+
+<li><a href="/ikiwiki.cgi?do=prefs">Preferences</a></li>
+
+
+
+
+
+</ul>
+</div>
+
+
+
+<div id="otherlanguages">
+<ul>
+   
+   <li class="current master">
+   <span >English
+   </span>
+   </li>
+
+   
+
+
+   
+
+   <li >
+
+   <span class="visible"><a href="./index.de.html">de</a></span>
+   <span class="hidden"><a href="./index.de.html">Deutsch</a></span>
+
+   </li>
+   
+
+   <li >
+
+   <span class="visible"><a href="./index.es.html">es</a></span>
+   <span class="hidden"><a href="./index.es.html">EspaÃ±ol</a></span>
+
+   </li>
+   
+
+   <li >
+
+   <span class="visible"><a href="./index.fa.html">fa</a></span>
+   <span class="hidden"><a href="./index.fa.html">Farsi</a></span>
+
+   </li>
+   
+
+   <li >
+
+   <span class="visible"><a href="./index.fr.html">fr</a></span>
+   <span class="hidden"><a href="./index.fr.html">FranÃ§ais</a></span>
+
+   </li>
+   
+
+   <li >
+
+   <span class="visible"><a href="./index.it.html">it</a></span>
+   <span class="hidden"><a href="./index.it.html">Italiano</a></span>
+
+   </li>
+   
+
+   <li >
+
+   <span class="visible"><a href="./index.pt.html">pt</a></span>
+   <span class="hidden"><a href="./index.pt.html">PortuguÃªs</a></span>
+
+   </li>
+   
+</ul>
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+<div class="sidebar" role="navigation">
+<div class="download button">
+  <a href="../../install/index.en.html"><span class="install">Install</span>
+    <span class="tails">Tails 
+4.1
+</span>
+    <span class="date">
+2019-12-03</span></a>
+</div>
+
+
+
+
+<div class="button" id="tor_check">
+<a href="https://check.torproject.org/">
+<img class="img" height="62" src="../../lib/onion.png" width="40" />
+
+<span>Tor check</span>
+</a>
+</div>
+
+
+
+
+<div class="links">
+  <ul>
+    <li><a href="../../about/index.en.html">About</a></li>
+    <li><a href="../../getting_started/index.en.html">Getting started&hellip;</a></li>
+    <li><a href="../../doc/index.en.html">Documentation</a></li>
+    <li><a href="../../support/index.en.html">Help &amp; Support</a></li>
+    <li><a href="../../contribute/index.en.html">Contribute</a></li>
+    <li><a href="../index.en.html">News</a></li>
+    <li class="new"><a href="../../jobs/">Jobs</a></li>
+  </ul>
+</div>
+
+
+
+
+<div class="donate button">
+    <a href="https://tails.boum.org/donate/?r=sidebar">Donate</a>
+</div>
+
+
+</div>
+
+
+
+<div id="pagebody">
+
+<div id="content" role="main">
+<p>This release fixes <a href="../../security/Numerous_security_holes_in_4.0/">many security
+vulnerabilities</a>. You should upgrade as soon as possible.</p>
+
+<div class="toc">
+<ol>
+	<li class="L1"><a href="#index1h1">Changes and upgrades</a>
+	</li>
+	<li class="L1"><a href="#index2h1">Fixed problems</a>
+	</li>
+	<li class="L1"><a href="#index3h1">Known issues</a>
+	</li>
+	<li class="L1"><a href="#index4h1">Get Tails 4.1</a>
+	</li>
+	<li class="L1"><a href="#index5h1">What's coming up?</a>
+	</li>
+</ol>
+</div>
+
+
+<h1><a name="index1h1"></a>Changes and upgrades</h1>
+
+<ul>
+<li><p>Use <a href="https://keys.openpgp.org/">https://keys.openpgp.org/</a>, also available on
+<a href="https://zkaan2xfbuxia2wpf7ofnkbz6r5zdbbvxbunvp5g2iebopbfc4iqmbad.onion/">https://zkaan2xfbuxia2wpf7ofnkbz6r5zdbbvxbunvp5g2iebopbfc4iqmbad.onion/</a>,
+as the default OpenPGP key server.</p>
+
+<ul>
+<li><p>keys.openpgp.org is more trustworthy than other OpenPGP public key
+servers because it only references an OpenPGP public key after
+sending a confirmation email to the email addresses listed in the
+key.</p></li>
+<li><p>keys.openpgp.org does not distribute third-party signatures, which
+are the signatures on a key that were made by some other key.
+Third-party signatures are the signatures used to create the OpenPGP
+Web of Trust.</p></li>
+<li><p>keys.openpgp.org prevents <a href="https://dkg.fifthhorseman.net/blog/openpgp-certificate-flooding.html">OpenPGP certificate
+flooding attacks</a>,
+which can make your OpenPGP keyring unusable and crash your
+computer.</p></li>
+</ul>
+
+
+<p>To learn more about keys.openpgp.org, read their
+<a href="https://keys.openpgp.org/about">About</a> and
+<a href="https://keys.openpgp.org/about/faq">FAQ</a> pages.</p></li>
+<li><p>Update <em>Tor Browser</em> to 9.0.2.</p></li>
+<li><p>Update <em>Thunderbird</em> to from 60.9.0 to 68.2.2.</p></li>
+<li><p>Replace the <a href="../../doc/anonymous_internet/thunderbird/index.en.html#torbirdy"><em>TorBirdy</em>
+extension</a> with custom
+settings and patches in <em>Thunderbird</em> that provide equivalent privacy.</p></li>
+<li><p>Update <em>Enigmail</em> to <a href="https://enigmail.net/index.php/en/download/changelog">2.1.3</a>,
+which has a simplified setup wizard that automatically creates an
+OpenPGP key for new email accounts.</p></li>
+<li><p>Update <em>Linux</em> to 5.3.9. This should improve the support for newer
+hardware (graphics, Wi-Fi, etc.).</p></li>
+</ul>
+
+
+<h1><a name="index2h1"></a>Fixed problems</h1>
+
+<ul>
+<li><p>Add back the <strong>Show Passphrase</strong> check box in <em>Tails Greeter</em>.
+(<a href="https://redmine.tails.boum.org/code/issues/17177">#17177</a>)</p>
+
+<p><img alt="" class="img" height="74" src="../../doc/first_steps/startup_options/persistence.png" width="533" /></p></li>
+<li><p>Fix the display of the troubleshooting error when GDM fails to start.
+(<a href="https://redmine.tails.boum.org/code/issues/17200">#17200</a>)</p>
+
+<p><img alt="" class="img" height="110" src="../../support/known_issues/graphics/error.png" width="533" /></p></li>
+<li><p>Add back the option to <strong>Open in Terminal</strong> when doing right-click (on
+Mac, click with two fingers) in a folder in the <em>Files</em> browser.
+(<a href="https://redmine.tails.boum.org/code/issues/17186">#17186</a>)</p></li>
+<li><p>Make the installation of additional software more reliable. (<a href="https://redmine.tails.boum.org/code/issues/17203">#17203</a>)</p></li>
+</ul>
+
+
+<p>For more details, read our <a href="https://git-tails.immerda.ch/tails/plain/debian/changelog">changelog</a>.</p>
+
+<p><a id="known-issues"></a></p>
+
+<h1><a name="index3h1"></a>Known issues</h1>
+
+<p>None specific to this release.</p>
+
+<p>See the list of <a href="../../support/known_issues/index.en.html">long-standing issues</a>.</p>
+
+<h1><a name="index4h1"></a>Get Tails 4.1</h1>
+
+<h2><a name="index1h2"></a>To upgrade your Tails USB stick and keep your persistent storage</h2>
+
+<ul>
+<li><p>Automatic upgrades are available from 4.0 to 4.1.</p></li>
+<li><p>If you cannot do an automatic upgrade or if Tails fails to start after an
+automatic upgrade, please try to do a <a href="../../doc/upgrade/index.en.html#manual">manual upgrade</a>.</p></li>
+</ul>
+
+
+<h2><a name="index2h2"></a>To install Tails on a new USB stick</h2>
+
+<p>Follow our installation instructions:</p>
+
+<ul>
+<li><a href="../../install/win/index.en.html">Install from Windows</a></li>
+<li><a href="../../install/mac/index.en.html">Install from macOS</a></li>
+<li><a href="../../install/linux/index.en.html">Install from Linux</a></li>
+</ul>
+
+
+<div class="caution"><p>All the data on this USB stick will be lost.</p></div>
+
+
+<h2><a name="index3h2"></a>To download only</h2>
+
+<p>If you don&#39;t need installation or upgrade instructions, you can directly download
+Tails 4.1:</p>
+
+<ul>
+<li><a href="../../install/download/index.en.html">For USB sticks (USB image)</a></li>
+<li><a href="../../install/download-iso/index.en.html">For DVDs and virtual machines (ISO image)</a></li>
+</ul>
+
+
+<h1><a name="index5h1"></a>What's coming up?</h1>
+
+<p>Tails 4.2 is <a href="../../contribute/calendar/">scheduled</a> for January 7.</p>
+
+<p>Have a look at our <a href="https://tails.boum.org/contribute/roadmap">roadmap</a> to see where we are heading to.</p>
+
+<p>We need your help and there are many ways to <a href="../../contribute/index.en.html">contribute to
+Tails</a> (<a href="https://tails.boum.org/donate/?r=4.1">donating</a> is only one of
+them). Come <a href="../../about/contact/index.en.html#tails-dev">talk to us</a>!</p>
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+<div id="footer" class="pagefooter" role="contentinfo">
+
+<div id="pageinfo">
+
+
+
+
+
+<div class="tags">
+Tags:
+
+<a href="../../tags/announce/" rel="tag">announce</a>
+
+</div>
+
+
+
+<div id="backlinks">
+Pages linking to this one:
+
+<a href="../../security/Numerous_security_holes_in_4.0/">security/Numerous security holes in 4.0</a>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+<!-- from The Amnesic Incognito Live System -->
+</div>
+
+</div>
+
+<script type="text/javascript">
+  var linkelements = document.querySelectorAll('.use-mirror-pool');
+  // Avoid a traceback if mirror-dispatcher.js is not available.
+  if (typeof replaceUrlPrefixWithRandomMirror !== "undefined" && linkelements.length > 0) {
+    replaceUrlPrefixWithRandomMirror(linkelements);
+  }
+</script>
+
+</body>
+</html>

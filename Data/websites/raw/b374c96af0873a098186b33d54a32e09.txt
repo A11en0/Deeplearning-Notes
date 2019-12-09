@@ -1,0 +1,831 @@
+<!doctype html><html
+lang=en-US prefix="og: http://ogp.me/ns#"><head><meta
+http-equiv=X-UA-Compatible content="IE=edge"><meta
+http-equiv=Content-Type content="text/html; charset=UTF-8"><meta
+name=viewport content="width=device-width, initial-scale=1.0"><link
+rel=icon type=image/png href=https://linuxacademy.com/site-content/themes/linux/img/favicons/favicon.ico><link
+rel=apple-touch-icon sizes=57x57 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/apple-touch-icon-57x57.png><link
+rel=apple-touch-icon sizes=60x60 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/apple-touch-icon-60x60.png><link
+rel=apple-touch-icon sizes=72x72 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/apple-touch-icon-72x72.png><link
+rel=apple-touch-icon sizes=76x76 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/apple-touch-icon-76x76.png><link
+rel=apple-touch-icon sizes=114x114 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/apple-touch-icon-114x114.png><link
+rel=apple-touch-icon sizes=120x120 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/apple-touch-icon-120x120.png><link
+rel=apple-touch-icon sizes=144x144 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/apple-touch-icon-144x144.png><link
+rel=apple-touch-icon sizes=152x152 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/apple-touch-icon-152x152.png><link
+rel=apple-touch-icon sizes=180x180 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/apple-touch-icon-180x180.png><link
+rel=icon type=image/png sizes=32x32 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/favicon-32x32.png><link
+rel=icon type=image/png sizes=16x16 href=https://linuxacademy.com/site-content/themes/linux/img/favicons/favicon-16x16.png><link
+rel=manifest href=https://linuxacademy.com/site-content/themes/linux/img/favicons/site.webmanifest><link
+rel=mask-icon href=https://linuxacademy.com/site-content/themes/linux/img/favicons/safari-pinned-tab.svg color=#5bbad5><meta
+name=msapplication-TileColor content=#da532c><meta
+name=msapplication-TileImage content=https://linuxacademy.com/site-content/themes/linux/img/favicons/mstile-144x144.png><meta
+name=msapplication-config content=https://linuxacademy.com/site-content/themes/linux/img/favicons/browserconfig..xml><meta
+name=theme-color content=#ffffff><meta
+name=msapplication-TileColor content=#203542><meta
+name=theme-color content=#203542><link
+rel=pingback href=https://linuxacademy.com/xmlrpc.php><link
+rel=preload href=https://linuxacademy.com/site-content/themes/linux/dist/symbols.svg as=object> <script>window.linuxOnloadQueue = window.linuxOnloadQueue || [];</script> <title>Free Courses at Linux Academy - December 2019 &ndash; Linux Academy</title><meta
+name=description content="See what courses are free this December at Linux Academy. We are the premier cloud training platform for Hands-On learning."><link
+rel=canonical href=https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/><meta
+property=og:locale content=en_US><meta
+property=og:type content=article><meta
+property=og:title content="Free Courses at Linux Academy - December 2019 &ndash; Linux Academy"><meta
+property=og:description content="Free training from Cloud experts? Sign us up!"><meta
+property=og:url content=https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/><meta
+property=og:site_name content="Linux Academy"><meta
+property=article:publisher content=https://www.facebook.com/linuxacademycom/><meta
+property=article:section content=Announcements><meta
+property=article:published_time content=2019-12-01T16:08:39+00:00><meta
+property=article:modified_time content=2019-12-01T17:32:29+00:00><meta
+property=og:updated_time content=2019-12-01T17:32:29+00:00><meta
+property=og:image content=https://linuxacademy.com/site-content/uploads/2019/11/LA-December-Blog-1.png><meta
+property=og:image:secure_url content=https://linuxacademy.com/site-content/uploads/2019/11/LA-December-Blog-1.png><meta
+property=og:image:width content=1080><meta
+property=og:image:height content=650><meta
+name=twitter:card content=summary_large_image><meta
+name=twitter:description content="See what courses are free this December at Linux Academy. We are the premier cloud training platform for Hands-On learning."><meta
+name=twitter:title content="Free Courses at Linux Academy - December 2019 &ndash; Linux Academy"><meta
+name=twitter:site content=@linuxacademyCOM><meta
+name=twitter:image content=https://linuxacademy.com/site-content/uploads/2019/11/LA-December-Blog-1.png><meta
+name=twitter:creator content=@linuxacademyCOM> <script type=application/ld+json class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://linuxacademy.com/#organization","name":"Linux Academy","url":"https://linuxacademy.com/","sameAs":["https://www.facebook.com/linuxacademycom/","https://www.instagram.com/linuxacademycom/","https://linkedin.com/company/linuxacademy","https://www.youtube.com/user/pineheadtv","https://twitter.com/linuxacademyCOM"],"logo":{"@type":"ImageObject","@id":"https://linuxacademy.com/#logo","url":"https://linuxacademy.com/site-content/uploads/2019/05/LA-Logo-Horizontal-NVY-Web.png","caption":"Linux Academy"},"image":{"@id":"https://linuxacademy.com/#logo"}},{"@type":"WebSite","@id":"https://linuxacademy.com/#website","url":"https://linuxacademy.com/","name":"Linux Academy","publisher":{"@id":"https://linuxacademy.com/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://linuxacademy.com/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/#webpage","url":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/","inLanguage":"en-US","name":"Free Courses at Linux Academy - December 2019 &ndash; Linux Academy","isPartOf":{"@id":"https://linuxacademy.com/#website"},"image":{"@type":"ImageObject","@id":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/#primaryimage","url":"https://linuxacademy.com/site-content/uploads/2019/11/LA-December-Blog-1.png","caption":""},"primaryImageOfPage":{"@id":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/#primaryimage"},"datePublished":"2019-12-01T16:08:39+00:00","dateModified":"2019-12-01T17:32:29+00:00","description":"See what courses are free this December at Linux Academy. We are the premier cloud training platform for Hands-On learning.","breadcrumb":{"@id":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/#breadcrumb"}},{"@type":"BreadcrumbList","@id":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"WebPage","@id":"https://linuxacademy.com/","url":"https://linuxacademy.com/","name":"Home"}},{"@type":"ListItem","position":2,"item":{"@type":"WebPage","@id":"https://linuxacademy.com/blog/","url":"https://linuxacademy.com/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@type":"WebPage","@id":"https://linuxacademy.com/blog/category/announcements/","url":"https://linuxacademy.com/blog/category/announcements/","name":"Announcements"}},{"@type":"ListItem","position":4,"item":{"@type":"WebPage","@id":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/","url":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/","name":"Free Courses at Linux Academy &#8211; December 2019"}}]},{"@type":"Article","@id":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/#article","isPartOf":{"@id":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/#webpage"},"author":{"@id":"https://linuxacademy.com/blog/author/janelle-poisel/#author","name":"Janelle Poisel"},"publisher":{"@id":"https://linuxacademy.com/#organization"},"headline":"Free Courses at Linux Academy &#8211; December 2019","datePublished":"2019-12-01T16:08:39+00:00","dateModified":"2019-12-01T17:32:29+00:00","commentCount":"3","mainEntityOfPage":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/#webpage","image":{"@id":"https://linuxacademy.com/blog/announcements/free-courses-at-linux-academy-december-2019/#primaryimage"},"articleSection":"Announcements"},{"@type":"Person","@id":"https://linuxacademy.com/blog/author/janelle-poisel/#author","name":"Janelle Poisel","image":{"@type":"ImageObject","@id":"https://linuxacademy.com/#personlogo","url":"https://secure.gravatar.com/avatar/54a760929af4ca812fd8840a90db50af?s=96&d=https%3A%2F%2Flinuxacademy.com%2Fsite-content%2Fthemes%2Flinux%2Fimg%2Fgeneric-blog-post%2Fdefault-img.png&r=g","caption":"Janelle Poisel"},"sameAs":[]}]}</script> <link
+rel=dns-prefetch href=//video-player-1.linuxacademy.com><link
+rel=dns-prefetch href=//cdn.jsdelivr.net><link
+rel=dns-prefetch href=//cdn.auth0.com><link
+rel=dns-prefetch href=//fonts.googleapis.com><link
+rel=dns-prefetch href=//s.w.org><link
+rel=stylesheet id=critical-styles-css  href='https://linuxacademy.com/site-content/themes/linux/dist/critical.css?x20924&amp;ver=1575524823' type=text/css media=all><link
+rel=preload href="https://linuxacademy.com/site-content/themes/linux/dist/style.css?x20924&amp;ver=1575524823" as=style onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link
+rel=stylesheet href="https://linuxacademy.com/site-content/themes/linux/dist/style.css?x20924&amp;ver=1575524823"></noscript><link
+rel=preload href=https://video-player-1.linuxacademy.com/jwplayer8/custom.css as=style onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link
+rel=stylesheet href=https://video-player-1.linuxacademy.com/jwplayer8/custom.css></noscript><link
+rel=stylesheet id=fonts-css  href='https://fonts.googleapis.com/css?family=Noto%20Sans%3A400%2C400i%2C700%2C700i%7CSource%20Code%20Pro%3A400%2C700&#038;display=swap' type=text/css media=all> <script src='https://linuxacademy.com/site-content/themes/linux/js/jquery.min.js?x20924&amp;ver=3.4.1'></script> <script>var ua=ua||navigator.userAgent;function loadDefaultImage(t,e,n,a){var o=!0!==a,r=!0===n,i=e||"/site-content/themes/linux/img/generic-blog-post/generic-course.jpg";t.src=i,o&&jQuery(t).parent().css("background-image","url("+i+")"),r&&(t.srcset="")}-1===ua.indexOf("MSIE 10")&&-1===ua.indexOf("Trident/7")||(document.write('<script src=/site-content/themes/linux/js/_picturefill.min.js><\/script>'),document.write('<script src="https://polyfill.io/v3/polyfill.min.js?features=default,Array.prototype.find,Array.prototype.findIndex,Array.prototype.includes"><\/script>')),function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function n(){t.addEventListener?t.removeEventListener("load",n):t.attachEvent&&t.detachEvent("onload",n),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",n):t.attachEvent&&t.attachEvent("onload",n),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(n,3e3)},e.poly=function(){if(!e.support())for(var n=t.document.getElementsByTagName("link"),a=0;a<n.length;a++){var o=n[a];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var n=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(n)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(n)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);</script><link
+rel=https://api.w.org/ href=https://linuxacademy.com/wp-json/><link
+rel=shortlink href='https://linuxacademy.com/?p=25225'> <script>var _rollbarConfig = {"accessToken":"34d3a74f155c4b14abfd0549ba2b1192","captureUncaught":true,"payload":{"environment":"production"}};!function(r){function o(n){if(e[n])return e[n].exports;var t=e[n]={exports:{},id:n,loaded:!1};return r[n].call(t.exports,t,t.exports,o),t.loaded=!0,t.exports}var e={};return o.m=r,o.c=e,o.p="",o(0)}([function(r,o,e){"use strict";var n=e(1),t=e(4);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.3.6/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,o,e){"use strict";function n(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}function t(r,o){this.options=r,this._rollbarOldOnError=null;var e=s++;this.shimId=function(){return e},window&&window._rollbarShims&&(window._rollbarShims[e]={handler:o,messages:[]})}function a(r,o){var e=o.globalAlias||"Rollbar";if("object"==typeof r[e])return r[e];r._rollbarShims={},r._rollbarWrappedError=null;var t=new p(o);return n(function(){o.captureUncaught&&(t._rollbarOldOnError=r.onerror,i.captureUncaughtExceptions(r,t,!0),i.wrapGlobals(r,t,!0)),o.captureUnhandledRejections&&i.captureUnhandledRejections(r,t,!0);var n=o.autoInstrument;return o.enabled!==!1&&(void 0===n||n===!0||"object"==typeof n&&n.network)&&r.addEventListener&&(r.addEventListener("load",t.captureLoad.bind(t)),r.addEventListener("DOMContentLoaded",t.captureDomContentLoaded.bind(t))),r[e]=t,t})()}function l(r){return n(function(){var o=this,e=Array.prototype.slice.call(arguments,0),n={shim:o,method:r,args:e,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)})}var i=e(2),s=0,d=e(3),c=function(r,o){return new t(r,o)},p=d.bind(null,c);t.prototype.loadFull=function(r,o,e,t,a){var l=function(){var o;if(void 0===r._rollbarDidLoad){o=new Error("rollbar.js did not load");for(var e,n,t,l,i=0;e=r._rollbarShims[i++];)for(e=e.messages||[];n=e.shift();)for(t=n.args||[],i=0;i<t.length;++i)if(l=t[i],"function"==typeof l){l(o);break}}"function"==typeof a&&a(o)},i=!1,s=o.createElement("script"),d=o.getElementsByTagName("script")[0],c=d.parentNode;s.crossOrigin="",s.src=t.rollbarJsUrl,e||(s.async=!0),s.onload=s.onreadystatechange=n(function(){if(!(i||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){s.onload=s.onreadystatechange=null;try{c.removeChild(s)}catch(r){}i=!0,l()}}),c.insertBefore(s,d)},t.prototype.wrap=function(r,o,e){try{var n;if(n="function"==typeof o?o:function(){return o||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){e&&"function"==typeof e&&e.apply(this,arguments);try{return r.apply(this,arguments)}catch(e){var o=e;throw"string"==typeof o&&(o=new String(o)),o._rollbarContext=n()||{},o._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=o,o}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(o){return r}};for(var u="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<u.length;++f)t.prototype[u[f]]=l(u[f]);r.exports={setupShim:a,Rollbar:p}},function(r,o){"use strict";function e(r,o,e){if(r){var t;"function"==typeof o._rollbarOldOnError?t=o._rollbarOldOnError:r.onerror&&!r.onerror.belongsToShim&&(t=r.onerror,o._rollbarOldOnError=t);var a=function(){var e=Array.prototype.slice.call(arguments,0);n(r,o,t,e)};a.belongsToShim=e,r.onerror=a}}function n(r,o,e,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null),o.handleUncaughtException.apply(o,n),e&&e.apply(r,n)}function t(r,o,e){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var e,n,t;try{e=r.reason}catch(r){e=void 0}try{n=r.promise}catch(r){n="[unhandledrejection] error getting `promise` from event"}try{t=r.detail,!e&&t&&(e=t.reason,n=t.promise)}catch(r){t="[unhandledrejection] error getting `detail` from event"}e||(e="[unhandledrejection] error getting `reason` from event"),o&&o.handleUnhandledRejection&&o.handleUnhandledRejection(e,n)};n.belongsToShim=e,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}function a(r,o,e){if(r){var n,t,a="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(n=0;n<a.length;++n)t=a[n],r[t]&&r[t].prototype&&l(o,r[t].prototype,e)}}function l(r,o,e){if(o.hasOwnProperty&&o.hasOwnProperty("addEventListener")){for(var n=o.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(o,e,t){n.call(this,o,r.wrap(e),t)};t._rollbarOldAdd=n,t.belongsToShim=e,o.addEventListener=t;for(var a=o.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,o,e){a.call(this,r,o&&o._rollbar_wrapped||o,e)};l._rollbarOldRemove=a,l.belongsToShim=e,o.removeEventListener=l}}r.exports={captureUncaughtExceptions:e,captureUnhandledRejections:t,wrapGlobals:a}},function(r,o){"use strict";function e(r,o){this.impl=r(o,this),this.options=o,n(e.prototype)}function n(r){for(var o=function(r){return function(){var o=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,o)}},e="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<e.length;n++)r[e[n]]=o(e[n])}e.prototype._swapAndProcessMessages=function(r,o){this.impl=r(this.options);for(var e,n,t;e=o.shift();)n=e.method,t=e.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],e.ts]):this[n].apply(this,t));return this},r.exports=e},function(r,o){"use strict";r.exports=function(r){return function(o){if(!o&&!window._rollbarInitialized){r=r||{};for(var e,n,t=r.globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;e=window._rollbarShims[i++];)n||(n=e.handler),e.handler._swapAndProcessMessages(l,e.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);;</script>  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TT9WBLR');</script> </head><body
+class="post-template-default single single-post postid-25225 single-format-standard bg-white bg-lightergray black" itemscope itemtype=http://schema.org/WebPage>
+<noscript>
+<iframe
+src="https://www.googletagmanager.com/ns.html?id=GTM-TT9WBLR" height=0 width=0 style=display:none;visibility:hidden></iframe>
+</noscript><a
+class=skip-content href=#main>Skip to main content</a><div
+class=site-wrap><svg
+xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink width=0 height=0 style=position:absolute;><defs><linearGradient
+id="svg-grad1" x1="0%" y1="0%" x2="0%" y2="100%"><stop
+offset=0% style=stop-color:#132632;stop-opacity:1></stop><stop
+offset=100% style=stop-color:#132632;stop-opacity:0></stop></linearGradient><linearGradient
+id="svg-grad2" x1="0%" y1="0%" x2="100%" y2="0%"><stop
+offset=0% style=stop-color:#132632;stop-opacity:0></stop><stop
+offset=100% style=stop-color:#132632;stop-opacity:1></stop></linearGradient></defs></svg><header
+class="site-header relative z-999 pa4 cf" id=top><div
+class="mw8 w-100 center">
+<a
+class=site-header__logo href=https://linuxacademy.com title=Home rel=home><div
+style="width: 160px; height: 27px;">
+<svg
+class="db ma0" width=160 height=27 {{ svgattr }}><use
+xlink:href=#svg-linux-academy-logo></use></svg></div>
+</a><button
+class="toggle toggle--nav dn fr" aria-hidden=true data-controls=#nav>
+<span></span>
+</button><button
+class="toggle toggle--search dn fr bn bg-transparent pa0 fill-white" aria-hidden=true data-controls=#search>
+<i
+class="far fa-search" style="font-size: 20px; line-height: 20px;"></i>
+</button><nav
+class=toggle__target id=nav><ul
+class="menu-primary menu list f12 pl0 mb0"><li
+class="btn btn--courses menu-item menu-item-type-custom menu-item-object-custom menu-item-44 ma0 pa0">
+<button
+class="toggle toggle--courses white bg-black bn db pv3 mv3 mv0-l ph3 ph4-xl br2 fw600 shadow-1 fill-white relative" data-controls=#menu-courses>
+<span
+class="dib v-mid mr1">Browse Training</span>
+<i
+class="ml1 fal fa-angle-down" xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden="true"style="font-size: 18px; line-height: 18px;"></i>
+</button><div
+class="toggle__target bg-black white relative mt4 mt0-l fixed-l top-0 left-0 w-100 h-100-l bg-blackgreen z-2" id=menu-courses><div
+class="bg-black pa4 h-100"><div
+class="toggle__inner mw6 center pb6-l"><div
+class="nav_courses_slider persona_courses_slider--left slick-loading "><div
+class=persona_course_slide> <script type=text/template class="js-template dn">
+                            Most Popular
+                        </script> <div
+class="flex flex-wrap nl4 nr4"><div
+class="w-100 w-third-l flex flex-column items-start ph4 mb4"><p><strong>Popular Courses</strong></p>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/course/intro-to-python-development/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-cap></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Introduction to Python Development</h3><p
+class="f12 lh-title mb0 ws-pre">Learn how to program using Python.</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/course/aws-certified-solutions-architect-2019-associate-level/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-cap></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">AWS Certified Solutions Architect – Associate Level</h3><p
+class="f12 lh-title mb0 ws-pre">Prepare to take the AWS Certified S...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/course/aws-essentials-new/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-cap></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">AWS Essentials</h3><p
+class="f12 lh-title mb0 ws-pre">For those who are completely new to...</p></div>
+</a>
+<a
+class="link lightgray dib mtauto" href=/library/type/Course/>View all 207 Courses</a></div><div
+class="w-100 w-third-l flex flex-column items-start ph4 mb4"><p><strong>Popular Hands-On Labs</strong></p>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/hands-on-lab/445edae0-868a-4dcf-a785-b798e76cb3c8/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-beaker></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">The DevOps Pipeline</h3><p
+class="f12 lh-title mb0 ws-pre">Create a DevOps pipeline all the wa...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/hands-on-lab/06b7c203-710c-4889-8c99-7a63e198843d/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-beaker></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Using Azure Service Bus Queues with C#, Cloud Shell, PowerShell, and CLI</h3><p
+class="f12 lh-title mb0 ws-pre">Use the Azure Cloud Shell to create...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/hands-on-lab/373fbf9b-9bb5-448f-bf5a-2b9d9cb9ada8/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-beaker></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Creating and configuring Secure AWS RDS Instances with a Reader and Backup Solution</h3><p
+class="f12 lh-title mb0 ws-pre">Create an RDS database, then succes...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/hands-on-lab/95a5b49b-0886-45f7-831b-3439ad1be06f/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-beaker></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Exploring the Kubernetes Cluster via the Command Line</h3><p
+class="f12 lh-title mb0 ws-pre">Use the kubectl command line tool t...</p></div>
+</a>
+<a
+class="link lightgray dib mtauto" href=/library/type/Hands-On%20Lab/>View all 1051 Hands-On Labs</a></div><div
+class="w-100 w-third-l flex flex-column items-start ph4 mb4"><p><strong>Popular Learning Paths</strong></p>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/learning-path/amazon-web-services-master-level/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-wires></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Amazon Web Services - Master Level</h3><p
+class="f12 lh-title mb0 ws-pre">Start the journey to receiving all ...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/learning-path/google-cloud-certification/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-wires></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Google Cloud Certification</h3><p
+class="f12 lh-title mb0 ws-pre">Build your Google Cloud skills.</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/learning-path/getting-started-in-azure-for-the-absolute-beginner/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-wires></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Getting Started in Azure for the Absolute Beginner</h3><p
+class="f12 lh-title mb0 ws-pre">Get a solid foundation in I.T. and ...</p></div>
+</a>
+<a
+class="link lightgray dib mtauto" href=/learning-paths/>View all 49 Learning Paths</a></div></div></div><div
+class=persona_course_slide> <script type=text/template class="js-template dn">
+                            Skills & Platforms
+                        </script> <div
+class="flex flex-wrap nl4 nr4"><div
+class="w-100 w-50-l flex flex-column items-start ph4 mb4"><p><strong>Learn a new platform</strong></p>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-blackgreen white" href=/library/topics/Cloud/><div
+class="pr3 pl1 pv1 green ">
+<span
+class="dib v-btm f4 f2-s icon-cloud"></span></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Cloud</h3><p
+class="f12 lh-title mb0 ws-pre">1,018 Hours of Learning</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-blackgreen white" href=/library/topics/AWS/><div
+class="pr3 pl1 pv1 green ">
+<span
+class="dib v-btm f4 f2-s icon-aws"></span></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">AWS</h3><p
+class="f12 lh-title mb0 ws-pre">490 Hours of Learning</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-blackgreen white" href=/library/topics/Linux/><div
+class="pr3 pl1 pv1 green ">
+<span
+class="dib v-btm f4 f2-s icon-linux"></span></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Linux</h3><p
+class="f12 lh-title mb0 ws-pre">1,257 Hours of Learning</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-blackgreen white" href=/library/topics/Google%20Cloud/><div
+class="pr3 pl1 pv1 green ">
+<span
+class="dib v-btm f4 f2-s icon-googlecloud"></span></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Google Cloud</h3><p
+class="f12 lh-title mb0 ws-pre">159 Hours of Learning</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-blackgreen white" href=/library/topics/Azure/><div
+class="pr3 pl1 pv1 green ">
+<span
+class="dib v-btm f4 f2-s icon-azure"></span></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Azure</h3><p
+class="f12 lh-title mb0 ws-pre">192 Hours of Learning</p></div>
+</a></div><div
+class="w-100 w-50-l flex flex-column items-start ph4 mb4"><p><strong>Develop a new skill</strong></p>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-blackgreen white" href=/library/topics/Security/><div
+class="pr3 pl1 pv1 orange ">
+<span
+class="dib v-btm f4 f2-s icon-security"></span></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Security</h3><p
+class="f12 lh-title mb0 ws-pre">280 Hours of Learning</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-blackgreen white" href=/library/topics/DevOps/><div
+class="pr3 pl1 pv1 orange ">
+<span
+class="dib v-btm f4 f2-s icon-devops"></span></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">DevOps</h3><p
+class="f12 lh-title mb0 ws-pre">836 Hours of Learning</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-blackgreen white" href=/library/topics/Containers/><div
+class="pr3 pl1 pv1 orange ">
+<span
+class="dib v-btm f4 f2-s icon-containers"></span></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Containers</h3><p
+class="f12 lh-title mb0 ws-pre">339 Hours of Learning</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-blackgreen white" href=/library/topics/Big%20Data/><div
+class="pr3 pl1 pv1 orange ">
+<span
+class="dib v-btm f4 f2-s icon-bigdata"></span></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Big Data</h3><p
+class="f12 lh-title mb0 ws-pre">168 Hours of Learning</p></div>
+</a></div></div></div><div
+class=persona_course_slide> <script type=text/template class="js-template dn">
+                            Latest Releases
+                        </script> <div
+class="flex flex-wrap nl4 nr4"><div
+class="w-100 w-third-l flex flex-column items-start ph4 mb4"><p><strong>Latest Courses</strong></p>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/course/aws-developer-tools-deep-dive/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-cap></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">AWS Developer Tools Deep Dive – Early Access</h3><p
+class="f12 lh-title mb0 ws-pre">Take a deep dive into each of the s...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/course/red-hat-certified-engineer-rhel-8-rhce/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-cap></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Red Hat Certified Engineer (RHEL 8 RHCE)</h3><p
+class="f12 lh-title mb0 ws-pre">Prepare for the certification exam ...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/course/build-and-deploy-pipelines-with-microsoft-azure/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-cap></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Build and Deploy Pipelines with Microsoft Azure</h3><p
+class="f12 lh-title mb0 ws-pre">Use Azure DevOps to demonstrate man...</p></div>
+</a>
+<a
+class="link lightgray dib mtauto" href=/library/type/Course/>View all 207 Courses</a></div><div
+class="w-100 w-third-l flex flex-column items-start ph4 mb4"><p><strong>Latest Hands-On Labs</strong></p>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/hands-on-lab/9a9d3dd0-fa82-45cb-867f-24948ddb4ae6/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-beaker></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Perform Parallel Execution in AWS Step Functions</h3><p
+class="f12 lh-title mb0 ws-pre">Start with an existing step functio...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/hands-on-lab/30b3588d-378b-458e-a2c0-452f1df378a9/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-beaker></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Import JSON into Cosmos DB</h3><p
+class="f12 lh-title mb0 ws-pre">Export a table from our sample Azur...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/hands-on-lab/a722ebb2-84b2-4cb4-ab2a-2f7fde1cebd8/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-beaker></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Pair Programming with AWS Cloud9</h3><p
+class="f12 lh-title mb0 ws-pre">Ssimulate a second developer being ...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/hands-on-lab/b5b85d45-28cd-4ef4-8afb-9b2750605628/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-beaker></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Protecting Google Cloud VPC Resources with Cloud Armor</h3><p
+class="f12 lh-title mb0 ws-pre">Create a Cloud Armor policy.</p></div>
+</a>
+<a
+class="link lightgray dib mtauto" href=/library/type/Hands-On%20Lab/>View all 1051 Hands-On Labs</a></div><div
+class="w-100 w-third-l flex flex-column items-start ph4 mb4"><p><strong>Latest Learning Paths</strong></p>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/learning-path/serverless-computing/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-wires></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Serverless Computing</h3><p
+class="f12 lh-title mb0 ws-pre">Introduction to the key concepts ar...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/learning-path/kubernetes-orchestration-and-management/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-wires></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Kubernetes Orchestration and Management</h3><p
+class="f12 lh-title mb0 ws-pre">Introduction to the foundations of ...</p></div>
+</a>
+<a
+class="sub-nav__item flex items-center shadow-3 br3 pa3 mw4 mb3 mb4-l w-100 db bg-white black" href=/learning-path/learning-docker/><div
+class="pr3 pl1 pv1 black ">
+<svg
+class=db width=29 height=26 xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink aria-hidden=true><use
+xlink:href=#svg-wires></use></svg></div><div
+class="flex-auto pa1"><h3 class="f11 f9-l fw700 mb2 ws-pre">Learning Docker</h3><p
+class="f12 lh-title mb0 ws-pre">Get started with Docker.</p></div>
+</a>
+<a
+class="link lightgray dib mtauto" href=/learning-paths/>View all 49 Learning Paths</a></div></div></div></div></div></div></div></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20612 ma0 pa0 relative">
+<a
+class="db fw600 pv3 black dim relative" href=/real-hands-on-labs>Hands-On Labs</a></li><li
+class="menu-item menu-item-type-post_type menu-item-object-page menu-item-567 ma0 pa0 relative">
+<a
+class="db fw600 pv3 black dim relative" href=https://linuxacademy.com/why-linux-academy/>Why Linux Academy?</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18918 ma0 pa0 relative">
+<a
+class="db fw600 pv3 black dim relative" href=/pricing>Pricing</a></li><li
+class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39 ma0 pa0 relative">
+<a
+class="db fw600 pv3 black dim relative" href=https://linuxacademy.com/for-business/>For Business</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25452 menu-item-has-children ma0 pa0 relative">
+<a
+class="db fw600 pt3 pb1 black dim relative open-child-menu" href=#>Resources <i
+class="ml1 fal fa-angle-down dib v-mid dropdown-arrow" style="font-size: 18px; line-height: 18px;"></i></a><ul
+class="navigation-child-menu list f12"><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25453">
+<a
+class="db fw300 pv2 white hover-green relative" href=/blog/>Blog</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25526">
+<a
+class="db fw300 pv2 white hover-green relative" href=/video-library/>Videos</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25454">
+<a
+class="db fw300 pv2 white hover-green relative" href=/case-studies/>Case Studies</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25576">
+<a
+class="db fw300 pv2 white hover-green relative" href=/events/>Events</a></li></ul></li><li
+class="menu-secondary ma0 pa0"><ul
+class="menu-primary menu list f12 pl0 mb0"><li
+class=menu-primary__search>
+<button
+class="toggle toggle--search dn bn bg-transparent pa0 relative" aria-hidden=true data-controls=#search>
+<i
+class="far fa-search" style="font-size: 20px; line-height: 20px;"></i>
+</button></li><li
+class="menu-primary pa0 dib mh4 mh0-l">
+<a
+class="db pv3 black o-50 relative web-auth-authorize" href=#>Log In</a></li><li
+class="btn menu-item menu-item-type-post_type menu-item-object-page menu-item-568 pa0 dib mh4 mh0-l">
+<a
+class="black bg-green dib pv3 ph3 ph4-xl br2 fw600 shadow-1 relative z-5" href=https://linuxacademy.com/pricing/>Start FREE Trial</a></li></ul></li></ul></nav><div
+class="toggle__target fixed top-0 left-0 w-100 h-100 z-999 dn" id=search>
+<button
+class="toggle__close bg-transparent bn pa0 white dim absolute top-1 right-1 pa1 z-1">
+<i
+class="db fal fa-times" style="font-size: 24px; line-height: 24px;"></i>
+</button><div
+class="bg-black pb6 pt4-m white"><div
+class="toggle__inner mw6 center ph4 pv6"><div
+class=relative id=search-container role=search></div><div
+class="flex flex-column flex-row-l nl4 nr4 mt4" id=search-results aria-hidden=true><div
+class="w-third-m ph4 pr6-l pr7-xxl dn flex-l flex-column items-start" id=search-autocomplete>
+<button
+class="search-keyword dn bg-transparent ba b--white pv3 ph4 br-pill f13 f12-l lh-title mv2 dim outline-0 tl"></button>
+<button
+class="search-keyword dn bg-transparent ba b--white pv3 ph4 br-pill f13 f12-l lh-title mv2 dim outline-0 tl"></button>
+<button
+class="search-keyword dn bg-transparent ba b--white pv3 ph4 br-pill f13 f12-l lh-title mv2 dim outline-0 tl"></button>
+<button
+class="search-keyword dn bg-transparent ba b--white pv3 ph4 br-pill f13 f12-l lh-title mv2 dim outline-0 tl"></button>
+<button
+class="search-keyword dn bg-transparent ba b--white pv3 ph4 br-pill f13 f12-l lh-title mv2 dim outline-0 tl"></button></div><div
+class="w-two-thirds-l ph4"><p
+id=search-stats></p><div
+id=search-hits></div><div
+id=head-to-adv-search class="tr pv2"></div></div></div></div></div></div></div></header><main
+class=site-main id=main><div
+class=overflow-hidden><div
+class="marketing-banner mw6 center mt3 mt5-l ph2 ph4-l relative"><script>(function() {
+if(window.location.pathname == '/') return;
+if(window.location.pathname.startsWith('/pricing')) return;
+
+var cls = 'bg-white';
+//if(!document.body.className.match(new RegExp('(\s|^)'+cls+'(\s|$)'))) {
+
+if(!document.body.classList.contains(cls)) {
+
+// black friday
+(function(n){var r="_ion_ionizer",t=n.getElementsByTagName("script"),i;t=t[t.length-1];t.id=r+ +new Date+Math.floor(Math.random()*10);t.setAttribute("data-ion-embed",'{"url":"//learn.linuxacademy.com/embed/banner/top/promo/extension?_ion_target=embed-1.0","target":"'+t.id+'","appendQuery":true}');n.getElementById(r)||(i=n.createElement("script"),i.id=r,i.src="https://ionfiles.scribblecdn.net/scripts/ionizer-1.1.min.js",t.parentNode.insertBefore(i,t.nextSibling))})(document);
+
+} else {
+
+// cloud playground
+(function(n){var r="_ion_ionizer",t=n.getElementsByTagName("script"),i;t=t[t.length-1];t.id=r+ +new Date+Math.floor(Math.random()*10);t.setAttribute("data-ion-embed",'{"url":"//learn.linuxacademy.com/embed/banner/top?_ion_target=embed-1.0","target":"'+t.id+'","appendQuery":true}');n.getElementById(r)||(i=n.createElement("script"),i.id=r,i.src="https://ionfiles.scribblecdn.net/scripts/ionizer-1.1.min.js",t.parentNode.insertBefore(i,t.nextSibling))})(document);
+
+}
+})();</script></div><article
+id=post-25225 class=bg-ligthergray><header
+class="single-header relative flex items-center white overflow-hidden flex-wrap flex-column">
+<span
+class="blurred-bg db z-0 absolute bg-center w-100 h-100 cover top-0 left-0" style="background:url('https://linuxacademy.com/site-content/uploads/2019/11/LA-December-Blog-1-1080x630.png')">
+<img
+src=https://linuxacademy.com/site-content/uploads/2019/11/LA-December-Blog-1-1080x630.png class="absolute z-0 dn" onError="loadDefaultImage(this, 'https://linuxacademy.com/site-content/themes/linux/img/generic-blog-post/generic.png')">
+</span><div
+class="center mt7 mw7 relative z-1 shadow-1"><div
+class=single-featured-image>
+<img
+class="db br3 br--top" src=https://linuxacademy.com/site-content/uploads/2019/11/LA-December-Blog-1-1080x630.png alt="Free Courses at Linux Academy &#8211; December 2019" onError="loadDefaultImage(this, 'https://linuxacademy.com/site-content/themes/linux/img/generic-blog-post/generic.png', false, true)"></div><div
+class="single-meta bg-green black relative absolute-l bottom-0 w-100 left-0"><div
+class="bg-blackgreen white pa3 bw1 b--gray f12 blog-breadcrumbs"><nav
+id=breadcrumbs class=main-breadcrumbs><span><span><a
+href=https://linuxacademy.com/ >Home</a> \ <span><a
+href=https://linuxacademy.com/blog/ >Blog</a> \ <span><a
+href=https://linuxacademy.com/blog/category/announcements/ >Announcements</a> \ <span
+class=breadcrumb_last aria-current=page>Free Courses at Linux Academy &#8211; December 2019</span></span></span></span></span></nav></div><div
+class="single-meta-content pa4 relative"><div
+class="share absolute z-2">
+<button
+class="btn br-100 bg-lightergray black bw0 shadow-1 db z-1 relative" id=shareToggle role=button aria-label=Share aria-pressed=false>
+<i
+class="far fa-share-alt" ></i>
+<span
+class=screen-reader-text>Share</span>
+</button><ul
+class="share-bubble bg-white shadow-1 z-2 br3 ma0 pa0 flex flex-wrap"><li
+class="db w-third pa1">
+<a
+target=_blank class="br2 dib pv1 w-100 black bg-lightergray bg-anim hover-bg-green" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Flinuxacademy.com%2Fblog%2Fannouncements%2Ffree-courses-at-linux-academy-december-2019%2F" title="Share on Facebook" aria-label="Share on Facebook">
+<i
+class="fab fa-facebook-f" ></i>
+<span
+class=screen-reader-text>Share on Facebook</span>
+</a></li><li
+class="db w-third pa1">
+<a
+target=_blank class="br2 dib pv1 w-100 black bg-lightergray bg-anim hover-bg-green" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Flinuxacademy.com%2Fblog%2Fannouncements%2Ffree-courses-at-linux-academy-december-2019%2F&text=Free%20Courses%20at%20Linux%20Academy%20%26%238211%3B%20December%202019" title="Share on Twitter" aria-label="Share on Twitter">
+<i
+class="fab fa-twitter" ></i>
+<span
+class=screen-reader-text>Share on Twitter</span>
+</a></li><li
+class="db w-third pa1">
+<a
+target=_blank class="br2 dib pv1 w-100 black bg-lightergray bg-anim hover-bg-green" href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Flinuxacademy.com%2Fblog%2Fannouncements%2Ffree-courses-at-linux-academy-december-2019%2F&title=Free%20Courses%20at%20Linux%20Academy%20%26%238211%3B%20December%202019" title="Share on LinkedIn" aria-label="Share on LinkedIn">
+<i
+class="fab fa-linkedin-in" ></i>
+<span
+class=screen-reader-text>Share on LinkedIn</span>
+</a></li><li
+class="db w-third pa1">
+<a
+target=_blank class="br2 dib pv1 w-100 black bg-lightergray bg-anim hover-bg-green" href="https://news.ycombinator.com/submitlink?u=https%3A%2F%2Flinuxacademy.com%2Fblog%2Fannouncements%2Ffree-courses-at-linux-academy-december-2019%2F&t=Free%20Courses%20at%20Linux%20Academy%20%26%238211%3B%20December%202019" title="Share on Hacker News" aria-label="Share on Hacker News">
+<i
+class="fab fa-hacker-news" ></i>
+<span
+class=screen-reader-text>Share on Hacker News</span>
+</a></li><li
+class="db w-third pa1">
+<a
+target=_blank class="br2 dib pv1 w-100 black bg-lightergray bg-anim hover-bg-green" href="https://reddit.com/submit?url=https%3A%2F%2Flinuxacademy.com%2Fblog%2Fannouncements%2Ffree-courses-at-linux-academy-december-2019%2F&title=Free%20Courses%20at%20Linux%20Academy%20%26%238211%3B%20December%202019" title="Share on Reddit" aria-label="Share on Reddit">
+<i
+class="fab fa-reddit-alien" ></i>
+<span
+class=screen-reader-text>Share on Reddit</span>
+</a></li></ul></div><h1 class="f7 f3-l fw100">Free Courses at Linux Academy &#8211; December 2019</h1><h3 class="f12 f12-l fw100 mb0">Posted on <strong>December 1, 2019</strong> by <span
+class="avatar mh1"><img
+src="https://secure.gravatar.com/avatar/54a760929af4ca812fd8840a90db50af?s=96&d=https%3A%2F%2Flinuxacademy.com%2Fsite-content%2Fthemes%2Flinux%2Fimg%2Fgeneric-blog-post%2Fdefault-img.png&r=g" alt="Janelle Poisel"></span>Janelle Poisel</h3><ul
+class="list mt1 pa0 mb0 f13"><li
+class="dib mt2 v-mid mr2"><a
+href=https://linuxacademy.com/blog/category/announcements/ class="br-pill pv1 ph3 bg-lightergray blackgreen hover-bg-greenblack hover-white">Announcements</a></li></ul></div></div></div></header><div
+class="center mt0 mw7 mb4 pa4 pa5-l lh-copy single-article flex flex-wrap bg-white shadow-1 br3 br--bottom items-start"><section
+class="article-content w-100 w-70-l"><h2><b><i>To continually support your mission to learn and grow, we are always adding new, free courses and resources for developing Linux and Cloud skills.</i></b></h2><p>Each month we will kick off our<a
+href=https://linuxacademy.com/join/community> community content</a> with a live study group. Members of the Linux Academy community come together and share their insights and questions.</p><p>&nbsp;</p><h2><b>Courses Free in December :</b></h2><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/357 rel=nofollow>CloudFormation Deep Dive</a></span></h3></li></ul><p><img
+class="alignnone wp-image-25230" src=https://linuxacademy.com/site-content/uploads/2019/11/cloudformation-300x169.png alt="Cloudformation Deep Dive" width=646 height=364 srcset="https://linuxacademy.com/site-content/uploads/2019/11/cloudformation-300x169.png 300w, https://linuxacademy.com/site-content/uploads/2019/11/cloudformation-768x432.png 768w, https://linuxacademy.com/site-content/uploads/2019/11/cloudformation-1024x576.png 1024w, https://linuxacademy.com/site-content/uploads/2019/11/cloudformation-1032x580.png 1032w" sizes="(max-width: 646px) 100vw, 646px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/89 rel=nofollow>Jenkins Quick Start</a></span></h3></li></ul><p><img
+class="alignnone wp-image-25232" src=https://linuxacademy.com/site-content/uploads/2019/11/jenkins-300x169.png alt="Jenkins Quickstart" width=646 height=364 srcset="https://linuxacademy.com/site-content/uploads/2019/11/jenkins-300x169.png 300w, https://linuxacademy.com/site-content/uploads/2019/11/jenkins-768x432.png 768w, https://linuxacademy.com/site-content/uploads/2019/11/jenkins-1024x576.png 1024w, https://linuxacademy.com/site-content/uploads/2019/11/jenkins-1032x580.png 1032w" sizes="(max-width: 646px) 100vw, 646px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/266 rel=nofollow>DevSecOps Essentials</a></span></h3></li></ul><p><img
+class="alignnone wp-image-25233" src=https://linuxacademy.com/site-content/uploads/2019/11/devsec-300x200.png alt="DevSecOps Essentials" width=645 height=430 srcset="https://linuxacademy.com/site-content/uploads/2019/11/devsec-300x200.png 300w, https://linuxacademy.com/site-content/uploads/2019/11/devsec.png 600w" sizes="(max-width: 645px) 100vw, 645px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/300 rel=nofollow>Amazon Lightsail Deep Dive</a></span></h3></li></ul><p><img
+class="alignnone wp-image-25234" src=https://linuxacademy.com/site-content/uploads/2019/11/lightsail-300x300.png alt="amazon lightsail deep dive" width=646 height=646 srcset="https://linuxacademy.com/site-content/uploads/2019/11/lightsail-300x300.png 300w, https://linuxacademy.com/site-content/uploads/2019/11/lightsail-150x150.png 150w, https://linuxacademy.com/site-content/uploads/2019/11/lightsail-768x768.png 768w, https://linuxacademy.com/site-content/uploads/2019/11/lightsail-1024x1024.png 1024w, https://linuxacademy.com/site-content/uploads/2019/11/lightsail-250x250.png 250w, https://linuxacademy.com/site-content/uploads/2019/11/lightsail-75x75.png 75w, https://linuxacademy.com/site-content/uploads/2019/11/lightsail-200x200.png 200w, https://linuxacademy.com/site-content/uploads/2019/11/lightsail-400x400.png 400w, https://linuxacademy.com/site-content/uploads/2019/11/lightsail.png 1080w" sizes="(max-width: 646px) 100vw, 646px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/241 rel=nofollow>AWS Essentials</a></span></h3></li></ul><p><img
+class="alignnone wp-image-12571" src=https://linuxacademy.com/site-content/uploads/2018/11/AWS-Essentials-2018-Q3-Refresh-1200x630-1024x538-300x158.png alt="AWS Essentials Course" width=651 height=343 srcset="https://linuxacademy.com/site-content/uploads/2018/11/AWS-Essentials-2018-Q3-Refresh-1200x630-1024x538-300x158.png 300w, https://linuxacademy.com/site-content/uploads/2018/11/AWS-Essentials-2018-Q3-Refresh-1200x630-1024x538-768x404.png 768w, https://linuxacademy.com/site-content/uploads/2018/11/AWS-Essentials-2018-Q3-Refresh-1200x630-1024x538.png 1024w, https://linuxacademy.com/site-content/uploads/2018/11/AWS-Essentials-2018-Q3-Refresh-1200x630-1024x538-534x280.png 534w, https://linuxacademy.com/site-content/uploads/2018/11/AWS-Essentials-2018-Q3-Refresh-1200x630-1024x538-80x42.png 80w, https://linuxacademy.com/site-content/uploads/2018/11/AWS-Essentials-2018-Q3-Refresh-1200x630-1024x538-840x441.png 840w, https://linuxacademy.com/site-content/uploads/2018/11/AWS-Essentials-2018-Q3-Refresh-1200x630-1024x538-315x165.png 315w, https://linuxacademy.com/site-content/uploads/2018/11/AWS-Essentials-2018-Q3-Refresh-1200x630-1024x538-228x120.png 228w" sizes="(max-width: 651px) 100vw, 651px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/192 rel=nofollow>DevOps Essentials</a></span></h3></li></ul><p><img
+class="alignnone wp-image-13512" src=https://linuxacademy.com/site-content/uploads/2018/03/DevOps-Essentials-1200x630-156517165_preview-1024x538-300x158.png alt="Devops Essentials course" width=651 height=343 srcset="https://linuxacademy.com/site-content/uploads/2018/03/DevOps-Essentials-1200x630-156517165_preview-1024x538-300x158.png 300w, https://linuxacademy.com/site-content/uploads/2018/03/DevOps-Essentials-1200x630-156517165_preview-1024x538-768x404.png 768w, https://linuxacademy.com/site-content/uploads/2018/03/DevOps-Essentials-1200x630-156517165_preview-1024x538.png 1024w, https://linuxacademy.com/site-content/uploads/2018/03/DevOps-Essentials-1200x630-156517165_preview-1024x538-534x280.png 534w, https://linuxacademy.com/site-content/uploads/2018/03/DevOps-Essentials-1200x630-156517165_preview-1024x538-80x42.png 80w, https://linuxacademy.com/site-content/uploads/2018/03/DevOps-Essentials-1200x630-156517165_preview-1024x538-840x441.png 840w, https://linuxacademy.com/site-content/uploads/2018/03/DevOps-Essentials-1200x630-156517165_preview-1024x538-315x165.png 315w, https://linuxacademy.com/site-content/uploads/2018/03/DevOps-Essentials-1200x630-156517165_preview-1024x538-228x120.png 228w" sizes="(max-width: 651px) 100vw, 651px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/84 rel=nofollow>AWS Concepts</a></span></h3></li></ul><p><img
+class="alignnone wp-image-13098" src=https://linuxacademy.com/site-content/uploads/2018/08/AWS-Concepts-1200x630-PT-194-1024x538-300x158.png alt="AWS Concepts course" width=653 height=344 srcset="https://linuxacademy.com/site-content/uploads/2018/08/AWS-Concepts-1200x630-PT-194-1024x538-300x158.png 300w, https://linuxacademy.com/site-content/uploads/2018/08/AWS-Concepts-1200x630-PT-194-1024x538-768x404.png 768w, https://linuxacademy.com/site-content/uploads/2018/08/AWS-Concepts-1200x630-PT-194-1024x538.png 1024w, https://linuxacademy.com/site-content/uploads/2018/08/AWS-Concepts-1200x630-PT-194-1024x538-534x280.png 534w, https://linuxacademy.com/site-content/uploads/2018/08/AWS-Concepts-1200x630-PT-194-1024x538-80x42.png 80w, https://linuxacademy.com/site-content/uploads/2018/08/AWS-Concepts-1200x630-PT-194-1024x538-840x441.png 840w, https://linuxacademy.com/site-content/uploads/2018/08/AWS-Concepts-1200x630-PT-194-1024x538-315x165.png 315w, https://linuxacademy.com/site-content/uploads/2018/08/AWS-Concepts-1200x630-PT-194-1024x538-228x120.png 228w" sizes="(max-width: 653px) 100vw, 653px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/384 rel=nofollow>Microsoft SQL Server on Linux Quick Start</a></span></h3></li></ul><p><img
+class="alignnone wp-image-23380" src=https://linuxacademy.com/site-content/uploads/2019/08/384_Microsoft-SQL-Server-on-Linux-Quick-Start-19620x1080-300x169.png alt="Microsoft SQL Course" width=651 height=367 srcset="https://linuxacademy.com/site-content/uploads/2019/08/384_Microsoft-SQL-Server-on-Linux-Quick-Start-19620x1080-300x169.png 300w, https://linuxacademy.com/site-content/uploads/2019/08/384_Microsoft-SQL-Server-on-Linux-Quick-Start-19620x1080-768x432.png 768w, https://linuxacademy.com/site-content/uploads/2019/08/384_Microsoft-SQL-Server-on-Linux-Quick-Start-19620x1080-1024x576.png 1024w, https://linuxacademy.com/site-content/uploads/2019/08/384_Microsoft-SQL-Server-on-Linux-Quick-Start-19620x1080-1032x580.png 1032w" sizes="(max-width: 651px) 100vw, 651px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/374 rel=nofollow>Database Administration and SQL Language Basics </a></span></h3></li></ul><p><img
+class="alignnone wp-image-22982" src=https://linuxacademy.com/site-content/uploads/2019/06/Database-Administration-and-SQL-Language-Basics-1200x630-1024x538-300x158.png alt="Database Amin Course" width=651 height=343 srcset="https://linuxacademy.com/site-content/uploads/2019/06/Database-Administration-and-SQL-Language-Basics-1200x630-1024x538-300x158.png 300w, https://linuxacademy.com/site-content/uploads/2019/06/Database-Administration-and-SQL-Language-Basics-1200x630-1024x538-768x404.png 768w, https://linuxacademy.com/site-content/uploads/2019/06/Database-Administration-and-SQL-Language-Basics-1200x630-1024x538.png 1024w, https://linuxacademy.com/site-content/uploads/2019/06/Database-Administration-and-SQL-Language-Basics-1200x630-1024x538-80x42.png 80w, https://linuxacademy.com/site-content/uploads/2019/06/Database-Administration-and-SQL-Language-Basics-1200x630-1024x538-840x441.png 840w" sizes="(max-width: 651px) 100vw, 651px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/281 rel=nofollow>Kubernetes Essentials</a></span></h3></li></ul><p><img
+class="alignnone wp-image-21182" src=https://linuxacademy.com/site-content/uploads/2019/07/Kubernetes-Essentials-1200x630-1024x538-300x158.png alt="Kubernetes Essentials" width=655 height=345 srcset="https://linuxacademy.com/site-content/uploads/2019/07/Kubernetes-Essentials-1200x630-1024x538-300x158.png 300w, https://linuxacademy.com/site-content/uploads/2019/07/Kubernetes-Essentials-1200x630-1024x538-768x404.png 768w, https://linuxacademy.com/site-content/uploads/2019/07/Kubernetes-Essentials-1200x630-1024x538.png 1024w, https://linuxacademy.com/site-content/uploads/2019/07/Kubernetes-Essentials-1200x630-1024x538-80x42.png 80w, https://linuxacademy.com/site-content/uploads/2019/07/Kubernetes-Essentials-1200x630-1024x538-840x441.png 840w" sizes="(max-width: 655px) 100vw, 655px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/318 rel=nofollow>Ansible Playbooks Deep Dive</a></span></h3></li></ul><p><img
+class="alignnone wp-image-21103" src=https://linuxacademy.com/site-content/uploads/2019/07/Ansible-Playbooks-Deep-Dive-1200x630-1024x538-300x158.png alt="Ansible Playbooks Deep Dive Course" width=655 height=345 srcset="https://linuxacademy.com/site-content/uploads/2019/07/Ansible-Playbooks-Deep-Dive-1200x630-1024x538-300x158.png 300w, https://linuxacademy.com/site-content/uploads/2019/07/Ansible-Playbooks-Deep-Dive-1200x630-1024x538-768x404.png 768w, https://linuxacademy.com/site-content/uploads/2019/07/Ansible-Playbooks-Deep-Dive-1200x630-1024x538.png 1024w, https://linuxacademy.com/site-content/uploads/2019/07/Ansible-Playbooks-Deep-Dive-1200x630-1024x538-80x42.png 80w, https://linuxacademy.com/site-content/uploads/2019/07/Ansible-Playbooks-Deep-Dive-1200x630-1024x538-840x441.png 840w" sizes="(max-width: 655px) 100vw, 655px"></p><ul><li><h3><span
+class=author-d-iz88z86z86za0dz67zz78zz78zz74zz68zjz80zz71z9iz90z94z82zz81ze74yz75zz83zz85zwz78zz80zcz75z0z87z2rz84zoz78zr31z69zd1od><a
+class=external-link href=https://linuxacademy.com/cp/modules/view/id/221 rel=nofollow>Kubernetes The Hard Way</a></span></h3></li></ul><p><img
+class="alignnone wp-image-12770" src=https://linuxacademy.com/site-content/uploads/2018/10/Kubernetes-the-Hard-Way-1200x630-1024x538-300x158.png alt="Kubernetes the hard way Course" width=653 height=344 srcset="https://linuxacademy.com/site-content/uploads/2018/10/Kubernetes-the-Hard-Way-1200x630-1024x538-300x158.png 300w, https://linuxacademy.com/site-content/uploads/2018/10/Kubernetes-the-Hard-Way-1200x630-1024x538-768x404.png 768w, https://linuxacademy.com/site-content/uploads/2018/10/Kubernetes-the-Hard-Way-1200x630-1024x538.png 1024w, https://linuxacademy.com/site-content/uploads/2018/10/Kubernetes-the-Hard-Way-1200x630-1024x538-534x280.png 534w, https://linuxacademy.com/site-content/uploads/2018/10/Kubernetes-the-Hard-Way-1200x630-1024x538-80x42.png 80w, https://linuxacademy.com/site-content/uploads/2018/10/Kubernetes-the-Hard-Way-1200x630-1024x538-840x441.png 840w, https://linuxacademy.com/site-content/uploads/2018/10/Kubernetes-the-Hard-Way-1200x630-1024x538-315x165.png 315w, https://linuxacademy.com/site-content/uploads/2018/10/Kubernetes-the-Hard-Way-1200x630-1024x538-228x120.png 228w" sizes="(max-width: 653px) 100vw, 653px"></p><h2></h2><h2><b>Included with Community Membership</b></h2><p><a
+href=https://linuxacademy.com/cp/modules/view/id/15?><b>How to Get a Linux Job</b></a></p><ul><li>This course helps prepare you for applying for and successfully obtaining a Linux Job.</li></ul><h2><b>Free Mastery Courses</b></h2><p><a
+href=https://linuxacademy.com/cp/modules/view/id/85><b>Vim- The Improved Editor</b></a></p><ul><li>In this short course, we take a look at Vim, the improved editor. Learn how to use the keyboard to work with your text documents, complete searches, replace text, and format. We also show you how to branch out from Vim to run commands, capture the output into the current buffer, manage your buffers, and more.</li></ul><p><a
+href=https://linuxacademy.com/cp/modules/view/id/140><b>LXC/LXD Deep Dive</b></a></p><ul><li>“Container” is the new buzzword, but it doesn’t just mean Docker! This course dives into LXC (Linux Containers) and its container manager, LXD. Students will explore how containers work, how they compare with virtual machines and Docker containers, and how they handle application isolation. Students will <i>learn by doing</i> through installing and configuring containers and thoughtfully selecting a persistent storage strategy. This course also covers container networking including inter-container communication, managing container networks, and exposing container ports on the host. For advanced students, several use cases are explored and implemented using this exciting technology.</li></ul><p><a
+href=https://linuxacademy.com/cp/modules/view/id/260><b>Mastering Regular Expressions</b></a></p><ul><li>Here we break down the “vocabulary” and “grammar” of regular expressions. First, you&#8217;ll learn what those symbols and shortcuts mean, and then how to manipulate them to craft complex regular expressions.  Additionally, we’ll use some common Linux tools, like grep and sed for some front-end regex use examples.</li></ul><h2><b>Build It</b></h2><p><a
+href=https://linuxacademy.com/cp/modules/view/id/100><b>Build Your Own Linux From Scratch</b></a></p><ul><li>Learn how the Linux kernel interoperates with glibc (and the rest of the binary toolchain), and how various software packages rely on the kernel and glibc.</li></ul><h2><b>Free Essentials Courses</b></h2><p><a
+href=https://linuxacademy.com/cp/modules/view/id/207><b>Google Cloud Essentials (NEW)</b></a></p><ul><li>This course is designed for those who want to learn about Google Cloud: what cloud computing is, the overall advantages Google Cloud offers, and a detailed explanation of all major services – what they are, their use cases, and how to use them.</li></ul><p><a
+href=https://linuxacademy.com/cp/modules/view/id/74?><b>Big Data Essentials</b></a></p><ul><li>Big Data Essentials is a comprehensive introduction addressing the large question of, “What is Big Data?” Using real-world examples, we highlight the growing importance of Big Data. We discuss architectural requirements and principles of Big Data infrastructures and the intersection of cloud computing. We also provide an overview of the most popular Big Data technologies including core Hadoop, the Hadoop ecosystem (Hive, Pig, Sqoop, Flume, Kafka, Storm, Ambari, Oozie, Zookeeper), NoSQL databases, and Apache Spark.</li></ul><p><a
+href=https://linuxacademy.com/cp/modules/view/id/241><b>AWS Essentials</b></a></p><ul><li>AWS Essentials is a course for anyone completely new to AWS; no prior experience needed. We provide an overview of the core services and walk you through setting up your AWS account. In this course, you will <i>learn by doing</i> using our live environment and quizzes to verify understanding.</li></ul><h2><b>Free Essentials Courses (CTD)</b></h2><p><a
+href=https://linuxacademy.com/cp/modules/view/id/192><b>DevOps Essentials</b></a></p><ul><li>Looking for a basic introduction to the concept of DevOps? Here we go over what DevOps is and how it impacts IT in the real world. This course explains the culture of DevOps as well as some of the main practices and tools associated with DevOps. Finally, it also introduces the student to the relationship between DevOps and the cloud.</li></ul><p><a
+href=https://linuxacademy.com/cp/modules/view/id/276><b>YAML Essentials</b></a></p><ul><li>Yet Another Markup Language (YAML) Essentials gives true beginners the skills they need to craft documents using this popular data serialization language. YAML is a popular choice for data storage, configuration files, configurations management, etc. used across a variety of programs/languages. This course explores how to write a properly structured YAML file in both the human-readable block style and JSON-compatible.</li></ul><p><a
+href=https://linuxacademy.com/cp/modules/view/id/266><b>DevSecOps Essentials</b></a></p><ul><li>This course covers the DevSecOps process with an emphasis on securing both legacy and hybrid cloud environments. We cover best practices for security in a conventional Continuous Integration and Continuous Deployment (CI/CD) pipeline.</li></ul><p><a
+href=https://linuxacademy.com/linux/training/course/name/kubernetes-essentials><b>Kubernetes Essentials</b></a></p><ul><li>Kubernetes is a powerful tool. It can help you manage complex applications and provides the ability to easily automate tasks that manage them. In this course, we will explore Kubernetes from a beginner’s standpoint. We will discuss what Kubernetes is, what it does, and work hands-on with some of the basic functionality of Kubernetes. Similarly, we’ll build a Kubernetes cluster and deploy a sample microservice application to it.</li></ul><p><a
+href=https://linuxacademy.com/cp/modules/view/id/266><b>DevSecOps Essentials</b></a></p><ul><li>This course covers the DevSecOps process with an emphasis on securing both legacy and hybrid cloud environments. We cover best practices for security in a conventional Continuous Integration and Continuous Deployment (CI/CD) pipeline.</li></ul><h2><b>Concepts and Fundamentals Courses</b></h2><p><a
+href=https://linuxacademy.com/cp/modules/view/id/84><b>AWS Concepts</b></a></p><ul><li>This course is for the true beginner. If you have ever wondered: What is the cloud? AWS? Why do we use AWS?  The AWS Concepts course is for you. We’ll give a simple introduction to the concepts of Cloud Computing, Amazon Web Services, and its core services. There are no technical explanations or definitions to memorize. When finished with this course, you will have the foundation to move forward onto more advanced AWS courses.</li></ul><p><a
+href=https://linuxacademy.com/cp/modules/view/id/259><b>Azure Concepts</b></a></p><ul><li>In this course, we cover the basics of cloud services, the core components of Azure, and how companies are using it today.</li></ul><p><a
+href=https://linuxacademy.com/cp/modules/view/id/286><b>Linux Operating System Fundamentals</b></a></p><ul><li>Are you a non-technical person just wanting to know what this ‘Linux’ thing is? Then this course is for you. This course explains the history of Linux, the open-source movement, and how this software is used today. We look at its many types of deployments, and the various incarnations of a Linux “distribution.”</li></ul><p><a
+href=https://linuxacademy.com/cp/modules/view/id/300><b>Amazon Lightsail Deep Dive</b></a></p><ul><li>AWS offers a wealth of features allowing an experienced architect, engineer or developer to implement systems to meet any need. Amazon Lightsail compliments this flexibility by providing a simple, cheap and powerful way to utilize AWS services.</li></ul><p>_____________________________________________________________________________________</p><p><b>Overall the Free Community Edition Membership has many helpful resources: flash cards, community access, the courses we talked about today(videos only unless otherwise noted) and</b><a
+href=https://linuxacademy.com/blog/mobile/mobile-apps-now-open-to-community-edition-students/> <b>access to our mobile application</b></a><b>. Quizzes, Labs, and other features are only availble in the full membership. </b></p><div
+class="bg-blackgreen pa4 white br3 mv4">
+<iframe
+src=https://learn.linuxacademy.com/embed/blog/subscribe/footer scrolling=no frameborder=0 width=100%></iframe></div></section><section
+class="article-sidebar dn db-l w-30"><div
+class="pl3 nt4"></div></section><section
+class="article-metadata w-100"><div
+class="article-about-author flex bt bw1 b--lightergray pv4 w-100"><div
+class=author-avatar>
+<img
+src="https://secure.gravatar.com/avatar/54a760929af4ca812fd8840a90db50af?s=72&d=https%3A%2F%2Flinuxacademy.com%2Fsite-content%2Fthemes%2Flinux%2Fimg%2Fgeneric-blog-post%2Fdefault-img.png&r=g" width=72 height=72 style="width: 72px; height: 72px;" class="br-100 db ba bw4 b--blackgreen shadow-1" alt="About Janelle Poisel"></div><div
+class="author-bio ml4"><h5 class="f8 mb0">Janelle Poisel</h5><h6 class="ttu f12 ma0 pa0 fw400 gray">Author</h6><p></p></div></div><div
+class="last-edited tc tr-m"><p
+class="ma0 f14"><em>Last Edited on: December 1, 2019.</em></div></section></div><section
+class="center mt0 mw7 mb4 lh-copy single-article-comments"><h4 class="f6 f5-l">2 Comments</h4><div
+class="comment bg-white shadow-1 br3 pa4 mv3"><div
+class="comment-meta flex items-start"><div
+class="comment-avatar mr3">
+<img
+src="https://secure.gravatar.com/avatar/?s=96&d=https%3A%2F%2Flinuxacademy.com%2Fsite-content%2Fthemes%2Flinux%2Fimg%2Fgeneric-blog-post%2Fdefault-img.png&r=g" alt="Image of EL HOUCINE MICHAOUI" class="br-100 db bw2 b--green ba"></div><div
+class="comment-content flex-auto"><h5 class="f9 f8-l fw600 mb1 name">EL HOUCINE MICHAOUI</h5><h6 class="f13 f12-l fw300 lightgray"><em>1 month ago</em></h6><p>Im very interesting</p></div></div></div><div
+class="comment bg-white shadow-1 br3 pa4 mv3"><div
+class="comment-meta flex items-start"><div
+class="comment-avatar mr3">
+<img
+src="https://secure.gravatar.com/avatar/?s=96&d=https%3A%2F%2Flinuxacademy.com%2Fsite-content%2Fthemes%2Flinux%2Fimg%2Fgeneric-blog-post%2Fdefault-img.png&r=g" alt="Image of Kirk" class="br-100 db bw2 b--green ba"></div><div
+class="comment-content flex-auto"><h5 class="f9 f8-l fw600 mb1 name">Kirk</h5><h6 class="f13 f12-l fw300 lightgray"><em>5 days ago</em></h6><p>No mention of the new DynamoDB Deep Dive course?</p><div
+class="replies bt bw1 b--lightergray"><div
+class="reply flex items-start pt4"><div
+class="reply-avatar mr3">
+<img
+src="https://secure.gravatar.com/avatar/9109abbea1fc9b544e7a8863e5f2bdf6?s=96&d=https%3A%2F%2Flinuxacademy.com%2Fsite-content%2Fthemes%2Flinux%2Fimg%2Fgeneric-blog-post%2Fdefault-img.png&r=g" alt="Image of LauraArguijo" class="br-100 db bw2 b--blackgreen ba"></div><div
+class="reply-meta flex-auto"><h6 class="f10 f9-l fw600 mb1 name">LauraArguijo</h6><h6 class="f14 f13-l fw300 lightgray"><em>17 hours ago</em></h6><p>Hey Kirk, you can find the following course <a
+href=https://linuxacademy.com/course/dynamo-db-deep-dive/>here</a>.</p></div></div>
+<a
+rel=nofollow class=comment-reply-link href=#comment-40749 data-commentid=40749 data-postid=25225 data-belowelement=comment-40749 data-respondelement=respond aria-label='Reply to Kirk'>Reply</a></div></div></div></div><div
+class="comment-form bg-white shadow-1 mv4 pa4 br3"><div
+id=respond class=comment-respond><h4 class="f6 f5-l">Leave a Reply <small><a
+rel=nofollow id=cancel-comment-reply-link href=/blog/announcements/free-courses-at-linux-academy-december-2019/#respond style=display:none;>Cancel reply</a></small></h4><form
+action=https://linuxacademy.com/wp-comments-post.php method=post id=commentform class=comment-form><p
+class=comment-notes><span
+id=email-notes>Your email address will not be published.</span> Required fields are marked <span
+class=required>*</span></p><p
+class=comment-form-comment><label
+for=comment>Comment</label><textarea id=comment name=comment cols=45 rows=8 maxlength=65525 required=required></textarea></p><p
+class=comment-form-author><label
+for=author>Name <span
+class=required>*</span></label> <input
+id=author name=author type=text value size=30 maxlength=245 required=required></p><p
+class=comment-form-email><label
+for=email>Email <span
+class=required>*</span></label> <input
+id=email name=email type=text value size=30 maxlength=100 aria-describedby=email-notes required=required></p><p
+class=comment-form-url><label
+for=url>Website</label> <input
+id=url name=url type=text value size=30 maxlength=200></p><p
+class=form-submit><button
+name=submit type=submit id=submit class="btn bg-green black ph4 pv2 tc fw600 shadow-1">Post Comment</button> <input
+type=hidden name=comment_post_ID value=25225 id=comment_post_ID>
+<input
+type=hidden name=comment_parent id=comment_parent value=0></p><p
+style="display: none;"><input
+type=hidden id=akismet_comment_nonce name=akismet_comment_nonce value=b194608e5b></p><p
+style="display: none;"><input
+type=hidden id=ak_js name=ak_js value=188></p></form></div></div><section></article></div></main><footer
+class="site-footer bg-black white" itemscope itemtype=http://schema.org/Organization><div
+class="mw7 center pv4 pv7-l ph4"><div
+class="flex flex-wrap items-start nl3 nr3"><div
+class="dn db-l w-25 ph3">
+<a
+class="white hover-green" href=https://linuxacademy.com title=Home rel=home><div
+class="db ma0" style="width: 160px; height: 27px;">
+<svg
+class="db ma0" width=160 height=27 {{ svgattr }}><use
+xlink:href=#svg-linux-academy-logo></use></svg></div>
+</a></div><ul
+class="w-100 w-35-l list ph3 mb0 flex flex-wrap"><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-22491 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=/library/type/Hands-On%20Lab  >Hands-On Labs</a></li><li
+class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-14527 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=https://linuxacademy.com/blog/  >Blog</a></li><li
+class="menu-item menu-item-type-post_type menu-item-object-page menu-item-659 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=https://linuxacademy.com/why-linux-academy/  >Why Linux Academy?</a></li><li
+class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14683 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=https://linuxacademy.com/careers/  >Careers</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18917 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=/pricing  >Pricing</a></li><li
+class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14736 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=https://linuxacademy.com/community/  >Community</a></li><li
+class="menu-item menu-item-type-post_type menu-item-object-page menu-item-138 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=https://linuxacademy.com/for-business/  >For Business</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-148 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=http://www.buildyourownlinux.com/  >Build Your Own Linux</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-143 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=/library  >Content Library</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-144 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=/how-to-guides/  >How-to Guides</a></li><li
+class="menu-item menu-item-type-post_type menu-item-object-page menu-item-14623 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=https://linuxacademy.com/about/  >About Us</a></li><li
+class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24804 mb3 w-50">
+<a
+class="db fw600 f12 white dim" href=https://linuxacademy.com/contact/  >Contact Us</a></li></ul><section
+class="dn db-l w-40 ph3"><div
+class="black br3 overflow-hidden shadow-3 center mb4 bg-lightergray"><div
+class="b--black-025 pa3 os_titlebar"><h2 class="f12 code ma0 fw300 tc">Penguin Cam</h2></div><div
+class="aspect-ratio aspect-ratio--20x9"><div
+class="aspect-ratio--object z-0 bg-center cover flex items-center justify-center" style="background-image: url(https://linuxacademy.com/site-content/uploads/2019/01/penguin-cam-dark.jpg)"><div
+class=relative>
+<a
+class="video-btn db center" href=https://explore.org/live-cams/player/live-penguin-cam-2 target=_blank title="Penguin Cam" rel=nofollow>
+<i
+class="blackgreen fas fa-play" style="font-size: 10px; line-height: 12px;"></i>
+</a></div></div></div></div></section></div><div
+class="flex flex-wrap items-start items-center-l nl3 nr3 mt4"><ul
+class="w-100 w-40-l list ph3 mb0 flex flex-wrap justify-between order-2-l nl1 nr1"><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-174 w-50 w-auto-l ph1 mb3 tr">
+<a
+class="bg-blackgreen hover-bg-greenblack db f13 fw600 pa2 br3 white tl" href=https://www.youtube.com/channel/UClGShptNEuvTWGAAfpa2Etw title=YouTube target=_blank>
+<img
+class="dib v-mid mr2 mr0-l" width=24 height=24 style="width: 24px; height: 24px;" src=https://linuxacademy.com/site-content/uploads/2019/03/youtube.svg alt=YouTube>
+<span
+class="dib dn-l v-mid">YouTube</span>
+</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-176 w-50 w-auto-l ph1 mb3 tr">
+<a
+class="bg-blackgreen hover-bg-greenblack db f13 fw600 pa2 br3 white tl" href=https://www.linkedin.com/company/linuxacademy/ title=Linkedin target=_blank>
+<img
+class="dib v-mid mr2 mr0-l" width=24 height=24 style="width: 24px; height: 24px;" src=https://linuxacademy.com/site-content/uploads/2019/03/linkedin.svg alt=Linkedin>
+<span
+class="dib dn-l v-mid">Linkedin</span>
+</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-175 w-50 w-auto-l ph1 mb3 tr">
+<a
+class="bg-blackgreen hover-bg-greenblack db f13 fw600 pa2 br3 white tl" href=https://www.facebook.com/linuxacademycom/ title=Facebook target=_blank>
+<img
+class="dib v-mid mr2 mr0-l" width=24 height=24 style="width: 24px; height: 24px;" src=https://linuxacademy.com/site-content/uploads/2019/03/facebook.svg alt=Facebook>
+<span
+class="dib dn-l v-mid">Facebook</span>
+</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-173 w-50 w-auto-l ph1 mb3 tr">
+<a
+class="bg-blackgreen hover-bg-greenblack db f13 fw600 pa2 br3 white tl" href=https://twitter.com/linuxacademycom title=Twitter target=_blank>
+<img
+class="dib v-mid mr2 mr0-l" width=24 height=24 style="width: 24px; height: 24px;" src=https://linuxacademy.com/site-content/uploads/2019/03/twitter.svg alt=Twitter>
+<span
+class="dib dn-l v-mid">Twitter</span>
+</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-805 w-50 w-auto-l ph1 mb3 tr">
+<a
+class="bg-blackgreen hover-bg-greenblack db f13 fw600 pa2 br3 white tl" href=https://www.instagram.com/linuxacademycom/ title=Instagram target=_blank>
+<img
+class="dib v-mid mr2 mr0-l" width=24 height=24 style="width: 24px; height: 24px;" src=https://linuxacademy.com/site-content/uploads/2019/03/instagram.svg alt=Instagram>
+<span
+class="dib dn-l v-mid">Instagram</span>
+</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18661 w-50 w-auto-l ph1 mb3 tr">
+<a
+class="bg-blackgreen hover-bg-greenblack db f13 fw600 pa2 br3 white tl" href=https://medium.com/linux-academy title=Medium target=_blank>
+<img
+class="dib v-mid mr2 mr0-l" width=24 height=24 style="width: 24px; height: 24px;" src=https://linuxacademy.com/site-content/uploads/2019/03/medium.svg alt=Medium>
+<span
+class="dib dn-l v-mid">Medium</span>
+</a></li></ul><ul
+class="w-100 w-35-l list ph3 mb0 flex flex-wrap justify-between items-center order-1-l mt4 mt0-l"><li
+class="mb3 w-auto dn-l" aria-hidden=true>
+<a
+class="db white" href=https://linuxacademy.com title=Home rel=home><div
+class="db ma0" style="width: 100px; height: 17px;">
+<svg
+class="db ma0" width=160 height=27 {{ svgattr }}><use
+xlink:href=#svg-linux-academy-logo></use></svg></div>
+</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-177 mb3 w-auto w-50-l">
+<a
+class="db f13 white dim" href=/terms-of-service>Terms of Service</a></li><li
+class="menu-item menu-item-type-custom menu-item-object-custom menu-item-178 mb3 w-auto w-50-l">
+<a
+class="db f13 white dim" href=/privacy-policy>Privacy Policy</a></li></ul><div
+class="w-100 w-25-l tc tl-l ph3 order-0-l">
+<span
+class="f13 mb3 db">&copy;
+Linux Academy,
+2019. All Rights Reserved.
+</span></div><div
+class="w-100 mt3 ph3 order-3-l">
+<span
+class="f13 mb1 db">Pinehead&reg; and the Linux Academy Logo&reg; is a registered trademark of
+Linux Academy
+in the U.S. and other countries.</span>
+<span
+class="f13 db">Linux&reg; is a registered trademark of Linus Torvalds in the U.S. and other countries.</span></div></div></div></footer></div>
+<object
+data=https://linuxacademy.com/site-content/themes/linux/dist/symbols.svg type=image/svg+xml id=svg-sprites width=1 height=1 style="height: 0px; width: 0px;"></object> <script src=https://video-player-1.linuxacademy.com/jwplayer8/jwplayer.js defer=defer onload="linuxOnloadQueue.push('onload-linux-jw-player');"></script><script src=https://video-player-1.linuxacademy.com/jwplayer8/jw-custom.js defer=defer onload="linuxOnloadQueue.push('onload-linux-jw-player-custom');"></script><script src=https://cdn.jsdelivr.net/npm/algoliasearch@3.33.0/dist/algoliasearchLite.min.js defer=defer onload="linuxOnloadQueue.push('onload-algolia');"></script><script src=https://cdn.jsdelivr.net/npm/instantsearch.js@3.6.0/dist/instantsearch.production.min.js defer=defer onload="linuxOnloadQueue.push('onload-instantsearch');"></script><script src="https://linuxacademy.com/site-content/themes/linux/dist/vendor.js?x20924&amp;ver=1575524823" defer=defer onload="linuxOnloadQueue.push('onload-linux-vendor-scripts');"></script><script>var 
+            linux_ajax_object = {"linux_ajax_url":"https:\/\/linuxacademy.com\/wp-admin\/admin-ajax.php","action":{"get_list":"community_list","get_post":"community_single","community_search":"do_search"}};</script> <script src="https://linuxacademy.com/site-content/themes/linux/dist/main.js?x20924&amp;ver=1575524823" defer=defer onload="linuxOnloadQueue.push('onload-linux-scripts');"></script><script src=https://cdn.auth0.com/js/auth0/9.4.1/auth0.min.js defer=defer onload="linuxOnloadQueue.push('onload-linux-academy-auth');"></script><script src=https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.1.1/iframeResizer.min.js></script> <script>jQuery(function($) {
+        $('iframe[src*="go.linuxacademy.com"], iframe[src*="learn.linuxacademy.com"]').on('load', function() {
+            $(this).iFrameResize({ log: false });
+        });
+    });</script> <script async=async src='https://linuxacademy.com/site-extensions/akismet/_inc/form.js?x20924&amp;ver=4.1.3'></script> <script src='https://linuxacademy.com/wp-includes/js/comment-reply.min.js?x20924&amp;ver=5.2.4'></script> <style>#wpadminbar .admin-bar-marketing {
+    background-color: red;
+    color: white;
+}
+
+#wpadminbar .admin-bar-marketing a {
+    font-weight: bold;
+}</style></body></html>

@@ -1,0 +1,100 @@
+Microsoft Starts Forced Feature Updates on Windows 10 1809
+Evil Corp Hackers Charged For Stealing Over $100 Million
+UK Retailer Sweaty Betty Hacked to Steal Customer Payment Info
+BMW Infiltrated by Hackers Hunting for Automotive Trade Secrets
+Moscow Cops Sell Access to City CCTV, Facial Recognition Data
+Clever Microsoft Phishing Scam Creates a Local Login Form
+FBI Recommends Securing Your Smart TVs and IoT Devices
+The Week in Ransomware - December 6th 2019 - 'We have seen better days'
+Most Downloaded
+STOPDecrypter
+AuroraDecrypter
+FilesLockerDecrypter
+360 Total Security
+Junkware Removal Tool
+Virus Removal Guides
+Most Viewed
+Remove the Full System Care PUP
+Remove the Searchpowerapp.com Search Redirect
+Remove the Power App Chrome Extension
+Remove the HD Video Player PUP
+Remove Security Tool and SecurityTool (Uninstall Guide)
+How to remove Antivirus 2009 (Uninstall Instructions)
+How to Remove WinFixer / Virtumonde / Msevents / Trojan.vundo
+How to remove Google Redirects or the TDSS, TDL3, or Alureon rootkit using TDSSKiller
+Locky Ransomware Information, Help Guide, and FAQ
+CryptoLocker Ransomware Information Guide and FAQ
+CryptorBit and HowDecrypt Information Guide and FAQ
+CryptoDefense and How_Decrypt Ransomware Information Guide and FAQ
+Fix a Missing api-ms-win-crt-runtime-l1-1-0.dll DLL in Windows
+How to Use Windows Defender to Scan a Folder for Malware
+How to Find the Windows Defender Version Installed in Windows 10
+How to Enable the Windows 10 Tamper Protection Security Feature
+How to start Windows in Safe Mode
+How to remove a Trojan, Virus, Worm, or other Malware
+How to show hidden files in Windows 7
+How to see hidden files in Windows
+IT Certification Courses
+Gear + Gadgets
+Startup Database
+Uninstall Database
+File Database
+Chat on Discord
+Send us a Tip!
+Welcome Guide
+Disney Now Works in Linux After DRM Tweak 
+Disney+ Now Works in Linux After DRM Tweak 
+Lawrence Abrams
+December 5, 2019
+Linux users can now stream shows and movies from the Disney+ streaming service after Disney lowering the level of their DRM requirements.  
+When Disney+ was first launched, Linux users who attempted to watch shows and movies were shown an error stating "Something went wrong. Please try again. If the problem persists, visit the Disney+ Help Center (Error Code 83)."
+Error code 83
+Yesterday, Twitter users discovered that Disney+ had suddenly started working on Linux browsers after the streaming service tweaked their DRM security levels.
+BleepingComputer was able to independently test the Disney+ streaming service by watching The Mandalorian on Firefox in Ubuntu 18.04.
+Streaming The Mandalorian on Firefox in Ubuntu
+For all of you who have been wanting to dig into some missed Marvel and Start Wars movies, you now have plenty to watch for the weekend!
+Make sure DRM is enabled in your browser
+Even with Disney+ lowering the DRM requirements, users must first make sure DRM is enabled in the browser.
+For example, Disney+ will not work with Firefox unless you enable the "Play DRM-controlled content" setting in the browser.
+Enable the DRM setting in Firefox
+If you are on Linux and Disney+ is still giving the Error code 83, make sure DRM is enabled in your browser. If not, you can switch to Firefox, which we have confirmed works.
+omg! ubuntu!
+Related Articles:
+NVIDIA Patches Severe Flaws in Mercedes Infotainment System Chips
+New Linux Vulnerability Lets Attackers Hijack VPN Connections
+Ubuntu Linux Gets Intel Microcode Update to Fix CPU Hangs
+Kali Linux Adds 'Undercover' Mode to Impersonate Windows 10
+Dozens of VNC Vulnerabilities Found in Linux, Windows Solutions
+Digital rights management
+Video Streaming
+Lawrence Abrams
+Community Rules
+You need to login in order to post a comment
+Register Now
+You may also like:
+Popular Stories
+BMW Infiltrated by Hackers Hunting for Automotive Trade Secrets
+Some Hardware-based Password Managers Have Poor Security
+Newsletter Sign Up
+BleepingComputer
+Newsletter Sign Up
+Main Sections
+Virus Removal Guides
+Startup Database
+Uninstall Database
+File Database
+Forum Rules
+Useful Resources
+Welcome Guide
+About BleepingComputer
+Send us a Tip!
+Advertising
+Write for BleepingComputer
+Social & Feeds
+Terms of Use
+ Privacy Policy
+Remember Me
+Sign in anonymously
+Register Now
+Help us understand the problem. What is going on with this comment?
+Submitting...

@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Help us create a video of cool features in Krita - Lounge - Krita Artists</title>
+    <meta name="description" content="After seeing a bunch of nice tricks available in krita here, we felt that a lot of people are not aware of its awesome features. And with a small team it is really hard for the developers to produce content for showing o&amp;hellip;">
+    <meta name="generator" content="Discourse 2.4.0.beta8 - https://github.com/discourse/discourse version e7bd288d7b1019c6986a7eac7d8f9cb9505cb0bb">
+<link rel="icon" type="image/png" href="https://krita-artists.org/uploads/default/optimized/1X/28521b39a3693858be9342f46e77dcacc65a602a_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://krita-artists.org/uploads/default/optimized/1X/8d1f2eabaf4817c8354b36d174b673fb37c67382_2_180x180.png">
+<meta name="theme-color" content="#252424">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<link rel="canonical" href="https://krita-artists.org/t/help-us-create-a-video-of-cool-features-in-krita/1590" />
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","url":"https://krita-artists.org","potentialAction":{"@type":"SearchAction","target":"https://krita-artists.org/search?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<link rel="search" type="application/opensearchdescription+xml" href="https://krita-artists.org/opensearch.xml" title="Krita Artists Search">
+
+      <link href="/stylesheets/desktop_1_0a144081708bc6a4438f62d317c4432a3072d6fd.css?__ws=krita-artists.org" media="all" rel="stylesheet" data-target="desktop" data-theme-id="1"/>
+      <link href="/stylesheets/desktop_theme_1_dbf1d742a11bfeb5eca6d489d42811abdcb8f862.css?__ws=krita-artists.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="1"/>
+    
+
+
+<script src="/theme-javascripts/1c64697f27068ea144656dd080ac00b94ec1ee60.js?__ws=krita-artists.org"></script>
+    
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of &#39;Help us create a video of cool features in Krita&#39;" href="https://krita-artists.org/t/help-us-create-a-video-of-cool-features-in-krita/1590.rss" />
+    <meta property="og:site_name" content="Krita Artists" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://krita-artists.org/uploads/default/original/1X/8d1f2eabaf4817c8354b36d174b673fb37c67382.png" />
+<meta property="og:image" content="https://krita-artists.org/uploads/default/original/1X/8d1f2eabaf4817c8354b36d174b673fb37c67382.png" />
+<meta property="og:url" content="https://krita-artists.org/t/help-us-create-a-video-of-cool-features-in-krita/1590" />
+<meta name="twitter:url" content="https://krita-artists.org/t/help-us-create-a-video-of-cool-features-in-krita/1590" />
+<meta property="og:title" content="Help us create a video of cool features in Krita" />
+<meta name="twitter:title" content="Help us create a video of cool features in Krita" />
+<meta property="og:description" content="After seeing a bunch of nice tricks available in krita here, we felt that a lot of people are not aware of its awesome features. And with a small team it is really hard for the developers to produce content for showing off all the features along with other stuff.  So we are asking all the artists here, we would love, if you can do small video of a feature of Krita that you like. Voice over is not necessary. The video should be licensed CC-BY-SA with a minimum resolution of 1080p and frame rate o..." />
+<meta name="twitter:description" content="After seeing a bunch of nice tricks available in krita here, we felt that a lot of people are not aware of its awesome features. And with a small team it is really hard for the developers to produce content for showing off all the features along with other stuff.  So we are asking all the artists here, we would love, if you can do small video of a feature of Krita that you like. Voice over is not necessary. The video should be licensed CC-BY-SA with a minimum resolution of 1080p and frame rate o..." />
+<meta name="twitter:label1" value="Reading time" />
+<meta name="twitter:data1" value="3 mins 🕑" />
+<meta name="twitter:label2" value="Likes" />
+<meta name="twitter:data2" value="52 ❤" />
+<meta property="article:published_time" content="2019-12-03T11:38:23+00:00" />
+<meta property="og:ignore_canonical" content="true" />
+
+
+
+    
+  </head>
+  <body class="crawler">
+    
+    <header>
+      <a href="/">
+          <img src="https://krita-artists.org/uploads/default/original/1X/4bb94c15fac2264423df8b8ff07e9c44487d3086.png" alt="Krita Artists" id="site-logo" style="max-width: 150px;">
+      </a>
+    </header>
+    <div id="main-outlet" class="wrap">
+        <h1 class="crawler-topic-title">
+    <a href="/t/help-us-create-a-video-of-cool-features-in-krita/1590">Help us create a video of cool features in Krita</a>
+  </h1>
+
+  <div id='breadcrumbs'>
+      <div id="breadcrumb-0" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"
+>
+        <a href="/c/lounge" itemprop="url" class='badge-wrapper bullet'>
+          <span class="badge-category-bg"></span>
+          <span itemprop="title" class='category-title'>Lounge</span>
+        </a>
+      </div>
+  </div>
+
+
+  
+
+
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/hellozee'><span itemprop='name'>hellozee</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2019-12-03T11:38:23Z'>
+              <time itemprop='dateModified' datetime='2019-12-04T13:00:20Z' class='post-time'>
+                December 4, 2019,  1:00pm
+              </time>
+          <span itemprop='position'>#1</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>After seeing a bunch of nice tricks available in krita <a href="https://krita-artists.org/t/tips-and-tricks-hidden-gems-in-krita/860">here</a>, we felt that a lot of people are not aware of its awesome features. And with a small team it is really hard for the developers to produce content for showing off all the features along with other stuff.</p>
+<p>So we are asking all the artists here, we would love, if you can do small video of a feature of Krita that you like. Voice over is not necessary. The video should be licensed <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a> with a minimum resolution of 1080p and frame rate of 30fps, so that we could show that off.</p>
+<p>We can collaborate and submit cmall clips and edit it in one single video. First we need to list out all the features and general script of the video.</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="10" />
+           <span class='post-likes'>10 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/raghukamath'><span itemprop='name'>raghukamath</span></a>
+            
+              pinned globally 
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T11:42:19Z' class='post-time'>
+                December 3, 2019, 11:42am
+              </time>
+          <span itemprop='position'>#2</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/Drayldan'><span itemprop='name'>Drayldan</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T13:45:39Z' class='post-time'>
+                December 3, 2019,  1:45pm
+              </time>
+          <span itemprop='position'>#3</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Good luck!  But don’t forget about showing one useful filter - Colors/“Color to Alpha” as it is surprisingly good and fast! <img src="https://krita-artists.org/images/emoji/twitter/slight_smile.png?v=9" title=":slight_smile:" class="emoji" alt=":slight_smile:"></p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="2" />
+           <span class='post-likes'>2 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/Rakurri'><span itemprop='name'>Rakurri</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T14:04:02Z' class='post-time'>
+                December 3, 2019,  2:04pm
+              </time>
+          <span itemprop='position'>#4</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I would suggest showing off Krita’s tilt support and the way the brush outline is shown. The way you can see the brush rotate in real time, and the way you can see it still even when you are laying down your stroke, is the reason I chose to give Krita a test run! And I couldn’t be happier with it. Krita is the most fantastic drawing application I have ever used! If this feature wasn’t in Krita, I might have switched from Photoshop to Clip Studio Paint, instead of Krita.<br>
+Here is a gif to illustrate what I mean:<br>
+<div class="lightbox-wrapper"><a class="lightbox" href="https://krita-artists.org/uploads/default/original/2X/a/a7e1b35188651247309536c2d10a849bc67e1c36.gif" data-download-href="https://krita-artists.org/uploads/default/a7e1b35188651247309536c2d10a849bc67e1c36" title="tiltsupport"><img src="https://krita-artists.org/uploads/default/optimized/2X/a/a7e1b35188651247309536c2d10a849bc67e1c36_2_400x400.gif" alt="tiltsupport" data-base62-sha1="nX9ivJ8fE0oo6jhNeLm35MnPF8a" width="400" height="400" srcset="https://krita-artists.org/uploads/default/optimized/2X/a/a7e1b35188651247309536c2d10a849bc67e1c36_2_400x400.gif, https://krita-artists.org/uploads/default/optimized/2X/a/a7e1b35188651247309536c2d10a849bc67e1c36_2_600x600.gif 1.5x, https://krita-artists.org/uploads/default/optimized/2X/a/a7e1b35188651247309536c2d10a849bc67e1c36_2_800x800.gif 2x" data-small-upload="https://krita-artists.org/uploads/default/optimized/2X/a/a7e1b35188651247309536c2d10a849bc67e1c36_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">tiltsupport</span><span class="informations">1080×1080 2.08 MB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="3" />
+           <span class='post-likes'>3 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/wolthera'><span itemprop='name'>wolthera</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T14:16:55Z' class='post-time'>
+                December 3, 2019,  2:16pm
+              </time>
+          <span itemprop='position'>#5</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Could you make a 1080 p short video showing this off?</p>
+<p>The idea is to create something like the demo video on steam: <a href="https://store.steampowered.com/app/280680/Krita/">https://store.steampowered.com/app/280680/Krita/</a>, that gives an idea of what krita is capable of, and the reason we’re asking help from the community is to make sure there’s a variety of art-styles in there.</p>
+<p>The point of these videos is to spark people’s imagination, and if there’s a variety of artstyles people can also understand the program as something that could support their art…</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="2" />
+           <span class='post-likes'>2 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/Rakurri'><span itemprop='name'>Rakurri</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T14:30:24Z' class='post-time'>
+                December 3, 2019,  2:30pm
+              </time>
+          <span itemprop='position'>#6</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Ok! I will try to record something later this evening! <img src="https://krita-artists.org/images/emoji/twitter/+1.png?v=9" title=":+1:" class="emoji" alt=":+1:"></p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/wojtryb'><span itemprop='name'>wojtryb</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T17:16:50Z' class='post-time'>
+                December 3, 2019,  5:16pm
+              </time>
+          <span itemprop='position'>#7</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I never tried to do anything like that, but if you want me to try to record any of the things I stated in my reply in <a href="https://krita-artists.org/t/tips-and-tricks-hidden-gems-in-krita/860/5" class="inline-onebox">Tips and Tricks - Hidden Gems in Krita</a>, I guess I could try to do that.</p>
+<p>My very basic tip worth adding to that film is alpha blocking on layer and alpha inheritance. I guess lots of beginners would benefit from that if they knew that there is a feature like that.</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/Rebecca'><span itemprop='name'>Rebecca</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2019-12-03T18:13:28Z'>
+              <time itemprop='dateModified' datetime='2019-12-03T18:16:08Z' class='post-time'>
+                December 3, 2019,  6:16pm
+              </time>
+          <span itemprop='position'>#8</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Three suggestions, if people think it’s of interest:</p>
+<ol>
+<li>Selection masks! Except for just straigh-forward painting with brushes, it’s probably my number one most used feature. Great for applying broad brushstrokes with big textures on smaller forms (<a href="https://www.youtube.com/watch?v=KzPi3Se4X6Y&amp;t=40s" rel="nofollow noopener">as demonstrated here</a>, though not in Krita)</li>
+<li>Assistant tools, especially how they allow varied brush pressure for a more natural look than line tools—especially especially when combined with the magnetic option</li>
+<li>Gamut Masks—the best for atmospheric colours!</li>
+</ol>
+<p>I won’t be able to record with sound but can edit text into the video, and I don’t know if I can do anything before Christmas. (December is practically over already… <img src="https://krita-artists.org/images/emoji/twitter/grimacing.png?v=9" title=":grimacing:" class="emoji" alt=":grimacing:">)</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="3" />
+           <span class='post-likes'>3 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/tiar'><span itemprop='name'>tiar</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2019-12-03T21:06:48Z'>
+              <time itemprop='dateModified' datetime='2019-12-04T12:51:36Z' class='post-time'>
+                December 4, 2019, 12:51pm
+              </time>
+          <span itemprop='position'>#9</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>My suggestions for clips (I’m not promising I’ll make them; I hope I will be able, but for now I can’t say for sure, so if someone doesn’t have an idea but want to help, please take one/some of the suggestions and write that you’re making clips for them so there will be no doubling of the work)</p>
+<ol>
+<li>clone brush, especially with another layer option and with the reset origin option - I’ve got an awesome gif showing off those features when I coded them and it looked really good and useful:</li>
+</ol>
+<p>          </p><div class="onebox video-onebox">
+            <video width="100%" height="100%" controls="">
+              <source src="https://krita.org/wp-content/uploads/2019/05/clone_brush-v2.webm">
+              <a href="https://krita.org/wp-content/uploads/2019/05/clone_brush-v2.webm">https://krita.org/wp-content/uploads/2019/05/clone_brush-v2.webm</a>
+            </source></video>
+          </div>
+
+<ol start="2">
+<li>brushes with perspective, with a brush that shows something useful; for example in Paintstorm Studio video there is grass, we could have for example people (to make crowd) or rocks or something, especially with animated brush tips <img src="https://krita-artists.org/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:">
+</li>
+<li>a video that shows a lot of very very different brushes in an uniform way - maybe brushes from Digital Atelier or the Realwater bundle</li>
+<li>inherit alpha feature used to the max of it’s possiblity</li>
+<li>Colorize Mask <strong>MUST BE THERE</strong> <img src="https://krita-artists.org/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:">
+</li>
+<li>Wrap-around mode - there was one video with the brick wall; we can use this if it’s in good enough quality, but it would be good to remake it too, because it would be really good to show that you can paint on any of the tiles and it will be working correctly. But remaking would be of course low priority if we can use the original video.</li>
+<li>Telephone cable brush! With the help of Dynamic Brush Tool <img src="https://krita-artists.org/images/emoji/twitter/stuck_out_tongue.png?v=9" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:">
+</li>
+<li>Different ways for Stabilization?</li>
+<li>Cross-channel adjustment curves?</li>
+<li>Isolate layer mode?</li>
+</ol>
+<p>And some less specified ideas, please comment if you know how to achieve this:</p>
+<ol>
+<li>I would like to show something to show the power of Krita’s layer stack, but I don’t know yet. It shouldn’t be just “oh I have a lot of layers”, but using a lot of <em>different</em> kinds of layers to the maximum potential (there might be a few clips but more “together” to really show the point)</li>
+<li>How to show Python scripting?</li>
+<li>How to show that we have an awesome Manual?</li>
+<li>Making animation - I haven’t specified it above because it’s a broader topic, so some discussion might be good to think it through and decide what would be the best way to show it off. For sure onion skins and Timeline have to be visible. Not sure about other things.</li>
+</ol>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="8" />
+           <span class='post-likes'>8 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/Snudl'><span itemprop='name'>Snudl</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T22:58:07Z' class='post-time'>
+                December 3, 2019, 10:58pm
+              </time>
+          <span itemprop='position'>#10</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Let me know if you need that video in the full 1080p size, I’ll have to redo it since the original capture (and document) is low res. I’ll think about showcasing a bunch of fancy brushes and the perspective sensor feature, too, since I already spent a lot of time experimenting.</p>
+<p>Any guidelines or preferences regarding Krita layouts and themes, as well as video snippet length, style, video format and encoding quality?</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="2" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/tiar'><span itemprop='name'>tiar</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T23:06:38Z' class='post-time'>
+                December 3, 2019, 11:06pm
+              </time>
+          <span itemprop='position'>#11</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Yes, all videos should be in 1080p. If some are in lower quality or have wrong dimensions, they should be remade I believe.</p>
+<p>I’m not technical enough in video editing to make any kind of decisions regarding the technical details. And on the snippet length, I guess <a class="mention" href="/u/wolthera">@wolthera</a> should answer that.</p>
+<p>We can use this video as inspiration: <a href="https://www.youtube.com/watch?v=oXUReniLyqw">https://www.youtube.com/watch?v=oXUReniLyqw</a> and we need to remember that while cutting videos is an option, there are things we cannot achieve without redoing videos; like when someone is very slowly drawing lines instead of making them quick, or when someone is making a mistake and needs to redo something. Just try to imagine your snippet inside this kind of video and think how to remove all unnecessary elements/actions while providing all necessary information (and time) needed for the viewer to get the point. I guess after some videos posted, we can start seeing some mistakes we want to avoid…</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/Rakurri'><span itemprop='name'>Rakurri</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T23:12:45Z' class='post-time'>
+                December 3, 2019, 11:12pm
+              </time>
+          <span itemprop='position'>#12</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>This feature really blew my mind when I first stumbled over it, making tiles with the multibrush tool and the wrap around mode!<br>
+I think this video showcases it well, but the tiles itself might not the very interesting <img src="https://krita-artists.org/images/emoji/twitter/blush.png?v=9" title=":blush:" class="emoji" alt=":blush:"><img src="https://krita-artists.org/images/emoji/twitter/thinking.png?v=9" title=":thinking:" class="emoji" alt=":thinking:"><br>
+<aside class="onebox googledrive">
+  <header class="source">
+      <a href="https://drive.google.com/file/d/1Nsn_zuQ6BV96BHLcPtVO3abCsCs0NRJY/view" target="_blank" rel="nofollow noopener">drive.google.com</a>
+  </header>
+  <article class="onebox-body">
+    
+<div class="aspect-image" style="--aspect-ratio:400/210;"><img src="https://krita-artists.org/uploads/default/original/2X/4/4cbd51ad54b31c5bcf11bce208876462fbc6fd32.jpeg" class="thumbnail"></div>
+
+<h3><a href="https://drive.google.com/file/d/1Nsn_zuQ6BV96BHLcPtVO3abCsCs0NRJY/view" target="_blank" rel="nofollow noopener">wrap around and multibrush.mp4 (video)</a></h3>
+
+<p>Google Drive file.</p>
+
+  </article>
+  <div class="onebox-metadata">
+    
+    
+  </div>
+  <div style="clear: both"></div>
+</aside>
+</p>
+<p>How long will this project be worked on? I am considering making more small videos like this if needed and/or wanted <img src="https://krita-artists.org/images/emoji/twitter/blush.png?v=9" title=":blush:" class="emoji" alt=":blush:"> But I don’t know if I have much time for it the the next few days.</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="7" />
+           <span class='post-likes'>7 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/hellozee'><span itemprop='name'>hellozee</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-04T01:51:51Z' class='post-time'>
+                December 4, 2019,  1:51am
+              </time>
+          <span itemprop='position'>#13</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Please don’t forget to record in at least 30 frames per second. <img src="https://krita-artists.org/images/emoji/twitter/smile.png?v=9" title=":smile:" class="emoji" alt=":smile:"></p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="3" />
+           <span class='post-likes'>3 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/SifarMogwai'><span itemprop='name'>SifarMogwai</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-04T21:50:27Z' class='post-time'>
+                December 4, 2019,  9:50pm
+              </time>
+          <span itemprop='position'>#15</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>What time frame are you thinking of for producing video?<br>
+Or rather how much time do we have to produce the clips?<br>
+Would not mind spending some time on it over Christmas.</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/wolthera'><span itemprop='name'>wolthera</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-05T15:50:25Z' class='post-time'>
+                December 5, 2019,  3:50pm
+              </time>
+          <span itemprop='position'>#16</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>There’s no specific timing schedule attached, as it is really just about showing what Krita can do. So I guess, maybe till the end of january or something? To have some kind of deadline.</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="2" />
+           <span class='post-likes'>2 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/SifarMogwai'><span itemprop='name'>SifarMogwai</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-05T17:29:59Z' class='post-time'>
+                December 5, 2019,  5:29pm
+              </time>
+          <span itemprop='position'>#17</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Deadlines help bring focus.  And I know one or two people who can only get work done the day before a deadline <img src="https://krita-artists.org/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:"></p>
+<p>I’d like to volunteer to make a clip about the assistant tool, and in particular the 3D related ones:  perspective, ruler, vanishing point.</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="2" />
+           <span class='post-likes'>2 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/sinisa_ercegovac'><span itemprop='name'>sinisa_ercegovac</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-06T21:49:22Z' class='post-time'>
+                December 6, 2019,  9:49pm
+              </time>
+          <span itemprop='position'>#18</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I always give a kredit to krita on the end of my artworks. Last year my cartoon movie short visited more than 39 festivals around the earth, won several awards in animation industry, on the end of it is krita kredits. its on my latest showreel. <a href="https://www.artstation.com/artwork/A9o4ez" rel="nofollow noopener">krita animated</a><br>
+Feel free to use it for your promotions. If you want to see whole film just contact me.<div class="lightbox-wrapper"><a class="lightbox" href="https://krita-artists.org/uploads/default/original/2X/9/9d1a58b81e82dca2435f392754fb285d2ab98a59.jpeg" data-download-href="https://krita-artists.org/uploads/default/9d1a58b81e82dca2435f392754fb285d2ab98a59" title="djecaci"><img src="https://krita-artists.org/uploads/default/optimized/2X/9/9d1a58b81e82dca2435f392754fb285d2ab98a59_2_400x240.jpeg" alt="djecaci" data-base62-sha1="mpNpqrcXBTvygyEMO2c6qVjg3hv" width="400" height="240" srcset="https://krita-artists.org/uploads/default/optimized/2X/9/9d1a58b81e82dca2435f392754fb285d2ab98a59_2_400x240.jpeg, https://krita-artists.org/uploads/default/optimized/2X/9/9d1a58b81e82dca2435f392754fb285d2ab98a59_2_600x360.jpeg 1.5x, https://krita-artists.org/uploads/default/optimized/2X/9/9d1a58b81e82dca2435f392754fb285d2ab98a59_2_800x480.jpeg 2x" data-small-upload="https://krita-artists.org/uploads/default/optimized/2X/9/9d1a58b81e82dca2435f392754fb285d2ab98a59_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">djecaci</span><span class="informations">4994×3000 2.33 MB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="4" />
+           <span class='post-likes'>4 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/hellozee'><span itemprop='name'>hellozee</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-07T04:26:02Z' class='post-time'>
+                December 7, 2019,  4:26am
+              </time>
+          <span itemprop='position'>#19</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Thanks a lot, <img src="https://krita-artists.org/images/emoji/twitter/heart.png?v=9" title=":heart:" class="emoji" alt=":heart:"></p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/Rebecca'><span itemprop='name'>Rebecca</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-07T23:05:58Z' class='post-time'>
+                December 7, 2019, 11:05pm
+              </time>
+          <span itemprop='position'>#20</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I made this: <a href="https://youtu.be/-31lcispV7E" rel="nofollow noopener">Assistant Tools (WIP)</a>. Remembered that my GoPro isn’t too bad at recording sound so I used that. <img src="https://krita-artists.org/images/emoji/twitter/stuck_out_tongue.png?v=9" title=":stuck_out_tongue:" class="emoji" alt=":stuck_out_tongue:"> (Maybe I should get a mike one of these days…) If it’s a showcase video going through lots of features, the individual sections should be quite short, I think, so I tried to streamline it a lot. What do people think? If this is the right direction, I’ll re-record the audio—now that I know what I want to say I should be able to do it a bit more fluidly, and maybe with less of a cold too. <img src="https://krita-artists.org/images/emoji/twitter/wink.png?v=9" title=":wink:" class="emoji" alt=":wink:"></p>
+<p><a class="mention" href="/u/sifarmogwai">@SifarMogwai</a> I saw you also offered assistant tools, but if you do the perspective stuff, that should complement each other well, I think?</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/SifarMogwai'><span itemprop='name'>SifarMogwai</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-07T23:43:00Z' class='post-time'>
+                December 7, 2019, 11:43pm
+              </time>
+          <span itemprop='position'>#21</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I’d say definitely the right direction. Lot of information and little comic is well suited as an example for the tools you show-cased.<br>
+Hope my will be as good. And indeed they should complement each other.</p>
+        </div>
+
+        <meta itemprop='headline' content='Help us create a video of cool features in Krita'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+
+
+
+
+
+
+    </div>
+    <footer class="container wrap">
+      <nav class='crawler-nav' itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <ul>
+        <li itemprop="name"><a href='/' itemprop="url">Home </a></li>
+        <li itemprop="name"><a href='/categories' itemprop="url">Categories </a></li>
+        <li itemprop="name"><a href='/guidelines' itemprop="url">FAQ/Guidelines </a></li>
+        <li itemprop="name"><a href='/tos' itemprop="url">Terms of Service </a></li>
+        <li itemprop="name"><a href='/privacy' itemprop="url">Privacy Policy </a></li>
+        </ul>
+      </nav>
+      <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+    </footer>
+    
+    <!-- add current user's nsfw preferences to body tag -->
+<script src="/theme-javascripts/5660fc163c6806cee6f892007200ca5a8261fd54.js?__ws=krita-artists.org"></script>
+  </body>
+  
+</html>

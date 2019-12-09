@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=665">
+
+  <link rel="icon" type="image/png" href="/zarowka.png" />
+  <link rel="apple-touch-icon" href="/zarowka.png" />
+
+
+  <link rel="alternate" href="/rss.xml" type="application/rss+xml" title="RSS Feed" />
+
+  <meta name="author" content="Marek" />
+  <title>
+      Addressing &#8212;
+    Idea of the day
+  </title>
+
+  <style>
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:;content:none}table{border-collapse:collapse;border-spacing:0}
+
+
+/* style.css */
+};
+body, html {
+  height: 100%;
+}
+#content {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -168px;
+}
+.footerpush, footer {
+  height: 168px;
+}
+body {
+  color: #444;
+  font-size: 18px;
+  line-height: 28px;
+  font-family: Lucida Grande, Arial, sans-serif;
+  background-color: #FAF4ED;
+  min-width: 665px;
+  text-rendering: optimizeLegibility;
+}
+#title {
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+  height: 224px;
+}
+#title h1 {
+  padding: 36px 0;
+  font-size: 45px;
+  line-height: 45px;
+}
+#title .not-insane {
+  font-size: 30px;
+  color: #808080;
+}
+#title a:active, #title a:link, #title a:visited {
+  color: #000000;
+  text-decoration: none;
+}
+article > *, header {
+  min-width: 625px;
+  max-width: 625px;
+  margin-left: auto;
+  margin-right: auto;
+}
+:link {
+  color: #00E;
+  text-decoration: none;
+}
+:visited {
+  color: #551A8B;
+}
+a:hover {
+  text-decoration: underline;
+}
+article {
+  margin-bottom: 56px;
+}
+article h1, article h2, article h3, article h4 {
+  color: #222;
+  margin-bottom: 28px;
+}
+article dd, article dl, article img, article ol, article p,
+article pre, article ul {
+  margin-bottom: 28px;
+}
+article div.h1wrapper {
+  width: 100%;
+  max-width: 865px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #BBB;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+article div.h1wrapper h1 {
+  min-width: 625px;
+  max-width: 625px;
+  margin-left: auto;
+  margin-right: auto;
+}
+article h1 {
+  padding: 14px 0;
+  font-size: 43px;
+  line-height: 84px;
+}
+article h2 {
+  font-size: 36px;
+  line-height: 56px;
+}
+article h3 {
+  font-size: 27px;
+  line-height: 56px;
+}
+article .subtitle > h2 {
+  font-size: 27px;
+  line-height: 56px;
+  text-align: right;
+}
+article ul {
+  list-style: outside disc;
+}
+article ul > li {
+  margin-left: 1.7em;
+}
+article li > p:only-child {
+  margin-bottom: 0;
+}
+article ol {
+  list-style: outside decimal;
+}
+article ol > li {
+  margin-left: 2.5em;
+}
+article ol > li > ol {
+  list-style-type: lower-alpha;
+}
+article ol > li > ol, article ol > li > ul, article ul > li > ol,
+article ul > li > ul {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+article code, article pre {
+  background-color: #DDD;
+  font-family: monospace;
+  line-height: 26px;
+}
+article .codehilite > pre {
+  font-size: 16px;
+}
+article pre, article pre > code {
+  font-family: monospace;
+}
+article pre {
+  padding-left: 8px;
+  max-width: 617px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+article table.codehilitetable pre {
+  margin-bottom: 0px;
+}
+article table.codehilitetable td, article table.codehilitetable th {
+  padding-left: 0px;
+  padding-right: 0px;
+  border: 0px;
+}
+article hr {
+  height: 1px;
+  border-width: 0px;
+  color: #888;
+  background-color: #888;
+  margin-bottom: 27px;
+  width: 100%;
+  max-width: 865px;
+  margin-left: auto;
+  margin-right: auto;
+}
+article p:lang(en) {
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+article h1, article h2, article h3, article h4 {
+  font-weight: bolder;
+}
+article h5 {
+  font-variant: small-caps;
+}
+article .svgimage > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+article .image > img {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+article .image > div {
+  text-align: center;
+  font-size: 14px;
+}
+article abbr {
+  font-weight: bolder;
+}
+article dl dt {
+  font-weight: bolder;
+}
+article dl dd {
+  margin-left: 2.5em;
+}
+article sup {
+  font-size: 12px;
+  margin-left: 2px;
+  line-height: 1px;
+  vertical-align: super;
+}
+article div.footnote {
+  width: 100%;
+  max-width: 865px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+}
+article div.footnote > * {
+  min-width: 625px;
+  max-width: 625px;
+  margin-left: auto;
+  margin-right: auto;
+}
+article div.footnote hr {
+  height: 1px;
+  border-width: 0px;
+  color: #888;
+  background-color: #888;
+  margin-bottom: 27px;
+  width: 100%;
+  max-width: 865px;
+  margin-left: auto;
+  margin-right: auto;
+}
+article div.toc {
+  margin-bottom: 28px;
+}
+article div.toc .toctitle {
+  font-size: 36px;
+  line-height: 56px;
+  font-weight: bolder;
+  margin-bottom: 28px;
+  display: block;
+}
+article .smallpre > .codehilite > pre {
+  font-size: 12px;
+  line-height: 18.667px;
+}
+article blockquote {
+  border-left: 20px solid #222;
+  padding-left: 30px;
+  font-weight: bold;
+}
+article table {
+  border-collapse: collapse;
+  border-style: hidden;
+  max-width: 625px;
+  width: auto;
+  margin-bottom: 28px;
+}
+article table td, article table th {
+  border: 1px solid #000000;
+  empty-cells: show;
+}
+article table td, article table th {
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 16px;
+}
+article table td {
+  line-height: 27px;
+}
+article table th {
+  font-weight: bold;
+  line-height: 28px;
+}
+article div.date {
+  font-size: 16px;
+  padding-bottom: 28px;
+  color: #666;
+}
+article em {
+  font-style: italic;
+}
+article b, article strong {
+  font-weight: bolder;
+}
+article div.smallfont + div > pre {
+  font-size: 12px;
+}
+footer {
+  width: 100%;
+  max-width: 865px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #BBB;
+  -webkit-border-radius: 2px 2px 0 0;
+  -moz-border-radius: 2px 2px 0 0;
+  border-radius: 2px 2px 0 0;
+}
+footer > div {
+  min-width: 625px;
+  max-width: 625px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 28px;
+}
+footer > div :link, footer > div :visited {
+  margin-left: 2.5em;
+  color: #555;
+  font-size: 15px;
+  font-weight: bolder;
+}
+footer > div a > span {
+  text-decoration: underline;
+}
+footer > div #footer-left {
+  float: left;
+}
+footer > div #footer-right {
+  float: right;
+}
+img {
+  display: block;
+}
+@media print {
+  :link {
+    color: #00E;
+    text-decoration: underline;
+  }
+}
+@media print {
+  dl, ol, p, ul {
+    page-break-before: avoid;
+  }
+}
+@media print {
+  img, pre {
+    page-break-before: auto;
+  }
+}
+@media print {
+  h1, h2, h3, h4, hr {
+    page-break-before: auto;
+    page-break-after: avoid;
+  }
+}
+@media print {
+  body {
+    color: #000;
+  }
+}
+@media print {
+  footer {
+    display: none;
+  }
+}
+#alertbox {
+  display: none;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  position: fixed;
+  top: 20%;
+  width: 30%;
+  left: 35%;
+  background-color: #FF3300;
+}
+#alertbox div {
+  margin: 10px;
+}
+.hll {
+  background-color: #ffffcc;
+}
+.c {
+  color: #408080;
+  font-style: italic;
+}
+.err {
+  border: 1px solid #FF0000;
+}
+.k {
+  color: #008000;
+  font-weight: bold;
+}
+.o {
+  color: #666666;
+}
+.cm {
+  color: #408080;
+  font-style: italic;
+}
+.cp {
+  color: #BC7A00;
+}
+.c1 {
+  color: #408080;
+  font-style: italic;
+}
+.cs {
+  color: #408080;
+  font-style: italic;
+}
+.gd {
+  color: #A00000;
+}
+.ge {
+  font-style: italic;
+}
+.gr {
+  color: #FF0000;
+}
+.gh {
+  color: #000080;
+  font-weight: bold;
+}
+.gi {
+  color: #00A000;
+}
+.go {
+  color: #808080;
+}
+.gp {
+  color: #000080;
+  font-weight: bold;
+}
+.gs {
+  font-weight: bold;
+}
+.gu {
+  color: #800080;
+  font-weight: bold;
+}
+.gt {
+  color: #0040D0;
+}
+.kc {
+  color: #008000;
+  font-weight: bold;
+}
+.kd {
+  color: #008000;
+  font-weight: bold;
+}
+.kn {
+  color: #008000;
+  font-weight: bold;
+}
+.kp {
+  color: #008000;
+}
+.kr {
+  color: #008000;
+  font-weight: bold;
+}
+.kt {
+  color: #B00040;
+}
+.m {
+  color: #666666;
+}
+.s {
+  color: #BA2121;
+}
+.na {
+  color: #7D9029;
+}
+.nb {
+  color: #008000;
+}
+.nc {
+  color: #0000FF;
+  font-weight: bold;
+}
+.no {
+  color: #880000;
+}
+.nd {
+  color: #AA22FF;
+}
+.ni {
+  color: #999999;
+  font-weight: bold;
+}
+.ne {
+  color: #D2413A;
+  font-weight: bold;
+}
+.nf {
+  color: #0000FF;
+}
+.nl {
+  color: #A0A000;
+}
+.nn {
+  color: #0000FF;
+  font-weight: bold;
+}
+.nt {
+  color: #008000;
+  font-weight: bold;
+}
+.nv {
+  color: #19177C;
+}
+.ow {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.w {
+  color: #bbbbbb;
+}
+.mf {
+  color: #666666;
+}
+.mh {
+  color: #666666;
+}
+.mi {
+  color: #666666;
+}
+.mo {
+  color: #666666;
+}
+.sb {
+  color: #BA2121;
+}
+.sc {
+  color: #BA2121;
+}
+.sd {
+  color: #BA2121;
+  font-style: italic;
+}
+.s2 {
+  color: #BA2121;
+}
+.se {
+  color: #BB6622;
+  font-weight: bold;
+}
+.sh {
+  color: #BA2121;
+}
+.si {
+  color: #BB6688;
+  font-weight: bold;
+}
+.sx {
+  color: #008000;
+}
+.sr {
+  color: #BB6688;
+}
+.s1 {
+  color: #BA2121;
+}
+.ss {
+  color: #19177C;
+}
+.bp {
+  color: #008000;
+}
+.vc {
+  color: #19177C;
+}
+.vg {
+  color: #19177C;
+}
+.vi {
+  color: #19177C;
+}
+.il {
+  color: #666666;
+}
+
+
+
+  </style>
+</head><body>
+
+
+<div id="content">
+<header id="title">
+  <h1><a href="/">
+      Marek's
+      <div class="not-insane">totally not insane</div>
+      idea of the day
+  </a></h1>
+</header>
+
+
+
+<article>
+
+<div class="h1wrapper">
+<h1 id="addressing" ok>Addressing</h1>
+</div>
+<div class="date">06 December 2019</div>
+
+
+<p>Articles from this series:</p>
+<ol>
+<li><a href="/2019-11-06-creating-sockets/">Creating sockets</a> on Linux.</li>
+<li><a href="/2019-12-06-addressing/">Addressing of AF_INET, AF_INET6 and AF_UNIX</a> sockets.</li>
+</ol>
+<hr>
+
+<p>A freshly created socket isn't very useful. We have to tell it to
+either listen for incoming data, or connect to a remote peer. To
+achieve anything useful we need to perform a syscall dance, which
+involves either <code>bind()</code> or <code>connect()</code> or both.</p>
+<p>Among others, <code>bind()</code> and <code>connect()</code> syscalls take a socket address
+as a parameter. Before going into these syscalls we must discuss what
+exactly the address is. Specifically, they take <code>struct sockaddr</code>:</p>
+<div class="codehilite"><pre><span class="k">struct</span> <span class="n">sockaddr</span> <span class="p">{</span>
+    <span class="kt">sa_family_t</span> <span class="n">sa_family</span><span class="p">;</span>
+    <span class="kt">char</span>        <span class="n">sa_data</span><span class="p">[</span><span class="mi">14</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>In practice, don't actually use the <code>struct sockaddr</code> type. Instead
+cast <code>struct sockaddr_in</code>, <code>struct sockaddr_in6</code> and <code>struct
+sockaddr_un</code> into it. These structs identify AF_INET, AF_INET6 and
+AF_UNIX addresses families respectively.</p>
+<p>Sometimes, it is necessary to work with an address, with unknown
+address family. For such situations use <code>struct sockaddr_storage</code>. On
+modern operating systems it's intended to to be large enough to fit
+any socket address the system supports<sup id="fnref:sockaddr_storage"><a href="#fn:sockaddr_storage" rel="footnote">1</a></sup>.</p>
+<div class="codehilite"><pre><span class="k">struct</span> <span class="n">sockaddr_storage</span> <span class="p">{</span>
+    <span class="kt">sa_family_t</span> <span class="n">ss_family</span><span class="p">;</span>
+    <span class="c1">// padding, usually 126 bytes</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Let's talk about the nature of addresses of AF_INET, AF_INET6 and AF_UNIX families.</p>
+<h2 id="af_inet-addresses">AF_INET Addresses</h2>
+<p>In AF_INET the address is encoded as <code>struct sockaddr_in</code>:</p>
+<div class="codehilite"><pre><span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="p">{</span>
+  <span class="kt">sa_family_t</span>    <span class="n">sin_family</span><span class="p">;</span> <span class="cm">/* address family: AF_INET */</span>
+  <span class="kt">in_port_t</span>      <span class="n">sin_port</span><span class="p">;</span>   <span class="cm">/* port in network byte order */</span>
+  <span class="k">struct</span> <span class="n">in_addr</span> <span class="n">sin_addr</span><span class="p">;</span>   <span class="cm">/* internet address */</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">in_addr</span> <span class="p">{</span>
+  <span class="kt">uint32_t</span>       <span class="n">s_addr</span><span class="p">;</span>     <span class="cm">/* address in network byte order */</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>This structure contains, address family - AF_INET, 16 bit port number,
+and a 32 bit IP address. Let's focus on the IP address part -
+<code>sin_addr</code>.</p>
+<p>In string format, we typically work on IPv4 address in dot-decimal
+notation, like "192.0.5.1". Let's start with an easy task - say a user
+gave you an address and you want to convert it to <code>struct in_addr</code>.
+Historically, a typical way to achieve this was to use
+<code>inet_aton</code>. These days it's discouraged - this function is not strict
+enough, and accepts addresses in many obscure formats:</p>
+<div class="codehilite"><pre><span class="n">char</span><span class="o">*</span>           <span class="n">inet_aton</span><span class="p">()</span>
+<span class="c"># integer</span>
+<span class="s">&quot;1&quot;</span>             <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.1</span>
+<span class="s">&quot;16777217&quot;</span>      <span class="mf">1.0</span><span class="o">.</span><span class="mf">0.1</span>
+<span class="s">&quot;0100000001&quot;</span>    <span class="mf">1.0</span><span class="o">.</span><span class="mf">0.1</span>     <span class="n">octal</span>
+<span class="s">&quot;0x1&quot;</span>           <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.1</span>     <span class="n">hexadecimal</span>
+<span class="c"># mixed dot-decimal</span>
+<span class="s">&quot;1.65536&quot;</span>       <span class="mf">1.1</span><span class="o">.</span><span class="mf">0.0</span>     <span class="n">octet</span><span class="o">.</span><span class="mi">24</span><span class="n">bits</span>
+<span class="s">&quot;1.2.256&quot;</span>       <span class="mf">1.2</span><span class="o">.</span><span class="mf">1.0</span>     <span class="n">octet</span><span class="o">.</span><span class="n">octet</span><span class="o">.</span><span class="mi">16</span><span class="n">bits</span>
+<span class="c"># dot-decimal</span>
+<span class="s">&quot;1.2.3.4&quot;</span>       <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span>
+<span class="s">&quot;1.2.3.071&quot;</span>     <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.57</span>    <span class="n">mixed</span> <span class="n">octal</span>
+<span class="s">&quot;1.2.3.0x71&quot;</span>    <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.113</span>   <span class="n">mixed</span> <span class="n">hexadecimal</span>
+<span class="c"># trailing whitespace</span>
+<span class="s">&quot;1.2.3.4 a&quot;</span>     <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span>
+<span class="s">&quot;1.2.3.4</span><span class="se">\r</span><span class="s">a&quot;</span>    <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span>
+<span class="s">&quot;1.2.3.4</span><span class="se">\n</span><span class="s">a&quot;</span>    <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span>
+<span class="s">&quot;1.2.3.4</span><span class="se">\t</span><span class="s">a&quot;</span>    <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span>
+<span class="s">&quot;1.2.3.4</span><span class="se">\x0b</span><span class="s">a&quot;</span>  <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span>
+<span class="s">&quot;1.2.3.4</span><span class="se">\x0b</span><span class="s">a&quot;</span>  <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span>
+<span class="s">&quot;1.2.3.4</span><span class="se">\x0c</span><span class="s">1&quot;</span>  <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span>
+<span class="c"># errors</span>
+<span class="s">&quot;256.0.0.1&quot;</span>     <span class="o">-</span><span class="mi">1</span>   <span class="n">overflow</span>
+<span class="s">&quot;1.2.3.7</span><span class="se">\x85</span><span class="s">1&quot;</span>  <span class="o">-</span><span class="mi">1</span>   <span class="n">non</span><span class="o">-</span><span class="n">whitespace</span> <span class="n">trailing</span>
+<span class="s">&quot;1.2.3.7</span><span class="se">\xa0</span><span class="s">1&quot;</span>  <span class="o">-</span><span class="mi">1</span>   <span class="n">non</span><span class="o">-</span><span class="n">whitespace</span> <span class="n">trailing</span>
+<span class="s">&quot; 2.3.4.1&quot;</span>      <span class="o">-</span><span class="mi">1</span>   <span class="n">leading</span> <span class="n">whitespace</span>
+</pre></div>
+
+
+<p>Apart from accepting arcane formatting types, like numeric 32bit
+decimal notation like "16777217" meaning "1.0.0.1", it happily parses
+addresses with trailing whitespace followed by any gibberish.  A better
+alternative is <code>inet_pton()</code>, which <a href="https://tools.ietf.org/html/rfc2553#page-31">only accepts a well known IPv4
+dotted-decimal notation</a> for AF_INET family.</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="nf">inet_pton</span><span class="p">(</span><span class="kt">int</span> <span class="n">af</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">dst</span><span class="p">);</span>
+</pre></div>
+
+
+<p>With <code>inet_pton</code> only the well-formed dot-format addresses are
+accepted. All the weird cases result in an error. This is usually the
+desired behaviour.</p>
+<div class="codehilite"><pre><span class="n">char</span><span class="o">*</span>           <span class="n">inet_pton</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">)</span>
+<span class="s">&quot;1.2.3.4&quot;</span>       <span class="mf">1.2</span><span class="o">.</span><span class="mf">3.4</span>
+<span class="s">&quot;1.2.3&quot;</span>         <span class="o">-</span><span class="mi">1</span>
+<span class="s">&quot;0x1&quot;</span>           <span class="o">-</span><span class="mi">1</span>
+<span class="s">&quot;1.2.3.4</span><span class="se">\t</span><span class="s">a&quot;</span>    <span class="o">-</span><span class="mi">1</span>
+<span class="s">&quot;1.2.3.071&quot;</span>     <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+
+
+<p>You can also use <code>getaddrinfo()</code> to convert IP address into <code>struct
+sockaddr *</code>. It's much more advanced, we'll discuss it later.</p>
+<p>Converting from <code>struct in_addr</code> to text form can be achieved for example with <code>inet_ntop</code>:</p>
+<div class="codehilite"><pre><span class="n">inet_ntop</span><span class="p">(</span><span class="kt">int</span> <span class="n">af</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">src</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">dst</span><span class="p">,</span> <span class="kt">socklen_t</span> <span class="n">size</span><span class="p">);</span>
+</pre></div>
+
+
+<p>Where <em>dst</em> is a buffer of size INET_ADDRSTRLEN (16) for AF_INET and INET6_ADDRSTRLEN (46) for AF_INET6.</p>
+<h2 id="af_inet6-addresses">AF_INET6 Addresses</h2>
+<p>In AF_INET6 the address is encoded in "struct sockaddr_in6":</p>
+<div class="codehilite"><pre><span class="k">struct</span> <span class="n">sockaddr_in6</span> <span class="p">{</span>
+  <span class="kt">sa_family_t</span>     <span class="n">sin6_family</span><span class="p">;</span>   <span class="cm">/* AF_INET6 */</span>
+  <span class="kt">in_port_t</span>       <span class="n">sin6_port</span><span class="p">;</span>     <span class="cm">/* port number */</span>
+  <span class="kt">uint32_t</span>        <span class="n">sin6_flowinfo</span><span class="p">;</span> <span class="cm">/* IPv6 flow information */</span>
+  <span class="k">struct</span> <span class="n">in6_addr</span> <span class="n">sin6_addr</span><span class="p">;</span>     <span class="cm">/* IPv6 address */</span>
+  <span class="kt">uint32_t</span>        <span class="n">sin6_scope_id</span><span class="p">;</span> <span class="cm">/* Scope ID (new in 2.4) */</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">in6_addr</span> <span class="p">{</span>
+  <span class="kt">unsigned</span> <span class="kt">char</span>   <span class="n">s6_addr</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>   <span class="cm">/* IPv6 address */</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Conveniently <code>inet_pton</code> is also a correct way to parse IPv6 address
+from text format into <code>struct in6_addr</code>. IPv6 address is composed of
+16 bytes. Typically, the IPv6 address is represented in text as a
+group of eight 4-digit (16 bits) hexadecimal numbers separated with a
+colon ':'. There are a couple of caveats around parsing, take a look
+at these examples:</p>
+<div class="smallpre">
+
+<div class="codehilite"><pre><span class="n">char</span><span class="o">*</span>                           <span class="n">inet_pton</span><span class="p">(</span><span class="n">AF_INET6</span><span class="p">)</span>
+<span class="c"># eight 4-digit hex groups</span>
+<span class="s">&#39;0:1:2:3:4:5:6:7&#39;</span>         <span class="mo">0000</span><span class="p">:</span><span class="mo">0001</span><span class="p">:</span><span class="mo">0002</span><span class="p">:</span><span class="mo">0003</span><span class="p">:</span><span class="mo">0004</span><span class="p">:</span><span class="mo">0005</span><span class="p">:</span><span class="mo">0006</span><span class="p">:</span><span class="mo">0007</span>
+<span class="c"># :: abbreviates zero groups</span>
+<span class="s">&#39;::DEAD:BEEF&#39;</span>             <span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="n">dead</span><span class="p">:</span><span class="n">beef</span>
+<span class="s">&#39;1080::8:800:200C:417A&#39;</span>   <span class="mi">1080</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">000</span><span class="mi">8</span><span class="p">:</span><span class="mi">0800</span><span class="p">:</span><span class="mi">200</span><span class="n">c</span><span class="p">:</span><span class="mi">417</span><span class="n">a</span>
+<span class="s">&#39;FF01::101&#39;</span>               <span class="n">ff01</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0101</span>
+<span class="s">&#39;::1&#39;</span>                     <span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0001</span>
+<span class="s">&#39;::&#39;</span>                      <span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span>
+<span class="s">&#39;::1:20:0:0&#39;</span>              <span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0001</span><span class="p">:</span><span class="mo">0020</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span>
+<span class="c"># leading zeros are fine (up to 4 characters), and not octal</span>
+<span class="s">&#39;0::01:020:0000:0&#39;</span>        <span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0001</span><span class="p">:</span><span class="mo">0020</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span>
+<span class="c"># IPv4-compatible IPv6 address, must be in correct dotted-decimal format</span>
+<span class="s">&#39;0:0:0:0:0:0:1.2.3.4&#39;</span>     <span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0102</span><span class="p">:</span><span class="mo">0304</span>
+<span class="s">&#39;::1.2.3.4&#39;</span>               <span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0000</span><span class="p">:</span><span class="mo">0102</span><span class="p">:</span><span class="mo">0304</span>
+<span class="c"># errors</span>
+<span class="s">&#39;::FFFF:1.2&#39;</span>             <span class="o">-</span><span class="mi">1</span> <span class="c"># Shortcutting embedded IPv4 notation is not allowed</span>
+<span class="s">&#39;::0xf&#39;</span>                  <span class="o">-</span><span class="mi">1</span> <span class="c"># Explicit hexadecimal is not allowed</span>
+<span class="s">&#39;::00001&#39;</span>                <span class="o">-</span><span class="mi">1</span> <span class="c"># Groups of more than 4 characters are not allowed</span>
+<span class="s">&#39;0::1:2::&#39;</span>               <span class="o">-</span><span class="mi">1</span> <span class="c"># Multiple zero group are not allowed</span>
+</pre></div>
+
+
+</div>
+
+<p>There are a number of good practices regarding formatting IPv6
+addresses. Most notably <code>::</code> should be used to shorten the longest
+chain of :0000: blocks, and first one if two chains are equal
+size. More recommendations are described in
+<a href="https://tools.ietf.org/html/rfc5952">RFC5952</a>.</p>
+<p><code>inet_pton</code> only parses the <code>struct in6_addr</code> - IPv6 address part of
+<code>struct sockaddr_in6</code>. That structure has more two more relevant
+fields: <code>sin6_flowinfo</code> and <code>sin6_scope_id</code>. For almost all users
+these obscure fields should be kept at zero. <code>sin6_flowinfo</code> is going
+to be ignored anyway unless you opt-in with a specific setsockopt.
+<code>sin6_scope_id</code> is ignored and taken into account only when target IP
+belongs to one of a small number of link-specific IP ranges. We'll
+discuss these fields later.</p>
+<h2 id="reserved-ip-addresses">Reserved IP addresses</h2>
+<p>It's sometimes useful to filter traffic, and deny connections to
+reserved IP addresses. For example, if you connect to user-specified
+IP, then for security you might want to block target IP of
+127.0.0.1. But of course that isn't enough, you need to think about
+whole 127.0.0.0/8 subnet. How about ::1? How about ::ffff:127.0.0.1? Don't forget to also
+consider 169.254.0.0/16 and fe80:: networks!</p>
+<h3 id="special-purpose-ipv4-addresses">Special-purpose IPv4 addresses</h3>
+<p>Here is a list of prefixes which may come handy when creating
+blacklists. The interesting prefixes are described in
+<a href="https://tools.ietf.org/html/rfc6890">RFC6890</a>, <a href="https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml">IANA IPv4 Special-Purpose Address Registry</a> and <a href="https://en.wikipedia.org/wiki/Reserved_IP_addresses">Wiki: Reserved IP addresses</a>.</p>
+<div class="tablewrapper">
+<table ok>
+<thead>
+<tr>
+<th>IPv4 network</th>
+<th>Description</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.0.0.0/8</td>
+<td>"this" network</td>
+<td>RFC1122</td>
+</tr>
+<tr>
+<td>10.0.0.0/8</td>
+<td>"private use"</td>
+<td>RFC1918</td>
+</tr>
+<tr>
+<td>100.64.0.0/10</td>
+<td>"Shared Address Space" for CGNATs</td>
+<td>RFC6598</td>
+</tr>
+<tr>
+<td>127.0.0.0/8</td>
+<td>"loopback"</td>
+<td>RFC1122</td>
+</tr>
+<tr>
+<td>169.254.0.0/16</td>
+<td>"link local"</td>
+<td>RFC3927</td>
+</tr>
+<tr>
+<td>172.16.0.0/12</td>
+<td>"private use"</td>
+<td>RFC1918</td>
+</tr>
+<tr>
+<td>192.0.0.0/24</td>
+<td>"IETF Protocol Assignments"</td>
+<td>RFC6890</td>
+</tr>
+<tr>
+<td>192.0.2.0/24</td>
+<td>"documentation TEST-NET-1"</td>
+<td>RFC5737</td>
+</tr>
+<tr>
+<td>192.88.99.0/24</td>
+<td>"6to4 Relay Anycast"</td>
+<td>RFC3068</td>
+</tr>
+<tr>
+<td>192.168.0.0/16</td>
+<td>"private use"</td>
+<td>RFC1918</td>
+</tr>
+<tr>
+<td>198.18.0.0/15</td>
+<td>"benchmarking"</td>
+<td>RFC2544</td>
+</tr>
+<tr>
+<td>198.51.100.0/24</td>
+<td>"documentation TEST-NET-2"</td>
+<td>RFC5737</td>
+</tr>
+<tr>
+<td>203.0.113.0/24</td>
+<td>"documentation TEST-NET-3"</td>
+<td>RFC5737</td>
+</tr>
+<tr>
+<td>224.0.0.0/4</td>
+<td>"IPv4 multicast"</td>
+<td>RFC5771</td>
+</tr>
+<tr>
+<td>240.0.0.0/4</td>
+<td>"reserved"</td>
+<td>RFC1112</td>
+</tr>
+<tr>
+<td>255.255.255.255/32</td>
+<td>"limited broadcast"</td>
+<td>RFC919</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="special-purpose-ipv6-addresses">Special-purpose IPv6 addresses</h3>
+<p>The interesting prefixes are described in
+<a href="https://tools.ietf.org/html/rfc6890">RFC6890</a>, <a href="https://www.iana.org/assignments/ipv6-unicast-address-assignments/ipv6-unicast-address-assignments.xhtml">IANA IPv6 Global Unicast Address Assignments</a> and <a href="https://en.wikipedia.org/wiki/Reserved_IP_addresses">Wiki: Reserved IP addresses</a>.</p>
+<div class="tablewrapper">
+<table ok>
+<thead>
+<tr>
+<th>IPv6 network</th>
+<th>Description</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>::/128</td>
+<td>"unspecified address"</td>
+<td>RFC4291</td>
+</tr>
+<tr>
+<td>::1/128</td>
+<td>"loopback address"</td>
+<td>RFC4291</td>
+</tr>
+<tr>
+<td>::/96</td>
+<td>"IPv4 Compatible"</td>
+<td><a href="https://tools.ietf.org/html/rfc1933">RFC1933</a></td>
+</tr>
+<tr>
+<td>::ffff:0:0/96</td>
+<td>"IPv4-mapped Address"</td>
+<td>RFC4291</td>
+</tr>
+<tr>
+<td>::ffff:0:0:0/96</td>
+<td>"IPv4-translated ipv6 address</td>
+<td>RFC2765</td>
+</tr>
+<tr>
+<td>64:ff9b::/96</td>
+<td>"IPv4-IPv6 Translators"</td>
+<td>RFC6052</td>
+</tr>
+<tr>
+<td>100::/64</td>
+<td>"Discard-Only Address Block"</td>
+<td>RFC6666</td>
+</tr>
+<tr>
+<td>2001::/23</td>
+<td>"IETF Protocol Assignments"</td>
+<td>RFC2928</td>
+</tr>
+<tr>
+<td>2001::/32</td>
+<td>"TEREDO"</td>
+<td>RFC4380, RFC5991</td>
+</tr>
+<tr>
+<td>2001:1::1/128</td>
+<td>"Port Control Protocol Anycast"</td>
+<td>RFC7723</td>
+</tr>
+<tr>
+<td>2001:2::/48</td>
+<td>"benchmarking"</td>
+<td>RFC5180</td>
+</tr>
+<tr>
+<td>2001:3::/32</td>
+<td>"AMT"</td>
+<td>RFC7450</td>
+</tr>
+<tr>
+<td>2001:5::/32</td>
+<td>"EID space for LISP"</td>
+<td>RFC7954</td>
+</tr>
+<tr>
+<td>2001:10::/28</td>
+<td>"ORCHID"</td>
+<td>RFC4843</td>
+</tr>
+<tr>
+<td>2001:20::/28</td>
+<td>"ORCHIDv2"</td>
+<td>RFC7343</td>
+</tr>
+<tr>
+<td>2001:db8::/32</td>
+<td>"Documentation"</td>
+<td>RFC3849</td>
+</tr>
+<tr>
+<td>2002::/16</td>
+<td>"6to4"</td>
+<td>RFC3056</td>
+</tr>
+<tr>
+<td>3ffe::/16</td>
+<td>"6bone testing"</td>
+<td>RFC3701</td>
+</tr>
+<tr>
+<td>5f00::/8</td>
+<td>"6bone historical"</td>
+<td>RFC3701</td>
+</tr>
+<tr>
+<td>fc00::/7</td>
+<td>"Unique local"</td>
+<td>RFC4193</td>
+</tr>
+<tr>
+<td>fe80::/10</td>
+<td>"link-scoped unicast"</td>
+<td>RFC4291</td>
+</tr>
+<tr>
+<td>ff00::/8</td>
+<td>"IPv6 multicast"</td>
+<td>RFC2373</td>
+</tr>
+<tr>
+<td>fec0::/10</td>
+<td>"site-local"</td>
+<td>RFC1884</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="using-dns-getaddrinfo">Using DNS - getaddrinfo</h2>
+<p>The recommended way to resolve DNS names into IP addresses is
+<code>getaddrinfo()</code> libc function. This function requires some setup, so
+for illustration I prepared a couple of scripts. Let's try
+"getaddrinfo" on a valid domain "one.one.one.one":</p>
+<div class="codehilite"><pre><span class="nv">$ </span>./getaddrinfo.py one.one.one.one --type SOCK_STREAM
+one.one.one.one  AF_INET   IPPROTO_TCP   1.0.0.1 
+one.one.one.one  AF_INET   IPPROTO_TCP   1.1.1.1 
+one.one.one.one  AF_INET6  IPPROTO_TCP   2606:4700:4700::1001 
+one.one.one.one  AF_INET6  IPPROTO_TCP   2606:4700:4700::1111 
+</pre></div>
+
+
+<p>The glibc version of <code>getaddrinfo()</code> uses a fairly complex
+machinery. It uses glibc resolver module and <a href="https://www.gnu.org/software/libc/manual/html_node/Name-Service-Switch.html">Name Service
+Switch</a> to perform lookups.</p>
+<h4 id="etchostconf">/etc/host.conf</h4>
+<p>On my Ubuntu host glibc resolver first parses "/etc/host.conf". This file
+is obsolete these days, and its "trim" and "reorder" settings affect
+only "gethostbyname", "gethostbyname2" and "gethostbyaddr"
+functions. The "multi" setting is only read by "ns_files".</p>
+<p>Testing these parameters is hard, but can be achieved with
+RESOLV_ADD_TRIM_DOMAINS, RESOLV_MULTI and RESOLV_REORDER environment
+variables. For example, we can see how the "trim" parameter influences
+results of "gethostbyaddr":</p>
+<div class="codehilite"><pre><span class="nv">$ </span>./gethostbyaddr.py 1.1.1.1
+one.one.one.one <span class="o">[]</span> <span class="o">[</span><span class="s1">&#39;1.1.1.1&#39;</span><span class="o">]</span>
+<span class="nv">$ RESOLV_ADD_TRIM_DOMAINS</span><span class="o">=</span>.one ./gethostbyaddr.py 1.1.1.1
+one.one.one <span class="o">[]</span> <span class="o">[</span><span class="s1">&#39;1.1.1.1&#39;</span><span class="o">]</span>
+</pre></div>
+
+
+<h4 id="etcresolvconf">/etc/resolv.conf</h4>
+<p>Following reading "/etc/host.conf", glibc pre-loads
+"/etc/resolv.conf". This finishes the resolver module
+bootstrapping. After this the Name Service Switch kicks in and reads
+"/etc/nsswitch.conf".</p>
+<p>"nsswitch.conf" on my Ubuntu Bionic contains the following "hosts" section:</p>
+<div class="codehilite"><pre><span class="x">bionic$ cat /etc/nsswitch.conf | grep -i hosts</span>
+<span class="x">hosts: files mdns4_minimal [NOTFOUND=return] dns myhostname</span>
+</pre></div>
+
+
+<p>This reads as:</p>
+<ul>
+<li>First, call "files" module which parses "/etc/hosts".</li>
+<li>Then call "mdns4_minimal". It's  able to resolve .local domains.</li>
+<li>Then try the "dns" module.</li>
+<li>Finally, the query goes to "myhostname" module</li>
+</ul>
+<p>The NSS is hard to debug - unlike resolver module it doesn't accept
+environment variables that can override configuration. We can use a
+trick though - we can
+<a href="https://ldpreload.com/blog/testing-glibc-nsswitch">call "__nss_configure_lookup" function</a>,
+before program starts. This can be achieved with LD_PRELOAD and this
+simple library:</p>
+<div class="codehilite"><pre><span class="cp">#include &lt;nss.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">constructor</span><span class="p">))</span> <span class="n">preload_nss</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">db</span>     <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s">&quot;NSS_DB&quot;</span><span class="p">);</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">config</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s">&quot;NSS_CONFIG&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">db</span> <span class="o">&amp;&amp;</span> <span class="n">config</span><span class="p">)</span>
+        <span class="n">__nss_configure_lookup</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>As an example, let's debug the "myhostname" NSS module:</p>
+<div class="codehilite"><pre>bionic<span class="nv">$ </span>gcc -fPIC -shared -o libpreload_nss.so preload_nss.c
+<span class="nv">$ LD_PRELOAD</span><span class="o">=</span>./libpreload_nss.so <span class="se">\</span>
+    <span class="nv">NSS_DB</span><span class="o">=</span>hosts <span class="se">\</span>
+    <span class="nv">NSS_CONFIG</span><span class="o">=</span>myhostname <span class="se">\</span>
+    ./getaddrinfo.py bionic --type SOCK_STREAM
+bionic AF_INET  IPPROTO_TCP 192.168.1.148
+bionic AF_INET6 IPPROTO_TCP fe80::3c20:d6ec:9876:d951%eth0
+</pre></div>
+
+
+<p>In this example, we disabled dns, mdns and even lookups to
+/etc/hosts. But still, with "myhostname" module <em>getaddrinfo()</em> was
+able to resolve my host name "bionic" into assigned interfaces.</p>
+<h4 id="etcgaiconf">/etc/gai.conf</h4>
+<p>After successful domain resolution, the glibc the resolver module will
+open "/etc/gai.conf". Configuration stored there is used to sort the
+DNS responses. <a href="https://tools.ietf.org/html/rfc3484">RFC3484</a>
+describes the sorting requirements. With gai.conf configuration user
+may tweak them. Ordering of results has interesting implications for
+load balancing. In old days for load balancing web services could rely
+on DNS. Returning multiple responses to A or AAAA queries in random
+order was enough to guarantee load balancing on the servers. For
+example let's see how <a href="http://apple.com">apple.com</a> randomizes the A response order:</p>
+<div class="codehilite"><pre><span class="nv">$ </span>dig apple.com A +short @dns.google
+17.172.224.47
+17.142.160.59
+17.178.96.59
+
+<span class="nv">$ </span>dig apple.com A +short @dns.google
+17.142.160.59
+17.172.224.47
+17.178.96.59
+</pre></div>
+
+
+<p>Counter intuitively RFC3484 broke this - it strictly defines the order
+in which <em>getaddrinfo()</em> results are supposed to be returned. The
+glibc code changed over time. For a while around 2008 it was adhering
+to RFC3484 and always pre-sorting the returned IP's. This in effect
+disabled the DNS round-robin load balancing for many applications. See the
+<a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=438179">glibc bug report</a>
+and <a href="https://daniel.haxx.se/blog/2012/01/03/getaddrinfo-with-round-robin-dns-and-happy-eyeballs/">an article by Daniel Stenberg</a>.</p>
+<p>Modern glibc resolver module adheres to the order returned by the DNS
+resolver. Most recursive DNS resolvers don't amend the order of the
+response - it's usually preserved from the DNS authoritative
+response. There are many interesting caveats, as mandated by RFC3484:</p>
+<ul>
+<li>Within AAAA, IPv4-mapped-IPv6 takes precedence.</li>
+<li>It's followed by addresses glibc believes are from local networks.</li>
+<li>Followed by unsorted list of other IP's.</li>
+</ul>
+<p>To see it in action you can use our <em>getaddrinfo</em> script:</p>
+<div class="codehilite"><pre><span class="nv">$ </span>./getaddrinfo.py dnslb.popcount.org --type SOCK_STREAM
+dnslb.popcount.org  AF_INET     127.0.0.1
+dnslb.popcount.org  AF_INET     192.168.1.1
+dnslb.popcount.org  AF_INET     198.0.2.1
+dnslb.popcount.org  AF_INET     198.0.2.2
+dnslb.popcount.org  AF_INET6    ::ffff:192.0.2.1
+dnslb.popcount.org  AF_INET6    ::1
+dnslb.popcount.org  AF_INET6    fe80::1
+dnslb.popcount.org  AF_INET6    2606::1
+dnslb.popcount.org  AF_INET6    2606::2
+</pre></div>
+
+
+<p>Notice, the 127.0.0.1 and 192.168.1.1 (local subnet in my case) take
+precedence. Similarly IPv4-mapped-IPv6 and ::1 are above other AAAA
+results. Bear in mind that these intricacies are glibc and
+installation-specific. Other libc libraries may have different
+caveats. Most importantly some software doesn't use glibc for DNS
+resolution. Golang,
+<a href="https://en.m.wikipedia.org/wiki/DNS_over_HTTPS">browsers (with DoH)</a>
+and other software often re-implement DNS resolution functionality,
+avoiding glibc. They are often ignoring parts of system configuration
+like <em>/etc/resolv.conf</em> and <em>/etc/hosts</em>.</p>
+<p>Without understanding of specific client DNS library it's impossible
+to make any assumptions about ordering of IP addresses the client
+software is receiving. In practice though, at least in the context of
+web browsers, the DNS load balancing works well. As long as the
+authoritative DNS server serves IP addresses in randomized order, the
+servers load-balance well and receive similar number of requests.</p>
+<h3 id="happy-eyeballs">Happy eyeballs</h3>
+<p>Even though the first IPv6 draft standard was published in 1998, the
+protocol is still not fully adopted. In order to facilitate
+deployments of dual-stack - IPv4 and IPv6 - systems, many techniques
+have been proposed. The engineers try to prioritize IPv6 and give it
+better chance on dual systems.</p>
+<p>While getting IPv6 to work on servers is relatively straightforward
+it's more complex at client side. End hosts may change networks over
+time (mobility) and often need to use to networks with broken IPv6
+routing.</p>
+<p>To work around client problems, a technique called "Happy Eyeballs"
+emerged and was ratified as
+<a href="https://tools.ietf.org/html/rfc8305">RFC8305</a>.  It's used by major
+browsers. It is also built
+<a href="https://mailarchive.ietf.org/arch/msg/v6ops/DYiI9v_O66RNbMJsx0NsatFkubQ">in Apple iOS</a>
+operating system. The logic of Happy Eyeballs is roughly:</p>
+<ul>
+<li>Launch two DNS queries, AAAA and A.</li>
+<li>If A answers first, wait for AAAA answer or at most "Resolution Delay" of usually 50ms.</li>
+<li>On AAAA answer, or after the timeout, order the returned addresses.</li>
+<li>Ordering should interleave A and AAAA, giving preference to AAAA and hosts with know small RTT.</li>
+<li>Begin establishing TCP connections.</li>
+<li>Wait "Connection Attempt Delay" - usually between 10 and 250ms - before trying next address.</li>
+<li>Don't abort connections in the process of being established - use concurrent connections.</li>
+<li>When first connection is successfully established, abort all other connections.</li>
+</ul>
+<p>The idea is to establish both IPv6 as well as IPv4 connections, giving
+preference to IPv6 and servers closer to the user. By staggering the
+connection attempts Happy Eyeballs avoids building network pressure.</p>
+<p>Happy Eyeballs algorithm, while suffering
+<a href="https://labs.ripe.net/Members/emileaben/hampered-eyeballs">many problems in early implementations</a>,
+<a href="https://irtf.org/anrw/2016/anrw16-final9.pdf">had been proved to be successful</a>
+in reducing perceived latency for end-users and increasing IPv6 usage.</p>
+<h2 id="af_unix-addresses">AF_UNIX Addresses</h2>
+<p>Thus far we discussed working with AF_INET and AF_INET6 addresses and
+how the glibc machinery works for DNS resolution. It's time to discuss
+AF_UNIX address family.</p>
+<p>Unix sockets address is described by <code>struct sockaddr_un</code>:</p>
+<div class="codehilite"><pre><span class="k">struct</span> <span class="n">sockaddr_un</span> <span class="p">{</span>
+  <span class="kt">sa_family_t</span> <span class="n">sun_family</span><span class="p">;</span>               <span class="cm">/* AF_UNIX */</span>
+  <span class="kt">char</span>        <span class="n">sun_path</span><span class="p">[</span><span class="mi">108</span><span class="p">];</span>            <span class="cm">/* pathname */</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Depending on the value of <em>sun_path</em>, there are three types of UNIX
+socket addresses:</p>
+<ul>
+<li>Bound to a pathname</li>
+<li>Abstract</li>
+<li>Unnamed</li>
+</ul>
+<h3 id="bound-to-a-pathname">Bound to a pathname</h3>
+<p>The most common usage is to bind the UNIX socket to a path. Like:</p>
+<div class="codehilite"><pre><span class="kt">int</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_UNIX</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">struct</span> <span class="n">sockaddr_un</span> <span class="n">unix_addr</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">.</span><span class="n">sun_family</span> <span class="o">=</span> <span class="n">AF_UNIX</span><span class="p">,</span>
+  <span class="p">.</span><span class="n">sun_path</span> <span class="o">=</span> <span class="s">&quot;/tmp/unix-socket&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+<span class="kt">int</span> <span class="n">r</span> <span class="o">=</span> <span class="n">bind</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">unix_addr</span><span class="p">,</span> <span class="n">SOCKADDR_UN_SIZE</span><span class="p">(</span><span class="o">&amp;</span><span class="n">unix_addr</span><span class="p">));</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<p>This will create a file on disk of special "socket" type. This is best
+seen with <code>ls -F</code>:</p>
+<div class="codehilite"><pre><span class="nv">$ </span>ls -F /tmp/unix-socket
+/tmp/unix-socket<span class="o">=</span>
+</pre></div>
+
+
+<p>You can confirm this with <code>stat(2)</code> syscall which will return
+<em>S_IFSOCK</em> file type. Note, you can't perform normal file operations
+on this socket path. The semantics of UNIX sockets bound to pathname
+are somewhat arcane. For example, you can't bind to already existing
+path - the path must always be <em>created</em> by bind. A common practice is
+to unconditionally call unlink before calling bind. This may be
+dangerous, if untrusted user can influence the path. Consider
+privileged daemon receiving "/etc/passwd" as a UNIX domain socket
+path. It also creates a race condition when the path is not present
+for some amount of time.</p>
+<p>A better technique when starting up a server working with UNIX sockets bound to pathname is to:</p>
+<ul>
+<li>Verify if the target file is of socket type with <code>fstatat()</code> system call.</li>
+<li>Create new socket under new name.</li>
+<li>Perform atomic <code>renameat()</code> operation.</li>
+</ul>
+<p>You can inspect all the pathnames used by the system by looking into "/proc/net/unix":</p>
+<div class="smallpre">
+
+<div class="codehilite"><pre><span class="nv">$ </span>cat /proc/net/unix | grep unix-socket
+Num               RefCount Protocol Flags    Type St Inode     Path
+0000000000000000: 00000002 00000000 00010000 0001 01 146375111 /tmp/unix-socket
+</pre></div>
+
+
+</div>
+
+<p>Note, that the path reported by "/proc/net/unix" is not updated if the
+file is moved, hard-linked or removed. This is just the string passed
+at a time of <code>bind()</code> syscall, not representing actual disk path.</p>
+<p>UNIX sockets bound to pathname have disk presence, and Linux will
+verify the permissions. Connecting requires a write permission to the
+disk file<sup id="fnref:perms"><a href="#fn:perms" rel="footnote">2</a></sup>. If you wish to override the default permission
+mask, tune <code>umask</code> before calling <code>bind()</code>.</p>
+<p>Each UNIX socket bound to a pathname has two inodes. First one,
+reported by <em>/proc/net/unix</em> and tools like <code>ss</code>, is the internal
+sockfs inode. Second one is the inode used by the socket file on the
+disk, as reported by <code>ls -i</code>. To my knowledge there is no easy way of
+knowing which socket inode the socket file refers to.</p>
+<p>Note, that while usual path names are null-terminated, the <em>sun_path</em>
+is only 108 bytes long. Typical <em>PATH_MAX</em> is at least 256 bytes. It's
+possible to have <em>sun_path</em> returned by <em>getsockname</em>/<em>getpeername</em>
+lacking the trailing '\x00'. Beware.</p>
+<p>UNIX Sockets live in a namespace local to a machine.  If a user has
+access to a path of pathname bound UNIX socket, like
+"/tmp/unix-socket", then the connect() will succeed. There are a
+couple of exceptions though - it won't run over network filesystems
+like NFS. From a modern Linux point of view though - sharing a
+directory with pathname bound UNIX sockets with Docker container, or
+network-namespaced process is totally fine.</p>
+<h3 id="abstract">Abstract</h3>
+<p>Then there are Linux-specific abstract UNIX sockets. They aren't
+backed by a socket file on disk. The first character of such socket's
+<em>sun_path</em> is '\x00'. It's then followed by any characters. It's
+important to note that <em>sun_path</em> may contain arbitrary number of
+'\x00' bytes, and the length of this field is <em>not</em> a part of
+<em>sockaddr_un</em> structure. For abstract sockets you must pass the
+appropriate length to <em>bind</em>/<em>connect</em> syscalls in the <code>addrlen</code>
+parameter.  Basically, in abstract sockets, <code>sun_path</code> is not a C
+string. For example, this code binds three sockets to two different
+abstract names:</p>
+<div class="codehilite"><pre><span class="k">struct</span> <span class="n">sockaddr_un</span> <span class="n">s_un</span> <span class="o">=</span> <span class="p">{</span><span class="n">AF_UNIX</span><span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_UNIX</span><span class="p">,</span> <span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">bind</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s_un</span><span class="p">,</span> <span class="n">offsetof</span><span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr_un</span><span class="p">,</span> <span class="n">sun_path</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">s3</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_UNIX</span><span class="p">,</span> <span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">bind</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">s_un</span><span class="p">,</span> <span class="n">offsetof</span><span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr_un</span><span class="p">,</span> <span class="n">sun_path</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The created sockets are named '\x00' and '\x00\x00' respectively:</p>
+<div class="codehilite"><pre><span class="x">$ cat /proc/net/unix</span>
+<span class="x">000000000000: 00000002 00000000 00000000 0002 01 146452179 @</span>
+<span class="x">000000000000: 00000002 00000000 00000000 0002 01 146452180 @@</span>
+</pre></div>
+
+
+<p>You may have noticed the <code>SOCKADDR_UN_SIZE</code> macro used to figure out
+the <code>addrlen</code> passed to <code>bind()</code>. Here's its definition:</p>
+<div class="codehilite"><pre><span class="cp">#define SOCKADDR_UN_SIZE(sun) \</span>
+<span class="cp">  ((sun)-&gt;sun_path[0] == &#39;\x00&#39; \</span>
+<span class="cp">    ? __builtin_offsetof(struct sockaddr_un, sun_path) + 1 \</span>
+<span class="cp">      + strnlen(&amp;(sun)-&gt;sun_path[1], sizeof((sun)-&gt;sun_path)) \</span>
+<span class="cp">    : sizeof(struct sockaddr_un))</span>
+</pre></div>
+
+
+<p>The idea is to look at the first byte in <em>sun_path</em>. If it's not
+'\x00', then it's proper pathname, we can just return <em>sizeof(struct
+sockaddr_un)</em>. Otherwise, it's an abstract path and we need to craft
+proper length. We assume that no sane person would stick '\x00' into
+the abstract path name, so we assume following initial zero byte, it
+is zero-terminated. This is not strictly correct. As we saw, Linux is
+totally capable of handling abstract names like '\x00\x00'. This trick
+though, is practical and can simplify the code somewhat - no need to
+pass around length explicitly. In fact, this very technique
+<a href="https://github.com/systemd/systemd/commit/fc2fffe7706ef269005bf4eef56570346c9ca3da">is used in systemd</a>.</p>
+<p>In order to avoid printing '\x00' character onto the terminal, many
+Linux tools substitute the '\x00' characters with '@'. Doing this on
+whole string is excessive, but handling first character in manageable
+way is important. It's critical to clearly specify if socket is
+abstract or bound to a path. If your tool accepts UNIX socket path as
+a parameter, remember to allow for abstract names - substitute leading
+'@' character with '\x00'.</p>
+<p>Abstract sockets are tied to a network namespace. A process from one
+netns won't be able to access abstract socket from another network
+namespace, even when both run on the same machine.</p>
+<p>When should you use UNIX sockets bound to pathnames and when abstract
+names? Abstract names automatically disappear when server socket is
+closed, but unlike pathname sockets, don't have permissions.
+Furthermore, abstract sockets are a non portable Linux extension.</p>
+<h3 id="autobind-feature">Autobind feature</h3>
+<p>The example we showed in previous section begs a question - what if we
+call <code>bind()</code> with empty <em>sun_path</em>? In such case Linux will allocate
+a 5-character sequential abstract name for us:</p>
+<div class="codehilite"><pre><span class="k">struct</span> <span class="n">sockaddr_un</span> <span class="n">s_un</span> <span class="o">=</span> <span class="p">{</span><span class="n">AF_UNIX</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">s3</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_UNIX</span><span class="p">,</span> <span class="n">SOCK_DGRAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">bind</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">s_un</span><span class="p">,</span> <span class="n">__builtin_offsetof</span><span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr_un</span><span class="p">,</span> <span class="n">sun_path</span><span class="p">)</span> <span class="p">);</span>
+
+<span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr_un</span><span class="p">);</span>
+<span class="n">getsockname</span><span class="p">(</span><span class="n">s3</span><span class="p">,(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">s_un</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">len</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">len</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">s_un</span><span class="p">.</span><span class="n">sun_path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;\x00&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">s_un</span><span class="p">.</span><span class="n">sun_path</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="sc">&#39;@&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>On my server this yields:</p>
+<div class="codehilite"><pre><span class="x">@00047</span>
+</pre></div>
+
+
+<p>This behavior is called "autobind feature". Notice: there are only 2^20 unique autobind addresses.</p>
+<h3 id="unnamed">Unnamed</h3>
+<p>Finally, UNIX sockets created with <code>sockpair()</code> syscall don't have
+names assigned. The <em>getsockname</em>/<em>getpeername</em> will indicate <em>sun_path</em> is
+of zero bytes.</p>
+<hr>
+
+<p><strong> Totally comment <a href="https://twitter.com/majek04/status/1200497149227753473">this article on Twitter!</a></strong></p>
+<div class="smallpre">
+
+<p>The following people gave valuable feedback on this article:</p>
+<ul>
+<li>Per Mildner</li>
+<li><a href="https://twitter.com/vince2_">Vincent Bernat</a></li>
+</ul>
+</div>
+
+<div class="footnote">
+<hr>
+<ol>
+<li id="fn:sockaddr_storage">
+<p>According to <a href="https://books.google.pl/books?id=ptSC4LpwGA0C&amp;pg=PA73">"UNIX Network Programming: The
+  sockets networking API, Volume 1"</a>, by Stevens, section
+  3.2. Technically, according to RFC3493 <code>struct sockaddr_storage</code> is
+  only guaranteed to fit AF_INET and AF_INET6 addresses. In some old
+  operating systems full AF_UNIX address might not fit. To be
+  absolutely certain, consider guarding this condition with something
+  like:
+  <pre style="font-size: x-small">
+#define STATIC_ASSERT(COND,MSG) \
+    typedef char static_assertion_##MSG[(!!(COND))*2-1]
+STATIC_ASSERT(sizeof(struct sockaddr_un) &lt;= sizeof(struct sockaddr_storage), \
+    sockaddr_storage_size_check);</pre>&#160;<a href="#fnref:sockaddr_storage" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:perms">
+<p>The filesystem permissions check is not mandated by POSIX,
+but all modern operating systems support it.&#160;<a href="#fnref:perms" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+<div>
+  <span>&nbsp;</span>
+  <span style="float:right">
+    Discuss on <a href="http://news.ycombinator.com/item?id=21670271">YCombinator</a>
+
+    <br>
+    or
+    <a href="mailto:comment@popcount.org?subject=Idea+of+the+day%3A+Addressing">
+      leave a comment here.
+    </a>
+  </span>
+</div>
+
+</article>
+
+
+<div class="footerpush"></div>
+</div> <!-- content -->
+
+<footer>
+  <div>
+    <span id="footer-left">
+      <a href="https://twitter.com/majek04">
+        Catch me on <span>Twitter</span>
+      </a>
+    </span>
+    
+    <span id="footer-right">
+      <a href="/">More Articles &#8594;</a>
+    </span>
+    
+  </div>
+</footer>
+
+
+<div id="alertbox"><div id="alert">a</div></div>
+
+<script>
+var show_alert = function(msg){
+    document.getElementById('alertbox').style.display="block";
+    document.getElementById('alert').innerHTML = msg;
+
+};
+
+if (document.location.href.indexOf('idea.popcount.org') === -1) {
+    var counter = 0;
+
+    var ws_url = function(){
+        return ((document.location.protocol === 'http:') ? 'ws://' : 'wss://') +
+            document.location.host + '/ws';
+    }
+
+    var try_reconnect = function(){
+        counter += 1;
+        show_alert('Reconnecting... (' + counter + ')');
+        console.log('[*] reconnecting...');
+        setTimeout(function(){
+            ws = new WebSocket(ws_url());
+            ws.onclose = try_reconnect;
+            ws.onopen = function(){
+                ws.onclose = null;
+                document.location.reload();
+            };
+        }, 150);
+    };
+
+    if ('WebSocket' in window && 'console' in window){
+        var ws = new WebSocket(ws_url());
+        ws.onopen = function(){
+            console.log('[*] ws hooked! ' + Date());
+            ws.onclose = try_reconnect;
+        };
+    }
+}
+
+// Escape frames for browsers without X-Frame-Options
+if (top != window) {
+    top.location.href = location.href;
+}
+
+
+var _debug = 0;
+var flip_debug = function(){
+    var leading = 28;
+    var bg = ""
+    if (!_debug) {
+            bg = "url('/" + leading + "px_grid_bg.gif') 0 0";
+    }
+    _debug = !_debug;
+    document.body.style.background = bg;
+}
+
+if ('captureEvents' in window) {
+    window.captureEvents(Event.KEYPRESS);
+    window.onkeypress = function(e) {
+        if (e.which === 100) { // key "d"
+            flip_debug();
+        }
+    };
+};
+
+
+var _gaq = [];
+if (document.location.href.indexOf('idea.popcount.org') !== -1) {
+
+    // I surrender my soul to Google. Feel encouraged to use noscript.
+    _gaq = [['_setAccount', 'UA-283061-10'], ['_trackPageview']];
+
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+    window.onerror = function(m, f, l){
+        var err = [f, l, m].join(' : ');
+        _gaq.push(['_trackEvent', 'Errors', 'App', err, null, true]);
+    }
+
+}
+
+
+</script>
+
+</body></html>

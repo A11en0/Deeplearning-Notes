@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" version="XHTML+RDFa 1.0" dir="ltr" 
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:article="http://ogp.me/ns/article#"
+  xmlns:book="http://ogp.me/ns/book#"
+  xmlns:profile="http://ogp.me/ns/profile#"
+  xmlns:video="http://ogp.me/ns/video#"
+  xmlns:product="http://ogp.me/ns/product#">
+    <head profile="http://www.w3.org/1999/xhtml/vocab">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="https://dot.kde.org/sites/all/themes/neverland/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="By Caio Jordão Carvalho After a one-year hiatus, KDE Student Programs is very happy to announce Season of KDE 2020! Focused on offering an opportunity to anyone (not just enrolled students) contributing to the KDE community, this is a program that is comparable to the well-known Google Summer of Code, with some special differences. A key difference is that SoK projects are not" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="canonical" href="https://dot.kde.org/2019/11/29/announcing-season-kde-2020" />
+<link rel="shortlink" href="https://dot.kde.org/node/4410" />
+<meta property="og:site_name" content="KDE.news" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dot.kde.org/2019/11/29/announcing-season-kde-2020" />
+<meta property="og:title" content="Announcing Season of KDE 2020" />
+<meta property="og:description" content="By Caio Jordão Carvalho After a one-year hiatus, KDE Student Programs is very happy to announce Season of KDE 2020! Focused on offering an opportunity to anyone (not just enrolled students) contributing to the KDE community, this is a program that is comparable to the well-known Google Summer of Code, with some special differences. A key difference is that SoK projects are not limited to code-focused work, but any that benefit our community. For instance, projects can be about documentation, reports, translation, system administration, web and other types of work as well as code. Each contributor will work with a mentor and within a team that will also help the contributor. Schedule This year we have decreased the duration of the projects. Previously, all projects were 80 days long. However, during SoK 2018 we included the option of 40-day projects. This new option was widely adopted by participants during 2018 and, so we decided to keep only this alternative. Timeline: From the 9th of December 2019 to the 3rd of January 2020: Participant and Mentor Application period 6th of January 2020: Projects announced 8th of January 2020, 00:00 UTC: SoK work period begins 17th of February 2020, 23:59 UTC: End of work 21st of February 2020: Results announced 28th of February 2020: Certificates issued Beginning of Q3 2020: Merchandise and Swag sent out by courier Getting Started Prospective participants should get in touch with us before the application period begins to discuss possible projects. You can connect with us on Matrix, in the #kde-soc room on IRC, in KDE-SoC on Telegram, or through our mailing list. Besides talking to the SoK team, contact the application maintainer and team with whom you want to work. If you’re looking for project ideas, you can find some on our KDE Season of Code 2020 Ideas Page. Mentors please add ideas, so that we have a central repository of project ideas for Season of KDE 2020 and even GSoC 2020. Applicants will work with the teams to develop a proposal, and the SoK admin team will help too. Help us spread the word! Tell your friends, blog, tweet, and share on Facebook using the #2020SeasonKDE hashtag. Participants and mentors can apply here once applications open." />
+<meta property="og:updated_time" content="2019-11-29T17:56:45+00:00" />
+<meta property="article:published_time" content="2019-11-29T17:54:59+00:00" />
+<meta property="article:modified_time" content="2019-11-29T17:56:45+00:00" />
+
+        <title>
+            Announcing Season of KDE 2020 | KDE.news        </title>
+
+        <link type="text/css" rel="stylesheet" href="https://dot.kde.org/sites/dot.kde.org/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://dot.kde.org/sites/dot.kde.org/files/css/css_9kIpF7moV7fx1BGgTXLyvfB2C8lXuoD3fcn9PN5K0gI.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://dot.kde.org/sites/dot.kde.org/files/css/css_PGbJgHCUCBf4dg7K9Kt8aAwsApndP4GZ9RuToPy3-Fk.css" media="all" />
+        <link href="//cdn.kde.org/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen, projection" />
+        <link href="//cdn.kde.org/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" media="screen, projection" />
+        <link href="//cdn.kde.org/css/bootstrap-drupal.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    </head>
+
+    <body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-4410 node-type-story i18n-en" >
+        <script type="text/javascript" src="//cdn.kde.org/js/jquery.js"></script>
+        <script type="text/javascript" src="//cdn.kde.org/js/bootstrap.js"></script>
+        <script type="text/javascript" src="//cdn.kde.org/js/bootstrap-neverland.js"></script>
+
+        <div id="skip-link">
+            <a href="#main-content" class="element-invisible element-focusable">
+                Skip to main content            </a>
+        </div>
+
+                
+<div id="header" class="navbar navbar-static-top Neverland">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target="#neverland-menu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+                            <a class="brand" href="/" title="Home" rel="home">
+                    <img src="https://dot.kde.org/sites/all/themes/neverland/logo.png" alt="Home" />
+                </a>
+            
+            <div id="neverland-menu" class="nav-collapse">
+                <ul class="nav">
+                    <li><a href="/content/contribute-story"><h2>Contribute<small>Submit an article about your project to KDE.News</small></h2></a></li><li><a href="http://www.kde.org/community/whatiskde/"><h2>About KDE<small>Learn about KDE software and the community</small></h2></a></li><li><a href="http://www.kde.org/download/"><h2>Download KDE<small>Download KDE Desktop and related applications</small></h2></a></li>                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+            <div class="row">
+            <div class="span12">
+                <div class="subnav main-menu">
+                    <div class="pull-right">
+                                            </div>
+
+                    <ul class="nav nav-pills">
+                        <li><a href="http://www.kde.org"><i class="icon-globe"></i>&nbsp;KDE.org</a></li><li><a href="http://forum.kde.org/"><i class="icon-comment"></i>&nbsp;KDE Forums</a></li><li><a href="http://wiki.kde.org"><i class="icon-book"></i>&nbsp;KDE Wikis</a></li><li><a href="http://blogs.kde.org"><i class="icon-user"></i>&nbsp;Developer Blogs</a></li><li><a href="http://www.planetkde.org"><i class="icon-bullhorn"></i>&nbsp;Planet KDE</a></li>                    </ul>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    <div class="row" id="content">
+        <div class="span9">
+            
+            
+                                        
+            
+            
+                              <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    <div id="node-4410" class="node node-story node-promoted node-full node-body clearfix" >
+    <table width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+                                                <td class="node-meta">
+                        <div class="node-date-wrapper">
+                            <div class="node-date">
+                                <div class="node-dt-small">
+                                    NOV                                </div>
+
+                                <div class="node-dt-big">
+                                    29                                </div>
+
+                                <div class="node-dt-small">
+                                    2019                                </div>
+                            </div>
+                        </div>
+                    </td>
+                                        
+            <td rowspan="2" class="node-content
+                ">
+
+                
+                <h2 >
+                    <a href="/2019/11/29/announcing-season-kde-2020">
+                        Announcing Season of KDE 2020                    </a>
+                </h2>
+
+                
+                
+                <div class="content">
+                    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p style="font-size: small">By Caio Jordão Carvalho</p>
+<p><img class="alignnone size-full wp-image-135" src="https://dot.kde.org/sites/dot.kde.org/files/SoK.jpg" alt="" width="800" /></p>
+<p><b>After a one-year hiatus, KDE Student Programs is very happy to announce <a href="https://season.kde.org/">Season of KDE 2020</a>!</b></p>
+<p>Focused on offering an opportunity to anyone (not just enrolled students) contributing to the KDE community, this is a program that is comparable to the well-known Google Summer of Code, with some special differences. A key difference is that <a href="https://community.kde.org/SoK">SoK</a> projects are not limited to code-focused work, but any that benefit our community. For instance, projects can be about documentation, reports, translation, system administration, web and other types of work as well as code. Each contributor will work with a mentor and within a team that will also help the contributor.</p>
+<h2>Schedule</h2>
+<p>This year we have decreased the duration of the projects. Previously, all projects were 80 days long. However, during SoK 2018 we included the  option of 40-day projects. This new option was widely adopted by participants during 2018 and, so we decided to keep only this alternative.</p>
+<h3>Timeline:</h3>
+<ul>
+<li><b>From the 9th of December 2019 to the 3rd of January 2020:</b> Participant and Mentor Application period</li>
+<li><b>6th of January 2020:</b> Projects announced</li>
+<li><b>8th of January 2020, 00:00 UTC:</b> SoK work period begins</li>
+<li><b>17th of February 2020, 23:59 UTC:</b> End of work</li>
+<li><b>21st of February 2020:</b> Results announced</li>
+<li><b>28th of February 2020:</b> Certificates issued</li>
+<li><b>Beginning of Q3 2020:</b> Merchandise and Swag sent out by courier</li>
+</ul>
+<h2>Getting Started</h2>
+<p>Prospective participants should get in touch with us before the application period begins to discuss possible projects. You can connect with us <a href="https://riot.im/app/#/room/%23kde-soc:kde.org">on Matrix</a>, in the #kde-soc room on IRC, in <a href="https://telegram.me/joinchat/A-9tjgavn9YJ2myF1aTK4A">KDE-SoC</a> on Telegram, or through <a href="https://mail.kde.org/mailman/listinfo/kde-soc">our mailing list</a>. Besides talking to the SoK team, contact the <a href="https://kde.org/applications">application maintainer and team</a> with whom you want to work.</p>
+<p>If you’re looking for project ideas, you can find some on our <a href="https://community.kde.org/SoK/Ideas/2020">KDE Season of Code 2020 Ideas Page</a>. Mentors please add ideas, so that we have a central repository of project ideas for  Season of KDE 2020 and even GSoC 2020. Applicants will work with the teams to develop a proposal, and the SoK admin team will help too.</p>
+<p>Help us spread the word! Tell your friends, blog, tweet, and share on Facebook using the #2020SeasonKDE hashtag.</p>
+<p>Participants and mentors can apply <a href="https://season.kde.org">here</a> once applications open.</p>
+<!--break--></div></div></div>                </div>
+
+                                    <div class="link-wrapper">
+                        <ul class="links inline"><li class="comment-add first last"><a href="/comment/reply/4410#comment-form" title="Share your thoughts and opinions related to this posting.">Add new comment</a></li>
+</ul>                    </div>
+                
+                            </td>
+        </tr>
+
+                    <tr>
+                <td class="node-sep">
+                                    </td>
+            </tr>
+            </table>
+</div>  </div>
+</div>
+  </div>
+                    </div>
+        <div class="span3" id="sidebar">
+            
+                  <div class="region region-sidebar-first">
+    <div id="block-search-form" class="block block-search">
+
+    
+  <div class="content">
+    <form action="/2019/11/29/announcing-season-kde-2020" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-Jkc3Ks0jfmjUHr7NEVvIYPSsbhBjaObM6ddIy5UmzlI" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+</div>
+<div id="block-block-4" class="block block-block">
+
+    
+  <div class="content">
+    <div style="font-size: 14px; color: #909090; padding-bottom: 0.5em;">DONATE <a href="https://www.kde.org/community/donations/index.php#money">(Why?)</a><img src="https://www.kde.org/media/images/paypal.png" style="padding: 0px; border: none; margin: 0px; margin-left: 10px;float: right;" alt="paypal" /></div>
+<form action="https://www.paypal.com/en_US/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_donations" /><input type="hidden" name="lc" value="GB" /><input type="hidden" name="item_name" value="Development and communication of KDE software" /><input type="hidden" name="custom" value="//dot.kde.org/donation_box" /><input type="hidden" name="currency_code" value="EUR" /><input type="hidden" name="cbt" value="Return to www.kde.org" /><input type="hidden" name="return" value="https://www.kde.org/community/donations/thanks_paypal.php" /><input type="hidden" name="notify_url" value="https://www.kde.org/community/donations/notify.php" /><input type="hidden" name="business" value="kde-ev-paypal@kde.org" /><input style="text-align: right; padding-right: 1em; border: 1px solid #CCC; width: 60px; height: 23px; " type="text" name="amount" value="10.00" /> €   <button style="cursor: pointer; background-color: #0070BB; border: 1px solid #0060AB; color: #FFF; height: 27px; margin-left: 0.5em;" type="submit">Donate</button><br />
+</form>
+  </div>
+</div>
+<div id="block-views-planetkde-block-1" class="block block-views">
+
+    <h2>Planet KDE</h2>
+  
+  <div class="content">
+    <div class="view view-planetkde view-id-planetkde view-display-id-block_1 view-dom-id-cf1efe630525824607a03fab18da5392">
+        
+  
+  
+      <div class="view-content">
+      <div class="item-list">    <ul>          <li class="views-row views-row-1 views-row-odd views-row-first">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://ervin.ipsquad.net/blog/2019/12/7/kf6-how-we-organize-the-work/">KF6: How We Organize The Work</a></span>  </div>  
+  <div class="views-field views-field-author">        <span class="field-content"><span class="planet-author">by Kevin Ottens (ervin)</span></span>  </div></li>
+          <li class="views-row views-row-2 views-row-even">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://dvratil.cz/2019/12/plasma-pass-1-1-0/">Plasma Pass 1.1.0</a></span>  </div>  
+  <div class="views-field views-field-author">        <span class="field-content"><span class="planet-author">by Daniel Vrátil (dvratil)</span></span>  </div></li>
+          <li class="views-row views-row-3 views-row-odd">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.plasma-mobile.org/2019/12/06/Plasma-Mobile-Weekly-update-9-10.html">Plasma Mobile: weekly update: part 9-10</a></span>  </div>  
+  <div class="views-field views-field-author">        <span class="field-content"><span class="planet-author">by Plasma Mobile blog</span></span>  </div></li>
+          <li class="views-row views-row-4 views-row-even">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://www.hellozee.dev/kw6/">Krita Weekly #6</a></span>  </div>  
+  <div class="views-field views-field-author">        <span class="field-content"><span class="planet-author">by Kuntal Majumder (hellozee)</span></span>  </div></li>
+          <li class="views-row views-row-5 views-row-odd views-row-last">  
+  <div class="views-field views-field-title">        <span class="field-content"><a href="https://euroquis.nl//bla%20bla/2019/12/05/representation.html">Bar charts for diversity</a></span>  </div>  
+  <div class="views-field views-field-author">        <span class="field-content"><span class="planet-author">by Adriaan de Groot ([ade])</span></span>  </div></li>
+      </ul></div>    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <div class="more-link">
+    <a href="http://planetkde.org/">More</a>
+</div>
+    </div>
+  
+  
+</div>  </div>
+</div>
+<div id="block-aggregator-feed-2" class="block block-aggregator">
+
+    <h2>KDE Store</h2>
+  
+  <div class="content">
+    <div class="item-list"><ul><li class="first"><a href="https://store.kde.org/p/1341926">Moonlight [Cursors]</a>
+</li>
+<li><a href="https://store.kde.org/p/1341885">Silhouette Mountain Landscape Painting 4K Wallpaper [Wallpapers KDE Plasma]</a>
+</li>
+<li><a href="https://store.kde.org/p/1341884">Vita Plasma Desktop Wallpapers [Wallpapers KDE Plasma]</a>
+</li>
+<li><a href="https://store.kde.org/p/1341883">Orbis KDE Plasma Desktop Wallpapers [Wallpapers KDE Plasma]</a>
+</li>
+<li><a href="https://store.kde.org/p/1341882">KDE Plasma Scenery 199 HD [Wallpapers KDE Plasma]</a>
+</li>
+<li><a href="https://store.kde.org/p/1341881">KDE Plasma Scenery 198 HD [Wallpapers KDE Plasma]</a>
+</li>
+<li><a href="https://store.kde.org/p/1341880">KDE Plasma Scenery 197 HD [Wallpapers KDE Plasma]</a>
+</li>
+<li class="last"><a href="https://store.kde.org/p/1341879">KDE Plasma Scenery 196 HD 4K [Wallpapers KDE Plasma]</a>
+</li>
+</ul></div><div class="more-link"><a href="/aggregator/sources/2" title="View this feed&#039;s recent news.">More</a></div>  </div>
+</div>
+  </div>
+
+            
+        </div>
+    </div>
+
+            <footer class="copyright align-center">
+              <div class="region region-footer">
+    <div id="block-block-2" class="block block-block">
+
+    
+  <div class="content">
+    <p><a rel="nofollow" href="http://creativecommons.org/licenses/by/3.0/"></a>  This work by KDE is licensed under a <a rel="nofollow" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.</p>
+  </div>
+</div>
+<div id="block-system-powered-by" class="block block-system">
+
+    
+  <div class="content">
+    <span>Powered by <a href="https://www.drupal.org">Drupal</a></span>  </div>
+</div>
+  </div>
+        </footer>
+    </div>
+        <script type="text/javascript" src="https://dot.kde.org/sites/dot.kde.org/files/js/js_qikmINIYTWe4jcTUn8cKiMr8bmSDiZB9LQqvceZ6wlM.js"></script>
+<script type="text/javascript" src="https://dot.kde.org/sites/dot.kde.org/files/js/js_i9-mZxF1wrIj_pHo8CcygMfG3cz35Mlm6odAjzL19fk.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://stats.kde.org//" : "http://stats.kde.org//");_paq.push(["setSiteId", "17"]);_paq.push(["setTrackerUrl", u+"piwik.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["trackPageView"]);_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src=u+"piwik.js";s.parentNode.insertBefore(g,s);})();
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"neverland","theme_token":"z3voGxAPcnasNz2O11LTDdBMHevP4i7b_8tFhH3pZS4","js":{"misc\/jquery.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/matomo\/matomo.js":1,"0":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/aggregator\/aggregator.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/date\/date_api\/date.css":1,"sites\/all\/modules\/date\/date_popup\/themes\/datepicker.1.7.css":1,"sites\/all\/modules\/date\/date_repeat_field\/date_repeat_field.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/calendar\/css\/calendar_multiday.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1}},"matomo":{"trackMailto":1},"urlIsAjaxTrusted":{"\/2019\/11\/29\/announcing-season-kde-2020":true}});
+//--><!]]>
+</script>
+            </body>
+</html>

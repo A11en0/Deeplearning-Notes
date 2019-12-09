@@ -1,0 +1,291 @@
+Get started
+About ITNEXT
+Write for ITNEXT
+Vacancies @ LINKIT
+What is: Linux keyring, gnome-keyring, Secret Service, and D-Bus
+Arseny Zinchenko (setevoy)
+It’s a really long-read post and I wast sure if it’s better to split it into three parts or put them together. On the one side, there are keyrings, from another — D-Bus, and finally, there is a Secret Service.
+Eventually, I decided to keep them here together as I googled all it in the same scope and the are related to each other.
+So, in this post we will speak about the next:
+Linux keyring
+GNOME keyring
+which keyring implementations are
+org.freedesktop
+Secret Service
+GNOME keyring
+Linux Keyring
+GNOME Keyring
+This post is absolutely not kind of “tutorial” with “HowTo Configure it” but instead — just an overview of the components mentioned above to try to understand what they are and how they can be used.
+A real example of how to configure KeePass and maybe GNOME Keyring we will see the following posts.
+This post was written by a long-long googling, so here will be a lot of links that were used documents and other materials.
+I may confuse something or even understood in a wrong way, so please welcome to the comments, if you’ll see any errors.
+The post’s writing process was like this:
+What is the Keyring?
+Linux keyring vs gnome-keyring
+Keyrings implementations
+Passwords interception from the gnome-keyting
+What is the Secret Service?
+The Secret Service glossary
+D-Bus tools
+Keyrings examples
+Linux keyring
+keyctl() syscall
+gnome-keyring
+D-Bus GetConnectionUnixProcessID
+python-keyring
+secret-tools
+What is the Keyring?
+https://en.wikipedia.org/wiki/Keyring_(cryptography)
+In cryptography, a keyring stores known encryption keys (and, in some cases, passwords).
+https://help.gnome.org/users/seahorse/stable/keyring.html.en
+Much like a keyring in real life allows you to keep certain sets of keys together, a keyring in Passwords and Keys allows you to keep passwords and keys in separate groups.
+https://dev.mysql.com/doc/refman/5.7/en/keyring-service.html
+a keyring service that enables internal server components and plugins to securely store sensitive information for later retrieval
+keyrings(7)
+http://man7.org/linux/man-pages/man7/keyrings.7.html
+The Linux key-management facility is primarily a way for various kernel components to retain or cache security data, authentication keys, encryption keys, and other data in the kernel.
+Good, let’s go deeper.
+Linux keyring vs gnome-keyring
+Useful links used:
+KERNEL KEY RETENTION SERVICE
+http://www.ict.griffith.edu.au/anthony/info/crypto/passwd_caching.txt
+http://www.ict.griffith.edu.au/anthony/info/crypto/
+https://wiki.gnome.org/Projects/GnomeKeyring
+https://wiki.archlinux.org/index.php/GNOME/Keyring
+Linux kernel keyring
+GNOME Keyring
+man 7 Linux keyrings
+keyrings — in-kernel key management and retention facility
+Linux keyrings
+gnome-keyring
+GNOME Keyring is a collection of components in GNOME that store secrets, passwords, keys, certificates and make them available to applications.
+GNOME Keyring
+gnome-keyring-daemon
+GNOME Keyring architecture
+Tower Floor — Encryption
+Caching Passwords
+Linux keyrings
+GNOME Keyring
+Linux kernel — is a kernel’s facility for “passwords caching” — it stores them in a computer’s memory during an active user’s/system session
+gnome-keyring
+Linux keyring — store in RAM, thus passwords are available only during a session, there is no need to store them always
+gnome-keyring
+~/.local/share/keyrings/
+Linux keyring — via syscalls from the user space into the kernel space
+gnome-keyring
+applications to access:
+systemd-ask-password
+gnome-keyring
+secret-tool
+python-keyring
+Keyrings implementations
+GNOME Keyring
+python-keyring
+gsheet-keyring
+ipython-secrets
+bitwarden-keyring
+And this list is not full.
+Also, there a bunch of client applications to be used with those keyrings, again the list is not full:
+python-keyring
+secret-service
+secret-tool
+SecretStorage
+gnome-keyting
+https://bugs.launchpad.net/ubuntu/+source/gnome-keyring/+bug/1780365
+a client and a service communicates via D-Bus
+gnome-keyring
+the service via D-Bus send a confidential data
+another, “bad”, process listens dbus-messages and intercepts a password
+What is the Secret Service?
+Another one concept I had to google about: what is the “Secret Service”? How it relates to the GNOME Keyring and to the KWallet?
+What is it doing in the Linux and how can I touch it?
+https://specifications.freedesktop.org/secret-service/latest/ch01.html
+The Secret Service API allows client applications to store secrets securely in a service running in the user’s login session.
+Secret Service
+Also, the Secret Service API supported not only by the GNOME Keyring and KWallet but also for example by the KeePass and other applications.
+Secret Service
+The Secret Service glossary
+In short terms:
+collection: a set of such items makes a collection (similar to the keyring or wallet concepts)
+collections and items represented by D-Bus objects, each with its unique path
+default collection
+/org/freedesktop/secrets/aliases/default
+Not its time to try to recall with is the D-Bus so often mentioned in the previous parts, and how to deal with it.
+Inter-Process Communication
+Useful links:
+https://techbase.kde.org/Development/Tutorials/D-Bus/Introduction
+https://dbus.freedesktop.org/doc/dbus-tutorial.html
+https://dbus.freedesktop.org/doc/dbus-specification.html#transports
+D-Bus, quick recap
+Universal standard mapping between D-Bus and URI namespaces
+D-Bus Addresses — D-Bus connection endpoints
+And in short about main concepts and terms in D-Bus:
+D-Bus in general
+SSH: RSA keys, and ssh-agent for SSH keys and their passwords management
+https://www.kernel.org/doc/html/latest/driver-api/driver-model/bus.html
+a session bus
+a system bus
+private buses
+when a message is sent usually it leads to some method to be called to execute some actions by an application providing this method
+a message can be sent by an application to itself
+as various applications can be placed on the same bus (or “listen to the same bus”) and during that the same application can provide various objects which can accept messages, then need to have some way to address those messages. In D-Bus, such an address consists of an interface name + service + an object name
+org.freedesktop.dbus
+unix:tmpdir=/tmp/my-app-name
+most of the interfaces will lead to the concrete construction of a language used for an application, for example, it can be a Java interface or a virtual class in С++
+org.freedesktop.Introspectable
+“well-known” Bus names
+if an application has more then one connection to a bus, or if the application is running in multitype instances — expanded by a PID number, for example, to make it unique
+org.kde.screensaver
+/MainInterface
+/Documents/Doc1
+https://dbus.freedesktop.org/doc/dbus-tutorial.html#objects
+methods — ate messages sent to an object to trigger some action in an application, who created this object
+methods can pass data to an application’s input and can return an output with some values from the application
+methods always have a sender and receiver addresses
+are similar to the methods, but are not tied to any specific destination and can be accepted by any application on the same bus
+are generated by an application which exported an interface
+D-Bus tools
+dbus-monitor
+qdbusviewer
+$ sudo pacman -S d-feet
+Keyrings examples
+And a few examples of how those backends can be used from a Python or CLI utilities.
+Linux keyring
+As already mentioned, the Linux keyring is a kind of “caching service” in the kernel.
+systemd-ask-password
+To read about:
+Kernel key retention service doc
+And from the documentation:
+Each process subscribes to three keyrings: a thread-specific keyring, a process-specific keyring, and a session-specific keyring.
+Let’s see which keyrings are available for my current session:
+Or for my user:
+/proc/key-users
+A user’s keyrings in the current session:
+Keys in the current keyring:
+Got its ID and now can read its content using this ID:
+keyctl(KEYCTL_READ, 546850615, NULL, 0) = 12
+KEYCTL_READ
+Okay — more or less clear here.
+Materials used here:
+https://www.kernel.org/doc/Documentation/security/keys.txt
+https://www.ibm.com/developerworks/library/l-key-retention/
+http://man7.org/linux/man-pages/man7/keyrings.7.html
+http://man7.org/linux/man-pages/man1/keyctl.1.html
+http://man7.org/linux/man-pages/man2/keyctl.2.html
+Let’s go to the keyring storages.
+gnome-keyring
+Really problematic package, as for me, but still it is most widely used.
+Install if not present yet:
+$ sudo pacman -S gnome-keyring
+org.freedesktop.secrets
+“Aha, here we are” ©
+org.freedesktop.DBus.Introspectable.Introspect
+And get the full service’s description:
+GetConnectionUnixProcessID
+GetConnectionUnixProcessID
+Here we did:
+org.freedesktop.DBus
+passing the / path
+org.freedesktop.DBus.GetConnectionUnixProcessID
+org.freedesktop.secrets 
+gnome-keyring
+python-keyring
+secret-tool
+python-keyring
+python-keyring
+Install it:
+$ sudo pacman -S python-keyring
+In case of errors like (can happen on the first run after installation on Arch Linux, for example):
+/etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+$ . /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+And create a new keyring and set a password for it:
+dbus-monitor
+sender=:1.576
+cmd: python
+destination=org.freedesktop.secrets
+/usr/bin/gnome-keyring-daemon
+org.freedesktop.DBus.GetConnectionUnixProcessID
+gnome-keyring
+“It works!”
+secret-tools
+secret-tools
+Add a new secret:
+Retrieve it:
+Check with the Seahorse in the storage:
+$ sudo pacman -S kwallet
+Check the D-Bus:
+gnome-keyring
+Try to kill it:
+$ kill 1278791
+And the service-file is still old:
+gnome-keyring
+And no service file now:
+No new service file:
+That’s weird…
+Does D-Bus and Secret Service are supported by the KWallet at all?
+Reddit says
+In brief, there is no longer a secret service implementation for KDE that I am aware of
+ksecretsservice
+documentation
+It’s a pity. I do like Qt-based KDE applications.
+And the more strange is the fact that the Secret Service specification was written by both GNOME and KDE projects together, but it’s supported by the GNOME Keyring only…
+Still, we can use KWallet without the Secret Service integration.
+Run the KDE’s wallets manager:
+$ kwalletmanager5
+Create a wallet:
+Set its password:
+Obviously, now our Python lib will stop working as no Secret Service now is available:
+configure a 
+Add a password:
+>>> keyring.set_password(“system”, “username”, “password”)
+Check the D-Bus messages:
+And the KWallet:
+Also, KeePass can act as a keyring backend service using the Secret Storage specification.
+gnome-keyring
+Another secret service is running
+gnome-keyring
+Check the D-Bus activity:
+org.freedesktop.secrets
+Okay — this is our KeePass.
+Add something to the database:
+Add a new group in the database:
+Database > Database settings 
+Restart KeePass and check the D-Bus — can see now how the collection was added now:
+Add a record:
+Check the D-Bus:
+And the KeePass itself:
+That’s all for now.
+Useful links
+keyrings, Secret Service, etc
+GNOME Keyring
+GNOME/Keyring
+Python Keyring Lib
+Manage Passwords, Encryption Keys, And More With Seahorse
+secret-tool examples
+Using Linux keyring secrets from your scripts
+Secret Service API Draft
+Python bindings to FreeDesktop.org Secret Service API
+Python keyring lib
+Libsecret Library Reference Manual
+Credentials located in gnome-keyring can be compromised easily
+“Please enter password for encrypted keyring” when running Python script on Ubuntu
+Use keyring to store your credentials
+In KDE Plasma, keyring uses gnome-keyring by default
+Get started with the Linux key retention service
+D-Bus Tutorial
+D-Bus/Introduction
+D-Bus Specification
+D-Bus API Design Guidelines
+Introspecting D-Bus from the command-line
+Understanding D-Bus
+dbus-python tutorial
+Universal standard mapping between D-Bus and URI namespaces
+D-Bus, quick recap
+Originally published at 
+RTFM: Linux, DevOps and system administration
+ITNEXT is a platform for IT developers & software engineers to share knowledge, connect, collaborate, learn and experience next-gen technologies.
+Arseny Zinchenko (setevoy)
+DevOps engineer.
+ITNEXT is a platform for IT developers & software engineers to share knowledge, connect, collaborate, learn and experience next-gen technologies.
+Write the first response
+Become a member

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-GB">
+<head>
+	<meta charset="UTF-8">
+	<title>LibreOffice monthly recap: November 2019 - The Document Foundation Blog</title>
+	<!--iOS/android/handheld specific -->	
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" type="text/css" media="all" href="https://blog.documentfoundation.org/wp-content/themes/ribbon/style.css" />
+	<link rel="pingback" href="https://blog.documentfoundation.org/xmlrpc.php" />
+			<!--[if lt IE 9]>
+	<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<style type="text/css">
+body {background-color:#EBEBEB;}
+.nav-previous a:hover,.nav-next a:hover,#commentform input#submit,#searchform input[type="submit"],.home_menu_item,.secondary-navigation a:hover, .post-date-ribbon,.currenttext, .pagination a:hover,.readMore a,.mts-subscribe input[type="submit"] {background-color:#00a500; }
+#tabber .inside li .meta b,footer .widget li a:hover,.fn a,.reply a,#tabber .inside li div.info .entry-title a:hover, #navigation ul ul a:hover,.single_post a, a:hover, .textwidget a, #commentform a, #tabber .inside li a, .copyrights a:hover, a, .sidebar.c-4-12 a:hover, .top a:hover {color:#00a500; }
+.corner {border-color: transparent transparent #00a500 transparent;}
+.secondary-navigation, footer, .sidebar #searchform input[type="submit"]:hover, .readMore a:hover, #commentform input#submit:hover { background-color: #000000; }
+#page, .container {
+max-width: 1200px;
+}
+.main-container {
+width: 1200px;
+}
+.article {
+width: 70%;
+}
+.secondary-navigation {
+max-width: 1200px;
+width: 100%;
+}
+#header {
+max-width: 1130px;
+}
+#navigation ul {
+width: 1200px;
+}
+.footer-w-container, #copyright-note {
+width: 1120px;
+}
+</style>
+	<link href="https://blog.documentfoundation.org/wp-content/plugins/shariff-sharing/dep/shariff.complete.css" rel="stylesheet">
+            <script data-cfasync="false">
+                window._EPYT_ = window._EPYT_ || {
+                    ajaxurl: "https://blog.documentfoundation.org/wp-admin/admin-ajax.php",
+                    security: "0b866da29d",
+                    gallery_scrolloffset: 20,
+                    eppathtoscripts: "https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/scripts/",
+                    eppath: "https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/",
+                    epresponsiveselector: ["iframe.__youtube_prefs_widget__"],
+                    version: "13.1.2.4",
+                    epdovol: true,
+                    evselector: 'iframe.__youtube_prefs__[src], iframe[src*="youtube.com/embed/"], iframe[src*="youtube-nocookie.com/embed/"]',
+                    ajax_compat: false,
+                    ytapi_load: 'light',
+                    stopMobileBuffer: true                };</script>
+            
+<!-- This site is optimized with the Yoast SEO plugin v12.6.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="LibreOffice monthly recap: November 2019 - The Document Foundation Blog" />
+<meta property="og:description" content="Here&#8217;s our summary of updates, events and activities in the LibreOffice project in the last four weeks – click the links to learn more! We got started with the Month of LibreOffice, November 2019. This is a campaign that we run every six months, crediting contributions all across the project. Everyone who helps the LibreOffice &hellip;" />
+<meta property="og:url" content="https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/" />
+<meta property="og:site_name" content="The Document Foundation Blog" />
+<meta property="article:section" content="Community" />
+<meta property="article:published_time" content="2019-11-30T09:49:20+00:00" />
+<meta property="og:image" content="https://blog.documentfoundation.org/wp-content/uploads/2019/11/monthly_recap_header_november_2019.jpg" />
+<meta property="og:image:secure_url" content="https://blog.documentfoundation.org/wp-content/uploads/2019/11/monthly_recap_header_november_2019.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Here&#8217;s our summary of updates, events and activities in the LibreOffice project in the last four weeks – click the links to learn more! We got started with the Month of LibreOffice, November 2019. This is a campaign that we run every six months, crediting contributions all across the project. Everyone who helps the LibreOffice [&hellip;]" />
+<meta name="twitter:title" content="LibreOffice monthly recap: November 2019 - The Document Foundation Blog" />
+<meta name="twitter:site" content="@libreoffice" />
+<meta name="twitter:image" content="https://blog.documentfoundation.org/wp-content/uploads/2019/11/monthly_recap_header_november_2019.jpg" />
+<meta name="twitter:creator" content="@libreoffice" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://blog.documentfoundation.org/#organization","name":"The Document Foundation","url":"https://blog.documentfoundation.org/","sameAs":["https://twitter.com/libreoffice"],"logo":{"@type":"ImageObject","@id":"https://blog.documentfoundation.org/#logo","url":"https://blog.documentfoundation.org/wp-content/uploads/2015/07/LibreOffice-Logo.jpg","width":1200,"height":383,"caption":"The Document Foundation"},"image":{"@id":"https://blog.documentfoundation.org/#logo"}},{"@type":"WebSite","@id":"https://blog.documentfoundation.org/#website","url":"https://blog.documentfoundation.org/","name":"The Document Foundation Blog","publisher":{"@id":"https://blog.documentfoundation.org/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://blog.documentfoundation.org/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/#primaryimage","url":"https://blog.documentfoundation.org/wp-content/uploads/2019/11/monthly_recap_header_november_2019.jpg","width":1200,"height":594},{"@type":"WebPage","@id":"https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/#webpage","url":"https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/","inLanguage":"en-GB","name":"LibreOffice monthly recap: November 2019 - The Document Foundation Blog","isPartOf":{"@id":"https://blog.documentfoundation.org/#website"},"primaryImageOfPage":{"@id":"https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/#primaryimage"},"datePublished":"2019-11-30T09:49:20+00:00","dateModified":"2019-11-30T09:49:20+00:00"},{"@type":"Article","@id":"https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/#article","isPartOf":{"@id":"https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/#webpage"},"author":{"@id":"https://blog.documentfoundation.org/#/schema/person/6a0e8358aff800d14f82ea1cddf8b5d1"},"headline":"LibreOffice monthly recap: November 2019","datePublished":"2019-11-30T09:49:20+00:00","dateModified":"2019-11-30T09:49:20+00:00","commentCount":0,"mainEntityOfPage":{"@id":"https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/#webpage"},"publisher":{"@id":"https://blog.documentfoundation.org/#organization"},"image":{"@id":"https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/#primaryimage"},"articleSection":"Community,LibreOffice"},{"@type":["Person"],"@id":"https://blog.documentfoundation.org/#/schema/person/6a0e8358aff800d14f82ea1cddf8b5d1","name":"Mike Saunders","image":{"@type":"ImageObject","@id":"https://blog.documentfoundation.org/#authorlogo","url":"https://secure.gravatar.com/avatar/3dcb14e4d74471690227ab1217175c6b?s=96&r=g","caption":"Mike Saunders"},"sameAs":[]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="The Document Foundation Blog &raquo; Feed" href="https://blog.documentfoundation.org/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Document Foundation Blog &raquo; Comments Feed" href="https://blog.documentfoundation.org/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Document Foundation Blog &raquo; LibreOffice monthly recap: November 2019 Comments Feed" href="https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.documentfoundation.org\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='GoogleFonts-css'  href='https://fonts.googleapis.com/css?family=Monda%3Aregular%2Cbold&#038;v1&#038;ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://blog.documentfoundation.org/wp-includes/css/dist/block-library/style.min.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='bbspoiler-css'  href='https://blog.documentfoundation.org/wp-content/plugins/bbspoiler/inc/bbspoiler.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-notice-front-css'  href='https://blog.documentfoundation.org/wp-content/plugins/cookie-notice/css/front.min.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='email-subscribers-css'  href='https://blog.documentfoundation.org/wp-content/plugins/email-subscribers/lite/public/css/email-subscribers-public.css' type='text/css' media='all' />
+<link rel='stylesheet' id='gdpr-css'  href='https://blog.documentfoundation.org/wp-content/plugins/gdpr/assets/css/gdpr-public.css?ver=2.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='wp_review-style-css'  href='https://blog.documentfoundation.org/wp-content/plugins/wp-review/public/css/wp-review.css?ver=5.2.8' type='text/css' media='all' />
+<link rel='stylesheet' id='enlighter-local-css'  href='https://blog.documentfoundation.org/wp-content/plugins/enlighter/resources/EnlighterJS.min.css?ver=3.10.0' type='text/css' media='all' />
+<link rel='stylesheet' id='enlighter-webfonts-css'  href='//fonts.googleapis.com/css?family=Cousine%3Aregular%2Citalic%2C700%2C700italic%7CInconsolata%3Aregular%2C700%7CSource+Code+Pro%3Aregular%2C700&#038;ver=3.10.0' type='text/css' media='all' />
+<link rel='stylesheet' id='__EPYT__style-css'  href='https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/styles/ytprefs.min.css?ver=13.1.2.4' type='text/css' media='all' />
+<style id='__EPYT__style-inline-css' type='text/css'>
+
+                .epyt-gallery-thumb {
+                        width: 33.333%;
+                }
+                
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='https://blog.documentfoundation.org/wp-content/plugins/jetpack/css/jetpack.css?ver=8.0' type='text/css' media='all' />
+            <script data-cfasync="false">
+                window._EPYT_ = window._EPYT_ || {
+                    ajaxurl: "https://blog.documentfoundation.org/wp-admin/admin-ajax.php",
+                    security: "0b866da29d",
+                    gallery_scrolloffset: 20,
+                    eppathtoscripts: "https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/scripts/",
+                    eppath: "https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/",
+                    epresponsiveselector: ["iframe.__youtube_prefs_widget__"],
+                    version: "13.1.2.4",
+                    epdovol: true,
+                    evselector: 'iframe.__youtube_prefs__[src], iframe[src*="youtube.com/embed/"], iframe[src*="youtube-nocookie.com/embed/"]',
+                    ajax_compat: false,
+                    ytapi_load: 'light',
+                    stopMobileBuffer: true                };</script>
+            <script>if (document.location.protocol != "https:") {document.location = document.URL.replace(/^http:/i, "https:");}</script><script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js?ver=1.7.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/jetpack/_inc/build/related-posts/related-posts.min.js?ver=20191011'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var title = {"unfolded":"Expand","folded":"Collapse"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/bbspoiler/inc/bbspoiler.js?ver=5.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var cnArgs = {"ajaxurl":"https:\/\/blog.documentfoundation.org\/wp-admin\/admin-ajax.php","hideEffect":"none","onScroll":"no","onScrollOffset":"100","cookieName":"cookie_notice_accepted","cookieValue":"true","cookieTime":"2592000","cookiePath":"\/","cookieDomain":".blog.documentfoundation.org","redirection":"","cache":"","refuse":"no","revoke_cookies":"0","revoke_cookies_opt":"automatic","secure":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/cookie-notice/js/front.min.js?ver=1.2.48'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var es_data = {"messages":{"es_empty_email_notice":"Please enter email address","es_rate_limit_notice":"You need to wait for sometime before subscribing again","es_single_optin_success_message":"Successfully Subscribed.","es_email_exists_notice":"Email Address already exists!","es_unexpected_error_notice":"Oops.. Unexpected error occurred.","es_invalid_email_notice":"Invalid email address","es_try_later_notice":"Please try after some time"},"es_ajax_url":"https:\/\/blog.documentfoundation.org\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/email-subscribers/lite/public/js/email-subscribers-public.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var GDPR = {"ajaxurl":"https:\/\/blog.documentfoundation.org\/wp-admin\/admin-ajax.php","logouturl":"","i18n":{"aborting":"Aborting","logging_out":"You are being logged out.","continue":"Continue","cancel":"Cancel","ok":"OK","close_account":"Close your account?","close_account_warning":"Your account will be closed and all data will be permanently deleted and cannot be recovered. Are you sure?","are_you_sure":"Are you sure?","policy_disagree":"By disagreeing you will no longer have access to our site and will be logged out."},"is_user_logged_in":"","refresh":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/gdpr/assets/js/gdpr-public.js?ver=2.1.0'></script>
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js?ver=1.8.16'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/themes/ribbon/js/modernizr.min.js?ver=5.3'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/themes/ribbon/js/customscript.js?ver=5.3'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/scripts/ytprefs.min.js?ver=13.1.2.4'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/scripts/jquery.cookie.min.js?ver=13.1.2.4'></script>
+<link rel='https://api.w.org/' href='https://blog.documentfoundation.org/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.documentfoundation.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.documentfoundation.org/wp-includes/wlwmanifest.xml" /> 
+<!--Theme by MyThemeShop.com-->
+<link rel='shortlink' href='https://blog.documentfoundation.org/?p=9097' />
+<link rel="alternate" type="application/json+oembed" href="https://blog.documentfoundation.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.documentfoundation.org%2Fblog%2F2019%2F11%2F30%2Flibreoffice-monthly-recap-november-2019%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://blog.documentfoundation.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.documentfoundation.org%2Fblog%2F2019%2F11%2F30%2Flibreoffice-monthly-recap-november-2019%2F&#038;format=xml" />
+<!-- Analytics by WP-Statistics v12.6.11 - https://wp-statistics.com/ -->
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<style type='text/css'>img#wpstats{display:none}</style><link rel="icon" href="https://blog.documentfoundation.org/wp-content/uploads/2015/10/TDF_Logo_Wiki-50x50.png" sizes="32x32" />
+<link rel="icon" href="https://blog.documentfoundation.org/wp-content/uploads/2015/10/TDF_Logo_Wiki.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://blog.documentfoundation.org/wp-content/uploads/2015/10/TDF_Logo_Wiki.png" />
+<meta name="msapplication-TileImage" content="https://blog.documentfoundation.org/wp-content/uploads/2015/10/TDF_Logo_Wiki.png" />
+			<style type="text/css" id="wp-custom-css">
+				/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.post-single-content {
+	clear: both;
+}
+
+.comment-form-url {
+	display: none;
+}			</style>
+		</head>
+<body data-rsssl=1 id ="blog" class="post-template-default single single-post postid-9097 single-format-standard main cookies-not-set cat-2-id cat-14-id">
+	<header class="main-header">
+		<div class="container">
+			<div id="header">
+																<h2 id="logo">
+								<a href="https://blog.documentfoundation.org"><img src="https://blog.documentfoundation.org/wp-content/uploads/2015/02/tdflogo.png" alt="The Document Foundation Blog"></a>
+							</h2><!-- END #logo -->
+													 <div class="widget-header">
+											            </div>             
+			</div><!--#header-->
+            <div class="secondary-navigation">
+				<nav id="navigation" >
+											<ul id="menu-menu" class="menu"><li id="menu-item-2687" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2687"><a target="_blank" rel="noopener noreferrer" href="https://www.documentfoundation.org">TDF Home</a>
+<ul class="sub-menu">
+	<li id="menu-item-3517" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3517"><a target="_blank" rel="noopener noreferrer" href="https://www.documentfoundation.org/foundation/statutes/">TDF Statutes</a></li>
+</ul>
+</li>
+<li id="menu-item-2688" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2688"><a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org">LibreOffice Home</a>
+<ul class="sub-menu">
+	<li id="menu-item-3518" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3518"><a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/discover/libreoffice/">Discover LibreOffice</a></li>
+	<li id="menu-item-3523" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3523"><a target="_blank" rel="noopener noreferrer" href="https://devcentral.libreoffice.org/">LibreOffice DevCentral</a></li>
+</ul>
+</li>
+<li id="menu-item-3502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3502"><a href="https://blog.documentfoundation.org/tdf-docs/">Documents</a>
+<ul class="sub-menu">
+	<li id="menu-item-3512" class="ppr-new-window ppr-nofollow ppr-rewrite menu-item menu-item-type-post_type menu-item-object-page menu-item-3512"><a target="_blank" rel="nofollow" href="https://wiki.documentfoundation.org/TDF/Ledgers">TDF Ledgers</a></li>
+	<li id="menu-item-8262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8262"><a href="https://www.documentfoundation.org/foundation/financials/">Annual Report</a></li>
+	<li id="menu-item-8261" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8261"><a href="https://wiki.documentfoundation.org/Gallery_Flyers">LibreOffice Flyers</a></li>
+</ul>
+</li>
+<li id="menu-item-4593" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4593"><a href="https://blog.documentfoundation.org/pictures/">Pictures</a></li>
+<li id="menu-item-3525" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3525"><a href="https://wiki.documentfoundation.org/Events">Events</a></li>
+<li id="menu-item-7097" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7097"><a href="https://blog.documentfoundation.org/tenders/">Tenders</a></li>
+<li id="menu-item-3550" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3550"><a href="https://blog.documentfoundation.org/media-hub/">Media Hub</a>
+<ul class="sub-menu">
+	<li id="menu-item-3522" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3522"><a href="https://blog.documentfoundation.org/blog/category/press-releases/">Press Releases</a></li>
+	<li id="menu-item-3553" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3553"><a href="https://blog.documentfoundation.org/media-hub/press-clippings/">Press Clippings</a></li>
+</ul>
+</li>
+<li id="menu-item-4880" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4880"><a href="https://shop.spreadshirt.de/documentfoundation/">Merchandise</a></li>
+<li id="menu-item-3519" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3519"><a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/donate/">Donate</a>
+<ul class="sub-menu">
+	<li id="menu-item-5692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5692"><a href="https://blog.documentfoundation.org/donations-questions-answers/">Donation help</a></li>
+</ul>
+</li>
+</ul>									</nav>
+			</div>
+		</div><!--.container-->        
+	</header>
+	<div class="main-container"><div id="page" class="single">
+	<div class="content">
+		<article class="article">
+			<div id="content_box" >
+									<div id="post-9097" class="g post post-9097 type-post status-publish format-standard hentry category-community category-libreoffice cat-2-id cat-14-id">
+						<div class="single_post">
+							<div class="post-date-ribbon"><div class="corner"></div>30 Nov 2019</div>
+														<header>
+								<h1 class="title single-title">LibreOffice monthly recap: November 2019</h1>
+								<span class="theauthor single-postmeta">Posted in <a href="https://blog.documentfoundation.org/blog/category/community/" rel="nofollow">Community</a>, <a href="https://blog.documentfoundation.org/blog/category/libreoffice/" rel="nofollow">LibreOffice</a> By <a rel="nofollow" href="https://blog.documentfoundation.org/blog/author/mikesaunders/" title="Posts by Mike Saunders" rel="author">Mike Saunders</a> On November 30, 2019</span>
+							</header><!--.headline_area-->
+							<div class="post-single-content box mark-links">
+								<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/11/monthly_recap_header_november_2019.jpg" width="800" /></p>
+<p>Here&#8217;s our summary of updates, events and activities in the LibreOffice project in the last four weeks – click the links to learn more!</p>
+<ul>
+<li>We got started with the <a href="https://blog.documentfoundation.org/blog/2019/11/01/starting-today-the-month-of-libreoffice-november-2019-get-cool-swag/">Month of LibreOffice, November 2019</a>. This is a campaign that we run every six months, crediting contributions all across the project. Everyone who helps the LibreOffice community during November can claim a sticker pack, and has a chance to win a cool glass mug. Today is the <strong>final day</strong>, so click the link to find out how to participate!</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/04/month_of_lo_may19_mug.jpg" width="500" /></p>
+<ul>
+<li>The <a href="http://opendocumentformat.org">OpenDocument Format (ODF)</a> is the native file format in LibreOffice, and is used by other applications too. On November 7, we welcomed the release to OASIS of TC Committee Draft of ODF Version 1.3 for ratification. At the end of the process, ODF Version 1.3 will be submitted to ISO to become a standard. The final approval is expected in late 2020 or early 2021.</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2018/09/odf-community.jpg" width="300" /></p>
+<ul>
+<li>Also on the topic of ODF, we announced a new <a href="https://blog.documentfoundation.org/blog/2019/11/05/tender-odf-1-3-conformance/">tender for consultancy on implementing ODF 1.3 conformance in LibreOffice</a>. This task can be taken on by an individual or a company, so if you have some technical background in ODF and the LibreOffice source code, take a look.</li>
+</ul>
+<ul>
+<li>The <a href="https://conference.libreoffice.org/2019/">LibreOffice Conference 2019</a> took place in Almeria, Spain in September, and we finished editing and uploading videos of presentations from the main room (auditorium). They&#8217;re all in the playlist, which you can browse below &#8211; click the button at the top to change to a different video:</li>
+</ul>
+<div  style="display: block; margin: 0px auto;"  id="_ytid_23678" class="__youtube_prefs__  __youtube_prefs_gdpr__ " allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll="">
+<p><strong>Please confirm that you want to play a YouTube video.</strong> By accepting, you will be accessing content from YouTube, a service provided by an external third party.</p>
+<p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">YouTube privacy policy</a></p>
+<p>If you accept this notice, your choice will be saved and the page will refresh.</p>
+<p><button type="button" class="__youtube_prefs_gdpr__">Accept YouTube Content<img src="https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/images/icon-check.png" alt="accept" data-no-lazy="1" data-skipgform_ajax_framebjll="" /></button></div>
+<ul>
+<li>Meanwhile, we <a href="https://blog.documentfoundation.org/blog/2019/11/11/community-member-monday-celia-palacios/">talked to Celia Palacios</a> from the Mexican LibreOffice community, who has recently <a href="https://www.documentfoundation.org/governance/why-be-a-member/">become a member of The Document Foundation</a>. She tells us why she joined, and how she&#8217;s helping the LibreOffice project and community.</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/11/community_member_monday_celia_palacios.jpg" width="400" /></p>
+<ul>
+<li>Then the Turkish community <a href="https://blog.documentfoundation.org/blog/2019/11/12/event-report-google-summer-of-code-presentation-in-ankara-turkey/">gave a presentation about the Google Summer of Code (GSoC)</a> in Ankara. There were around 40 attendees, all interested to hear how GSoC students had worked on new features and improvements in LibreOffice.</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/11/muhammet_gsoc_2019_01.jpg" width="600" /></p>
+<ul>
+<li>In other news, <a href="https://blog.documentfoundation.org/blog/2019/11/14/new-version-of-libreoffice-impress-remote-for-android/">we announced a new version of the LibreOffice Impress Remote for Android</a>. This lets you interact with your slideshow presentation from your Android device – including slide previews, speaker notes, and more.</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/11/libreoffice_impress_remote.png" width="400" /></p>
+<ul>
+<li>Another community that was especially active this month was the <a href="https://blog.documentfoundation.org/blog/2019/11/18/libreoffice-localisation-sprint-and-other-events-in-albania/">Albanian LibreOffice community</a>, who organised a localisation sprint and other events. We really appreciate their help &#8211; and our thoughts are with them, and the people of Albania, in the difficult times after the earthquake.</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/11/albania_localisation_sprint_2019_01.jpg" width="600" /></p>
+<ul>
+<li>Over in the documentation project, a team of contributors has worked on <a href="https://blog.documentfoundation.org/blog/2019/11/19/refreshing-libreoffices-frequently-asked-questions-pages/">refreshing the LibreOffice &#8220;Frequently Asked Question&#8221; pages</a>. Check out the graph below to see how many wiki edits were made over the last two years:</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/11/tdf_wiki_stats.png" width="500" /></p>
+<ul>
+<li>And then we had even more community news! <a href="https://blog.documentfoundation.org/blog/2019/11/20/libreoffice-community-at-czech-free-software-events/">LibreOffice was present at two events in the Czech Republic</a>, LinuxDays in Prague and OpenAlt in Brno. Thanks to Zdeněk, Petr and Stanislav for their great work!</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/11/openalt2019.jpg" width="500" /></p>
+<ul>
+<li>Over in Indonesia, <a href="https://blog.documentfoundation.org/blog/2019/11/25/community-member-monday-sokibi-indonesia/">Sokibi&#8217;s story</a> tells us about advocacy of free software and LibreOffice at a local level. It&#8217;s wonderful to see people all around the world who are so passionate about open source and sharing knowledge!</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/11/sokibi_book.jpg" width="400" /></p>
+<ul>
+<li>The new LibreOffice Macro Team <a href="https://blog.documentfoundation.org/blog/2019/11/26/libreoffice-macro-team-progress-report/">posted a progress report</a>, detailing bugs fixed, help update and code contributions. Great work, everyone!</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/09/lo_macro_icon.png" width="300" /></p>
+<ul>
+<li>And finally, we had a <a href="https://blog.documentfoundation.org/blog/2019/11/29/local-event-update-libreoffice-at-openfest-in-sofia-bulgaria/">local event update</a> from Sofia, Bulgaria, where LibreOffice was present at OpenFest. Gabriele Ponzo describes his experiences there, and explains how other community members can get involved too.</li>
+</ul>
+<p><img class="aligncenter" src="https://blog.documentfoundation.org/wp-content/uploads/2019/11/openfest_sofia19_01.jpg" width="600" /></p>
+<h3>Keep in touch – follow us on <a href="https://twitter.com/libreoffice">Twitter</a>, <a href="https://www.facebook.com/libreoffice.org">Facebook</a> and <a href="https://fosstodon.org/@libreoffice">Mastodon</a>. Like what we do? <a href="https://www.libreoffice.org/donate/">Support our community with a donation</a> &#8211; or join us and <a href="https://www.libreoffice.org/community/get-involved/">help to make LibreOffice even better</a>!</h3>
+<div class="shariff" data-title="LibreOffice monthly recap: November 2019" data-info-url="http://ct.de/-2467514" data-backend-url="https://blog.documentfoundation.org/wp-content/plugins/shariff-sharing/backend/index.php" data-temp="/tmp" data-ttl="60" data-service="tlr" data-services='["facebook","twitter","linkedin","reddit","info"]' data-image="https://blog.documentfoundation.org/wp-content/uploads/2019/11/monthly_recap_header_november_2019.jpg" data-url="https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/" data-lang="en" data-theme="color" data-orientation="horizontal"></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related Posts</em></h3>
+</div>																							</div>
+						</div><!--.post-content box mark-links-->
+						  
+						  
+					</div><!--.g post-->
+					<!-- You can start editing here. -->
+		<!-- If comments are open, but there are no comments. -->
+	<div id="commentsAdd">
+	<div id="respond" class="box m-t-6">
+			<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/blog/2019/11/30/libreoffice-monthly-recap-november-2019/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://blog.documentfoundation.org/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea autocomplete="nope"  id="b5e8b05da4"  name="b5e8b05da4"   cols="45" rows="8" maxlength="65525" required="required"></textarea><textarea id="comment" aria-hidden="true" name="comment" autocomplete="nope" style="padding:0;clip:rect(1px, 1px, 1px, 1px);position:absolute !important;white-space:nowrap;height:1px;width:1px;overflow:hidden;" tabindex="-1"></textarea><script type="text/javascript">document.getElementById("comment").setAttribute( "id", "a1c50d8b6da00cccda7af79d3ed959d1" );document.getElementById("b5e8b05da4").setAttribute( "id", "comment" );</script></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="gdpr-terms-container">
+    <label>
+        <input type="checkbox" required name="gdpr_terms" id="gdpr_terms" value="1" />
+        		        
+                    I accept the <a href='https://www.documentfoundation.org/privacy' target='_blank'>Privacy Policy</a>        *
+    </label>
+</p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='9097' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+		</div>
+</div>
+							</div>
+		</article>
+		<aside class="sidebar c-4-12">
+	<div id="sidebars" class="g">
+		<div class="sidebar">
+			<ul class="sidebar_list">
+				<li class="widget_text widget widget-sidebar"><div class="textwidget custom-html-widget"><div align="left">
+<a href="https://www.libreoffice.org/download/"><img src="https://blog.documentfoundation.org/wp-content/uploads/2018/02/lo60introcubes300.gif" alt="LibreOffice 6.0">
+</a>
+</div></div></li><li class="widget_text widget widget-sidebar"><div class="textwidget custom-html-widget"><div align="left">
+<a href="https://www.libreoffice.org/donate/"><img src="https://blog.documentfoundation.org/wp-content/uploads/2017/12/donateanimation-en.gif" alt="Donate">
+</a>
+</div></div></li><li class="widget widget-sidebar"><h3>Subscribe to Blog Posts</h3>
+        <div class="emaillist">
+            <form action="#" method="post" class="es_subscription_form es_shortcode_form" id="es_subscription_form_1575783017" data-source="ig-es">
+				                    <div class="es_caption">To receive an email when blog posts are published, you must confirm that you have carefully read and agreed to The Document Foundation's Privacy Policy</div>
+								<div class="es-field-wrap"><label>Name<br/><input type="text" name="name" placeholder="" value="" /></label></div>				<div class="es-field-wrap"><label>Email*<br/><input class="es_required_field es_txt_email" type="email" name="email" value="" placeholder="" required/></label></div>				<input type="hidden" name="lists[]" value="1" />				<input type="hidden" name="form_id" value="0" />
+                <input type="hidden" name="es_email_page" value="9097"/>
+                <input type="hidden" name="es_email_page_url" value="https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/"/>
+                <input type="hidden" name="status" value="Unconfirmed"/>
+                <input type="hidden" name="es-subscribe" id="es-subscribe" value="f9da83c8b5"/>
+                <label style="position:absolute;top:-99999px;left:-99999px;z-index:-99;"><input type="email" name="es_hp_email" class="es_required_field" tabindex="-1" autocomplete="-1" value="" /></label>
+				<div class="es-field-wrap">
+                <input type="checkbox" name="es-gdpr-agree" id="es-gdpr-agree" value="1" required="required"> I accept the <a href='https://www.documentfoundation.org/privacy' target='_blank'>Privacy Policy</a></div>				<p><label class="gdpr-label"><input type="checkbox" name="user_consents[privacy-policy]" id="privacy-policy-consent" value="1" required >I confirm to have carefully read and agreed to The Document Foundation's <a href="" target="_blank">Privacy Policy</a>.</label></p>                <input type="submit" name="submit" class="es_subscription_form_submit es_submit_button es_textbox_button" id="es_subscription_form_submit_1575783017" value="Submit"/>
+
+				                
+                <span class="es_spinner_image" id="spinner-image"><img src="https://blog.documentfoundation.org/wp-content/plugins/email-subscribers/lite/public/images/spinner.gif"/></span>
+
+            </form>
+
+            <span class="es_subscription_message" id="es_subscription_message_1575783017"></span>
+        </div>
+
+		</li><li class="widget widget-sidebar"><h3>Search</h3><form method="get" id="searchform" class="search-form" action="https://blog.documentfoundation.org" _lpchecked="1">
+	<fieldset>
+		<input type="text" name="s" id="s" value="Search this site..." onblur="if (this.value == '') {this.value = 'Search this site...';}" onfocus="if (this.value == 'Search this site...') {this.value = '';}" >
+		<input type="submit" value="Search" onclick="if(this.value=='Search this Site...')this.value='';" />
+	</fieldset>
+</form></li><li class="widget_text widget widget-sidebar"><h3>CII Badge</h3><div class="textwidget custom-html-widget"><a href="https://bestpractices.coreinfrastructure.org/projects/307"><img src="https://bestpractices.coreinfrastructure.org/projects/307/badge" alt="CII Badge"></a></div></li><li class="widget widget-sidebar"><h3><a class="rsswidget" href="http://planet.documentfoundation.org/"><img class="rss-widget-icon" style="border:0" width="14" height="14" src="https://blog.documentfoundation.org/wp-includes/images/rss.png" alt="RSS" /></a> <a class="rsswidget" href="https://planet.documentfoundation.org/">TDF Planet</a></h3><ul><li><a class='rsswidget' href='https://qa.blog.documentfoundation.org/2019/12/07/qa-report-november-2019/'>QA/Dev Report: November 2019</a></li><li><a class='rsswidget' href='https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/'>Improvements in LibreOffice’s PowerPoint presentation support</a></li><li><a class='rsswidget' href='https://blog.documentfoundation.org/blog/2019/12/05/celebrating-international-volunteer-day/'>Celebrating International Volunteer Day</a></li><li><a class='rsswidget' href='https://libreoffice-dev.blogspot.com/2019/12/fixed-terrible-regression.html'>Fixed a terrible regression</a></li><li><a class='rsswidget' href='https://blog.documentfoundation.org/blog/2019/12/04/month-of-libreoffice-november-2019-the-winners/'>Month of LibreOffice, November 2019: The winners!</a></li><li><a class='rsswidget' href='https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/'>LibreOffice monthly recap: November 2019</a></li><li><a class='rsswidget' href='https://blog.documentfoundation.org/blog/2019/11/29/local-event-update-libreoffice-at-openfest-in-sofia-bulgaria/'>Local event update: LibreOffice at OpenFest in Sofia, Bulgaria</a></li><li><a class='rsswidget' href='https://libreoffice-dev.blogspot.com/2019/11/filter-by-months-and-years-in-calc.html'>Filter by months and years in Calc pivot table</a></li><li><a class='rsswidget' href='http://llunak.blogspot.com/2019/11/skia-branch-merged-to-master.html'>Skia branch merged to master</a></li><li><a class='rsswidget' href='http://www.gnome.org/~michael/blog/2019-11-25.html'>2019-11-25 Monday.</a></li></ul></li><li class="widget widget-sidebar"><h3>Meta</h3>			<ul>
+						<li><a rel="nofollow" href="https://blog.documentfoundation.org/wp-login.php">Log in</a></li>
+			<li><a href="https://blog.documentfoundation.org/feed/">Entries feed</a></li>
+			<li><a href="https://blog.documentfoundation.org/comments/feed/">Comments feed</a></li>
+			<li><a href="https://wordpress.org/">WordPress.org</a></li>			</ul>
+			</li>			</ul>
+		</div>
+	</div><!--sidebars-->
+</aside>	</div><!--#page-->
+</div><!--.container-->
+</div>
+	<footer>
+		<div class="container">
+			<div class="footer-widgets">
+					<div class="f-widget f-widget-1">
+		<div class="widget"><h3>Copyright</h3>			<div class="textwidget"><p>Unless otherwise specified, all text and images on this website are licensed under the <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>.<br />
+This does not include the source code of LibreOffice, which is licensed under the Mozilla Public License (<a href="http://www.libreoffice.org/download/license/">MPLv2</a>).</p>
+</div>
+		</div>	</div>
+	<div class="f-widget f-widget-2">
+		<div class="widget"><h3>Trademarks</h3>			<div class="textwidget"><p><strong>LibreOffice</strong> and <strong>The Document Foundation</strong> are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TDF/Policies/Trademark_Policy">Trademark Policy</a>.</p>
+</div>
+		</div>	</div>
+	<div class="f-widget last">
+		<div class="widget_text widget"><h3>Legal Information</h3><div class="textwidget custom-html-widget"><a href="http://www.documentfoundation.org/imprint"><strong>Impressum (Legal Info)</strong></a><br/>
+<a href="http://www.documentfoundation.org/privacy"><strong>Privacy Policy</strong></a><br/>
+<a href="https://blog.documentfoundation.org/privacy-tools/"><strong>Privacy Tools</strong></a></div></div><div class="widget"><h3>Credits</h3>			<div class="textwidget"><p>Theme: Ribbon by <a href="http://mythemeshop.com/">MyThemeShop</a>.</p>
+</div>
+		</div>	</div>
+			</div><!--.footer-widgets-->
+		</div><!--.container-->
+        <div class="copyrights"><!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="https://blog.documentfoundation.org/" title="">The Document Foundation Blog</a> Copyright &copy; 2019.</span>
+<div class="top">Theme by <a href="http://mythemeshop.com/">MyThemeShop</a>. <a href="#top" class="toplink">Back to Top &uarr;</a></div>
+</div>
+<!--end copyrights-->
+</div> 
+	</footer><!--footer-->
+<!--start footer code-->
+<!--end footer code-->
+<div class="gdpr gdpr-overlay"></div>
+<div class="gdpr gdpr-privacy-bar" style="display:none;">
+	<div class="gdpr-wrapper">
+		<div class="gdpr-content">
+			<p>To continue navigation on the website, you need to acknowledge our privacy policy by clicking on the "Privacy Preferences" on the right of this message and following the instructions contained in the dialogue which will open above this banner.</p>
+		</div>
+		<div class="gdpr-right">
+						<div class="gdpr-buttons">
+				<button class="gdpr-preferences" type="button">Privacy Preferences</button>
+				<button class="gdpr-agreement" type="button">I Agree</button>
+			</div>
+			<span class="gdpr-close"></span>
+		</div>
+	</div>
+</div>
+
+<div class="gdpr gdpr-privacy-preferences">
+	<div class="gdpr-wrapper">
+		<form method="post" class="gdpr-privacy-preferences-frm">
+			<input type="hidden" name="action" value="gdpr_update_privacy_preferences">
+			<input type="hidden" id="update-privacy-preferences-nonce" name="update-privacy-preferences-nonce" value="66b0bb5221" /><input type="hidden" name="_wp_http_referer" value="/blog/2019/11/30/libreoffice-monthly-recap-november-2019/" />			<header>
+				<div class="gdpr-box-title">
+					<h3>Privacy Preference Center</h3>
+					<span class="gdpr-close"></span>
+				</div>
+			</header>
+			<div class="gdpr-mobile-menu">
+				<button type="button">Options</button>
+			</div>
+			<div class="gdpr-content">
+				<div class="gdpr-tabs">
+					<ul class="">
+						<li><button type="button" class="gdpr-tab-button gdpr-active" data-target="gdpr-consent-management">Consent Management</button></li>
+																	</ul>
+					<ul class="gdpr-policies">
+																													<li><a href="https://www.documentfoundation.org/privacy" target="_blank">Privacy Policy</a></li>
+																		</ul>
+				</div>
+				<div class="gdpr-tab-content">
+					<div class="gdpr-consent-management gdpr-active">
+						<header>
+							<h4>Consent Management</h4>
+						</header>
+						<div class="gdpr-info">
+							<p>Thank you for visiting our website and your interest in our services and products. As the protection of your personal data is an important concern for us, please click on the &quot;More information&quot; link to access our Privacy Policy page - which will open in a separate browser tab - where we explain what information we collect during your visit to our website, how it is processed, and whether or how it may be used.<br />
+Once you have carefully read our Privacy Policy page, close the browser tab to return to this page and click on the &quot;Save Preferences&quot; button under this text to acknowledge it, close the dialogue and return to the website.<br />
+We take all the necessary technical and organisational security measures to protect your personal data from loss and misuse. Your data is stored in a secure operating environment that is not accessible to the public.</p>
+																								<div class="gdpr-cookies-used">
+										<div class="gdpr-cookie-title">
+											<p>Privacy Policy</p>
+																							<span class="gdpr-always-active">Required</span>
+												<input type="hidden" name="user_consents[]" value="privacy-policy" checked style="display:none;">
+																					</div>
+										<div class="gdpr-cookies">
+											<span>I confirm to have carefully read and agreed to The Document Foundation's <a href="" target="_blank">Privacy Policy</a>.</span>
+										</div>
+									</div>
+																					</div>
+					</div>
+														</div>
+				<input type="hidden" name="all_cookies" value="[]">
+			</div>
+			<footer>
+				<input type="submit" value="Save Preferences">
+			</footer>
+		</form>
+	</div>
+</div>
+
+<div class="gdpr gdpr-general-confirmation">
+	<div class="gdpr-wrapper">
+		<header>
+			<div class="gdpr-box-title">
+				<h3></h3>
+				<span class="gdpr-close"></span>
+			</div>
+		</header>
+		<div class="gdpr-content">
+			<p></p>
+		</div>
+		<footer>
+			<button class="gdpr-ok">OK</button>
+		</footer>
+	</div>
+</div>
+<script src="https://blog.documentfoundation.org/wp-content/plugins/shariff-sharing/dep/shariff.complete.js"></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-includes/js/comment-reply.min.js?ver=5.3'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201949'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var qpprFrontData = {"linkData":{"https:\/\/blog.documentfoundation.org\/tdf-docs\/tdf-ledgers\/":[1,1,"https:\/\/wiki.documentfoundation.org\/TDF\/Ledgers"],"https:\/\/blog.documentfoundation.org\/privacy-policy\/":[1,1,"https:\/\/www.documentfoundation.org\/privacy"],"https:\/\/blog.documentfoundation.org\/libreoffice-docs\/libreoffice-flyers\/":[1,0,""],"https:\/\/blog.documentfoundation.org\/tdf-docs\/annual-report\/":[1,0,""]},"siteURL":"https:\/\/blog.documentfoundation.org","siteURLq":"https:\/\/blog.documentfoundation.org"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/quick-pagepost-redirect-plugin/js/qppr_frontend_script.min.js?ver=5.1.9'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/wp-review/public/js/js.cookie.min.js?ver=2.1.4'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-includes/js/wp-util.min.js?ver=5.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpreview = {"ajaxurl":"https:\/\/blog.documentfoundation.org\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/wp-review/public/js/main.js?ver=5.2.8'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/enlighter/resources/mootools-core-yc.js?ver=3.10.0'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/enlighter/resources/EnlighterJS.min.js?ver=3.10.0'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/scripts/fitvids.min.js?ver=13.1.2.4'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-includes/js/wp-embed.min.js?ver=5.3'></script>
+<script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"enlighter","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":true,"windowButton":true,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><script type='text/javascript' src='https://stats.wp.com/e-201949.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.0',blog:'102499332',post:'9097',tz:'0',srv:'blog.documentfoundation.org'} ]);
+	_stq.push([ 'clickTrackerInit', '102499332', '9097' ]);
+</script>
+
+			<div id="cookie-notice" role="banner" class="cn-bottom wp-default" style="color: #fff; background-color: #000;" aria-label="Cookie Notice"><div class="cookie-notice-container"><span id="cn-notice-text">We use only those functional cookies which are absolutely necessary to ensure that we give you the best navigation experience on our website. If you continue to use this site we will assume that you are happy with them.</span><a href="#" id="cn-accept-cookie" data-cookie-set="accept" class="cn-set-cookie cn-button wp-default button">Ok</a><a href="https://www.documentfoundation.org/privacy" target="_blank" id="cn-more-info" class="cn-more-info cn-button wp-default button">Check the Privacy Policy</a>
+				</div>
+				
+			</div></body>
+</html>

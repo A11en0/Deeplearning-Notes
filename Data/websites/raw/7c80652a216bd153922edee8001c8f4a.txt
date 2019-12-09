@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Forwarding game controllers and other input over SSH</title>
+		
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+		
+		<link rel="alternate" type="application/atom+xml" title="Posts" href="/blog/feed.xml">
+		
+		<link rel="stylesheet" type="text/css" href="/blog/assets/css/theme.css">
+		
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="wrapper">
+				<a class="site-title" href="/blog/">Inane Observations</a>
+				<a class="site-subtitle" href="/blog/">$ sudo fix_it</a>
+			</div>
+		</header>
+		<div class="wrapper page-body">
+			<main class="page-content">
+				<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<header class="post-header">
+		<h1 class="post-title" itemprop="name headline">Forwarding game controllers and other input over SSH</h1>
+		
+<div class="post-meta">
+	<i class="fa fa-calendar-o"></i>
+	<time datetime="2019-12-01T21:55:54+1100" title="01 December 2019 21:55 AEDT">01 December 2019</time>
+	
+		(updated <time datetime="2019-12-02T11:41:06+1100" title="02 December 2019 11:41 AEDT">02 December 2019</time>)
+	
+	|
+	<i class="fa fa-tags"></i>
+	
+		<a href="/blog/tag/linux/">linux</a>
+	
+	|
+	<i class="fa fa-comment-o"></i>
+	<a href="/blog/2019/12/01/input-over-ssh-2.html#isso-thread">Comment</a>
+</div>
+
+	</header>
+	
+	<div class="post-content" itemprop="articleBody">
+		<p>Various systems exist for remotely controlling Linux systems, such as <a href="https://en.wikipedia.org/wiki/Virtual_Network_Computing">VNC</a>, Synergy/Barrier and other protocols like SPICE and NX. These systems, however, tend to operate at a high level, and are consequently limited in scope. For example, none of these systems support relative mouse pointer movement (often relied upon, for example, by 3D video games) or unusual input devices like gamepads/game controllers.</p>
+
+<p>Last month, I presented an interim solution for relative mouse movement, <a href="/blog/2019/11/18/input-over-ssh.html">input-over-ssh (legacy)</a> â but this also operated at a high level, based on X inputs and outputs, and could not be easily extended to other input devices. Now, I have rewritten input-over-ssh based on the Linux evdev interface, allowing for direct forwarding of a variety of input devices from one Linux system to another â mouse, keyboard, gamepads/game controllers, joysticks, drawing tablets, etc.</p>
+
+<p>The new rewrite of input-over-ssh can be found <a href="https://yingtongli.me/git/input-over-ssh">here</a>. input-over-ssh is divided into two components â a client (the device whose input is to be forwarded) and server (the device to forward input to).</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>To use input-over-ssh, download <a href="https://yingtongli.me/git/input-over-ssh">input-over-ssh</a> on both the client and server, and install <a href="https://pypi.org/project/evdev/">python-evdev</a> as a dependency.</p>
+
+<p>Then navigate to the root directory on the client and run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m input_over_ssh.client -L
+</code></pre></div></div>
+
+<p>This will print a list of all available evdev devices. If no devices appear, ensure the current user has access to the raw <em>/dev/input</em> device files (e.g. by adding the user to the <em>input</em> group).</p>
+
+<p>Then pass the path of the device to be forwarded, and pipe the output to an instance of input-over-ssh running on the server. Also pass the <code class="highlighter-rouge">-u</code> flag to Python when running the client, to force unbuffered output. For example:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -u -m input_over_ssh.client -p /dev/input/event1 | ssh hostname.example.com 'PYTHONPATH=/path/to/input-over-ssh python -m input_over_ssh.server'
+</code></pre></div></div>
+
+<p>For the adventurous, you ought to be able to replace ssh with netcat/socat over UDP to further reduce latency.</p>
+
+<p>In combination with a VNC server/client setup, this could be used as a open-source alternative to services like Steam Remote Play.</p>
+
+<p>For a full list of command-line options, run <code class="highlighter-rouge">python -m input_over_ssh.client --help</code>.</p>
+
+<h2 id="approach">Approach</h2>
+
+<p>input-over-ssh uses python-evdev to directly interface with the Linux evdev input device interface to capture input events, and directly forwards them to the server. The input-over-ssh script running on the server then simply emulates the captured input events using <em>uinput</em>. This low-level interface allows input-over-ssh to forward any suitable input device, without needing to know details about the type of mouse or keyboard or gamepad.</p>
+
+<p>For more details, take a look at the input-over-ssh source code <a href="https://yingtongli.me/git/input-over-ssh/tree/input_over_ssh">here</a>.</p>
+
+	</div>
+	
+	<script data-isso="https://yingtongli.me/blog/isso/" src="https://yingtongli.me/blog/isso/js/embed.min.js"></script>
+	
+	<section id="isso-thread"></section>
+</article>
+
+			</main>
+			<nav class="navigation-sidebar">
+				<section>
+	<ul>
+		<li><a href="/blog/">Home</a></li>
+		<li>
+			<a href="/git/">Git</a>
+			<span style="font-size:10px">(Archives: <a href="https://gitlab.com/RunasSudo">GitLab</a>, <a href="https://github.com/RunasSudo">GitHub</a>)</span>
+		</li>
+	</ul>
+</section>
+<section>
+	<ul>
+		<li><a href="/blog/2018/02/19/quick-links.html">Quick Links</a></li>
+	</ul>
+</section>
+<section>
+	<ul>
+		<li>
+			<a href="/blog/archive.html">Posts</a>
+			<ul>
+				
+				
+				
+				
+				
+					
+						
+						
+						
+							
+							
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+								<li><a href="/blog/2019/12/">December 2019 (3)</a></li>
+								
+								
+							
+							
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+								<li><a href="/blog/2019/11/">November 2019 (5)</a></li>
+								
+								
+							
+							
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+								<li><a href="/blog/2019/10/">October 2019 (5)</a></li>
+								
+								
+							
+							
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+								<li><a href="/blog/2019/09/">September 2019 (6)</a></li>
+								
+								
+							
+							
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+						
+					
+				
+					
+						
+						
+						
+							
+								<li><a href="/blog/2019/08/">August 2019 (4)</a></li>
+								
+								
+									<li><a href="/blog/archive.html">Moreâ¦</a></li>
+									
+				
+				
+			</ul>
+		</li>
+	</ul>
+</section>
+<section>
+	<ul class="tags">
+		<li>
+			<a href="/blog/tags.html">Tags</a>
+			<ul>
+				
+				
+				
+				
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/guide">
+								guide (32)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/linux">
+								linux (28)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/misc">
+								misc (15)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/ebook">
+								ebook (14)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/drm">
+								drm (12)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/gaming">
+								gaming (10)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/reverse-engineering">
+								reverse engineering (10)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/security">
+								security (9)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/cryptography">
+								cryptography (8)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/encryption">
+								encryption (8)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/clara-hd">
+								clara hd (7)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/ereader">
+								ereader (7)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/kobo">
+								kobo (7)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/meeting-procedure">
+								meeting procedure (6)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/music">
+								music (6)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/parliamentary-procedure">
+								parliamentary procedure (6)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/review">
+								review (6)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/victoria">
+								victoria (6)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/arch-linux">
+								arch linux (5)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/books">
+								books (5)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/elections">
+								elections (5)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/ptv">
+								ptv (5)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/public-transport">
+								public transport (5)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/windows">
+								windows (5)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/defective-by-design">
+								defective by design (4)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/digital-rights-management">
+								digital rights management (4)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/dota">
+								dota (4)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/error">
+								error (4)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/medicine">
+								medicine (4)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/meme">
+								meme (4)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/science-fiction">
+								science fiction (4)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/video">
+								video (4)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/amd">
+								amd (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/creative-commons">
+								creative commons (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/dank">
+								dank (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/java">
+								java (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/mac">
+								mac (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/monash">
+								monash (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/obfuscation">
+								obfuscation (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/rant">
+								rant (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/raspberry-pi">
+								raspberry pi (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/road-rules">
+								road rules (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/south-australia">
+								south australia (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/wine">
+								wine (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/youtube">
+								youtube (3)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/ati">
+								ati (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/audio">
+								audio (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/clayton">
+								clayton (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/defense-of-the-ancients">
+								defense of the ancients (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/finances">
+								finances (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/hybrid-graphics">
+								hybrid graphics (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/ib">
+								ib (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/intel">
+								intel (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/interview">
+								interview (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/kodi">
+								kodi (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/law">
+								law (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/league-of-legends">
+								league of legends (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/lol">
+								lol (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/macintosh">
+								macintosh (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/mbbs">
+								mbbs (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/md">
+								md (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/med-in-review">
+								med in review (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/metro-trains">
+								metro trains (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/minivmac">
+								minivmac (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/mmi">
+								mmi (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/parliament">
+								parliament (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/politics">
+								politics (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/programming">
+								programming (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/proportional-representation">
+								proportional representation (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/steam">
+								steam (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/ukulele">
+								ukulele (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/undergraduate">
+								undergraduate (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/video-editing">
+								video editing (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/vline">
+								vline (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/voting-systems">
+								voting systems (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/xbmc">
+								xbmc (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/xbone">
+								xbone (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+							<li><a href="/blog/tag/yarra-trams">
+								yarra trams (2)
+							</a></li>
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+					
+						
+						
+					
+				
+		</li>
+	</ul>
+</section>
+
+			</nav>
+		</div>
+		<footer class="site-footer">
+			<div class="wrapper">
+				<div class="footer-col-wrapper">
+					<div class="footer-col footer-col-1">
+						<ul class="contact-list">
+							<li>RunasSudo (Lee Yingtong Li)</li>
+							<li><a href="mailto:blog@yingtongli.me">blog@yingtongli.me</a></li>
+							<li style="margin-top: 0.5em;"><a href="/blog/assets/docs/Yingtong Li CV Web.pdf">My CV</a></li>
+						</ul>
+					</div>
+					
+					<div class="footer-col footer-col-2">
+						<ul class="social-media-list">
+							
+								<li><a href="https://twitter.com/RunasSudo">
+									<i class="fa fa-twitter"></i>
+								</a></li>
+							
+							
+								<li><a href="https://keybase.io/RunasSudo">
+									<i class="fa fa-key"></i>
+								</a></li>
+							
+							<li><a href="/blog/feed.xml">
+								<i class="fa fa-rss"></i>
+							</a></li>
+						</ul>
+					</div>
+					
+					<div class="footer-col footer-col-3">
+						<p>Unless otherwise noted, code on this site is licensed under the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">GNU AGPL v3</a> or later, and all other content is licensed under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 International</a>.
+</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+		<script>
+			MathJax.Hub.Config({
+				"HTML-CSS": {
+					fonts: ["TeX"]
+				}
+			});
+		</script>
+	</body>
+</html>

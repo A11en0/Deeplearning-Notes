@@ -1,0 +1,136 @@
+Help us create a video of cool features in Krita
+
+                December 4, 2019,  1:00pm
+              
+We can collaborate and submit cmall clips and edit it in one single video. First we need to list out all the features and general script of the video.
+
+            
+raghukamath
+
+                December 3, 2019, 11:42am
+              
+
+          
+        
+
+                December 3, 2019,  1:45pm
+              
+
+                December 3, 2019,  2:04pm
+              
+tiltsupport
+1080×1080 2.08 MB
+
+            
+
+                December 3, 2019,  2:16pm
+              
+Could you make a 1080 p short video showing this off?
+https://store.steampowered.com/app/280680/Krita/
+The point of these videos is to spark people’s imagination, and if there’s a variety of artstyles people can also understand the program as something that could support their art…
+
+            
+
+                December 3, 2019,  2:30pm
+              
+
+                December 3, 2019,  5:16pm
+              
+Tips and Tricks - Hidden Gems in Krita
+My very basic tip worth adding to that film is alpha blocking on layer and alpha inheritance. I guess lots of beginners would benefit from that if they knew that there is a feature like that.
+
+            
+
+                December 3, 2019,  6:16pm
+              
+Three suggestions, if people think it’s of interest:
+as demonstrated here
+Assistant tools, especially how they allow varied brush pressure for a more natural look than line tools—especially especially when combined with the magnetic option
+Gamut Masks—the best for atmospheric colours!
+
+            
+
+                December 4, 2019, 12:51pm
+              
+My suggestions for clips (I’m not promising I’ll make them; I hope I will be able, but for now I can’t say for sure, so if someone doesn’t have an idea but want to help, please take one/some of the suggestions and write that you’re making clips for them so there will be no doubling of the work)
+clone brush, especially with another layer option and with the reset origin option - I’ve got an awesome gif showing off those features when I coded them and it looked really good and useful:
+https://krita.org/wp-content/uploads/2019/05/clone_brush-v2.webm
+a video that shows a lot of very very different brushes in an uniform way - maybe brushes from Digital Atelier or the Realwater bundle
+inherit alpha feature used to the max of it’s possiblity
+MUST BE THERE
+Wrap-around mode - there was one video with the brick wall; we can use this if it’s in good enough quality, but it would be good to remake it too, because it would be really good to show that you can paint on any of the tiles and it will be working correctly. But remaking would be of course low priority if we can use the original video.
+Different ways for Stabilization?
+Cross-channel adjustment curves?
+Isolate layer mode?
+And some less specified ideas, please comment if you know how to achieve this:
+How to show Python scripting?
+How to show that we have an awesome Manual?
+Making animation - I haven’t specified it above because it’s a broader topic, so some discussion might be good to think it through and decide what would be the best way to show it off. For sure onion skins and Timeline have to be visible. Not sure about other things.
+
+            
+
+                December 3, 2019, 10:58pm
+              
+Let me know if you need that video in the full 1080p size, I’ll have to redo it since the original capture (and document) is low res. I’ll think about showcasing a bunch of fancy brushes and the perspective sensor feature, too, since I already spent a lot of time experimenting.
+Any guidelines or preferences regarding Krita layouts and themes, as well as video snippet length, style, video format and encoding quality?
+
+                December 3, 2019, 11:06pm
+              
+Yes, all videos should be in 1080p. If some are in lower quality or have wrong dimensions, they should be remade I believe.
+https://www.youtube.com/watch?v=oXUReniLyqw
+
+            
+
+                December 3, 2019, 11:12pm
+              
+drive.google.com
+wrap around and multibrush.mp4 (video)
+Google Drive file.
+
+    
+    
+  
+
+            
+
+                December 4, 2019,  1:51am
+              
+SifarMogwai
+
+                December 4, 2019,  9:50pm
+              
+
+                December 5, 2019,  3:50pm
+              
+There’s no specific timing schedule attached, as it is really just about showing what Krita can do. So I guess, maybe till the end of january or something? To have some kind of deadline.
+SifarMogwai
+
+                December 5, 2019,  5:29pm
+              
+I’d like to volunteer to make a clip about the assistant tool, and in particular the 3D related ones:  perspective, ruler, vanishing point.
+sinisa_ercegovac
+
+                December 6, 2019,  9:49pm
+              
+krita animated
+4994×3000 2.33 MB
+
+            
+
+                December 7, 2019,  4:26am
+              
+
+                December 7, 2019, 11:05pm
+              
+Assistant Tools (WIP)
+@SifarMogwai
+
+            
+SifarMogwai
+
+                December 7, 2019, 11:43pm
+              
+Categories 
+FAQ/Guidelines 
+Terms of Service 
+Privacy Policy 

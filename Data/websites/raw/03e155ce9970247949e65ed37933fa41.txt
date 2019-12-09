@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://blogs.gnome.org/tbernard/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="https://blogs.gnome.org/tbernard/wp-content/themes/twentyfifteen/js/html5.js"></script>
+	<![endif]-->
+	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<title>There is no “Linux” Platform (Part 1) &#8211; Space and Meaning</title>
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Space and Meaning &raquo; Feed" href="https://blogs.gnome.org/tbernard/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Space and Meaning &raquo; Comments Feed" href="https://blogs.gnome.org/tbernard/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Space and Meaning &raquo; There is no “Linux” Platform (Part 1) Comments Feed" href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blogs.gnome.org\/tbernard\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://blogs.gnome.org/tbernard/wp-includes/css/dist/block-library/style.min.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-theme-css'  href='https://blogs.gnome.org/tbernard/wp-includes/css/dist/block-library/theme.min.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfifteen-fonts-css'  href='https://fonts.googleapis.com/css?family=Noto+Sans%3A400italic%2C700italic%2C400%2C700%7CNoto+Serif%3A400italic%2C700italic%2C400%2C700%7CInconsolata%3A400%2C700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons-css'  href='https://blogs.gnome.org/tbernard/wp-content/themes/twentyfifteen/genericons/genericons.css?ver=3.2' type='text/css' media='all' />
+<link rel='stylesheet' id='twentyfifteen-style-css'  href='https://blogs.gnome.org/tbernard/wp-content/themes/twentyfifteen/style.css?ver=5.3' type='text/css' media='all' />
+<style id='twentyfifteen-style-inline-css' type='text/css'>
+
+			.post-navigation .nav-previous { background-image: url(https://blogs.gnome.org/tbernard/files/2019/12/IMG_20191015_182217-825x510.jpg); }
+			.post-navigation .nav-previous .post-title, .post-navigation .nav-previous a:hover .post-title, .post-navigation .nav-previous .meta-nav { color: #fff; }
+			.post-navigation .nav-previous a:before { background-color: rgba(0, 0, 0, 0.4); }
+		
+</style>
+<link rel='stylesheet' id='twentyfifteen-block-style-css'  href='https://blogs.gnome.org/tbernard/wp-content/themes/twentyfifteen/css/blocks.css?ver=20181230' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentyfifteen-ie-css'  href='https://blogs.gnome.org/tbernard/wp-content/themes/twentyfifteen/css/ie.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='twentyfifteen-ie7-css'  href='https://blogs.gnome.org/tbernard/wp-content/themes/twentyfifteen/css/ie7.css?ver=20141010' type='text/css' media='all' />
+<![endif]-->
+<script type='text/javascript' src='https://blogs.gnome.org/tbernard/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://blogs.gnome.org/tbernard/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='https://blogs.gnome.org/tbernard/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blogs.gnome.org/tbernard/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blogs.gnome.org/tbernard/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='GNOME Shell Hackfest 2019' href='https://blogs.gnome.org/tbernard/2019/12/02/gnome-shell-hackfest-2019/' />
+<meta name="generator" content="WordPress 5.3" />
+<link rel="canonical" href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/" />
+<link rel='shortlink' href='https://blogs.gnome.org/tbernard/?p=7354' />
+<link rel="alternate" type="application/json+oembed" href="https://blogs.gnome.org/tbernard/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblogs.gnome.org%2Ftbernard%2F2019%2F12%2F04%2Fthere-is-no-linux-platform-1%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://blogs.gnome.org/tbernard/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblogs.gnome.org%2Ftbernard%2F2019%2F12%2F04%2Fthere-is-no-linux-platform-1%2F&#038;format=xml" />
+<link rel="stylesheet" href="https://blogs.gnome.org/tbernard/wp-content/mu-plugins/bug-links/bug-links.css" type="text/css" media="screen" /><meta http-equiv="X-XRDS-Location" content="https://blogs.gnome.org/tbernard/?xrds" />
+<meta http-equiv="X-Yadis-Location" content="https://blogs.gnome.org/tbernard/?xrds" />
+
+<!-- Bad Behavior 2.2.24 run time: 2.261 ms -->
+</head>
+
+<body class="post-template-default single single-post postid-7354 single-format-standard wp-embed-responsive">
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<div id="sidebar" class="sidebar">
+		<header id="masthead" class="site-header" role="banner">
+			<div class="site-branding">
+										<p class="site-title"><a href="https://blogs.gnome.org/tbernard/" rel="home">Space and Meaning</a></p>
+												<p class="site-description">Tobias Bernard&#039;s GNOME Blog</p>
+										<button class="secondary-toggle">Menu and widgets</button>
+			</div><!-- .site-branding -->
+		</header><!-- .site-header -->
+
+			<div id="secondary" class="secondary">
+
+		
+		
+					<div id="widget-area" class="widget-area" role="complementary">
+				<aside id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://blogs.gnome.org/tbernard/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit screen-reader-text" value="Search" />
+			</form></aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h2 class="widget-title">Recent Posts</h2>		<ul>
+											<li>
+					<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/" aria-current="page">There is no “Linux” Platform (Part 1)</a>
+									</li>
+											<li>
+					<a href="https://blogs.gnome.org/tbernard/2019/12/02/gnome-shell-hackfest-2019/">GNOME Shell Hackfest 2019</a>
+									</li>
+											<li>
+					<a href="https://blogs.gnome.org/tbernard/2019/12/01/las-2019/">LAS 2019</a>
+									</li>
+											<li>
+					<a href="https://blogs.gnome.org/tbernard/2019/09/05/guadec-2019/">GUADEC 2019</a>
+									</li>
+											<li>
+					<a href="https://blogs.gnome.org/tbernard/2019/04/26/naming-your-app/">Naming Your App</a>
+									</li>
+					</ul>
+		</aside><aside id="archives-3" class="widget widget_archive"><h2 class="widget-title">Archives</h2>		<label class="screen-reader-text" for="archives-dropdown-3">Archives</label>
+		<select id="archives-dropdown-3" name="archive-dropdown">
+			
+			<option value="">Select Month</option>
+				<option value='https://blogs.gnome.org/tbernard/2019/12/'> December 2019 </option>
+	<option value='https://blogs.gnome.org/tbernard/2019/09/'> September 2019 </option>
+	<option value='https://blogs.gnome.org/tbernard/2019/04/'> April 2019 </option>
+	<option value='https://blogs.gnome.org/tbernard/2019/03/'> March 2019 </option>
+	<option value='https://blogs.gnome.org/tbernard/2019/02/'> February 2019 </option>
+	<option value='https://blogs.gnome.org/tbernard/2018/12/'> December 2018 </option>
+	<option value='https://blogs.gnome.org/tbernard/2018/10/'> October 2018 </option>
+	<option value='https://blogs.gnome.org/tbernard/2018/08/'> August 2018 </option>
+	<option value='https://blogs.gnome.org/tbernard/2018/05/'> May 2018 </option>
+	<option value='https://blogs.gnome.org/tbernard/2018/04/'> April 2018 </option>
+	<option value='https://blogs.gnome.org/tbernard/2018/01/'> January 2018 </option>
+	<option value='https://blogs.gnome.org/tbernard/2017/11/'> November 2017 </option>
+
+		</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "archives-dropdown-3" );
+	function onSelectChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value !== '' ) {
+			document.location.href = this.options[ this.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onSelectChange;
+})();
+/* ]]> */
+</script>
+
+		</aside><aside id="pages-2" class="widget widget_pages"><h2 class="widget-title">Pages</h2>		<ul>
+			<li class="page_item page-item-10"><a href="https://blogs.gnome.org/tbernard/about/">About</a></li>
+		</ul>
+			</aside>			</div><!-- .widget-area -->
+		
+	</div><!-- .secondary -->
+
+	</div><!-- .sidebar -->
+
+	<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+<article id="post-7354" class="post-7354 post type-post status-publish format-standard has-post-thumbnail hentry category-ecosystem tag-apps tag-conference tag-distributions tag-las tag-platform tag-themes">
+	
+		<div class="post-thumbnail">
+			<img width="800" height="426" src="https://blogs.gnome.org/tbernard/files/2019/11/winmaclin-e1574161143247.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="https://blogs.gnome.org/tbernard/files/2019/11/winmaclin-e1574161143247.png 800w, https://blogs.gnome.org/tbernard/files/2019/11/winmaclin-e1574161143247-300x160.png 300w, https://blogs.gnome.org/tbernard/files/2019/11/winmaclin-e1574161143247-768x409.png 768w" sizes="(max-width: 800px) 100vw, 800px" />	</div><!-- .post-thumbnail -->
+
+	
+	<header class="entry-header">
+		<h1 class="entry-title">There is no “Linux” Platform (Part 1)</h1>	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p><em>This blog post is based on the talk <a href="https://blogs.gnome.org/alatiera">Jordan Petridis</a> and I gave at <a href="https://linuxappsummit.org">LAS 2019</a> in Barcelona.<br />
+</em></p>
+<p>In our community there is this idea that “Linux” is the third platform next to Windows and macOS. It’s closely connected to things like the “year of the Linux desktop”, and can be seen in the language around things like <a href="http://flatpak.org">Flatpak</a>, which bills itself as <em>&#8220;The Future of Apps on Linux&#8221;</em> and the <a href="https://linuxappsummit.org">Linux App Summit</a>, which is <em>“designed to accelerate the growth of the Linux application ecosystem”</em>.</p>
+<p>But what does that actually mean? What does a healthy app ecosystem look like? And why don’t we have one?</p>
+<p>I think the core of the problem is actually the layer below that: Before we can have healthy ecosystems, we need healthy platforms to build them on.</p>
+<h2 id="what-is-a-platform">What is a Platform?</h2>
+<p>The word &#8220;platform&#8221; is often used without a clear definition of what exactly that entails. If we look at other successful platforms there are a ton of different things enabling their success, which are easy to miss when you just look at the surface.</p>
+<p>On the developer side you need an operating system developers can use to make apps. You also need a developer SDK and tooling which are integrated with the operating system. You need developer documentation, tutorials, etc. so people can learn how to develop for the platform. And of course once the apps are built there needs to be an app store to submit them to.</p>
+<p>Developers can&#8217;t make great apps all by themselves, for that you also need designers. Designers need tools to mock up and prototype apps, platform UI patterns for things like layout and navigation, so every app doesn&#8217;t have to reinvent the wheel, and a visual design language so designers can make their app fit in with the rest of the system visually. You also need Human Interface Guidelines documenting all of the above, as well as tutorials and other educational resources to help people learn to design for the platform.</p>
+<p>On the end user side you need a consumer OS with an integrated app store, where people can get the great apps developers make. The consumer OS can be the same as the developer OS, but doesn’t have to be (e.g. it isn&#8217;t for Android or iOS).  You also need a way for people to get help/support when they have problems with their system (whether that’s physical stores, a help website, or just easily google-able Stackoverflow questions).</p>
+<p><img class="wp-image-7465 size-large" src="https://blogs.gnome.org/tbernard/files/2019/12/platform-parts-1-1024x576.png" alt="" width="660" height="371" srcset="https://blogs.gnome.org/tbernard/files/2019/12/platform-parts-1-1024x576.png 1024w, https://blogs.gnome.org/tbernard/files/2019/12/platform-parts-1-300x169.png 300w, https://blogs.gnome.org/tbernard/files/2019/12/platform-parts-1-768x432.png 768w, https://blogs.gnome.org/tbernard/files/2019/12/platform-parts-1.png 1366w" sizes="(max-width: 660px) 100vw, 660px" /></p>
+<p>That’s a lot of different things, but we can group them into four major pieces which are needed in order for something to be a real platform:</p>
+<ul>
+<li>Operating System</li>
+<li>Developer Platform</li>
+<li>Design Language</li>
+<li>App Store</li>
+</ul>
+<p>So if we look at the free software world, where are the platforms?</p>
+<h3 id="linux">Linux?</h3>
+<p>Linux is a kernel, which can be used to build OSes, which can be used to build platforms. Some people (e.g. Google with Android) have done so, but a kernel by itself clearly doesn’t have any the four things outlined above, and therefore is not a platform.</p>
+<h3 id="freedesktop.org">FreeDesktop.org?</h3>
+<p>What about “Desktop Linux”, which is what people usually mean when they say “Linux”? The problem is that this term doesn’t have a clear definition. You could take it to mean “<a href="https://www.freedesktop.org">FreeDesktop.org</a>”, but that also doesn’t come close to being a platform. FreeDesktop is a set of standards that can be used to build platforms (and/or ensure some level of compatibility between different platforms). Endorsement of a single platform or set of technologies goes directly against FreeDesktop&#8217;s aims, and as such it should only be thought of as the common building blocks platforms might share.</p>
+<h3 id="ubuntu">Ubuntu?</h3>
+<p>What about distributions? Ubuntu is one of the most popular ones, and unlike others it has its own app store. It still isn&#8217;t a platform though, because it doesn’t have the most critical pieces: a developer SDK/technology stack, and a design language.</p>
+<p>Other distributions are in a similar but worse position because they don’t have an app store.</p>
+<h3 id="gnome">GNOME?</h3>
+<p>GNOME is the most popular desktop stack, and it does have an SDK and design language. However, it only sort of has an app store (because GNOME people work on <a href="https://flathub.org">Flathub</a>), and it doesn’t have an OS. Many distributions ship GNOME, but they are all different in various ways (more on this later), so they don&#8217;t provide a unified development target.</p>
+<h3 id="elementary">Elementary?</h3>
+<figure id="attachment_7372" aria-describedby="caption-attachment-7372" style="width: 660px" class="wp-caption alignnone"><img class="size-large wp-image-7372" src="https://blogs.gnome.org/tbernard/files/2019/11/elementary-apps-1024x576.png" alt="" width="660" height="371" srcset="https://blogs.gnome.org/tbernard/files/2019/11/elementary-apps-1024x576.png 1024w, https://blogs.gnome.org/tbernard/files/2019/11/elementary-apps-300x169.png 300w, https://blogs.gnome.org/tbernard/files/2019/11/elementary-apps-768x432.png 768w, https://blogs.gnome.org/tbernard/files/2019/11/elementary-apps-1536x864.png 1536w, https://blogs.gnome.org/tbernard/files/2019/11/elementary-apps.png 1920w" sizes="(max-width: 660px) 100vw, 660px" /><figcaption id="caption-attachment-7372" class="wp-caption-text">Despite being a relatively small project, elementary is attracting third party developers making apps specifically for their platform</figcaption></figure>
+<p>Interestingly, the only project which currently has all the pieces is elementary. It has an OS, an SDK, a HIG, and an app store to submit apps to. The OS is largely Ubuntu and the technology stack largely GNOME, but it develops its own desktop and apps on top of that, and does the integration work to make it into a complete consumer product.</p>
+<p>This begs the question, why is elementary the only one?</p>
+<h2 id="the-means-of-distribution">The Means of Distribution</h2>
+<p>The reasons for this are largely historical. In the early days, free software desktops were a bunch of independently developed components. They were not necessarily designed for each other, or well integrated. This meant in order to have a usable system, someone needed to curate these components and assemble them into an operating system: The first distributions were born.</p>
+<p>Over the last decades this landscape has changed drastically, however. While GNOME 1 was a set of loosely coupled components, GNOME 2 was already much more cohesive and GNOME 3 is now essentially an integrated product. The shell, core apps, and underlying technologies are all designed with each other in mind, and provide a complete OS experience.</p>
+<p>Desktops like GNOME have expanded their scope to cover most of the responsibilities of platforms, and are in effect platforms now, minus the OS part. They have a very clear vision of how the system should work, and app developers target them directly.</p>
+<p>The elementary project has taken this development to its logical end point, and made its own vertically integrated OS and app store. This is why it&#8217;s the only &#8220;real&#8221; platform in the free software space at the moment.</p>
+<figure><figcaption></figcaption></figure>
+<figure><figcaption>
+<figure id="attachment_7366" aria-describedby="caption-attachment-7366" style="width: 660px" class="wp-caption alignnone"><img class="wp-image-7366 size-large" src="https://blogs.gnome.org/tbernard/files/2019/11/gnome-apps-1024x576.png" alt="" width="660" height="371" srcset="https://blogs.gnome.org/tbernard/files/2019/11/gnome-apps-1024x576.png 1024w, https://blogs.gnome.org/tbernard/files/2019/11/gnome-apps-300x169.png 300w, https://blogs.gnome.org/tbernard/files/2019/11/gnome-apps-768x432.png 768w, https://blogs.gnome.org/tbernard/files/2019/11/gnome-apps-1536x864.png 1536w, https://blogs.gnome.org/tbernard/files/2019/11/gnome-apps.png 1920w" sizes="(max-width: 660px) 100vw, 660px" /><figcaption id="caption-attachment-7366" class="wp-caption-text">GNOME has a relatively vibrant ecosystem of nice third party apps now, despite not being a complete platform (yet). This gives us a glimpse of the potential of this ecosystem.</figcaption></figure>
+</figcaption></figure>
+<p>Distributions, on the other hand, have not really changed since the 90s. They still do integration work on desktop components, package system and applications, set defaults, and make UX decisions. They still operate as if they’re making a product from independent components, even though the actual product work is happening at the desktop layer now.</p>
+<p>This disconnect has led to tensions in many areas, which affect both the quality of the system user experience, and the health of the app ecosystem.</p>
+<p>What’s interesting about this situation is that desktop developers are now in the same situation app developers have always been in. Unlike desktops, apps have always been complete products. Because of this they have always suffered from the fragmentation and disconnect between developers and users introduced by distribution packaging.</p>
+<p><img class="alignnone wp-image-7459 size-large" src="https://blogs.gnome.org/tbernard/files/2019/12/dev-distro-user-1024x576.png" alt="" width="660" height="371" srcset="https://blogs.gnome.org/tbernard/files/2019/12/dev-distro-user-1024x576.png 1024w, https://blogs.gnome.org/tbernard/files/2019/12/dev-distro-user-300x169.png 300w, https://blogs.gnome.org/tbernard/files/2019/12/dev-distro-user-768x432.png 768w, https://blogs.gnome.org/tbernard/files/2019/12/dev-distro-user.png 1366w" sizes="(max-width: 660px) 100vw, 660px" /></p>
+<p>Because of this, app developers and desktop developers now more or less share a common set of grievances with the distribution model, which include:</p>
+<ul>
+<li><strong>Release schedule</strong>: Developers don’t have control over the pace at which people get updates to their software. For apps this can mean people still get old versions of software with issues that were fixed upstream years ago. For desktops it’s even worse, because it means app developers don’t know what version of the platform to target, especially since this can vary wildly (some distributions release every 6 months, others every 2+ years).</li>
+<li><strong>Packaging errors</strong>: Distribution packaging is prone to errors because individual packagers are overloaded (often maintaining dozens or hundreds of packages), and don’t know the software as well as the developers.</li>
+<li><strong>Overriding upstream decisions</strong>: When distributions disagree with upstream decisions, they sometimes keep old version of software, or apply downstream patches that override the author’s intentions. This is very frustrating if you’re an app developer, because users never experience your app as you intended it to be. However, similar to the release schedule issue, it&#8217;s even worse when it happens to the core system, because it fragments the platform for app developers.</li>
+<li><strong>Distro Theming</strong>: App developers test with the platform stylesheet and icons, so when distributions change these it can break applications in highly visible ways (invisible widgets, unreadable text, wrong icon metaphors). This is especially bad for third party apps, which get little or no testing from the downstream stylesheet developers. <a href="https://blogs.gnome.org/tbernard/2018/10/15/restyling-apps-at-scale">This blog post</a> explains the issue in more detail.</li>
+</ul>
+<h2 id="the-wrong-incentives">The Wrong Incentives</h2>
+<p>The reason for a lot of these issues is the incentives on the distribution side. Distributions are shipping software directly to end users, so it’s very tempting to solve any issues they find downstream and just ship them directly. But because the distributions don’t actually develop the software this leads to a number of other problems:</p>
+<ul>
+<li><strong>Perpetual rebasing</strong>: Any change that isn’t upstreamed needs to be rebased on every future version of the upstream software.</li>
+<li><strong>Incoherent user experience</strong>: Downstream solutions to UX problems are often simplistic and don&#8217;t fix the entire issue, because they don&#8217;t have the development resources for a proper fix. This leads to awkward half-redesigns, which aren’t as polished or thought-through as the original design.</li>
+<li><strong>Ecosystem fragmentation</strong>: Every downstream change adds yet another variable app developers need to test for. The more distributions do it, the worse it gets.</li>
+</ul>
+<p>The Endless OS shell is a great example of this. They started out with vanilla GNOME Shell, but then added ever more downstream patches in order to address issues found in in-house usability tests. This means that they end up having to do <a href="https://mariospr.org/2017/07/04/endless-os-3-2-released">huge rebases</a> <a href="https://mariospr.org/2018/05/06/updating-endless-os-to-gnome-shell-3-26-video">every release</a>, which is a <em>lot</em> of work. At the same time, the issues that prompted the changes do not get fixed upstream (Endless have recently changed their strategy and are working upstream much more now, so hopefully this will get better in the future).</p>
+<p>This situation is clearly bad for everyone involved: Distributions spend a ton of resources rebasing their patches forever, app developers don&#8217;t have a clear target, and end users get a sub-par experience.</p>
+<p>So, what could we do to improve this? We&#8217;ll discuss that in Part 2 of this series <img src="https://blogs.gnome.org/tbernard/wp-includes/images/smilies/face-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+	</div><!-- .entry-content -->
+
+	
+	<footer class="entry-footer">
+		<span class="posted-on"><span class="screen-reader-text">Posted on </span><a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/" rel="bookmark"><time class="entry-date published updated" datetime="2019-12-04T22:42:46+00:00">December 4, 2019</time></a></span><span class="byline"><span class="author vcard"><span class="screen-reader-text">Author </span><a class="url fn n" href="https://blogs.gnome.org/tbernard/author/tbernard/">Tobias Bernard</a></span></span><span class="cat-links"><span class="screen-reader-text">Categories </span><a href="https://blogs.gnome.org/tbernard/category/ecosystem/" rel="category tag">Ecosystem</a></span><span class="tags-links"><span class="screen-reader-text">Tags </span><a href="https://blogs.gnome.org/tbernard/tag/apps/" rel="tag">Apps</a>, <a href="https://blogs.gnome.org/tbernard/tag/conference/" rel="tag">Conference</a>, <a href="https://blogs.gnome.org/tbernard/tag/distributions/" rel="tag">Distributions</a>, <a href="https://blogs.gnome.org/tbernard/tag/las/" rel="tag">LAS</a>, <a href="https://blogs.gnome.org/tbernard/tag/platform/" rel="tag">Platform</a>, <a href="https://blogs.gnome.org/tbernard/tag/themes/" rel="tag">Themes</a></span>			</footer><!-- .entry-footer -->
+
+</article><!-- #post-7354 -->
+
+<div id="comments" class="comments-area">
+
+			<h2 class="comments-title">
+			18 thoughts on &ldquo;There is no “Linux” Platform (Part 1)&rdquo;		</h2>
+
+		
+		<ol class="comment-list">
+					<li id="comment-18196" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-18196" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/26ce53c20c5831d282772b3795c2429c?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/26ce53c20c5831d282772b3795c2429c?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Simon</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18196">
+							<time datetime="2019-12-05T07:34:40+00:00">
+								December 5, 2019 at 7:34 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>&gt; Distributions, on the other hand, have not really changed since the 90s. They still do integration work on desktop components, package system and applications, set defaults, and make UX decisions. They still operate as if they’re making a product from independent components, even though the actual product work is happening at the desktop layer now.</p>
+<p>I&#8217;m not sure I agree with that — because it seems to ignore the fact that the major distros are also the major contributors to the desktops. Not meaning to dismiss the efforts of independent developers, but an awful lot of the work on projects like Gnome is done by people paid by the likes of RedHat and Canonical. </p>
+<p>And it&#8217;s been that way for a long time&#8230; in the early days of dbus and HAL and NetworkManager, a lot of work was being done to transform Gnome from just a UI shell, to something that could integrate with the OS and hardware. And again, much of that work, both in Gnome and in the stack below it, was being done by developers working for the big distros. Today, the same thing is happening with integrating the likes of Systemd, Flatpak, etc.</p>
+<p>So yeah, while I agree with your conclusions about the lack of a defined &#8220;platform&#8221;, I think you&#8217;re drawing a false division between desktops and distros&#8230; because to a large degree, it&#8217;s the same people doing both.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18196#respond' data-commentid="18196" data-postid="7354" data-belowelement="div-comment-18196" data-respondelement="respond" aria-label='Reply to Simon'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-18208" class="comment byuser comment-author-tbernard bypostauthor odd alt depth-2">
+			<article id="div-comment-18208" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/6b71391c9827f9268dd622d8df5e2f2f?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6b71391c9827f9268dd622d8df5e2f2f?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Tobias Bernard</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18208">
+							<time datetime="2019-12-05T10:03:56+00:00">
+								December 5, 2019 at 10:03 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>&gt; I think you’re drawing a false division between desktops and distros… because to a large degree, it’s the same people doing both.</p>
+<p>Yes and no. It&#8217;s true that many of the people who work upstream also work on distributions (myself included). and in fact those are largely the people who have been moving desktops towards being platforms because they know better than anyone that the status quo isn&#8217;t working.</p>
+<p>Just because the same people are doing work on both things, that doesn&#8217;t make the desktop/distro divide any less real in terms of outcomes.</p>
+<p>Issues like release cadence mismatch or downstream UX changes can apply even when most of the downstream people want to work upstream, because they don&#8217;t control everything about how the distribution is put together (e.g. for technical or business reasons). </p>
+<p>For example, PureOS ships with GNOME 3.30 currently, because it&#8217;s based on Debian stable, even though Purism has a very strong upstream-first ethos. It&#8217;s the same story with RHEL, which a lot of GNOME upstream maintainers also work on. Ask them whether they think the desktop/distro divide exists <img src="https://blogs.gnome.org/tbernard/wp-includes/images/smilies/face-wink.png" alt=";)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18208#respond' data-commentid="18208" data-postid="7354" data-belowelement="div-comment-18208" data-respondelement="respond" aria-label='Reply to Tobias Bernard'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-18235" class="comment even depth-2">
+			<article id="div-comment-18235" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/7d0225b002b36640f83e1cebf9b73082?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/7d0225b002b36640f83e1cebf9b73082?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Christopher</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18235">
+							<time datetime="2019-12-06T06:52:59+00:00">
+								December 6, 2019 at 6:52 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>How about a &#8220;Linux&#8221; distro, with a &#8220;Linux&#8221; desktop, a &#8220;Linux&#8221; theme, a &#8221; Linux&#8221; packaging system, a &#8220;Linux&#8221; SDK, etc&#8230; all using the Linux kernel&#8230; And we call *it* Linux?</p>
+<p>Focuse on it being able to run on older hardware&#8230; select core elements that are the least resource hogging.</p>
+<p>Establish a set desktop environment that doesn&#8217;t change on it&#8217;s face.</p>
+<p>Obviously it would be able to install all software packages and people can tweet it to their liking&#8230; but all these distros and desktops constantly making superficial changes is quite hellish for end users and probably more so for developers.</p>
+<p>Linux, out of the box, 100%</p>
+<p>The rest is vanity and hubris&#8230;</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18235#respond' data-commentid="18235" data-postid="7354" data-belowelement="div-comment-18235" data-respondelement="respond" aria-label='Reply to Christopher'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-18199" class="comment odd alt thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-18199" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/543f907c30de5772ec0625b82264c188?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/543f907c30de5772ec0625b82264c188?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">grin</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18199">
+							<time datetime="2019-12-05T09:16:32+00:00">
+								December 5, 2019 at 9:16 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Many downstream changes [not flowing upstream] base on a strong disagreement between upstream and downstream, usually upstream outright rejecting the change, or demanding more work nobody feels justified downstream. Some even result a fork since it&#8217;s so impossible to find a common ground.</p>
+<p>Some fine example may be Devuan (since Debian basically forced systemd down on people&#8217;s throat) or MATE (since Gnome basically forced Gnome [s]hell down on people&#8217;s throat). I&#8217;m not sure such problems could be easily solved to prevent fragmentation, and the hard solutions nobody&#8217;s really eager to get done.</p>
+<p>I wonder what your plan is to resolve. Docker/flatpak/electron/… kind of &#8220;solution&#8221; (when you package half the OS with every app every time) is a really horrible solution, in my not very humble opinion. I&#8217;m for shared resources. But then you meet distros with different versions of shared libs, which is fine, except they&#8217;re mutually incompatible, which is not. So a [foreign] package for Ubuntu won&#8217;t work on Debian or Arch, and vice versa. And don&#8217;t even start to talk about 3D video cards and hw manufacturers, closed source drivers and…<br />
+[a &#8220;10 TONS&#8221; weight falls on my head and flat me]</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18199#respond' data-commentid="18199" data-postid="7354" data-belowelement="div-comment-18199" data-respondelement="respond" aria-label='Reply to grin'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-18202" class="comment even depth-2">
+			<article id="div-comment-18202" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/9a4b2b5e604c79cd9382a5b7ea6a0b16?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/9a4b2b5e604c79cd9382a5b7ea6a0b16?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Daniel</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18202">
+							<time datetime="2019-12-05T09:53:39+00:00">
+								December 5, 2019 at 9:53 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>No ones shoving anything down anyone&#8217;s throat, you&#8217;re not forced to use Debian or GNOME.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18202#respond' data-commentid="18202" data-postid="7354" data-belowelement="div-comment-18202" data-respondelement="respond" aria-label='Reply to Daniel'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-18205" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-18205" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/1e6d57ebaf4a9d889932ce9ef6f85ab9?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/1e6d57ebaf4a9d889932ce9ef6f85ab9?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">devland</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18205">
+							<time datetime="2019-12-05T10:01:45+00:00">
+								December 5, 2019 at 10:01 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>You can have a mature platform without a centralized &#8220;app store&#8221;. If we&#8217;ve learned anything from app stores it&#8217;s that they inevitably get cluttered with malware and/or bloatware.</p>
+<p>The problem of distributing Linux programs to multiple distributions has already been solved by things like appImages, flatpaks, snaps and so on. The classic repositories due require extra maintenance work but it keeps the ecosystem free of bloatware.</p>
+<p>A centralized solution isn&#8217;t required as it would only disrupt that which makes Linux different and popular.</p>
+<p>The &#8220;let&#8217;s do it because everybody else is doing it&#8221; mentality doesn&#8217;t always yield the best solution. It only artificially limits innovation and creates security and reliability problems for the sake of theoretical convenience.</p>
+<p>Windows hasn&#8217;t had an app store for the better part of its existence and people still avoid the app store as its full of bloatware.</p>
+<p>Taking an already successful OS like Linux and changing it to be like the others won&#8217;t bolster its success. On the contrary. You will only take away that which made it successful in the first place.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18205#respond' data-commentid="18205" data-postid="7354" data-belowelement="div-comment-18205" data-respondelement="respond" aria-label='Reply to devland'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-18250" class="comment even depth-2 parent">
+			<article id="div-comment-18250" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/d210b920bf770b97b6a84c2d77d50907?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d210b920bf770b97b6a84c2d77d50907?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Bus fault</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18250">
+							<time datetime="2019-12-06T15:58:56+00:00">
+								December 6, 2019 at 3:58 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>&gt;A centralized solution isn’t required as it would only disrupt that which makes Linux different and popular.</p>
+<p>Linux is popular?</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18250#respond' data-commentid="18250" data-postid="7354" data-belowelement="div-comment-18250" data-respondelement="respond" aria-label='Reply to Bus fault'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-18256" class="comment odd alt depth-3">
+			<article id="div-comment-18256" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/d546e3898cf9591179aabddd200c1330?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d546e3898cf9591179aabddd200c1330?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Marcio</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18256">
+							<time datetime="2019-12-06T19:25:02+00:00">
+								December 6, 2019 at 7:25 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>&#8220;Linux different and popular.&#8221;<br />
+Without a doubt: best joke of the year!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18256#respond' data-commentid="18256" data-postid="7354" data-belowelement="div-comment-18256" data-respondelement="respond" aria-label='Reply to Marcio'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-18214" class="comment even thread-odd thread-alt depth-1">
+			<article id="div-comment-18214" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/f50876dc489df65c750c9fa32f9dd33e?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/f50876dc489df65c750c9fa32f9dd33e?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Zbigniew Jędrzejewski-Szmek</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18214">
+							<time datetime="2019-12-05T12:20:21+00:00">
+								December 5, 2019 at 12:20 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>&gt; When distributions disagree with upstream decisions, they sometimes keep old version of software, or apply downstream patches that override the author’s intentions. This is very frustrating if you’re an app developer, because users never experience your app as you intended it to be.</p>
+<p>I&#8217;d say this cuts both ways. The distro maintainers give us independent review and evaluation of upstream decisions and act as a sanity check on upstreams, making things uniform and removing the crazy parts and undoing the worst decisions. Upstreams can be very idiosyncratic and each upstream has different design goals, and the role of the distribution is to coerce software designed with different priorities into one coherent set. The fact that there are different sets of principles is one of the reasons why we have so many distributions.</p>
+<p>Occasionally, distro packagers make mistakes, no doubt, but this doesn&#8217;t change the fact that the packaging guidelines, QE, communal testing of binary packages, and standarized packaging provide value to users. You can&#8217;t build a system using e.g. gnome alone, at least not a practical one. Most people want many many other applications that are developed externally, and the distro is the source that makes them easily available.</p>
+<p>&gt;  Developers don’t have control over the pace at which people get updates to their software.</p>
+<p>This is a good thing. The release cadence for Fedora is never going to be the same as the release cadence for RHEL, and it shouldn&#8217;t be. Slowness is the price that is paid for extensive testing and stability. Some people chose to chose that.</p>
+<p>In the theoretical future where e.g. gnome was fully regression free, distros would be more likely to push newer versions into stable releases more often. Once that happens, that issue will be resolved automatically. But it is very hard to provide that kind of stability with software that is undergoing strong development, and we&#8217;re clearly not there yet.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18214#respond' data-commentid="18214" data-postid="7354" data-belowelement="div-comment-18214" data-respondelement="respond" aria-label='Reply to Zbigniew Jędrzejewski-Szmek'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-18220" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-18220" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/89e3f1de3f4989d0ea36e8021dd9dde7?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/89e3f1de3f4989d0ea36e8021dd9dde7?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Sławomir Lach</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18220">
+							<time datetime="2019-12-05T15:52:42+00:00">
+								December 5, 2019 at 3:52 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>What about KDE Neon. It has nearly everything, but App Center/Shop.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18220#respond' data-commentid="18220" data-postid="7354" data-belowelement="div-comment-18220" data-respondelement="respond" aria-label='Reply to Sławomir Lach'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-18259" class="comment even depth-2">
+			<article id="div-comment-18259" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/d546e3898cf9591179aabddd200c1330?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d546e3898cf9591179aabddd200c1330?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Marcio</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18259">
+							<time datetime="2019-12-06T19:37:49+00:00">
+								December 6, 2019 at 7:37 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Qt framework is a property owned by Qt Company with three types of licenses: GPL 3.0, LGPL 2.1 and Qt commercial license.<br />
+So, any company with a commercial software developed with Qt may buy a commercial license from Qt Company if the company desire.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18259#respond' data-commentid="18259" data-postid="7354" data-belowelement="div-comment-18259" data-respondelement="respond" aria-label='Reply to Marcio'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-18265" class="comment byuser comment-author-tbernard bypostauthor odd alt depth-2">
+			<article id="div-comment-18265" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/6b71391c9827f9268dd622d8df5e2f2f?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/6b71391c9827f9268dd622d8df5e2f2f?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Tobias Bernard</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18265">
+							<time datetime="2019-12-06T19:52:00+00:00">
+								December 6, 2019 at 7:52 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>KDE Neon seems like a step in the right direction, but when I last talked to KDE people about it they said they think about it primarily as a tool for development, rather than a consumer product. Would be cool if they pushed it in more of a product direction.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18265#respond' data-commentid="18265" data-postid="7354" data-belowelement="div-comment-18265" data-respondelement="respond" aria-label='Reply to Tobias Bernard'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-18226" class="comment even thread-odd thread-alt depth-1">
+			<article id="div-comment-18226" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/69737b148d81ff4555ebedde85679bd8?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/69737b148d81ff4555ebedde85679bd8?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">bruce davidson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18226">
+							<time datetime="2019-12-05T17:24:38+00:00">
+								December 5, 2019 at 5:24 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Your analysis is spot on. I thik you identify why the &#8216;year of linux desktop&#8217; has not come to pass. Windows 8 was a failure, but linux had no platform to fill the gap. As an end user, I want the stability and ease of use that a platform implies. I&#8217;m tired of all the infernal, never ending tweaking that the typical distro requires. And the confusing proliferation of package managers has not filled the gap of an app store.</p>
+<p>ElementaryOS is going in the right direction. I used it for years, but unfortunately all of those cool custom apps are full of bugs, and fixing them has not been a priority. After waiting through 3 releases for them to fix their bugs, I&#8217;ve moved on.</p>
+<p>I now use Windows Linux Subsystem and Crostini to run any linux apps I require. Windows and ChromeOS both expose the linux kernal as a component that is easy to use. Crostini, in particular makes it easy to use linux desktop apps. I view it as Debian with a Chrome Desktop Environment. After years of distro surfing, it finally fills the &#8216;platform void&#8217; for me as an end user. I&#8217;m not a true believer of free and open source &#8211; I honestly don&#8217;t care. I just want something that works and is easy to use. I think most consumers feel the same way.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18226#respond' data-commentid="18226" data-postid="7354" data-belowelement="div-comment-18226" data-respondelement="respond" aria-label='Reply to bruce davidson'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-18232" class="comment odd alt thread-even depth-1 parent">
+			<article id="div-comment-18232" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/db761cfc1d8062dfadd2ebb76f0cfa37?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/db761cfc1d8062dfadd2ebb76f0cfa37?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Drew</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18232">
+							<time datetime="2019-12-06T01:23:40+00:00">
+								December 6, 2019 at 1:23 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Gnome really needs to control the full stack, the experience still feels like something I used in 2003, It&#8217;s much improved but still feels like bits and pieces are bolted on.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18232#respond' data-commentid="18232" data-postid="7354" data-belowelement="div-comment-18232" data-respondelement="respond" aria-label='Reply to Drew'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-18262" class="comment even depth-2">
+			<article id="div-comment-18262" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/d546e3898cf9591179aabddd200c1330?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d546e3898cf9591179aabddd200c1330?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Marcio</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18262">
+							<time datetime="2019-12-06T19:50:11+00:00">
+								December 6, 2019 at 7:50 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Agree.<br />
+Gnome OS has to be built as a unified source code platform with all companies work together in cooperation at the same code.<br />
+Maybe even Gnome need change from a non-profit foundation to a non-profit Alliance or Consortium following success model used by Wi-fi, Bluetooth, Mopria, USB, Khronos.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18262#respond' data-commentid="18262" data-postid="7354" data-belowelement="div-comment-18262" data-respondelement="respond" aria-label='Reply to Marcio'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-18238" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-18238" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/a028d907952bfb7de94a01847b662d5e?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/a028d907952bfb7de94a01847b662d5e?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">dan</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18238">
+							<time datetime="2019-12-06T09:15:39+00:00">
+								December 6, 2019 at 9:15 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thank you so much for this blog post. It sheds so much light and coherence. It also makes one understand how hard is to sync all these layers, now that we do know how many layers are and what they are.<br />
+You need and OS need an SDK you need shipment methods, you need Design and a set of protocols, and all these mixed together.<br />
+It&#8217;s like a scissors, rock, paper game with Gnome, Ubuntu, and a bunch of other things.<br />
+Hope I&#8217;ve got it. Please keep posting such ideas when you got them!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18238#respond' data-commentid="18238" data-postid="7354" data-belowelement="div-comment-18238" data-respondelement="respond" aria-label='Reply to dan'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-18244" class="comment even thread-even depth-1">
+			<article id="div-comment-18244" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/f34dcdd360a57aa98fa86821c765d9e9?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/f34dcdd360a57aa98fa86821c765d9e9?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn"><a href='https://decathorpe.com' rel='external nofollow ugc' class='url'>Fabio Valentini (decathorpe)</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18244">
+							<time datetime="2019-12-06T13:12:18+00:00">
+								December 6, 2019 at 1:12 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I think some of the statements are a bit unfair wrt. distribution packagers.</p>
+<p>I am the maintainer of elementary / Pantheon (plus some 200+ other packages) on fedora, and a member of the Fedora Packaging Committee, so I do have &#8220;some&#8221; experience in that area. At least for fedora, it&#8217;s usually preferred to 1. write downstream patches in a way that makes it possible to send them back upstream, and 2. to actually send them upstream. You&#8217;ll probably find at least one commit by me in almost all elementary git repositories, since I&#8217;ve tried to actively collaborate with them, and &#8211; I agree &#8211; maintaining downstream patches is painful, and only introduces points of failure. Still, the result is that &#8211; with only very few minor exceptions &#8211; the packages for elementary components are as close to the upstream preferences as possible.</p>
+<p>Additionally, while packagers might not know the project as well as the upstream maintainer, they usually *do* know the intricacies of (distribution) packaging better. This doesn&#8217;t apply to flatpak (et al.) of course &#8211; but these tools also have a learning curve. *Somebody* has to learn how to distribute software effectively, efficiently, and correctly, no matter the distribution method (deb, rpm, flatpak, etc.) &#8211; distribution packagers (and the tooling they use) just have a head start here because that&#8217;s what they&#8217;ve been doing for literally decades.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18244#respond' data-commentid="18244" data-postid="7354" data-belowelement="div-comment-18244" data-respondelement="respond" aria-label='Reply to Fabio Valentini (decathorpe)'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-18253" class="comment odd alt thread-odd thread-alt depth-1">
+			<article id="div-comment-18253" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/212a18f47bef187319ff33e4dc128348?s=56&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/212a18f47bef187319ff33e4dc128348?s=112&#038;d=mm&#038;r=g 2x' class='avatar avatar-56 photo' height='56' width='56' />						<b class="fn">Marcio</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/#comment-18253">
+							<time datetime="2019-12-06T19:11:28+00:00">
+								December 6, 2019 at 7:11 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Congratulations, Tobias.<br />
+Great reflection!</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://blogs.gnome.org/tbernard/2019/12/04/there-is-no-linux-platform-1/?replytocom=18253#respond' data-commentid="18253" data-postid="7354" data-belowelement="div-comment-18253" data-respondelement="respond" aria-label='Reply to Marcio'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/tbernard/2019/12/04/there-is-no-linux-platform-1/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://blogs.gnome.org/tbernard/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='7354' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="f0ca7d682b" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="154"/></p></form>	</div><!-- #respond -->
+	<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>
+</div><!-- .comments-area -->
+
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://blogs.gnome.org/tbernard/2019/12/02/gnome-shell-hackfest-2019/" rel="prev"><span class="meta-nav" aria-hidden="true">Previous</span> <span class="screen-reader-text">Previous post:</span> <span class="post-title">GNOME Shell Hackfest 2019</span></a></div></div>
+	</nav>
+		</main><!-- .site-main -->
+	</div><!-- .content-area -->
+
+
+	</div><!-- .site-content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+									<a href="https://wordpress.org/" class="imprint">
+				Proudly powered by WordPress			</a>
+		</div><!-- .site-info -->
+	</footer><!-- .site-footer -->
+
+</div><!-- .site -->
+
+<img alt='css.php' src="https://blogs.gnome.org/tbernard/wp-content/mu-plugins/cookies-for-comments/css.php?k=2ed2a0138e7654e46fa439cb89097150&amp;o=i&amp;t=1200990936" width='1' height='1' /><script type='text/javascript' src='https://blogs.gnome.org/tbernard/wp-content/themes/twentyfifteen/js/skip-link-focus-fix.js?ver=20141010'></script>
+<script type='text/javascript' src='https://blogs.gnome.org/tbernard/wp-includes/js/comment-reply.min.js?ver=5.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var screenReaderText = {"expand":"<span class=\"screen-reader-text\">expand child menu<\/span>","collapse":"<span class=\"screen-reader-text\">collapse child menu<\/span>"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blogs.gnome.org/tbernard/wp-content/themes/twentyfifteen/js/functions.js?ver=20150330'></script>
+<script type='text/javascript' src='https://blogs.gnome.org/tbernard/wp-includes/js/wp-embed.min.js?ver=5.3'></script>
+<script async="async" type='text/javascript' src='https://blogs.gnome.org/tbernard/wp-content/plugins/akismet/_inc/form.js?ver=4.1.3'></script>
+
+</body>
+</html>

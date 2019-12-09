@@ -1,0 +1,35 @@
+Documentation
+
+      
+        Cockpit 208
+      
+    
+Martin Pitt
+
+        Nov 27, 2019
+      
+modern Linux admin interface
+Storage: Drop “default mount point” concept
+Cockpit no longer offers a confusing “Default” choice when mounting a filesystem. Creating a new filesystem now always requires a specified mount point.
+/proc/mounts
+Machines: Support transient virtual networks and storage pools
+Transient resources exist only while active and cease to exist once deactivated. Cockpit now disables or hides functionality like autostart or deletion for transient networks and storage pools.
+“Create New Virtual Machine” and “Import Virtual Machine” dialogs now have
+sliders to configure memory and disk sizes.
+Logs: Improve crash reporting
+ABRT Analytics
+Thanks to Ernestas Kulik for this work!
+Cockpit 208 is available now:
+For your Linux system
+Source Tarball
+About Martin Pitt
+
+          View all posts by Martin Pitt »
+        
+
+            Privacy Policy
+        
+
+            Code of Conduct
+        
+Edit page on GitHub

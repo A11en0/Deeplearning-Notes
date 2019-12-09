@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Introducing elementary OS 5.1 Hera &sdot; elementary Blog</title>
+  <meta property="og:title" content="Introducing elementary OS 5.1 Hera" />
+  <meta itemprop="name" content="Introducing elementary OS 5.1 Hera" />
+  <meta name="twitter:title" content="Introducing elementary OS 5.1 Hera" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" sizes="256x256" href="https://www.gravatar.com/avatar/eaa3cc978770998ea2bd4382935bf0f4?s=256&d=blank" />
+  <meta itemprop="logo" content="https://www.gravatar.com/avatar/eaa3cc978770998ea2bd4382935bf0f4?s=256&d=blank" />
+  <link rel="shortcut icon" href="https://elementary.io/favicon.ico">
+  <link rel="apple-touch-icon" href="https://elementary.io/images/launcher-icons/apple-touch-icon.png">
+
+  <link rel="alternate" type="application/rss+xml" title="elementary Blog" href="https://blog.elementary.io/feed.xml" />
+
+  <meta name="author" content="" />
+  <meta name="theme-color" content="#64baff" />
+
+  
+    
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content="https://blog.elementary.io/images/introducing-elementary-os-5-1-hera/wallpaper.jpg" />
+  
+  <meta name="twitter:site" content="@elementary" />
+  <meta name="twitter:creator" content="@elementary" />
+
+  <meta name="description" content="A major update on a solid foundation" />
+  <meta property="og:description" content="A major update on a solid foundation" />
+  <meta itemprop="description" content="A major update on a solid foundation" />
+  <meta name="twitter:description" content="A major update on a solid foundation" />
+
+  <link rel="stylesheet" type="text/css" media="all" href="/css/main.css?v=2019-12-04 06:53:04 +0000" />
+</head>
+
+
+  <body class="">
+    <header>
+  <nav class="primary">
+    <ul>
+      <li><a href="https://elementary.io" class="logomark" target="_self">
+        <svg xmlns="http://www.w3.org/2000/svg" height="22" width="22"><path d="M11 0C4.926 0 0 4.926 0 11s4.926 11 11 11 11-4.926 11-11S17.074 0 11 0zm-.02 1.049h.002a.07.07 0 0 0 .018 0c4.548 0 8.384 3.052 9.57 7.217a17.315 17.315 0 0 1-4.213 5.496c-.847.733-1.773 1.383-2.79 1.842-1.018.458-2.136.719-3.247.656a5.6 5.6 0 0 1-2.271-.633 18.276 18.276 0 0 0 5.078-4.12c.956-1.116 1.791-2.39 2.115-3.833.165-.722.19-1.48.04-2.207a4.079 4.079 0 0 0-.999-1.965 4.013 4.013 0 0 0-1.855-1.098 4.85 4.85 0 0 0-2.153-.078c-1.423.261-2.693 1.086-3.705 2.108-1.787 1.8-2.89 4.34-2.687 6.875.102 1.267.524 2.511 1.252 3.554.143.205.302.398.467.584a16.228 16.228 0 0 1-3.086.739A9.946 9.946 0 0 1 10.98 1.049zm.07 2.02c.004-.001.016.002.012.001.692 0 1.387.211 1.936.627a3.2 3.2 0 0 1 1.068 1.49 4.12 4.12 0 0 1 .192 1.848c-.143 1.243-.77 2.388-1.533 3.393-1.354 1.778-3.156 3.203-5.159 4.2-.19.095-.386.187-.582.274a5.114 5.114 0 0 1-1.05-1.295c-.59-1.044-.784-2.284-.67-3.482.116-1.199.526-2.356 1.082-3.43.643-1.244 1.516-2.418 2.732-3.09a4.14 4.14 0 0 1 1.973-.537zm9.83 6.81c.042.367.071.739.071 1.117 0 5.497-4.452 9.953-9.95 9.953a9.917 9.917 0 0 1-7.59-3.53 18.138 18.138 0 0 0 3.17-1.06c.461.346.967.634 1.507.84 1.59.61 3.392.52 4.996-.035 1.603-.555 3.021-1.549 4.256-2.705a18.264 18.264 0 0 0 3.54-4.58z"/></svg>
+      </a></li>
+
+      <li><a href="https://elementary.io/support" target="_self">Support</a></li>
+      <li><a href="https://developer.elementary.io" target="_self">Developer</a><</li>
+      <li><a href="https://elementary.io/get-involved" target="_self">Get Involved</a></li>
+      <li><a href="https://elementary.io/store/" target="_self">Store</a></li>
+      <li><a href="/">Blog</a></li>
+    </ul>
+
+    <ul>
+      <li><a href="/feed.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M400 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM112 416c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm157.533 0h-34.335c-6.011 0-11.051-4.636-11.442-10.634-5.214-80.05-69.243-143.92-149.123-149.123-5.997-.39-10.633-5.431-10.633-11.441v-34.335c0-6.535 5.468-11.777 11.994-11.425 110.546 5.974 198.997 94.536 204.964 204.964.352 6.526-4.89 11.994-11.425 11.994zm103.027 0h-34.334c-6.161 0-11.175-4.882-11.427-11.038-5.598-136.535-115.204-246.161-251.76-251.76C68.882 152.949 64 147.935 64 141.774V107.44c0-6.454 5.338-11.664 11.787-11.432 167.83 6.025 302.21 141.191 308.205 308.205.232 6.449-4.978 11.787-11.432 11.787z"/></svg>
+      </a></li>
+
+      <li><a href="https://www.facebook.com/elementaryos" target="_blank" rel="noopener" title="Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+      </a></li>
+
+      <li><a href="https://mastodon.social/@elementary" target="_blank" rel="noopener" title="Mastodon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
+      </a></li>
+
+      <li><a href="https://www.reddit.com/r/elementaryos" target="_blank" rel="noopener" title="Reddit">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.3 24.9-24.9s-11.1-24.9-24.9-24.9c-9.7 0-18 5.8-22.1 13.8l-61.2-13.6c-3-.8-6.1 1.4-6.9 4.4l-19.1 86.4c-33.2 1.4-63.1 11.3-85.5 26.8-6.1-6.4-14.7-10.2-24.1-10.2-34.9 0-46.3 46.9-14.4 62.8-1.1 5-1.7 10.2-1.7 15.5 0 52.6 59.2 95.2 132 95.2 73.1 0 132.3-42.6 132.3-95.2 0-5.3-.6-10.8-1.9-15.8 31.3-16 19.8-62.5-14.9-62.5zM302.8 331c-18.2 18.2-76.1 17.9-93.6 0-2.2-2.2-6.1-2.2-8.3 0-2.5 2.5-2.5 6.4 0 8.6 22.8 22.8 87.3 22.8 110.2 0 2.5-2.2 2.5-6.1 0-8.6-2.2-2.2-6.1-2.2-8.3 0zm7.7-75c-13.6 0-24.6 11.1-24.6 24.9 0 13.6 11.1 24.6 24.6 24.6 13.8 0 24.9-11.1 24.9-24.6 0-13.8-11-24.9-24.9-24.9z"/></svg>
+      </a></li>
+
+      <li><a href="https://elementaryos.stackexchange.com" target="_blank" rel="noopener" title="StackExchange">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M17.7 332.3h412.7v22c0 37.7-29.3 68-65.3 68h-19L259.3 512v-89.7H83c-36 0-65.3-30.3-65.3-68v-22zm0-23.6h412.7v-85H17.7v85zm0-109.4h412.7v-85H17.7v85zM365 0H83C47 0 17.7 30.3 17.7 67.7V90h412.7V67.7C430.3 30.3 401 0 365 0z"/></svg>
+      </a></li>
+
+      <li><a href="https://twitter.com/elementary" target="_blank" rel="noopener" title="Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a></li>
+
+      <li><a href="https://join.slack.com/t/elementarycommunity/shared_invite/enQtMzU1NDU4OTE1MjY2LWUyOTBkZGNkZGM4MDgzZjE2ZjRiZDgwMDQ1ZTA0MzcxYjI0MDUyNGRlNDI5ZWViNDkwMzMwYzczMDY2ZjA0MTc" target="_blank" rel="noopener" title="Slack">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M94.12 315.1c0 25.9-21.16 47.06-47.06 47.06S0 341 0 315.1c0-25.9 21.16-47.06 47.06-47.06h47.06v47.06zm23.72 0c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06v117.84c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06V315.1zm47.06-188.98c-25.9 0-47.06-21.16-47.06-47.06S139 32 164.9 32s47.06 21.16 47.06 47.06v47.06H164.9zm0 23.72c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06H47.06C21.16 243.96 0 222.8 0 196.9s21.16-47.06 47.06-47.06H164.9zm188.98 47.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06h-47.06V196.9zm-23.72 0c0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06V79.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06V196.9zM283.1 385.88c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06v-47.06h47.06zm0-23.72c-25.9 0-47.06-21.16-47.06-47.06 0-25.9 21.16-47.06 47.06-47.06h117.84c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06H283.1z"/></svg>
+      </a></li>
+    </ul>
+  </nav>
+  <nav class="secondary">
+    <a href="/tags/#updates">OS Updates</a>
+    <a href="/tags/#appcenter">AppCenter</a>
+    <a href="/tags/#devs">Developers</a>
+    <a href="/tags/#design">Design</a>
+  </nav>
+</header>
+
+    <section>
+      <article>
+  
+  <header>
+    <h1>
+
+
+ Introducing elementary OS&nbsp;5.1 Hera
+</h1>
+    
+      <h2>
+
+
+ A major update on a solid&nbsp;foundation
+</h2>
+    
+
+    
+
+
+
+<div class="byline">
+  <div class="avatar">
+    <img
+      
+        srcset="https://www.gravatar.com/avatar/41275ecc8271aca852ce2c0ff72d2610?s=96&d=blank 2x"
+        src="https://www.gravatar.com/avatar/41275ecc8271aca852ce2c0ff72d2610?s=48&d=blank"
+        alt="Avatar for Cassidy James Blaede"
+      
+    />
+  </div>
+  <div class="author">
+    <span class="name">Cassidy James Blaede</span>
+    
+      <span class="description">Co-founder & CXO</span>
+    
+  </div>
+  <time class="post-date" datetime="2019-12-03">Tue, Dec  3, 2019</time>
+  
+    <span class="read-time" title="Estimated read time">
+  
+  18 min read
+</span>
+
+
+  
+</div>
+
+
+    <aside class="tags">
+  
+  
+    <a class="tag" href="/tags/#accessibility">#accessibility</a>
+  
+    <a class="tag" href="/tags/#flatpak">#flatpak</a>
+  
+    <a class="tag" href="/tags/#hera">#hera</a>
+  
+    <a class="tag" href="/tags/#juno">#juno</a>
+  
+    <a class="tag" href="/tags/#release">#release</a>
+  
+    <a class="tag" href="/tags/#sideload">#sideload</a>
+  
+    <a class="tag" href="/tags/#updates">#updates</a>
+  
+</aside>
+
+
+  </header>
+
+  <section>
+    <p>Last October, we <a rel="nofollow noopener noreferrer" target="_blank" href="https://medium.com/elementaryos/elementary-os-5-juno-is-here-471dfdedc7b3">announced elementary OS 5 Juno</a> with wide-ranging updates to provide a more refined user experience, improve productivity for new and seasoned users alike, and take our developer platform to the next level. Today we’re pleased to announce elementary OS 5.1 Hera, the latest major update.</p>
+
+<p><img src="/images/introducing-elementary-os-5-1-hera/notebook-desktop.png" alt="Hera on a notebook computer" srcset="/images/introducing-elementary-os-5-1-hera/notebook-desktop@2x.png 2x" /></p>
+
+<p>Hera builds on the solid foundation of Juno while bringing: </p>
+
+<ol>
+  <li><strong>A brand new first-run experience</strong> with Greeter and Onboarding</li>
+  <li><strong>Flatpak support</strong> with Sideload and AppCenter</li>
+  <li><strong>Major updates around accessibility</strong> and System Settings</li>
+  <li><strong>Iterative improvements</strong> across nearly all apps</li>
+  <li><strong>The latest hardware support</strong> with a new Linux kernel and hardware enablement stack</li>
+</ol>
+
+<p>If you’re just interested in downloading it, head on over to <a rel="nofollow noopener noreferrer" target="_blank" href="https://elementary.io">elementary.io</a> to get yourself a copy or open AppCenter on Juno and hit “Update All”. If you want to read about the changes, carry on.</p>
+
+<hr />
+
+<h2 id="whats-in-a-name-andnumber">What’s in a Name and Number?</h2>
+
+<p>We detailed our shift in the numbering scheme from the 0.x of old to Juno being elementary OS 5 when we announced it back in October. In the same vein, Hera builds on the new numbering scheme.</p>
+
+<aside>
+  <blockquote>
+    <p>Hera is the culmination of our work over the past year packaged up into one cohesive update.</p>
+  </blockquote>
+</aside>
+
+<p>elementary OS 5.1 Hera takes the same foundation as Juno—utilizing the same underlying repositories and libraries—but builds on it with a refined experience. It is the culmination of our work over the past year packaged up into one cohesive update. As such, the 5.1 number represents that it’s a major update, but not an entirely new version (which usually come around every two years). It’s still significant enough, however, to deserve its own name and identity.</p>
+
+<p>We always name our releases after mythological beings and deities, and Hera is no different. The Greek equivalent of Juno, Hera is considered the queen of the Greek gods and represents women, marriage, family, and childbirth.</p>
+
+<h2 id="updates-from-the-junorelease">Updates from the Juno Release</h2>
+
+<p>Since Hera builds on Juno, it includes <a href="/tags/#updates">all of the monthly OS updates</a> we’ve detailed since Juno’s release. You can check those monthly stories for the nitty-gritty—and if you’ve diligently followed along, much of this will be a review—but here’s a higher-level overview of what Hera brings:</p>
+
+<h3 id="greeter--onboarding">Greeter &amp; Onboarding</h3>
+
+<p>This is the duo of major new features for Hera, and greatly improves the first-run experience for users.</p>
+
+<figure>
+  <p><img src="/images/say-hello-to-the-new-greeter/screenshot_800.jpg" alt="Greeter screenshot" srcset="/images/say-hello-to-the-new-greeter/screenshot_1600.jpg 2x" /></p>
+  <figcaption>
+    <p>A screenshot of the new Greeter</p>
+  </figcaption>
+</figure>
+
+<p>The newly redesigned login and lockscreen greeter looks sharper, works better, and fixes many reported issues with the previous greeter including focus issues, HiDPI issues, and better localization.</p>
+
+<p>The new design in Hera was in response to user feedback from Juno, and enables some nice new features. It now always shows usernames for all users, shows users’ backgrounds as cards so you can more easily find users who maybe haven’t set differentiating avatars, notifies when Caps or Num Lock are on, and makes “Log In as Guest” more distinct when it’s enabled.</p>
+
+<aside>
+
+
+
+<a class="featured with-image 1" href="/say-hello-to-the-new-greeter/">
+  
+    <div class="featured-image" alt="Featured image" style="background-image: url(/images/say-hello-to-the-new-greeter/screenshot_1600.jpg);"></div>
+  
+
+  <header>
+    <h2>
+
+
+ Say Hello to the New&nbsp;Greeter
+</h2>
+    
+      <h3>
+
+
+ Our redesigned login and lock&nbsp;screen
+</h3>
+    
+
+    
+
+
+
+<div class="byline">
+  <div class="avatar">
+    <img srcset="https://www.gravatar.com/avatar/1f3cc76b99b5d0dae8381a23f52ea96d?s=96&amp;d=blank 2x" src="https://www.gravatar.com/avatar/1f3cc76b99b5d0dae8381a23f52ea96d?s=48&amp;d=blank" alt="Avatar for Daniel Foré" />
+  </div>
+  <div class="author">
+    <span class="name">Daniel Foré</span>
+    
+      <span class="description">Founder &amp; CEO</span>
+    
+  </div>
+  <time class="post-date" datetime="2019-08-27">Tue, Aug 27, 2019</time>
+  
+    <span class="read-time" title="Estimated read time">
+  
+  6 min read
+</span>
+
+
+  
+</div>
+
+
+  </header>
+
+  
+</a>
+
+
+</aside>
+
+<p><a href="/get-settled-into-elementary-os-with-onboarding/">The new Onboarding app</a> that ships with Hera introduces key features to users and handles common first-run tasks like managing privacy settings.</p>
+
+<figure class="third">
+  <p><img src="https://miro.medium.com/max/1120/1*OsUdeEafTuWof7e_jdEeNg@2x.png" alt="Welcome screenshot" />
+<img src="https://miro.medium.com/max/1120/1*CHRbLVIpEKti-vzcN6c8IA@2x.png" alt="Location Services screenshot" />
+<img src="https://miro.medium.com/max/1120/1*dZ6zFyWk48YBA-tjoB3V-g@2x.png" alt="Night Light screenshot" />
+<img src="https://miro.medium.com/max/1120/1*5tVjv1f9GqHfHmYjFYfJlQ@2x.png" alt="Housekeeping screenshot" />
+<img src="https://miro.medium.com/max/1120/1*2lEgiaFuFnV-fM9WcsU4sQ@2x.png" alt="AppCenter screenshot" />
+<img src="https://miro.medium.com/max/1124/1*XMhBb2LH7zaW1VFQeORMow@2x.png" alt="Finished screenshot" /></p>
+</figure>
+
+<p>Since it’s a modular component—and not all baked into one piece of software along with an installer and new user creation—the Onboarding experience works great for newly-created users on existing installs, as well. When a major new feature lands in elementary OS, Onboarding can also be used to introduce it to existing users. You can read more about Onboarding and its design and development process in <a href="/get-settled-into-elementary-os-with-onboarding/">our story from July</a>.</p>
+
+<aside>
+
+
+
+<a class="featured with-image 1" href="/get-settled-into-elementary-os-with-onboarding/">
+  
+    <div class="featured-image" alt="Featured image" style="background-image: url(https://miro.medium.com/max/1120/1*OsUdeEafTuWof7e_jdEeNg@2x.png);"></div>
+  
+
+  <header>
+    <h2>
+
+
+ Get Settled into elementary OS with&nbsp;Onboarding
+</h2>
+    
+      <h3>
+
+
+ Designed to improve the first-run&nbsp;experience
+</h3>
+    
+
+    
+
+
+
+<div class="byline">
+  <div class="avatar">
+    <img srcset="https://www.gravatar.com/avatar/41275ecc8271aca852ce2c0ff72d2610?s=96&amp;d=blank 2x" src="https://www.gravatar.com/avatar/41275ecc8271aca852ce2c0ff72d2610?s=48&amp;d=blank" alt="Avatar for Cassidy James Blaede" />
+  </div>
+  <div class="author">
+    <span class="name">Cassidy James Blaede</span>
+    
+      <span class="description">Co-founder &amp; CXO</span>
+    
+  </div>
+  <time class="post-date" datetime="2019-07-23">Tue, Jul 23, 2019</time>
+  
+    <span class="read-time" title="Estimated read time">
+  
+  10 min read
+</span>
+
+
+  
+</div>
+
+
+  </header>
+
+  
+</a>
+
+
+</aside>
+
+<p>Together, these two components greatly improve the first impressions of elementary OS from first run or getting a new computer all the way through using your account for the first time. With a fresh codebase across both, we’ll also be able to more quickly iterate on features and fixes.</p>
+
+<h3 id="flatpak">Flatpak</h3>
+
+<p>Flatpak is an open source technology that enables developers to ship apps to different desktops in a way that is more secure and privacy-respecting for users. Over the past year, Flatpak has really matured as a technology which has lead us to commit to <a href="/elementary-appcenter-flatpak/">a Flatpak future for our AppCenter ecosystem</a>. Beyond that—and more immediately relevant—we’ve been hard at work to design a new sideloading experience for users to more safely get apps if they venture outside of AppCenter.</p>
+
+<h4 id="sideload">Sideload</h4>
+
+<p>While we always recommend installing curated AppCenter apps where we’ve done extensive automated and human reviews, we understand that some apps will not meet the strict requirements for AppCenter—and will thus be distributed elsewhere. Rather than encouraging users to drop to a Terminal, add inherently insecure PPAs, or install packages that end up getting root access to the system, we’ve created a new core elementary OS utility called Sideload to make it extremely easy to sideload Flatpak apps.</p>
+
+<figure class="third">
+  <p><img src="https://raw.githubusercontent.com/elementary/sideload/master/data/screenshot.png" alt="Sideload" />
+<img src="https://raw.githubusercontent.com/elementary/sideload/master/data/screenshot-progress.png" alt="Sideload progress" />
+<img src="https://raw.githubusercontent.com/elementary/sideload/master/data/screenshot-success.png" alt="Sideload success" /></p>
+  <figcaption>The new Sideload app</figcaption>
+</figure>
+
+<p>Sideload explains the implications of installing an app including potential download size and if it will add a remote that might contain other apps.</p>
+
+<h4 id="appcenter">AppCenter</h4>
+
+<p>We’ve focused heavily on AppCenter for Hera—after all, it’s <a href="/building-the-future-of-elementary-os/">the center of our platform</a>. The headlining feature is Flatpak support: updates to sideloaded apps will appear in AppCenter alongside all other updates, and apps from any user-added Flatpak remotes will show up in AppCenter as uncurated apps. But we’ve also improved just about everything else.</p>
+
+<p>First, AppCenter is up to 10× faster in Hera, loading the homepage and featured apps blazingly fast. We’ve also improved performance throughout the app and do more tasks in parallel, leading to lower memory usage and an all-around faster experience.</p>
+
+<figure class="half">
+  <p><img src="/images/updates-for-october-2019/appcenter-fondo.png" alt="AppCenter" />
+<img src="/images/updates-for-october-2019/appcenter-network.png" alt="Network infobar" srcset="/images/updates-for-october-2019/appcenter-network@2x.png 2x" /></p>
+  <figcaption>
+    <p><strong>Left:</strong> App listing with new screenshot navigation | <strong>Right:</strong> Browse cached apps and uninstall while offline</p>
+  </figcaption>
+</figure>
+
+<p>On app listings, we’ve added a loading animation to screenshots, plus added new forward/back navigation buttons on hover in case the little dots were too hard to hit. App listings now support choosing between different app sources if the same app is provided by multiple remotes. AppCenter in Hera also works much better when your device is offline; you can continue to browse cached apps and uninstall existing apps without a network connection.</p>
+
+<figure>
+  <p><img src="https://cdn-images-1.medium.com/max/800/1*r2DZyxdSOc6wSYzkFdSJjw@2x.png" alt="AppCenter categories" srcset="https://cdn-images-1.medium.com/max/1600/1*r2DZyxdSOc6wSYzkFdSJjw@2x.png 2x" /></p>
+  <figcaption>New &amp; Improved AppCenter categories</figcaption>
+</figure>
+
+<p>To make more apps more discoverable in AppCenter, we’ve improved and added several new categories in Hera. We’ve also fixed reported issues including ones related to email validation, visibility of available apps, and button styles. And since Hera is built from the same foundation as Juno, <strong>all AppCenter apps released so far for Juno will automatically be available in Hera</strong>.</p>
+
+<h3 id="accessibility-and-systemsettings">Accessibility and System Settings</h3>
+
+<p>In February, we <a href="/accessibility-features-are-just-features/">shared our philosophy on accessibility features</a> and how they should be exposed as fully-supported features to all users. In elementary OS 5.1 Hera, we’re now shipping several improvements in System Settings that expose more accessible settings for all users. Performance and keyboard shortcut discoverability has also been improved. We’ve also improved several other areas in System Settings based on reported issues.</p>
+
+<figure>
+  <p><img src="https://cdn-images-1.medium.com/max/800/1*NPiwb5nTWZoM_Y5moHPAYw@2x.png" alt="Sound" srcset="https://cdn-images-1.medium.com/max/1600/1*NPiwb5nTWZoM_Y5moHPAYw@2x.png 2x" /></p>
+  <figcaption>Improved Sound settings</figcaption>
+</figure>
+
+<p>Sound settings have been improved with a new approach to handling external devices. The result is a simpler way of picking your output device and the more reliable display of available devices. We’ve also added the “Flash screen” option for event alerts here to better manage whether alerts are audible, visual, both, or neither. This is particularly handy for the hearing impaired or to use in environments where an audible alert would be inappropriate, like live production.</p>
+
+<figure class="half">
+  <p><img src="/images/introducing-elementary-os-5-1-hera/clicking.png" alt="Clicking" srcset="/images/introducing-elementary-os-5-1-hera/clicking@2x.png 2x" />
+<img src="/images/introducing-elementary-os-5-1-hera/pointing.png" alt="Pointing" srcset="/images/introducing-elementary-os-5-1-hera/pointing@2x.png 2x" />
+<img src="/images/introducing-elementary-os-5-1-hera/mouse.png" alt="Mouse" srcset="/images/introducing-elementary-os-5-1-hera/mouse@2x.png 2x" />
+<img src="/images/introducing-elementary-os-5-1-hera/touchpad.png" alt="Touchpad" srcset="/images/introducing-elementary-os-5-1-hera/touchpad@2x.png 2x" /></p>
+  <figcaption>Improved Mouse &amp; Touchpad settings</figcaption>
+</figure>
+
+<p>Mouse &amp; Touchpad settings have been redesigned and improved for Hera. They’re now organized into sections for different behavior- and hardware-specific settings, plus several accessibility settings like long-press secondary click, reveal pointer, double-click speed, and control pointer using keypad have been exposed. We’ve also added the highly-requested “Ignore when mouse is connected” toggle to the touchpad settings, and fixed the middle-click setting not appearing in certain situations.</p>
+
+<figure>
+  <p><img src="https://cdn-images-1.medium.com/max/800/1*m-kaKQqh_o9XsqFa967kaA@2x.png" alt="Desktop Appearance settings" srcset="https://cdn-images-1.medium.com/max/1600/1*m-kaKQqh_o9XsqFa967kaA@2x.png 2x" /></p>
+  <figcaption>New Desktop Appearance settings</figcaption>
+</figure>
+
+<p>We’ve added a new Appearance tab to the Desktop settings, exposing some existing accessibility settings and making them more discoverable. This includes a new wider range of supported text sizes, from small (0.75×) to larger (1.5×). This should help those who need larger or smaller text, including alleviating some issues with certain hardware combinations where 1× or 2× display scaling is not the best fit.</p>
+
+<p>Over in the Wallpaper page, we’ve fixed reported issues with setting wallpapers on the Login and Lock screen.</p>
+
+<figure>
+  <p><img src="https://cdn-images-1.medium.com/max/800/1*MktQpi08_85vY78wMKLWDg.png" alt="Displays" srcset="https://cdn-images-1.medium.com/max/1600/1*MktQpi08_85vY78wMKLWDg.png 2x" /></p>
+  <figcaption>Improved Displays settings</figcaption>
+</figure>
+
+<p>The Displays settings have been improved, bringing a more reliable scaling factor setting, new refresh rate options, and an improved design using palette colors. Display moving, snapping, and aligning has also been reworked, making it much easier and less error-prone to align displays to match their physical orientation.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/800/1*RPQW7xDn904fMIufTe7sRg@2x.png" alt="Bluetooth settings" srcset="https://cdn-images-1.medium.com/max/1600/1*RPQW7xDn904fMIufTe7sRg@2x.png 2x" /></p>
+
+<figure class="half">
+  <p><img src="/images/updates-for-october-2019/pairing-pin.png" alt="Bluetooth pairing agent PIN dialog" srcset="/images/updates-for-october-2019/pairing-pin@2x.png 2x" />
+<img src="/images/updates-for-october-2019/pairing-passkey.png" alt="Bluetooth pairing agent passkey dialog" srcset="/images/updates-for-october-2019/pairing-passkey@2x.png 2x" /></p>
+  <figcaption>Improved Bluetooth settings with a pairing agent for PINs and passkeys</figcaption>
+</figure>
+
+<p>Bluetooth settings have been improved with more reliable pairing and trusting of devices, plus a new pairing agent to better handle devices that need a PIN or passkey to pair. This dialog shows up when pairing a device like a keyboard, and increases the compatibility of elementary OS for more wireless devices.</p>
+
+<figure>
+  <p><img src="/images/updates-for-august-2019/date-time_800.png" alt="Date &amp; Time Settings" srcset="/images/updates-for-august-2019/date-time_1600.png 2x" /></p>
+  <figcaption>Refined Date &amp; Time settings</figcaption>
+</figure>
+
+<p>For Date &amp; Time settings in Hera, we’ve cleaned up the design and added an automatic timezone setting.</p>
+
+<figure>
+  <p><img src="/images/introducing-elementary-os-5-1-hera/language-install.png" alt="Locale Settings" /></p>
+  <figcaption>Improved Language &amp; Region settings</figcaption>
+</figure>
+
+<p>We’ve improved Language &amp; Region settings in Hera. Installing new languages has been moved to a dialog to make it cleaner and more straightforward, the sidebar updates the status of languages more accurately, and the settings now only prompt you to authenticate when you actually need to—leading to a cleaner design and avoiding stacked infobars.</p>
+
+<figure class="half">
+  <p><img src="/images/introducing-elementary-os-5-1-hera/vpn_800.png" alt="VPN settings" srcset="/images/introducing-elementary-os-5-1-hera/vpn.png 2x" />
+<img src="/images/introducing-elementary-os-5-1-hera/hotspot.png" alt="Hotspot settings" srcset="/images/introducing-elementary-os-5-1-hera/hotspot@2x.png 2x" /></p>
+  <figcaption>Redesigned VPN and Hotspot settings</figcaption>
+</figure>
+
+<p>Hera’s Network settings have also been redesigned in a few places: the Hotspot settings are now in-page instead of in a separate dialog, and the new VPN page is much easier to use.</p>
+
+<figure>
+  <p><img src="/images/updates-for-october-2019/housekeeping.png" alt="Housekeeping screenshot" srcset="/images/updates-for-october-2019/housekeeping@2x.png 2x" /></p>
+  <figcaption>Reworked Housekeeping settings</figcaption>
+</figure>
+
+<p>We reworked the design of the Housekeeping settings in the Security &amp; Privacy settings to better match the design of the new Onboarding app.</p>
+
+<figure class="half">
+  <p><img src="/images/introducing-elementary-os-5-1-hera/power.png" alt="Power settings" srcset="/images/introducing-elementary-os-5-1-hera/power@2x.png 2x" />
+<img src="/images/introducing-elementary-os-5-1-hera/shutdown.png" alt="Shut Down dialog" srcset="/images/introducing-elementary-os-5-1-hera/shutdown@2x.png 2x" /></p>
+  <figcaption>
+    <p><strong>Left:</strong> Prompt to shutdown setting | <strong>Right:</strong> Shut Down dialog</p>
+  </figcaption>
+</figure>
+
+<p>In Power settings, we’ve added a new “Prompt to shutdown” option for the power button alongside the existing “Do nothing” and “Suspend” options. When chosen, pressing a physical power button on your device will show the standard Shut Down dialog which can be handy as a safeguard against accidental shut downs.</p>
+
+<figure>
+  <p><img src="https://cdn-images-1.medium.com/max/697/1*TTr3mUvKtb--h57ZVCxORA@2x.png" alt="Applications Menu search" srcset="https://cdn-images-1.medium.com/max/1395/1*TTr3mUvKtb--h57ZVCxORA@2x.png 2x" /></p>
+  <figcaption>Improved Applications Menu search</figcaption>
+</figure>
+
+<p>Lastly, we’ve made both System Settings and system actions like restarting much more discoverable in Hera with greatly improved deep searching from the Applications Menu. You can now search for something like “display” and get a list of all the individual features in each pane where the word “display” is used. We’ve also updated those keywords across all actions and settings panes, making them even easier to find—including common alternatives like “reboot” for Restart.</p>
+
+<h3 id="app-updates">App Updates</h3>
+
+<p>As with any major elementary OS update, we’ve been hard at work on several of the core apps for Hera.</p>
+
+<h4 id="calendar">Calendar</h4>
+
+<figure>
+  <p><img src="https://cdn-images-1.medium.com/max/800/1*GqkCuLStGsy2cfvXU8jqTA@2x.png" alt="Calendar" srcset="https://cdn-images-1.medium.com/max/1600/1*GqkCuLStGsy2cfvXU8jqTA@2x.png 2x" /></p>
+  <figcaption>Refreshed Calendar design</figcaption>
+</figure>
+
+<p>We’ve put a lot of work into Calendar for Hera with a refreshed design that is brighter, cleaner, and more usable. Keyboard navigation, color palette usage, and the event dialog have also all been improved. See the <a href="/juno-updates-for-february-2019/">February updates story</a> for more information.</p>
+
+<h4 id="camera">Camera</h4>
+
+<figure>
+  <p><img src="https://elementary.io/images/screenshots/camera.png" alt="Camera" srcset="https://elementary.io/images/screenshots/camera@2x.png 2x" /></p>
+</figure>
+
+<p>We’ve updated the Camera app in Hera for greatly improved hardware compatibility and performance with cameras on several popular laptops, including many Dell models.</p>
+
+<h4 id="photos">Photos</h4>
+
+<p>In Photos we now show a checkerboard background behind translucent image thumbnails. We’ve also worked to improve the UI of dialogs throughout the app.</p>
+
+<h4 id="music">Music</h4>
+
+<p>We’ve spent a lot of time improving Music for Hera, with large improvements to sorting in the album, list, and column views.</p>
+
+<figure class="half">
+  <p><img src="/images/introducing-elementary-os-5-1-hera/music_800.png" alt="Music library" srcset="/images/introducing-elementary-os-5-1-hera/music.png 2x" />
+<img src="https://cdn-images-1.medium.com/max/337/1*mZGIW4KbddMKDyzKoaKAww@2x.png" alt="Music preferences" srcset="https://cdn-images-1.medium.com/max/674/1*mZGIW4KbddMKDyzKoaKAww@2x.png 2x" /></p>
+  <figcaption>New accent color in Music</figcaption>
+</figure>
+
+<p>We also made keyboard shortcuts more discoverable, plus added a new bold orange accent color throughout, carrying its identity from the icon into the app itself. We fixed several reported issues with queuing and playlists. Music can now also play s3m files and double clicking an album cover in the grid view will start playing that album. Lastly, album art in the grid view is now displayed more crisply on HiDPI displays.</p>
+
+<h4 id="videos">Videos</h4>
+
+<figure>
+  <p><img src="/images/introducing-elementary-os-5-1-hera/videos.png" alt="Videos" srcset="/images/introducing-elementary-os-5-1-hera/videos@2x.png 2x" /></p>
+</figure>
+
+<p>The Videos app in Hera now supports automatically queuing up episodes when watching shows. It has also been updated to show audio track titles, i.e. with the language name. Keyboard navigation has been improved, and it’s now easier to clear playlist queue with a dedicated button.</p>
+
+<h4 id="files">Files</h4>
+
+<p>Files in Hera received a major new feature: CloudProviders support. This means file syncing and cloud storage providers like NextCloud can use this standardized API and hook directly into the Files app, without having to do anything special for elementary OS. This API is also planned to be implemented in GNOME Files, and we hope to see it adopted more widely across FreeDesktops. We’ve also spent a ton of time improving Files in Hera.</p>
+
+<figure class="third">
+  <p><img src="https://cdn-images-1.medium.com/max/800/1*XG7msxmcJ-dPFZPn-fxmmQ@2x.png" alt="Files Shortcuts" srcset="https://cdn-images-1.medium.com/max/1600/1*XG7msxmcJ-dPFZPn-fxmmQ@2x.png 2x" />
+<img src="https://user-images.githubusercontent.com/611168/62493151-a0597600-b78d-11e9-9f9f-536525b004ac.png" alt="Files Color Tagging" />
+<img src="/images/updates-for-september-2019/files-checkerboard.png" alt="Checkerboard" srcset="/images/updates-for-september-2019/files-checkerboard@2x.png 2x" /></p>
+  <figcaption>Keyboard shortcut discoverability, color tagging, and checkerboard thumbnail backgrounds in Files</figcaption>
+</figure>
+
+<p>We’ve made search more discoverable by showing the search icon and placeholder text in the Home folder, similar to a web browser’s empty state. The search results dropdown is also larger and shows more results, and there’s a new feature to hide thumbnails. “Cherry picking” files has been greatly improved, and we’ve refined the design of the color tags to be easier targets—plus we show all color tags used in a selection in the context menu. We also now draw a checkerboard background behind transparent image thumbnails, making them easier to see.</p>
+
+<p>We’ve also improved keyboard shortcut discoverability throughout, improved the Open In and Open With menus with app icons, and made Files respect the Event Alerts setting from <em>System Settings</em> → <em>Sound</em> for the trash sound. Lastly, we’ve implemented several performance and stability improvements including fixing reported issues around file sorting, pasting, selecting files, color tags, file renaming, and more.</p>
+
+<h4 id="code">Code</h4>
+
+<figure>
+  <p><img src="https://cdn-images-1.medium.com/max/800/1*mO9RqSUJy2WYKZWhAf3QAA@2x.png" alt="Code" srcset="https://cdn-images-1.medium.com/max/1600/1*mO9RqSUJy2WYKZWhAf3QAA@2x.png 2x" /></p>
+  <figcaption>Improved keyboard shortcut discoverability in Code</figcaption>
+</figure>
+
+<p>Code has been updated for Hera with more discoverable keyboard shortcuts, the restoration of the line wrap setting, new “Change Branch” functionality for git projects, and the display of hidden and non-text files in the sidebar to make git management more accurately reflect the state of the repository. We’ve also implemented several fixes and performance improvements, especially around saving and restoring files.</p>
+
+<h4 id="terminal">Terminal</h4>
+
+<p>Lastly, we’ve updated Terminal with a few small but welcome improvements.</p>
+
+<figure>
+  <p><img src="/images/introducing-elementary-os-5-1-hera/terminal.png" alt="Terminal with context menu" srcset="/images/introducing-elementary-os-5-1-hera/terminal@2x.png 2x" /></p>
+</figure>
+
+<p>The <a rel="nofollow noopener noreferrer" target="_blank" href="https://en.wikipedia.org/wiki/Menu_key">Menu key</a> found on some keyboards now opens the context menu, middle-click paste is more reliably in sync with the system-wide setting, we’ve improved contrast with the dark style, we improved the context menu with keyboard shortcuts and better delineation between text actions and app actions, and we save more of the window state between sessions.</p>
+
+<h4 id="and-more">And More…</h4>
+
+<p>Several other core apps have seen smaller improvements for Hera. For example, Calculator has better decimal localization, and Screenshot closes with the <kbd>Esc</kbd> key. Plus, every app has improved translations across nearly every language.</p>
+
+<h3 id="desktop">Desktop</h3>
+
+<p>We’ve been steadily improving the core desktop experience in elementary OS Hera.</p>
+
+<p>Picture-in-Picture now displays at the bottom-right of the display by default, better matching where users expected it. We’ve made several usability and performance improvements to taking screenshots. And we’ve addressed a couple of visual glitches that sometimes occurred when tiling windows and on HiDPI displays after switching the scaling factor.</p>
+
+<figure>
+  <p><img src="/images/introducing-elementary-os-5-1-hera/shortcuts.png" alt="Shortcut Overlay" srcset="/images/introducing-elementary-os-5-1-hera/shortcuts@2x.png 2x" /></p>
+</figure>
+
+<p>The Shortcut Overlay introduced in Juno has been expanded to include more shortcuts, including Close Window (<kbd>Alt</kbd><kbd>F4</kbd> by default) and Switch Keyboard Layout.</p>
+
+<h4 id="indicators">Indicators</h4>
+
+<p>We’ve also brought several improvements to the top Panel and Indicators to Hera.</p>
+
+<figure class="half">
+  <p><img src="/images/updates-for-october-2019/datetime.png" alt="Date &amp; Time indicator" srcset="/images/updates-for-october-2019/datetime@2x.png 2x" />
+<img src="https://cdn-images-1.medium.com/max/288/1*SUshGaq26qOgbMP3gkxi0g@2x.png" alt="Session indicator" srcset="https://cdn-images-1.medium.com/max/577/1*SUshGaq26qOgbMP3gkxi0g@2x.png 2x" /></p>
+  <figcaption>
+    <p><strong>Left:</strong> New Date &amp; Time indicator design | <strong>Right:</strong> Session indicator with keyboard shortcuts</p>
+  </figcaption>
+</figure>
+
+<p>The Date &amp; Time indicator has been redesigned with more clear navigation, dots on days with events, a more clear indication of the selected day, and a new side pane with the selected day’s events.</p>
+
+<p>Following our OS-wide efforts to progressively disclose keyboard shortcuts, the Session indicator now shows keyboard shortcuts for lock and log out.</p>
+
+<p>We also improved several aspects of the Sound indicator including smooth scrolling, touchpad scrolling, and scroll directions, plus new features for microphone users like scrolling or middle-clicking the mic icon on the panel to adjust or mute input.</p>
+
+<p>And a lot of little things: the Applications Menu now shows all configured keyboard shortcuts in its tooltip and is a bit faster, we added a new “View in AppCenter” item to apps’ context menus in the Applications Menu, we’ve improved the design of the Bluetooth indicator to be more consistent with other indicators and added connection status badge to each device, we fixed some minor visual inconsistencies in the Notifications indicator, and all indicators have been better translated into more languages.</p>
+
+<h4 id="visual-style">Visual Style</h4>
+
+<p>We’ve improved the system stylesheet in several ways for Hera. To make certain situations like photo and video editing apps easier for color-correction, dark-styled apps in elementary OS now sport a dark color-neutral shade of gray instead of the previous cool-tinted gray.</p>
+
+<figure class="half">
+
+  <p><img src="https://user-images.githubusercontent.com/611168/62438725-013d6b80-b706-11e9-9b91-8f002951600c.png" alt="Cool" />
+<img src="https://user-images.githubusercontent.com/611168/62438726-01d60200-b706-11e9-8edd-6f86969990d4.png" alt="Neutral" /></p>
+
+  <figcaption>
+    <p><strong>Left:</strong> Previous cool-tinted dark style | <strong>Right:</strong> New color-neutral dark style</p>
+  </figcaption>
+</figure>
+
+<p>We’ve added a subtle fade-out effect to the start and end of lists in popovers, like the list of Wi-Fi networks in the Networking indicator, or users in the Session indicator.</p>
+
+<figure>
+  <p><img src="/images/introducing-elementary-os-5-1-hera/popover-fade.png" alt="Undershoot in Popovers" srcset="/images/introducing-elementary-os-5-1-hera/popover-fade@2x.png 2x" /></p>
+  <figcaption>Soft fade in popover lists</figcaption>
+</figure>
+
+<p>We’re styling Keycaps in menus now with a flatter style, which will come into play as we add keycaps in menus in future updates.</p>
+
+<figure class="half">
+
+  <p><img src="https://user-images.githubusercontent.com/7277719/60899965-44e4a880-a220-11e9-946e-4b26e9dc9932.png" alt="Light Menu" />
+<img src="https://user-images.githubusercontent.com/7277719/60899966-44e4a880-a220-11e9-9800-db7e3b6ef2fb.png" alt="Dark Menu" /></p>
+
+  <figcaption>Keycaps in both light and dark menus</figcaption>
+</figure>
+
+<p>Progress and loading states on entries (like the address bar of browsers when a page is loading) have been made more subtle.</p>
+
+<figure class="card">
+  <p><img src="https://cdn-images-1.medium.com/max/166/1*59rV-UJoPkUM_e2cK7KLFQ@2x.png" alt="Sidebar badges" srcset="https://cdn-images-1.medium.com/max/332/1*59rV-UJoPkUM_e2cK7KLFQ@2x.png 2x" /></p>
+  <figcaption>More subtle badges in sidebars</figcaption>
+</figure>
+
+<p>Contrast is further improved—especially for apps that utilize a dark style—and we’ve refreshed the appearance of numbered badges in Sidebars to be a bit more subtle. We’ve also improved accent color shading in switches, fixed some right-to-left issues, fixed some insensitive buttons states, fixed other small issues (see the <a href="/juno-updates-for-june-2019/">June updates story</a> for more), and added support for raised buttons in app header bars.</p>
+
+<figure class="half">
+  <p><img src="https://user-images.githubusercontent.com/611168/62439029-6cd40880-b707-11e9-9326-471a0030135a.png" alt="Panel" />
+<img src="https://user-images.githubusercontent.com/7277719/49260561-f56d0d00-f3f2-11e8-8014-997873952cd2.png" alt="System Settings" /></p>
+  <figcaption>
+    <p><strong>Left:</strong> New wired icon in the Panel | <strong>Right:</strong> New wired icon in Networking settings</p>
+  </figcaption>
+</figure>
+
+<p>The system icons have also been refreshed throughout Hera. One noticable change is the wired network icon, which has been changed from an Ethernet-like symbol to a simpler symbol that has become convention across other platforms like Android, macOS, and Chrome OS. Read more about this change in the <a href="/updates-for-july-2019/">July updates</a> post.</p>
+
+<p>We’ve also added icons for playlists, chat, caps lock, num lock, mail actions, SSDs, and headsets. We’ve refined and added several new sizes for icons for pixel-perfect hinting in more contexts—including the Onboarding experience. We also added symbolic versions of several icons including location services, laptops, and firmware. We’ve animated the microphone mute icon in the Panel, the mobile phone icons have been updated to better match modern phones, path and group icons (for drawing/design apps) have been redesigned, we’ve added a few mirrored icons for right-to-left languages, and we’ve made several icon families a bit more consistent.</p>
+
+<p><img src="/images/introducing-elementary-os-5-1-hera/wallpaper.jpg" alt="Hera wallpaper" srcset="/images/introducing-elementary-os-5-1-hera/wallpaper@2x.jpg 2x" /></p>
+
+<figure class="third">
+  <p><img src="/images/introducing-elementary-os-5-1-hera/canazei-granite-ridges.jpg" alt="Canazei Granite Ridges wallpaper" srcset="/images/introducing-elementary-os-5-1-hera/canazei-granite-ridges@2x.jpg 2x" />
+<img src="/images/introducing-elementary-os-5-1-hera/julia-craice.jpg" alt="Julia Craice wallpaper" srcset="/images/introducing-elementary-os-5-1-hera/julia-craice@2x.jpg 2x" />
+<img src="/images/introducing-elementary-os-5-1-hera/nattu-adnan.jpg" alt="Nattu Adnan wallpaper" srcset="/images/introducing-elementary-os-5-1-hera/nattu-adnan@2x.jpg 2x" /></p>
+  <figcaption>
+    <p><strong>Top:</strong> Updated default wallpaper | <strong>Bottom:</strong> Three new wallpapers</p>
+  </figcaption>
+</figure>
+
+<p>Lastly, we’ve updated the wallpapers. Three new photos join the set: snowy granite mountain ridges, a black and white pair of birds flying over a hill, and an interesting top-down view of brilliant blue water breaking on a beach. The default wallpaper has also been updated; this photo of a sunset over a pier was included in Juno, but we’ve set it as the new default to give Hera its own unique identity. At the same time, the color scheme is similar to Juno with its purples, oranges and blues—evoking the more iterative relationship between the two releases.</p>
+
+<h3 id="under-the-hood">Under the Hood</h3>
+
+<p>An issue causing delayed shut downs in Juno was found and fixed for Hera. Apps installed as Snaps now properly show in Startup Apps settings. Flatpak is now included out of the box.</p>
+
+<p>Along with all of the functional updates, translations, and issue fixes comes the latest hardware enablement provided by Linux 5.0 and the long-term support (LTS) hardware enablement (HWE) stack from Canonical. This includes improved support for more recent processors, GPUs, input devices, and more. We’d like to give special thanks to the Ubuntu kernel and foundations teams for the work making this possible!</p>
+
+<h2 id="get-it">Get It</h2>
+
+<p>Due to the rolling nature of elementary OS updates, <strong>users of elementary OS 5 Juno get the update to 5.1 Hera alongside regular system updates</strong> from AppCenter. You can also always check <em>System Settings</em> → <em>About</em> to ensure you’re on the latest version. If you haven’t been upgraded to 5.1 Hera yet, hit the “Check for Updates” button to open AppCenter, and install any updates listed. </p>
+
+<p>The one exception is the LTS HWE stack; if you’re on an existing Juno install and would like or need the improved hardware support, you can install it from Terminal with the following command:</p>
+
+<p><code class="language-plaintext highlighter-rouge">sudo apt install --install-recommends linux-generic-hwe-18.04 xserver-xorg-hwe-18.04</code></p>
+
+<p>New users or those who prefer a fresh start can also <a rel="nofollow noopener noreferrer" target="_blank" href="https://elementary.io">download elementary OS 5.1 Hera from elementary.io</a>. Even if you already have an older Juno ISO, we recommend downloading the latest Hera ISO if you’re planning to perform a new install—you’ll automatically get the latest hardware support from the start, the new onboarding experience, and reduce the number of updates necessary once it’s installed.</p>
+
+
+  </section>
+
+  
+<div class="thanks">
+  <hr/>
+
+  <h2>Thank You</h2>
+  <p>Thanks to all of our supporters, backers, and customers! Your contributions make elementary possible. If you’d like to help build and improve elementary OS, don’t hesitate to <a rel="nofollow noopener noreferrer" target="_blank" href="https://elementary.io/get-involved">Get Involved</a>.</p>
+
+  <div class="links">
+    <a
+      href="https://elementary.io/"
+      rel="noreferrer nofollow noopener"
+      target="_blank"
+      title="elementary downloads"
+    >
+      <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg4"
+   version="1.1"
+   viewBox="0 0 512 512">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <path
+     d="M 256,7.999995 C 119.0589,7.999995 7.999994,119.0589 7.999994,255.99999 7.999994,392.94109 119.0589,504 256,504 392.9411,504 504.00001,392.9411 504.00001,255.99999 504.00001,119.0589 392.9411,7.999995 256,7.999995 Z m -0.45091,23.65018 v 0 a 1.5781818,1.5781818 0 0 0 0.40582,0 c 102.53673,0 189.0211,68.808725 215.76,162.710545 a 390.37455,390.37455 0 0 1 -94.984,123.90982 c -19.096,16.52582 -39.97309,31.18036 -62.90182,41.52873 -22.95127,10.32582 -48.15709,16.21018 -73.20509,14.78982 a 126.25455,126.25455 0 0 1 -51.20073,-14.27128 412.04074,412.04074 0 0 0 114.48582,-92.88727 c 21.55345,-25.16073 40.37891,-53.88363 47.68364,-86.41673 3.72,-16.27781 4.28363,-33.36727 0.90181,-49.75782 A 91.962911,91.962911 0 0 0 329.97163,86.954176 90.474911,90.474911 0 0 0 288.14982,62.199266 109.34546,109.34546 0 0 0 239.60945,60.440721 c -32.08218,5.884363 -60.71491,24.484364 -83.53091,47.525819 -40.28873,40.58182 -65.156356,97.84727 -60.579636,155 2.29964,28.56509 11.813816,56.61164 28.226906,80.12655 3.224,4.62181 6.80873,8.97309 10.52873,13.16654 A 365.86764,365.86764 0 0 1 64.679274,372.92072 224.2371,224.2371 0 0 1 255.504,31.650175 Z m 1.57818,45.541819 c 0,-0.02255 0.36073,0.04509 0.27055,0.02254 15.60145,0 31.27054,4.757091 43.648,14.136001 a 72.145456,72.145456 0 0 1 24.07854,33.592725 92.887275,92.887275 0 0 1 4.32873,41.664 c -3.224,28.024 -17.36,53.83855 -34.56218,76.49673 -30.52655,40.08582 -71.15346,72.21309 -116.31201,94.69091 -4.28363,2.14182 -8.70254,4.216 -13.12145,6.17746 a 115.29746,115.29746 0 0 1 -23.67273,-29.19637 c -13.30182,-23.53745 -17.67563,-51.49382 -15.10545,-78.50327 2.61527,-27.032 11.85891,-53.11709 24.39418,-77.33091 14.49673,-28.04655 34.17891,-54.51491 61.59418,-69.665457 a 93.338184,93.338184 0 0 1 44.48219,-12.10691 z M 478.7491,230.72654 c 0.94691,8.27418 1.60072,16.66109 1.60072,25.18327 0,123.93237 -100.37237,224.39491 -224.32728,224.39491 A 223.58328,223.58328 0 0 1 84.902544,400.71927 408.92946,408.92946 0 0 0 156.37163,376.82109 c 10.39346,7.80072 21.80146,14.29381 33.976,18.93818 35.84728,13.75273 76.47419,11.72363 112.6371,-0.78909 36.14036,-12.51273 68.10981,-34.92291 95.95346,-60.98546 A 411.77019,411.77019 0 0 0 478.7491,230.72654 Z"
+     id="path817" />
+</svg>
+
+    </a>
+
+    <a
+      href="https://appcenter.elementary.io"
+      rel="noreferrer nofollow noopener"
+      target="_blank"
+      title="AppCenter"
+    >
+      <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 319.99999 279.99999"
+   id="svg2"
+   version="1.1">
+  <defs
+     id="defs4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     transform="translate(-96,-656.36219)">
+    <path
+       d="m 116,656.36219 -20,60 v 20 c 0,40 40,40 40,40 22.16,0 40,-17.84 40,-40 0,22.16 17.84,40 40,40 22.16,0 40,-17.84 40,-40 0,22.16 17.84,40 40,40 22.16,0 40,-17.84 40,-40 0,22.16 17.84,40 40,40 0,0 40,0 40,-40 v -20 l -20,-60 z m 0,140 v 120 c 0,0 0,20 20,20 h 100 140 c 20,0 20,-20 20,-20 v -120 h -20 v 120 h -40 v -70 c 0,-16.62 -13.38,-30 -30,-30 -16.62,0 -30,13.38 -30,30 v 70 H 136 v -120 z m 60,20 v 60 h 60 v -60 z"
+       id="rect8928-6-4" />
+  </g>
+</svg>
+
+    </a>
+
+    <a
+      href="https://www.patreon.com/elementary"
+      rel="noreferrer nofollow noopener"
+      target="_blank"
+      title="Patreon"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 194.8c0 101.3-82.4 183.8-183.8 183.8-101.7 0-184.4-82.4-184.4-183.8 0-101.6 82.7-184.3 184.4-184.3C429.6 10.5 512 93.2 512 194.8zM0 501.5h90v-491H0v491z"/></svg>
+    </a>
+
+    <a
+      href="https://www.paypal.me/elementary"
+      rel="noreferrer nofollow noopener"
+      target="_blank"
+      title="Paypal"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M111.4 295.9c-3.5 19.2-17.4 108.7-21.5 134-.3 1.8-1 2.5-3 2.5H12.3c-7.6 0-13.1-6.6-12.1-13.9L58.8 46.6c1.5-9.6 10.1-16.9 20-16.9 152.3 0 165.1-3.7 204 11.4 60.1 23.3 65.6 79.5 44 140.3-21.5 62.6-72.5 89.5-140.1 90.3-43.4.7-69.5-7-75.3 24.2zM357.1 152c-1.8-1.3-2.5-1.8-3 1.3-2 11.4-5.1 22.5-8.8 33.6-39.9 113.8-150.5 103.9-204.5 103.9-6.1 0-10.1 3.3-10.9 9.4-22.6 140.4-27.1 169.7-27.1 169.7-1 7.1 3.5 12.9 10.6 12.9h63.5c8.6 0 15.7-6.3 17.4-14.9.7-5.4-1.1 6.1 14.4-91.3 4.6-22 14.3-19.7 29.3-19.7 71 0 126.4-28.8 142.9-112.3 6.5-34.8 4.6-71.4-23.8-92.6z"/></svg>
+    </a>
+
+    <a
+      href="https://elementary.io/store/"
+      rel="noreferrer nofollow noopener"
+      target="_blank"
+      title="elementary merch store"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"/></svg>
+    </a>
+  </div>
+</div>
+
+
+
+  <div class="sponsor">
+    
+      <a rel="nofollow noopener noreferrer" target="_blank" href="https://s76.co/ElementarySponsorship" rel="noreferrer nofollow noopener" target="_blank">
+    
+    
+      <img
+        src="/images/sponsors/system76.png"
+        alt="System76"
+        
+          srcset="/images/sponsors/system76@2x.png 2x"
+        
+      />
+    
+    </a>
+
+    <p>We'd like to specially thank
+    
+      <a rel="nofollow noopener noreferrer" target="_blank" href="https://s76.co/ElementarySponsorship" rel="noreferrer nofollow noopener" target="_blank">
+    System76</a> for sponsoring this blog post and helping to sponsor our work. They make killer Linux laptops, desktops, and servers—and they have a sale going on now through January 2, 2020. If you're looking for a new computer, head their way!</p>
+  </div>
+
+
+</article>
+
+<div class="license">
+  <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">
+    <img alt="CC BY-SA" src="/images/cc-by-sa.png" />
+  </a>
+
+  <p>Licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+</div>
+
+
+<div class="social">
+  <h2>Join the Discussion on Social Media</h2>
+
+  
+    <div class="official">
+      <h3>Official Posts</h3>
+
+      
+        <a
+          href="https://twitter.com/elementary/status/1201879011141586945"
+          rel="noreferrer nofollow noopener"
+          target="_blank"
+          title="Twitter"
+        >
+          <img src="/images/twitter.svg" alt="Twitter" />
+        </a>
+      
+
+      
+        <a
+          href="https://mastodon.social/@elementary/103244456221226748"
+          rel="noreferrer nofollow noopener"
+          target="_blank"
+          title="Mastodon"
+        >
+          <img src="/images/mastodon.svg" alt="Mastodon" />
+        </a>
+      
+
+      
+        <a
+          href="https://www.reddit.com/r/elementaryos/comments/e5i6qh/_/"
+          rel="noreferrer nofollow noopener"
+          target="_blank"
+          title="Reddit"
+        >
+          <img src="/images/reddit.svg" alt="Reddit" />
+        </a>
+      
+
+      
+        <a
+          href="https://www.facebook.com/elementaryos/posts/2877229498975527"
+          rel="noreferrer nofollow noopener"
+          target="_blank"
+          title="Facebook"
+        >
+          <img src="/images/facebook.svg" alt="Facebook" />
+        </a>
+      
+    </div>
+  
+
+  <div class="share">
+    <h3>Share</h3>
+    
+
+    <a
+      href="https://twitter.com/intent/tweet?text=Introducing elementary OS 5.1 Hera&url=https://blog.elementary.io/introducing-elementary-os-5-1-hera/&via=elementary&original_referer=https://blog.elementary.io/introducing-elementary-os-5-1-hera/"
+      rel="noreferrer nofollow noopener"
+      target="_blank"
+      title="Twitter"
+    >
+      <img src="/images/twitter.svg" alt="Twitter" />
+    </a>
+
+    <a
+      href="http://www.reddit.com/submit?title=Introducing elementary OS 5.1 Hera&url=https://blog.elementary.io/introducing-elementary-os-5-1-hera/"
+      rel="noreferrer nofollow noopener"
+      target="_blank"
+      title="Reddit"
+    >
+      <img src="/images/reddit.svg" alt="Reddit" />
+    </a>
+
+    <a
+      href="https://www.facebook.com/sharer/sharer.php?u=https://blog.elementary.io/introducing-elementary-os-5-1-hera/"
+      rel="noreferrer nofollow noopener"
+      target="_blank"
+      title="Facebook"
+    >
+      <img src="/images/facebook.svg" alt="Facebook" />
+    </a>
+
+    <a
+      href="https://blog.elementary.io/introducing-elementary-os-5-1-hera/"
+
+      title="Permalink"
+    >
+      <img src="/images/edit-copy-32.svg" alt="Permalink" />
+    </a>
+  </div>
+</div>
+
+
+
+<h2 class="up-next">Up Next</h2>
+
+
+
+
+  
+    
+
+<a class="featured with-image 1" href="/rebuilding-elementary-os/">
+  
+    <div class="featured-image" alt="Featured image" style="background-image: url(/images/rebuilding-elementary-os/header_1600.jpg);"></div>
+  
+
+  <header>
+    <h2>
+
+
+ Rebuilding elementary&nbsp;OS
+</h2>
+    
+      <h3>
+
+
+ Our road to a better release process, automated builds, and&nbsp;more
+</h3>
+    
+
+    
+
+
+
+<div class="byline">
+  <div class="avatar">
+    <img
+      
+        srcset="https://www.gravatar.com/avatar/41275ecc8271aca852ce2c0ff72d2610?s=96&d=blank 2x"
+        src="https://www.gravatar.com/avatar/41275ecc8271aca852ce2c0ff72d2610?s=48&d=blank"
+        alt="Avatar for Cassidy James Blaede"
+      
+    />
+  </div>
+  <div class="author">
+    <span class="name">Cassidy James Blaede</span>
+    
+      <span class="description">Co-founder & CXO</span>
+    
+  </div>
+  <time class="post-date" datetime="2019-11-05">Tue, Nov  5, 2019</time>
+  
+    <span class="read-time" title="Estimated read time">
+  
+  7 min read
+</span>
+
+
+  
+</div>
+
+
+  </header>
+
+  
+</a>
+
+
+  
+
+
+
+
+      <div class="medium">
+  <hr />
+  <article>
+    <h2>Looking for More?</h2>
+    <p>While we're migrating posts to the elementary blog, some older stories are still only on the <a href="https://medium.com/elementaryos" target="_blank">official elementary Medium publication</a>. Head over there to read more.
+  </article>
+</div>
+
+
+    </section>
+    <footer>
+  <p>© 2019 elementary, Inc</p>
+  <ul>
+    <li><a href="https://elementary.io/press" target="_self">Press</a></li>
+    <li><a href="https://elementary.io/brand" target="_self">Brand</a></li>
+    <li><a href="https://elementary.io/oem" target="_self">OEMs</a></li>
+    <li><a href="https://elementary.io/privacy" target="_self">Privacy</a></li>
+    <li><a href="https://elementary.io/team" target="_self">Team</a></li>
+    <li><a href="https://elementary.io/open-source" target="_self">Open Source</a></li>
+  </ul>
+</footer>
+
+    <script>
+  // Makes figure images focusable for zooming
+  let figureImages = document.querySelectorAll ("figure img");
+  figureImages.forEach (function (figureImage) {
+    figureImage.setAttribute ("tabindex", -1);
+    document.addEventListener ('mousedown', event => {
+      if (document.activeElement === figureImage) {
+        // Prevent it from triggering on focusIn
+        setTimeout (function () {
+          document.activeElement.blur ();
+        }, 100);
+      }
+    });
+  });
+</script>
+
+
+  </body>
+</html>

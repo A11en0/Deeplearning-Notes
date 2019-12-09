@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="description" content="Stafford Horne's (shorne, stffrdhrn) Computer Engineering blog and home page.">
+        
+        <meta name="keywords" content="hardware,embedded,openrisc" />
+        
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ELF Binaries and Relocation Entries - shorne in japan</title>
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="Publisher" href="https://plus.google.com/116329984238075787778">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+        <!-- favicon I drew on http://favicon-generator.org/ -->
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <meta name="msvalidate.01" content="244EFE476BC887BBC78F2CACC5B2A64C" />
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-52837971-1', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">shorne in japan</a></h1>
+            <a class="extra" href="/">blog</a>
+            <a class="extra" href="/page/about.html">about</a>
+            <a class="extra" href="/page/contact.html">contact</a>
+          </div>
+
+          <h2>ELF Binaries and Relocation Entries</h2>
+<p class="meta">29 Nov 2019</p>
+
+<div class="post">
+<p>Recently I have been working on getting the <a href="https://github.com/openrisc/or1k-glibc">OpenRISC glibc</a>
+port ready for upstreaming.  Part of this work has been to run the glibc
+testsuite and get the tests to pass.  The <a href="https://sourceware.org/glibc/wiki/Testing/Testsuite">glibc testsuite</a>
+has a comprehensive set of linker and runtime relocation tests.</p>
+
+<p>In order to fix issues with tests I had to learn more than I did before about ELF Relocations
+, Thread Local Storage and the binutils linker implementation in BFD.  There is a lot of
+documentation available, but it’s a bit hard to follow as it assumes certain
+knowledge, for example have a look at the Solaris <a href="https://docs.oracle.com/cd/E23824_01/html/819-0690/chapter6-54839.html">Linker and Libraries</a>
+section on relocations.  In this article I will try to fill in those gaps.</p>
+
+<p>This will be an illustrated 3 part series covering</p>
+<ul>
+  <li>ELF Binaries and Relocation Entries</li>
+  <li>Thread Local Storage</li>
+  <li>How Relocations and Thread Local Store are implemented</li>
+</ul>
+
+<p>All of the examples in this article can be found in my <a href="https://github.com/stffrdhrn/tls-examples">tls-examples</a>
+project.  Please check it out.</p>
+
+<p>On Linux, you can download it and <code class="language-plaintext highlighter-rouge">make</code> it with your favorite toolchain.
+By default it will cross compile using an <a href="https://openrisc.io/software">openrisc toolchain</a>.
+This can be overridden with the <code class="language-plaintext highlighter-rouge">CROSS_COMPILE</code> variable.
+For example, to build for your current host.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone git@github.com:stffrdhrn/tls-examples.git
+$ make CROSS_COMPILE=
+gcc -fpic -c -o tls-gd-dynamic.o tls-gd.c -Wall -O2 -g
+gcc -fpic -c -o nontls-dynamic.o nontls.c -Wall -O2 -g
+...
+objdump -dr x-static.o &gt; x-static.S
+objdump -dr xy-static.o &gt; xy-static.S
+</code></pre></div></div>
+
+<p>Now we can get started.</p>
+
+<h2 id="elf-segments-and-sections">ELF Segments and Sections</h2>
+
+<p>Before we can talk about relocations we need to talk a bit about what makes up
+<a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">ELF</a> binaries.
+This is a prerequisite as relocations and TLS are part of ELF binaries.  There
+are a few basic ELF binary types:</p>
+
+<ul>
+  <li>Objects (<code class="language-plaintext highlighter-rouge">.o</code>) - produced by a compiler, contains a collection of sections, also call relocatable files.</li>
+  <li>Program - an executable program, contains sections grouped into segments.</li>
+  <li>Shared Objects (<code class="language-plaintext highlighter-rouge">.so</code>) - a program library, contains sections grouped into segments.</li>
+  <li>Core Files - core dump of program memory, these are also ELF binaries</li>
+</ul>
+
+<p>Here we will discuss Object Files and Program Files.</p>
+
+<h3 id="an-elf-object">An ELF Object</h3>
+
+<p><img src="/content/2019/elf-obj.png" alt="ELF Object" /></p>
+
+<p>The compiler generates object files, these contain sections of binary data and
+these are not executable.</p>
+
+<p>The object file produced by <a href="https://gcc.gnu.org/onlinedocs/gcc-9.2.0/gcc/Overall-Options.html#index-c">gcc</a>
+generally contains <code class="language-plaintext highlighter-rouge">.rela.text</code>, <code class="language-plaintext highlighter-rouge">.text</code>, <code class="language-plaintext highlighter-rouge">.data</code> and <code class="language-plaintext highlighter-rouge">.bss</code> sections.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.rela.text</code> - a list of relocations against the <code class="language-plaintext highlighter-rouge">.text</code> section</li>
+  <li><code class="language-plaintext highlighter-rouge">.text</code> - contains compiled program machine code</li>
+  <li><code class="language-plaintext highlighter-rouge">.data</code> - static and non static initialized variable values</li>
+  <li><code class="language-plaintext highlighter-rouge">.bss</code>  - static and non static non-initialized variables</li>
+</ul>
+
+<h3 id="an-elf-program">An ELF Program</h3>
+
+<p><img src="/content/2019/elf-program.png" alt="ELF Program" /></p>
+
+<p>ELF binaries are made of <a href="https://en.wikipedia.org/wiki/Data_segment">sections</a> and segments.</p>
+
+<p>A segment contains a group of sections and the segment defines how the data should
+be loaded into memory for program execution.</p>
+
+<p>Each segment is mapped to program memory by the kernel when a process is created.  Program files contain
+most of the same sections as objects but there are some differences.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">.text</code> - contains executable program code, there is no <code class="language-plaintext highlighter-rouge">.rela.text</code> section</li>
+  <li><code class="language-plaintext highlighter-rouge">.got</code>  - the <a href="https://en.wikipedia.org/wiki/Global_Offset_Table">global offset table</a> used to access variables, created during link time.  May be populated during runtime.</li>
+</ul>
+
+<h3 id="looking-at-elf-binaries-readelf">Looking at ELF binaries (<code class="language-plaintext highlighter-rouge">readelf</code>)</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">readelf</code> tool can help inspect elf binaries.</p>
+
+<p>Some examples:</p>
+
+<h4 id="reading-sections-of-an-object-file">Reading Sections of an Object File</h4>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">-S</code> option we can read sections from an elf file.
+As we can see below we have the <code class="language-plaintext highlighter-rouge">.text</code>, <code class="language-plaintext highlighter-rouge">.rela.text</code>, <code class="language-plaintext highlighter-rouge">.bss</code> and many other
+sections.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ readelf -S tls-le-static.o
+There are 20 section headers, starting at offset 0x604:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .text             PROGBITS        00000000 000034 000020 00  AX  0   0  4
+  [ 2] .rela.text        RELA            00000000 0003f8 000030 0c   I 17   1  4
+  [ 3] .data             PROGBITS        00000000 000054 000000 00  WA  0   0  1
+  [ 4] .bss              NOBITS          00000000 000054 000000 00  WA  0   0  1
+  [ 5] .tbss             NOBITS          00000000 000054 000004 00 WAT  0   0  4
+  [ 6] .debug_info       PROGBITS        00000000 000054 000074 00      0   0  1
+  [ 7] .rela.debug_info  RELA            00000000 000428 000084 0c   I 17   6  4
+  [ 8] .debug_abbrev     PROGBITS        00000000 0000c8 00007c 00      0   0  1
+  [ 9] .debug_aranges    PROGBITS        00000000 000144 000020 00      0   0  1
+  [10] .rela.debug_arang RELA            00000000 0004ac 000018 0c   I 17   9  4
+  [11] .debug_line       PROGBITS        00000000 000164 000087 00      0   0  1
+  [12] .rela.debug_line  RELA            00000000 0004c4 00006c 0c   I 17  11  4
+  [13] .debug_str        PROGBITS        00000000 0001eb 00007a 01  MS  0   0  1
+  [14] .comment          PROGBITS        00000000 000265 00002b 01  MS  0   0  1
+  [15] .debug_frame      PROGBITS        00000000 000290 000030 00      0   0  4
+  [16] .rela.debug_frame RELA            00000000 000530 000030 0c   I 17  15  4
+  [17] .symtab           SYMTAB          00000000 0002c0 000110 10     18  15  4
+  [18] .strtab           STRTAB          00000000 0003d0 000025 00      0   0  1
+  [19] .shstrtab         STRTAB          00000000 000560 0000a1 00      0   0  1
+</code></pre></div></div>
+
+<h4 id="reading-sections-of-a-program-file">Reading Sections of a Program File</h4>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">-S</code> option on a program file we can also read the sections.  The file
+type does not matter as long as it is an ELF we can read the sections.
+As we can see below there is no longer a <code class="language-plaintext highlighter-rouge">rela.text</code> section, but we have others
+including the <code class="language-plaintext highlighter-rouge">.got</code> section.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ readelf -S tls-le-static
+There are 31 section headers, starting at offset 0x32e8fc:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .text             PROGBITS        000020d4 0000d4 080304 00  AX  0   0  4
+  [ 2] __libc_freeres_fn PROGBITS        000823d8 0803d8 001118 00  AX  0   0  4
+  [ 3] .rodata           PROGBITS        000834f0 0814f0 01544c 00   A  0   0  4
+  [ 4] __libc_subfreeres PROGBITS        0009893c 09693c 000024 00   A  0   0  4
+  [ 5] __libc_IO_vtables PROGBITS        00098960 096960 0002f4 00   A  0   0  4
+  [ 6] __libc_atexit     PROGBITS        00098c54 096c54 000004 00   A  0   0  4
+  [ 7] .eh_frame         PROGBITS        00098c58 096c58 0027a8 00   A  0   0  4
+  [ 8] .gcc_except_table PROGBITS        0009b400 099400 000089 00   A  0   0  1
+  [ 9] .note.ABI-tag     NOTE            0009b48c 09948c 000020 00   A  0   0  4
+  [10] .tdata            PROGBITS        0009dc28 099c28 000010 00 WAT  0   0  4
+  [11] .tbss             NOBITS          0009dc38 099c38 000024 00 WAT  0   0  4
+  [12] .init_array       INIT_ARRAY      0009dc38 099c38 000004 04  WA  0   0  4
+  [13] .fini_array       FINI_ARRAY      0009dc3c 099c3c 000008 04  WA  0   0  4
+  [14] .data.rel.ro      PROGBITS        0009dc44 099c44 0003bc 00  WA  0   0  4
+  [15] .data             PROGBITS        0009e000 09a000 000de0 00  WA  0   0  4
+  [16] .got              PROGBITS        0009ede0 09ade0 000064 04  WA  0   0  4
+  [17] .bss              NOBITS          0009ee44 09ae44 000bec 00  WA  0   0  4
+  [18] __libc_freeres_pt NOBITS          0009fa30 09ae44 000014 00  WA  0   0  4
+  [19] .comment          PROGBITS        00000000 09ae44 00002a 01  MS  0   0  1
+  [20] .debug_aranges    PROGBITS        00000000 09ae6e 002300 00      0   0  1
+  [21] .debug_info       PROGBITS        00000000 09d16e 0fd048 00      0   0  1
+  [22] .debug_abbrev     PROGBITS        00000000 19a1b6 0270ca 00      0   0  1
+  [23] .debug_line       PROGBITS        00000000 1c1280 0ce95c 00      0   0  1
+  [24] .debug_frame      PROGBITS        00000000 28fbdc 0063bc 00      0   0  4
+  [25] .debug_str        PROGBITS        00000000 295f98 011e35 01  MS  0   0  1
+  [26] .debug_loc        PROGBITS        00000000 2a7dcd 06c437 00      0   0  1
+  [27] .debug_ranges     PROGBITS        00000000 314204 00c900 00      0   0  1
+  [28] .symtab           SYMTAB          00000000 320b04 0075d0 10     29 926  4
+  [29] .strtab           STRTAB          00000000 3280d4 0066ca 00      0   0  1
+  [30] .shstrtab         STRTAB          00000000 32e79e 00015c 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  p (processor specific)
+</code></pre></div></div>
+
+<h4 id="reading-segments-from-a-program-file">Reading Segments from a Program File</h4>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">-l</code> option on a program file we can read the segments.
+Notice how segments map from file offsets to memory offsets and alignment.
+The two different <code class="language-plaintext highlighter-rouge">LOAD</code> type segments are segregated by read only/execute and read/write.
+Each section is also mapped to a segment here.  As we can see <code class="language-plaintext highlighter-rouge">.text is in the first </code>LOAD` segment
+which is executable as expected.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ readelf -l tls-le-static
+
+Elf file type is EXEC (Executable file)
+Entry point 0x2104
+There are 5 program headers, starting at offset 52
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x000000 0x00002000 0x00002000 0x994ac 0x994ac R E 0x2000
+  LOAD           0x099c28 0x0009dc28 0x0009dc28 0x0121c 0x01e1c RW  0x2000
+  NOTE           0x09948c 0x0009b48c 0x0009b48c 0x00020 0x00020 R   0x4
+  TLS            0x099c28 0x0009dc28 0x0009dc28 0x00010 0x00034 R   0x4
+  GNU_RELRO      0x099c28 0x0009dc28 0x0009dc28 0x003d8 0x003d8 R   0x1
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .text __libc_freeres_fn .rodata __libc_subfreeres __libc_IO_vtables __libc_atexit .eh_frame .gcc_except_table .note.ABI-tag 
+   01     .tdata .init_array .fini_array .data.rel.ro .data .got .bss __libc_freeres_ptrs 
+   02     .note.ABI-tag 
+   03     .tdata .tbss 
+   04     .tdata .init_array .fini_array .data.rel.ro 
+</code></pre></div></div>
+
+<h4 id="reading-segments-from-an-object-file">Reading Segments from an Object File</h4>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">-l</code> option with an object file does not work as we can see below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>readelf -l tls-le-static.o
+
+There are no program headers in this file.
+</code></pre></div></div>
+
+<h2 id="relocation-entries">Relocation entries</h2>
+
+<p>As mentioned an object file by itself is not executable.  The main reason is that
+there are no program headers as we just saw.  Another reason is that
+the <code class="language-plaintext highlighter-rouge">.text</code> section still contains relocation entries (or placeholders) for the
+addresses of variables located in the <code class="language-plaintext highlighter-rouge">.data</code> and <code class="language-plaintext highlighter-rouge">.bss</code> sections.
+These placeholders will just be <code class="language-plaintext highlighter-rouge">0</code> in the machine code.  So, if we tried to run
+the machine code in an object file we would end up with Segmentation faults (<a href="https://en.wikipedia.org/wiki/Segmentation_fault">SEGV</a>).</p>
+
+<p>A relocation entry is a placeholder that is added by the compiler or linker when
+producing ELF binaries.
+The relocation entries are to be filled in with addresses pointing to data.
+Relocation entries can be made in code such as the <code class="language-plaintext highlighter-rouge">.text</code> section or in data
+sections like the <code class="language-plaintext highlighter-rouge">.got</code> section.  For example:</p>
+
+<h2 id="resolving-relocations">Resolving Relocations</h2>
+
+<p><img src="/content/2019/gcc-obj-ld.png" alt="GCC and Linker" /></p>
+
+<p>The diagram above shows relocation entries as white circles.
+Relocation entries may be filled or resolved at link-time or dynamically during execution.</p>
+
+<p>Link time relocations</p>
+<ul>
+  <li>Place holders are filled in when ELF object files are linked by the linker to create executables or libraries</li>
+  <li>For example, relocation entries in <code class="language-plaintext highlighter-rouge">.text</code> sections</li>
+</ul>
+
+<p>Dynamic relocations</p>
+<ul>
+  <li>Place holders is filled during runtime by the dynamic linker.  i.e. Procedure Link Table</li>
+  <li>For example, relocation entries added to <code class="language-plaintext highlighter-rouge">.got</code> and <code class="language-plaintext highlighter-rouge">.plt</code> sections which link
+to shared objects.</li>
+</ul>
+
+<p><em>Note: Statically built binaries do not have any dynamic relocations and are not
+loaded with the dynamic linker.</em></p>
+
+<p>In general link time relocations are used to fill in relocation entries in code.
+Dynamic relocations fill in relocation entries in data sections.</p>
+
+<h3 id="listing-relocation-entries">Listing Relocation Entries</h3>
+
+<p>A list of relocations in a ELF binary can printed using <code class="language-plaintext highlighter-rouge">readelf</code> with
+the <code class="language-plaintext highlighter-rouge">-r</code> options.</p>
+
+<p>Output of <code class="language-plaintext highlighter-rouge">readelf -r tls-gd-dynamic.o</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Relocation section '.rela.text' at offset 0x530 contains 10 entries:
+ Offset     Info    Type            Sym.Value  Sym. Name + Addend
+00000000  00000f16 R_OR1K_TLS_GD_HI1 00000000   x + 0
+00000008  00000f17 R_OR1K_TLS_GD_LO1 00000000   x + 0
+00000020  0000100c R_OR1K_GOTPC_HI16 00000000   _GLOBAL_OFFSET_TABLE_ - 4
+00000024  0000100d R_OR1K_GOTPC_LO16 00000000   _GLOBAL_OFFSET_TABLE_ + 0
+0000002c  00000d0f R_OR1K_PLT26      00000000   __tls_get_addr + 0
+...
+</code></pre></div></div>
+
+<p>The relocation entry list explains how to and where to apply the relocation entry.
+It contains:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Offset</code> - the location in the binary that needs to be updated</li>
+  <li><code class="language-plaintext highlighter-rouge">Info</code> - the encoded value containing the <code class="language-plaintext highlighter-rouge">Type, Sym and Addend</code>, which is
+  broken down to:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Type</code> - the type of relocation (the formula for what is to be performed is defined in the
+linker)</li>
+      <li><code class="language-plaintext highlighter-rouge">Sym. Value</code> - the address value (if known) of the symbol.</li>
+      <li><code class="language-plaintext highlighter-rouge">Sym. Name</code> - the name of the symbol (variable name) that this relocation needs to find
+during link time.</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">Addend</code> - a value that needs to be added to the derived symbol address.
+This is used to with arrays (i.e. for a relocation referencing <code class="language-plaintext highlighter-rouge">a[14]</code> we would have <strong>Sym. Name</strong> <code class="language-plaintext highlighter-rouge">a</code> and an <strong>Addend</strong> of the data size of <code class="language-plaintext highlighter-rouge">a</code> times <code class="language-plaintext highlighter-rouge">14</code>)</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<p>File: <a href="https://github.com/stffrdhrn/tls-examples/blob/master/nontls.c">nontls.c</a></p>
+
+<p>In the example below we have a simple variable and a function to access it’s
+address.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static int x;
+
+int* get_x_addr() {
+  return &amp;x;
+}
+</code></pre></div></div>
+
+<p>Let’s see what happens when we compile this source.</p>
+
+<p><em>The steps to compile and link can be found in the <a href="https://github.com/stffrdhrn/tls-examples">tls-examples</a> project hosting
+the source examples.</em></p>
+
+<h3 id="before-linking">Before Linking</h3>
+
+<p><img src="/content/2019/nontls-obj.png" alt="Non TLS Object" /></p>
+
+<p>The diagram above shows relocations in the resulting object file as white circles.</p>
+
+<p>In the actual output below we can see that access to the variable <code class="language-plaintext highlighter-rouge">x</code> is
+referenced by a literal <code class="language-plaintext highlighter-rouge">0</code> in each instruction.  These are highlighted with
+square brackets <code class="language-plaintext highlighter-rouge">[]</code> below for clarity.</p>
+
+<p>These empty parts of the <code class="language-plaintext highlighter-rouge">.text</code> section are relocation entries.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Addr.   Machine Code    Assembly             Relocations
+0000000c &lt;get_x_addr&gt;:
+   c:   19 60 [00 00]   l.movhi r11,[0]      # c  R_OR1K_AHI16 .bss
+  10:   44 00  48 00    l.jr r9
+  14:   9d 6b [00 00]    l.addi r11,r11,[0]  # 14 R_OR1K_LO_16_IN_INSN        .bss
+</code></pre></div></div>
+
+<p>The function <code class="language-plaintext highlighter-rouge">get_x_addr</code> will return the address of variable <code class="language-plaintext highlighter-rouge">x</code>.
+We can look at the assembly instruction to understand how this is done.  Some background
+of the OpenRISC ABI.</p>
+
+<ul>
+  <li>Registers are 32-bit.</li>
+  <li>Function return values are placed in register <code class="language-plaintext highlighter-rouge">r11</code>.</li>
+  <li>To return from a function we jump to the address in the link register <code class="language-plaintext highlighter-rouge">r9</code>.</li>
+  <li>OpenRISC has a <a href="https://en.wikipedia.org/wiki/Delay_slot">branch delay slot</a>, meaning the address after a branch it executed
+before the branch is taken.</li>
+</ul>
+
+<p>Now, lets break down the assembly:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">l.movhi</code> - move the value <code class="language-plaintext highlighter-rouge">[0]</code> into high bits of register <code class="language-plaintext highlighter-rouge">r11</code>, clearing the lower bits.</li>
+  <li><code class="language-plaintext highlighter-rouge">l.addi</code> - add the value in register <code class="language-plaintext highlighter-rouge">r11</code> to the value <code class="language-plaintext highlighter-rouge">[0]</code> and store the results in <code class="language-plaintext highlighter-rouge">r11</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">l.jr</code> - jump to the address in <code class="language-plaintext highlighter-rouge">r9</code></li>
+</ul>
+
+<p>This constructs a 32-bit value out of 2 16-bit values.</p>
+
+<h3 id="after-linking">After Linking</h3>
+
+<p><img src="/content/2019/nontls-exe.png" alt="Non TLS Object" /></p>
+
+<p>The diagram above shows the relocations have been replaced with actual values.</p>
+
+<p>As we can see from the linker output the places in the machine code that had relocation place holders
+are now replaced with values.  For example <code class="language-plaintext highlighter-rouge">1a 20 00 00</code> has become <code class="language-plaintext highlighter-rouge">1a 20 00 0a</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>00002298 &lt;get_x_addr&gt;:
+    2298:	19 60 00 0a 	l.movhi r11,0xa
+    229c:	44 00 48 00 	l.jr r9
+    22a0:	9d 6b ee 60 	l.addi r11,r11,-4512
+</code></pre></div></div>
+
+<p>If we calculate <code class="language-plaintext highlighter-rouge">0xa &lt;&lt; 16 + -4512 (fee60)</code> we see get <code class="language-plaintext highlighter-rouge">0009ee60</code>.  That is the
+same location of <code class="language-plaintext highlighter-rouge">x</code> within our binary.  This we can check with <code class="language-plaintext highlighter-rouge">readelf -s</code>
+which lists all symbols.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ readelf -s nontls-static | grep ' x'
+    42: 0009ee60     4 OBJECT  LOCAL  DEFAULT   17 x
+</code></pre></div></div>
+
+<h2 id="types-of-relocations">Types of Relocations</h2>
+
+<p>As we saw above, a simple program resulted in 2 different relocation entries just to compose the address of 1 variable.
+We saw:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">R_OR1K_AHI16</code></li>
+  <li><code class="language-plaintext highlighter-rouge">R_OR1K_LO_16_IN_INSN</code></li>
+</ul>
+
+<p>The need for different relation types comes from the different requirements for the
+relocation.  Processing of a relocation involves usually a very simple transform
+, each relocation defines a different transform.  The components of the relocation
+definition are:</p>
+
+<ul>
+  <li><strong>Input</strong> The input of a relocation formula is always the <strong>Symbol Address</strong> who’s absolute value is unknown at compile time. But
+there may also be other input variables to the formula including:
+    <ul>
+      <li><strong>Program Counter</strong> The absolute address of the machine code address being updated</li>
+      <li><strong>Addend</strong> The addend from the relocation entry discussed above in the <em>Listing Relocation Entries</em> section</li>
+    </ul>
+  </li>
+  <li><strong>Formula</strong> How the input is manipulated to derive the output value.  For example shift right 16 bits.</li>
+  <li><strong>Bit-Field</strong> Specifies which bits at the output address need to be updated.</li>
+</ul>
+
+<p>To be more specific about the above relocations we have:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Relocation Type</th>
+      <th>Bit-Field</th>
+      <th>Formula</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">R_OR1K_AHI16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">simm16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">S &gt;&gt; 16</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">R_OR1K_LO_16_IN_INSN</code></td>
+      <td><code class="language-plaintext highlighter-rouge">simm16</code></td>
+      <td><code class="language-plaintext highlighter-rouge">S &amp;&amp; 0xffff</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The Bit-Field described above is <code class="language-plaintext highlighter-rouge">simm16</code> which means update the lower 16-bits
+of the 32-bit value at the output offset and do not disturb the upper 16-bits.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> +----------+----------+
+ |          |  simm16  |
+ | 31    16 | 15     0 |
+ +----------+----------+
+</code></pre></div></div>
+
+<p>There are many other Relocation Types with difference Bit-Fields and Formulas.
+These use different methods based on what each instruction does, and where each instruction
+encodes its immediate value.</p>
+
+<p>For full listings refer to architecture manuals.</p>
+
+<ul>
+  <li><a href="https://docs.oracle.com/cd/E19683-01/817-3677/chapter6-54839/index.html">Linkers and Libraries</a> - Oracle’s documentation on Intel and Sparc relocations</li>
+  <li><a href="https://sourceware.org/binutils/docs-2.33.1/as/OpenRISC_002dRelocs.html">Binutils OpenRISC Relocs</a> - Binutil Manual containing details on OpenRISC relocations</li>
+  <li><a href="https://static.docs.arm.com/ihi0044/e/IHI0044E_aaelf.pdf">ELF for ARM</a>[pdf] - ARM Relocation Types table on page 25</li>
+</ul>
+
+<p>Take a look and see if you can understand how to read these now.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>In this article we have discussed what ELF binaries are and how they can be read.
+We have talked about how from compilation to linking to runtime, relocation entries
+are used to communicate which parts of a program remain to be resolved.  We
+then discussed how relocation types provide a formula and bit-mask for updating
+the places in ELF binaries that need to be filled in.</p>
+
+<p>In the next article we will discuss how Thread Local Storage works, both link-time
+and runtime relocation entries play big part in how TLS works.</p>
+
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+  <li><a href="http://bottomupcs.sourceforge.net/csbu/x3735.htm">Bottums Up - Dynamic Linker</a> - Details on the Dynamic Linker, Relocations and Position Independent Code</li>
+  <li><a href="https://www.technovelty.org/linux/plt-and-got-the-key-to-code-sharing-and-dynamic-libraries.html">GOT and PLT Key to Code Sharing</a> - Good overview of the <code class="language-plaintext highlighter-rouge">.got</code> and <code class="language-plaintext highlighter-rouge">.plt</code> sections</li>
+</ul>
+
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'shorneinjapan';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Stafford Horne<br />
+                Computer Engineer<br />
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/stffrdhrn">github.com/stffrdhrn</a><br />
+                <a href="https://twitter.com/stffrdhrn">twitter.com/stffrdhrn</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+    </body>
+</html>

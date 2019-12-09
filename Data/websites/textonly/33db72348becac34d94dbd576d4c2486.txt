@@ -1,0 +1,224 @@
+Skip to content
+Adventures in Linux and KDE
+
+						Menu					
+Get involved
+Develop for KDE
+Submit a patch
+This week in KDE: GTK CSD support and more!
+This Week in KDE
+November 30, 2019
+December 1, 2019
+GTK_FRAME_EXTENTS_
+It’s almost native-looking! And it fits right in with the rest of your apps.
+working hard on this for months
+But wait, there’s more…
+More New Features
+can now show or hide the background frame when placed on the desktop
+now supports WPA3 encryption
+Bugfixes & Performance Improvements
+text you enter no longer automatically becomes double-quoted
+could cause the “Open Containing Folder” feature to fail to launch Dolphin after the first time it was used
+now automatically strips out “file://” when pasting local URLs
+no longer appears in the top-left corner of the screen after you suspend compositing and restart KWin while an app that displays a System Tray icon is running
+no longer becomes outrageously gigantic when the media title is really really long
+now has a better default size and margins
+the “no weather stations found” text no longer overflows the view
+the windows are restored stacked in the order they were minimized rather than semi-randomly
+no longer unexpectedly changes its appearance when hovering over a GTK app by default
+no longer displays almost-invisible icons when using a dark plasma theme but a light apps color scheme
+compiling the Keyboard KCM in plasma-desktop is now much faster and no longer brings your system to its knees with a recursive forkbomb
+now match the background color of the frame when using many non-default color schemes
+Fixed the margins on a variety of standalone dialog and assistant windows
+User Interface Improvements
+is now a real toolbar that doesn’t scroll away
+re-implemented it in a better way.
+Task progress sheet now looks like it’s supposed to
+now move out of the way rather than disappearing when the System Tray popup is open in the same area
+http://s1.webmshare.com/MxLLd.webm
+is now framed in a circle, just like on the lock and login screens
+How You Can Help
+full list here
+https://community.kde.org/Get_Involved#Start_Here.21
+https://community.kde.org/Get_Involved
+making a tax-deductible donation
+KDE e.V. foundation
+Share this:
+
+				View all posts by Nate			
+November 30, 2019
+December 1, 2019
+Post navigation
+Previous Post
+This week in KDE: GTK CSD support and more!
+
+								December 1, 2019 at 12:36 am							
+This is looking great. Every week I see KDE getting better and better and I still question how it bypasses my expectations each time.
+
+								December 1, 2019 at 12:11 pm							
+I know how you feel. 🙂
+
+								December 1, 2019 at 12:51 am							
+GTK CSD shadows😍😍😍
+
+								December 7, 2019 at 8:38 am							
+That’s a huge improvement, as in the current state a GTK window above another window with the same background color cannot be distinguished from one another. 🙂 Good job!!!
+
+								December 1, 2019 at 3:06 am							
+> The cursor no longer unexpectedly changes its appearance when hovering over a GTK app by default (Kai Uwe Broulik, Plasma 5.18.0)
+This bug report still says “reported” only?
+
+								December 1, 2019 at 12:13 pm							
+https://bugs.kde.org/show_bug.cgi?id=414109
+
+								December 1, 2019 at 4:00 am							
+Just..wow. Plasma 5.18 IS “the year of the linux desktop”, for sure. It’s very satisfying to be able to follow the progress easily here on your site, Nate, thanks a lot. Also it’s very reassuring to know that there are so many talented people working together on things big and small to continuously make KDE better. It really does make a difference while choosing a desktop/distro when you know that there’s more than one or two people doing everything and there’s a risk they just give up one day, and that you can reach out easily to someone that can help with any issue that you may encounter. This is all just great, enjoyable fun, very cool and excuse my French: GODDAMN FANTASTIC! I thank you, my computers thank you and come Plasma 5.18 all my friends/familys computers (old and new) will thank you as well.
+
+								December 1, 2019 at 12:15 pm							
+I feel similarly. One-man projects or very small teams are always a bit disconcerting. But KDE’s developer community is humongous! The pace of improvement is pretty amazing. Believe it or not, sometimes I get a bit frustrated that it isn’t even faster! There are so many cool things in the pipeline that are like 80%+ done. But that’s the way all projects are, ultimately. the old 80/20 rule strikes again!
+
+								December 1, 2019 at 4:34 am							
+> The weather widget’s weather station configuration window now has a better default size and margins, and the “no weather stations found” text no longer overflows the view (me: Nate Graham, Plasma 5.17.4):
+Is it a bug that there are alternating row colors displayed in the screenshot, although no items were found?
+
+								December 1, 2019 at 12:16 pm							
+Yeah, that’s a minor visual bug. I’ll fix it once I port the QtQuickControls1 table view to be a QtQuickControls2 list view.
+
+								December 1, 2019 at 4:34 am							
+Wow! This is amazing!
+Thank you Nate for informing us about everything in KDE, and a big thank you to all contributors of KDE.
+Best thing about KDE: It’s build by users, for users!
+
+								December 1, 2019 at 12:16 pm							
+You’re very welcome!
+
+								December 1, 2019 at 5:48 am							
+This is excellent. So now Firefox will look like a native application on KDE Plasma.
+
+								December 1, 2019 at 12:18 pm							
+https://bugs.kde.org/show_bug.cgi?id=407639
+https://bugzilla.mozilla.org/show_bug.cgi?id=1562507
+
+								December 1, 2019 at 6:00 am							
+As always, nice writeup. Thank you.
+
+								December 1, 2019 at 12:18 pm							
+You’re welcome!
+
+								December 1, 2019 at 6:29 am							
+Great improvements, especially GTK one seems like will be a great quality of life improvement.
+
+								December 1, 2019 at 12:22 pm							
+Gustavo Benedito dos Reis Costa (@gusbemacbe)
+
+								December 1, 2019 at 12:07 pm							
+And will the GTK-based and Electron-based apps open ther KDE dialog instead of that old-fashioned GTK dialog?
+
+								December 1, 2019 at 12:22 pm							
+It’s up to the apps themselves to either hook into KIO directly (as LibreOffice does) or use the GTKFilePickerNative API and force the use of XDG desktop portals when in a Plasma environment (as Firefox and Thunderbird and many GNOME apps do). But there’s nothing we can do on the KDE side to force this.
+Please file bugs against apps that use the GTK file dialog when run on Plasma!
+Gustavo Benedito dos Reis Costa (@gusbemacbe)
+
+								December 1, 2019 at 1:01 pm							
+Please file bugs against apps that use the GTK file dialog when run on Plasma!
+The issues have already published a lot of years ago, they were closed and is no solved solved. Here are:
+https://bugs.kde.org/show_bug.cgi?id=402077
+https://superuser.com/questions/944119/replace-gtk-file-dialog-with-alternative
+
+								December 1, 2019 at 8:03 pm							
+https://bugs.kde.org/show_bug.cgi?id=402077
+
+								December 1, 2019 at 12:18 pm							
+I have a question about GTK CSDs and their behavior logic.
+What will happen when the titlebar is stripped (by latte or some script)? This is a typical option for global menus and maximized windows. Stripping titlebar ensures that there is no redundant stripe since all functionality is moved to upper panel (buttons, appmenu, titles plus other panel’s elements).
+I assume that the CSD will be exempt from that stripping. Unless latte developer will do his magic and creates another widget that will move CSD functionality into panel… All is possible 😉
+Anyway, what about the buttons and title? This could create doubled elements, so I’m curious if the new option already has a solution for global menu with upper panel setup behavior? I know that this isn’t the official available setup but maybe the new CSD option included option for it? If not, it will be brought to the table by many users so it’s better to think of it before the official release.
+I kinda enjoy the idea about the additional widget with CSD buttons where we could tweak, turn on/off certain elements but is there any space for that on a panel? It’s already pretty filled with buttons, title, menu, system tray, clock and few additional widgets (like for weather).
+In general, I think it’s a good idea to support officially CSDs. Plasma always has been inclusive, even if some elements weren’t native to it and that is why it makes it so powerful. One DE that rules them all ;D.
+
+								December 1, 2019 at 12:25 pm							
+CSD apps have no titlebar to strip. I imagine that titlebar-stripping apps will just ignore these windows. I *think* it would be technically possible to remove the close/minimize/maximize buttons from the headerbar when it’s maximized as we do have a hook into their ordering and visibility. I don’t know if that’s been implemented yet though. Our next thing is going to be trying to make order and visiblity of those buttons in CSD headerbar apps respect the settings you’re using for SSD apps.
+
+								December 1, 2019 at 12:31 pm							
+
+								December 1, 2019 at 4:04 pm							
+https://bugs.kde.org/show_bug.cgi?id=362946
+Christian Herenz
+
+								December 1, 2019 at 5:32 pm							
+… they really need a weather station in FoobarFungusMungusReallyLongText 🤪
+
+								December 2, 2019 at 4:36 pm							
+Great stuff! Regarding “Visible notifications now move out of the way rather than disappearing when the System Tray popup is open in the same area”: 1. the video doesn’t play on Firefox for Android even though the play/pause button toggles and the progress indicators animate. 2. In Fedora the notification about “17 updates available” obscures the Plasma pop-up behind it with the details of the packages and the button to update; will this fix address that usability glitch?
+
+								December 2, 2019 at 5:11 pm							
+Yes, it does.
+
+								December 3, 2019 at 11:19 am							
+hello Nate, I noticed that a while ago you switched off windows borders. Now I cannot distinguish the edge of a window overlapping another window. That is not very handy. It this a temporary situation? Thanks! John
+
+								December 3, 2019 at 12:06 pm							
+That’s what the window shadows are for. Have you turned them off?
+
+								December 5, 2019 at 1:46 am							
+Anyway, my GUI system is much more usable with shadows!
+(*) I always use the default settings due to this reasoning: Don’t trust my system otherwise since I feel it is impossible for developers to test all scenario’s (Exponential increase of complexity / all combinations).
+
+								December 5, 2019 at 8:38 am							
+Glad you got it working! I guess your graphics hardware is somehow subtly incompatible with OpenGL 2.0.
+The System Settings crash should be fixed in the next Frameworks release (coming out in two days).
+
+								December 3, 2019 at 1:10 pm							
+A lot of these posts have window decorations without the white circle in the close button. That looks so much better, and yet I could never find where you can obtain that or an announcement for a system-wide theme change. Could you explain it to me?
+
+								December 3, 2019 at 2:47 pm							
+System Settings > Application Style > Window Decorations > Breeze > Click on inline Edit button (it looks like a pencil) > Uncheck “Draw a circle around close button”
+
+								December 5, 2019 at 10:23 am							
+No way it’s that easy. Now for a way to transfer that to GTK’s CSD
+
+								December 5, 2019 at 10:31 am							
+That’s in progress too. 🙂
+Cancel reply
+Enter your comment here...
+Fill in your details below or click an icon to log in:
+(Address never made public)
+Connecting to %s
+Notify me of new comments via email.
+Notify me of new posts via email.
+Search for:
+Follow Adventures in Linux and KDE on WordPress.com
+Follow via Email
+Enter your email address to follow this blog and receive notifications of new posts by email.
+Join 287 other followers
+
+	                    Follow                    
+Follow via RSS
+RSS - Posts
+Popular posts
+This week in KDE: GTK CSD support and more!
+Flatpak support in Discover
+This week in KDE: Plasma 5.17 approaches
+This week in KDE: Towards Plasma 5.18
+This week in KDE: Polishing it up
+New Contributor Friendliness
+This Week in KDE
+Uncategorized
+Usability & Productivity
+User Interface Design
+World Domination
+November 2019
+October 2019
+September 2019
+August 2019
+February 2019
+January 2019
+December 2018
+November 2018
+October 2018
+September 2018
+August 2018
+February 2018
+January 2018
+December 2017
+Blog at WordPress.com.

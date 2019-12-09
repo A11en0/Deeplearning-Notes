@@ -1,0 +1,167 @@
+Skip to main content
+Browse Training
+Popular Courses
+Introduction to Python Development
+Learn how to program using Python.
+AWS Certified Solutions Architect – Associate Level
+Prepare to take the AWS Certified S...
+AWS Essentials
+For those who are completely new to...
+View all 207 Courses
+Popular Hands-On Labs
+The DevOps Pipeline
+Create a DevOps pipeline all the wa...
+Using Azure Service Bus Queues with C#, Cloud Shell, PowerShell, and CLI
+Use the Azure Cloud Shell to create...
+Creating and configuring Secure AWS RDS Instances with a Reader and Backup Solution
+Create an RDS database, then succes...
+Exploring the Kubernetes Cluster via the Command Line
+Use the kubectl command line tool t...
+View all 1051 Hands-On Labs
+Popular Learning Paths
+Amazon Web Services - Master Level
+Start the journey to receiving all ...
+Google Cloud Certification
+Build your Google Cloud skills.
+Getting Started in Azure for the Absolute Beginner
+Get a solid foundation in I.T. and ...
+View all 49 Learning Paths
+Learn a new platform
+1,018 Hours of Learning
+490 Hours of Learning
+1,257 Hours of Learning
+Google Cloud
+159 Hours of Learning
+192 Hours of Learning
+Develop a new skill
+280 Hours of Learning
+836 Hours of Learning
+339 Hours of Learning
+168 Hours of Learning
+Latest Courses
+AWS Developer Tools Deep Dive – Early Access
+Take a deep dive into each of the s...
+Red Hat Certified Engineer (RHEL 8 RHCE)
+Prepare for the certification exam ...
+Build and Deploy Pipelines with Microsoft Azure
+Use Azure DevOps to demonstrate man...
+View all 207 Courses
+Latest Hands-On Labs
+Perform Parallel Execution in AWS Step Functions
+Start with an existing step functio...
+Import JSON into Cosmos DB
+Export a table from our sample Azur...
+Pair Programming with AWS Cloud9
+Ssimulate a second developer being ...
+Protecting Google Cloud VPC Resources with Cloud Armor
+Create a Cloud Armor policy.
+View all 1051 Hands-On Labs
+Latest Learning Paths
+Serverless Computing
+Introduction to the key concepts ar...
+Kubernetes Orchestration and Management
+Introduction to the foundations of ...
+Learning Docker
+Get started with Docker.
+View all 49 Learning Paths
+Hands-On Labs
+Why Linux Academy?
+For Business
+Case Studies
+Start FREE Trial
+Announcements
+Free Courses at Linux Academy – December 2019
+Share on Facebook
+Share on Twitter
+Share on LinkedIn
+Share on Hacker News
+Share on Reddit
+Free Courses at Linux Academy – December 2019
+December 1, 2019
+Announcements
+To continually support your mission to learn and grow, we are always adding new, free courses and resources for developing Linux and Cloud skills.
+ community content
+Courses Free in December :
+CloudFormation Deep Dive
+Jenkins Quick Start
+DevSecOps Essentials
+Amazon Lightsail Deep Dive
+AWS Essentials
+DevOps Essentials
+AWS Concepts
+Microsoft SQL Server on Linux Quick Start
+Database Administration and SQL Language Basics 
+Kubernetes Essentials
+Ansible Playbooks Deep Dive
+Kubernetes The Hard Way
+Included with Community Membership
+How to Get a Linux Job
+This course helps prepare you for applying for and successfully obtaining a Linux Job.
+Free Mastery Courses
+Vim- The Improved Editor
+In this short course, we take a look at Vim, the improved editor. Learn how to use the keyboard to work with your text documents, complete searches, replace text, and format. We also show you how to branch out from Vim to run commands, capture the output into the current buffer, manage your buffers, and more.
+LXC/LXD Deep Dive
+learn by doing
+Mastering Regular Expressions
+Here we break down the “vocabulary” and “grammar” of regular expressions. First, you’ll learn what those symbols and shortcuts mean, and then how to manipulate them to craft complex regular expressions.  Additionally, we’ll use some common Linux tools, like grep and sed for some front-end regex use examples.
+Build Your Own Linux From Scratch
+Learn how the Linux kernel interoperates with glibc (and the rest of the binary toolchain), and how various software packages rely on the kernel and glibc.
+Free Essentials Courses
+Google Cloud Essentials (NEW)
+This course is designed for those who want to learn about Google Cloud: what cloud computing is, the overall advantages Google Cloud offers, and a detailed explanation of all major services – what they are, their use cases, and how to use them.
+Big Data Essentials
+Big Data Essentials is a comprehensive introduction addressing the large question of, “What is Big Data?” Using real-world examples, we highlight the growing importance of Big Data. We discuss architectural requirements and principles of Big Data infrastructures and the intersection of cloud computing. We also provide an overview of the most popular Big Data technologies including core Hadoop, the Hadoop ecosystem (Hive, Pig, Sqoop, Flume, Kafka, Storm, Ambari, Oozie, Zookeeper), NoSQL databases, and Apache Spark.
+AWS Essentials
+learn by doing
+Free Essentials Courses (CTD)
+DevOps Essentials
+Looking for a basic introduction to the concept of DevOps? Here we go over what DevOps is and how it impacts IT in the real world. This course explains the culture of DevOps as well as some of the main practices and tools associated with DevOps. Finally, it also introduces the student to the relationship between DevOps and the cloud.
+YAML Essentials
+Yet Another Markup Language (YAML) Essentials gives true beginners the skills they need to craft documents using this popular data serialization language. YAML is a popular choice for data storage, configuration files, configurations management, etc. used across a variety of programs/languages. This course explores how to write a properly structured YAML file in both the human-readable block style and JSON-compatible.
+DevSecOps Essentials
+This course covers the DevSecOps process with an emphasis on securing both legacy and hybrid cloud environments. We cover best practices for security in a conventional Continuous Integration and Continuous Deployment (CI/CD) pipeline.
+Kubernetes Essentials
+Kubernetes is a powerful tool. It can help you manage complex applications and provides the ability to easily automate tasks that manage them. In this course, we will explore Kubernetes from a beginner’s standpoint. We will discuss what Kubernetes is, what it does, and work hands-on with some of the basic functionality of Kubernetes. Similarly, we’ll build a Kubernetes cluster and deploy a sample microservice application to it.
+DevSecOps Essentials
+This course covers the DevSecOps process with an emphasis on securing both legacy and hybrid cloud environments. We cover best practices for security in a conventional Continuous Integration and Continuous Deployment (CI/CD) pipeline.
+Concepts and Fundamentals Courses
+AWS Concepts
+This course is for the true beginner. If you have ever wondered: What is the cloud? AWS? Why do we use AWS?  The AWS Concepts course is for you. We’ll give a simple introduction to the concepts of Cloud Computing, Amazon Web Services, and its core services. There are no technical explanations or definitions to memorize. When finished with this course, you will have the foundation to move forward onto more advanced AWS courses.
+Azure Concepts
+In this course, we cover the basics of cloud services, the core components of Azure, and how companies are using it today.
+Linux Operating System Fundamentals
+Are you a non-technical person just wanting to know what this ‘Linux’ thing is? Then this course is for you. This course explains the history of Linux, the open-source movement, and how this software is used today. We look at its many types of deployments, and the various incarnations of a Linux “distribution.”
+Amazon Lightsail Deep Dive
+AWS offers a wealth of features allowing an experienced architect, engineer or developer to implement systems to meet any need. Amazon Lightsail compliments this flexibility by providing a simple, cheap and powerful way to utilize AWS services.
+_____________________________________________________________________________________
+Overall the Free Community Edition Membership has many helpful resources: flash cards, community access, the courses we talked about today(videos only unless otherwise noted) and
+access to our mobile application
+. Quizzes, Labs, and other features are only availble in the full membership. 
+Janelle Poisel
+Last Edited on: December 1, 2019.
+EL HOUCINE MICHAOUI
+1 month ago
+Im very interesting
+No mention of the new DynamoDB Deep Dive course?
+LauraArguijo
+17 hours ago
+Cancel reply
+Your email address will not be published.
+Post Comment
+Hands-On Labs
+Why Linux Academy?
+For Business
+Build Your Own Linux
+Content Library
+How-to Guides
+Penguin Cam
+Terms of Service
+Privacy Policy
+©
+Linux Academy,
+2019. All Rights Reserved.
+
+Pinehead® and the Linux Academy Logo® is a registered trademark of
+Linux Academy
+in the U.S. and other countries.
+Linux® is a registered trademark of Linus Torvalds in the U.S. and other countries.

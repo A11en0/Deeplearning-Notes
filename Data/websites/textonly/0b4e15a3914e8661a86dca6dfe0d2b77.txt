@@ -1,0 +1,44 @@
+Advisory Board
+Steering Committee
+Unified Code Base
+Get Started
+Vendor Marketplace
+Publications
+Announcements
+In the News
+Upcoming Events
+Volkswagen Joins Automotive Grade Linux and the Linux Foundation
+April 8, 2019
+Announcements
+Automotive Grade Linux
+Linux Foundation
+AGL is an open source project at the Linux Foundation that is changing the way automotive manufacturers build software. More than 130 members are working together to develop a common platform that can serve as the de facto industry standard for infotainment, telematics and instrument cluster applications. Adopting an open platform across the industry enables automakers and suppliers to share and reuse the same code base, which reduces development costs, decreases time-to-market for new products and reduces fragmentation across the industry.
+“The automotive industry is undergoing a digital transformation, and automakers and their suppliers are increasingly adopting open source solutions, like the AGL platform, to drive rapid innovation and enable them to bring products to market faster,” said Dan Cauchy, Executive Director of Automotive Grade Linux at the Linux Foundation. “We are very excited to welcome Volkswagen to the AGL community, and we look forward to leveraging the technological expertise of their developers and engineers as we continue to enhance the AGL platform and develop new functionalities.”
+In 2008, Volkswagen contributed the Controller Area Network (CAN) bus networking subsystem to the Linux Kernel 2.6.25, which paved the way for a standardized socket API for developers and a common CAN network driver model for SoCs and PC-style CAN hardware. Within this contribution process, Volkswagen and non-automotive CAN users learned a lot from each other’s use-cases so that the Linux CAN support is now widely used in industrial, automotive and academic setups (e.g. CERN).
+“The Open Source approach provides excellent software solutions that are suitable to enable a long-term support of software over the vehicle life cycle,” says Oliver Hartkopp, Open Source specialist at Volkswagen. “To ensure robust and secure solutions for our customers we want to be in close connection with the community to be able to directly interact with developers and maintainers.”
+Working with communities and providing knowledge, ideas and source code requires a new mindset in the automotive industry. Volkswagen is joining AGL to become a member of the development community for the common automotive Linux platform.
+https://www.automotivelinux.org/
+Automotive Grade Linux is a Collaborative Project at The Linux Foundation. Linux Foundation Collaborative Projects are independently funded software projects that harness the power of collaborative development to fuel innovation across industries and ecosystems.
+Additional Resources
+Developer Resources
+About the AGL Community
+Participating in Automotive Grade Linux
+linuxfoundation.org
+The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our trademark usage page: 
+https://www.linuxfoundation.org/trademark-usage
+. Linux is a registered trademark of Linus Torvalds.
+Automotive Grade Linux Releases Open Source Speech Recognition APIs
+Automotive Grade Linux Releases Open Source Speech Recognition APIs
+privacy policy
+terms of use
+Advisory Board
+Steering Committee
+Unified Code Base
+Get Started
+Vendor Marketplace
+Publications
+Announcements
+In the News
+Upcoming Events
+
+													

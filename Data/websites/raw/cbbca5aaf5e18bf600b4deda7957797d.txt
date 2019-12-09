@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-GB">
+<head>
+	<meta charset="UTF-8">
+	<title>Improvements in LibreOffice’s PowerPoint presentation support - The Document Foundation Blog</title>
+	<!--iOS/android/handheld specific -->	
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" type="text/css" media="all" href="https://blog.documentfoundation.org/wp-content/themes/ribbon/style.css" />
+	<link rel="pingback" href="https://blog.documentfoundation.org/xmlrpc.php" />
+			<!--[if lt IE 9]>
+	<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<style type="text/css">
+body {background-color:#EBEBEB;}
+.nav-previous a:hover,.nav-next a:hover,#commentform input#submit,#searchform input[type="submit"],.home_menu_item,.secondary-navigation a:hover, .post-date-ribbon,.currenttext, .pagination a:hover,.readMore a,.mts-subscribe input[type="submit"] {background-color:#00a500; }
+#tabber .inside li .meta b,footer .widget li a:hover,.fn a,.reply a,#tabber .inside li div.info .entry-title a:hover, #navigation ul ul a:hover,.single_post a, a:hover, .textwidget a, #commentform a, #tabber .inside li a, .copyrights a:hover, a, .sidebar.c-4-12 a:hover, .top a:hover {color:#00a500; }
+.corner {border-color: transparent transparent #00a500 transparent;}
+.secondary-navigation, footer, .sidebar #searchform input[type="submit"]:hover, .readMore a:hover, #commentform input#submit:hover { background-color: #000000; }
+#page, .container {
+max-width: 1200px;
+}
+.main-container {
+width: 1200px;
+}
+.article {
+width: 70%;
+}
+.secondary-navigation {
+max-width: 1200px;
+width: 100%;
+}
+#header {
+max-width: 1130px;
+}
+#navigation ul {
+width: 1200px;
+}
+.footer-w-container, #copyright-note {
+width: 1120px;
+}
+</style>
+	<link href="https://blog.documentfoundation.org/wp-content/plugins/shariff-sharing/dep/shariff.complete.css" rel="stylesheet">
+            <script data-cfasync="false">
+                window._EPYT_ = window._EPYT_ || {
+                    ajaxurl: "https://blog.documentfoundation.org/wp-admin/admin-ajax.php",
+                    security: "0b866da29d",
+                    gallery_scrolloffset: 20,
+                    eppathtoscripts: "https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/scripts/",
+                    eppath: "https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/",
+                    epresponsiveselector: ["iframe.__youtube_prefs_widget__"],
+                    version: "13.1.2.4",
+                    epdovol: true,
+                    evselector: 'iframe.__youtube_prefs__[src], iframe[src*="youtube.com/embed/"], iframe[src*="youtube-nocookie.com/embed/"]',
+                    ajax_compat: false,
+                    ytapi_load: 'light',
+                    stopMobileBuffer: true                };</script>
+            
+<!-- This site is optimized with the Yoast SEO plugin v12.6.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Improvements in LibreOffice’s PowerPoint presentation support - The Document Foundation Blog" />
+<meta property="og:description" content="LibreOffice&#8217;s native file format is OpenDocument, a fully open and standardised format that&#8217;s great for sharing documents and long-term data storage. Of course, LibreOffice does its best to open files made by other office software as well, even if they&#8217;re stored in pseudo-&#8220;standards&#8221; with cryptic and obfuscated contents. Compatibility with PowerPoint PPT(X) presentations is therefore &hellip;" />
+<meta property="og:url" content="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/" />
+<meta property="og:site_name" content="The Document Foundation Blog" />
+<meta property="article:section" content="Development" />
+<meta property="article:published_time" content="2019-12-06T09:46:13+00:00" />
+<meta property="og:image" content="https://blog.documentfoundation.org/wp-content/uploads/2019/12/pptx_before_after.png" />
+<meta property="og:image:secure_url" content="https://blog.documentfoundation.org/wp-content/uploads/2019/12/pptx_before_after.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="LibreOffice&#8217;s native file format is OpenDocument, a fully open and standardised format that&#8217;s great for sharing documents and long-term data storage. Of course, LibreOffice does its best to open files made by other office software as well, even if they&#8217;re stored in pseudo-&#8220;standards&#8221; with cryptic and obfuscated contents. Compatibility with PowerPoint PPT(X) presentations is therefore [&hellip;]" />
+<meta name="twitter:title" content="Improvements in LibreOffice’s PowerPoint presentation support - The Document Foundation Blog" />
+<meta name="twitter:site" content="@libreoffice" />
+<meta name="twitter:image" content="https://blog.documentfoundation.org/wp-content/uploads/2019/12/pptx_before_after.png" />
+<meta name="twitter:creator" content="@libreoffice" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://blog.documentfoundation.org/#organization","name":"The Document Foundation","url":"https://blog.documentfoundation.org/","sameAs":["https://twitter.com/libreoffice"],"logo":{"@type":"ImageObject","@id":"https://blog.documentfoundation.org/#logo","url":"https://blog.documentfoundation.org/wp-content/uploads/2015/07/LibreOffice-Logo.jpg","width":1200,"height":383,"caption":"The Document Foundation"},"image":{"@id":"https://blog.documentfoundation.org/#logo"}},{"@type":"WebSite","@id":"https://blog.documentfoundation.org/#website","url":"https://blog.documentfoundation.org/","name":"The Document Foundation Blog","publisher":{"@id":"https://blog.documentfoundation.org/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://blog.documentfoundation.org/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/#primaryimage","url":"https://blog.documentfoundation.org/wp-content/uploads/2019/12/pptx_before_after.png","width":1202,"height":602},{"@type":"WebPage","@id":"https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/#webpage","url":"https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/","inLanguage":"en-GB","name":"Improvements in LibreOffice\u2019s PowerPoint presentation support - The Document Foundation Blog","isPartOf":{"@id":"https://blog.documentfoundation.org/#website"},"primaryImageOfPage":{"@id":"https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/#primaryimage"},"datePublished":"2019-12-06T09:46:13+00:00","dateModified":"2019-12-06T09:46:13+00:00"},{"@type":"Article","@id":"https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/#article","isPartOf":{"@id":"https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/#webpage"},"author":{"@id":"https://blog.documentfoundation.org/#/schema/person/4a93de5a86f042bdeaba38d7b84ab101"},"headline":"Improvements in LibreOffice\u2019s PowerPoint presentation support","datePublished":"2019-12-06T09:46:13+00:00","dateModified":"2019-12-06T09:46:13+00:00","commentCount":"1","mainEntityOfPage":{"@id":"https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/#webpage"},"publisher":{"@id":"https://blog.documentfoundation.org/#organization"},"image":{"@id":"https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/#primaryimage"},"articleSection":"Development,LibreOffice,Technology"},{"@type":["Person"],"@id":"https://blog.documentfoundation.org/#/schema/person/4a93de5a86f042bdeaba38d7b84ab101","name":"Ilmari Lauhakangas","image":{"@type":"ImageObject","@id":"https://blog.documentfoundation.org/#authorlogo","url":"https://secure.gravatar.com/avatar/c697811d4e872faba2fe796be756c647?s=96&r=g","caption":"Ilmari Lauhakangas"},"sameAs":[]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="The Document Foundation Blog &raquo; Feed" href="https://blog.documentfoundation.org/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Document Foundation Blog &raquo; Comments Feed" href="https://blog.documentfoundation.org/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="The Document Foundation Blog &raquo; Improvements in LibreOffice’s PowerPoint presentation support Comments Feed" href="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.documentfoundation.org\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='GoogleFonts-css'  href='https://fonts.googleapis.com/css?family=Monda%3Aregular%2Cbold&#038;v1&#038;ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://blog.documentfoundation.org/wp-includes/css/dist/block-library/style.min.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='bbspoiler-css'  href='https://blog.documentfoundation.org/wp-content/plugins/bbspoiler/inc/bbspoiler.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='cookie-notice-front-css'  href='https://blog.documentfoundation.org/wp-content/plugins/cookie-notice/css/front.min.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='email-subscribers-css'  href='https://blog.documentfoundation.org/wp-content/plugins/email-subscribers/lite/public/css/email-subscribers-public.css' type='text/css' media='all' />
+<link rel='stylesheet' id='gdpr-css'  href='https://blog.documentfoundation.org/wp-content/plugins/gdpr/assets/css/gdpr-public.css?ver=2.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='wp_review-style-css'  href='https://blog.documentfoundation.org/wp-content/plugins/wp-review/public/css/wp-review.css?ver=5.2.8' type='text/css' media='all' />
+<link rel='stylesheet' id='enlighter-local-css'  href='https://blog.documentfoundation.org/wp-content/plugins/enlighter/resources/EnlighterJS.min.css?ver=3.10.0' type='text/css' media='all' />
+<link rel='stylesheet' id='enlighter-webfonts-css'  href='//fonts.googleapis.com/css?family=Cousine%3Aregular%2Citalic%2C700%2C700italic%7CInconsolata%3Aregular%2C700%7CSource+Code+Pro%3Aregular%2C700&#038;ver=3.10.0' type='text/css' media='all' />
+<link rel='stylesheet' id='__EPYT__style-css'  href='https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/styles/ytprefs.min.css?ver=13.1.2.4' type='text/css' media='all' />
+<style id='__EPYT__style-inline-css' type='text/css'>
+
+                .epyt-gallery-thumb {
+                        width: 33.333%;
+                }
+                
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='https://blog.documentfoundation.org/wp-content/plugins/jetpack/css/jetpack.css?ver=8.0' type='text/css' media='all' />
+            <script data-cfasync="false">
+                window._EPYT_ = window._EPYT_ || {
+                    ajaxurl: "https://blog.documentfoundation.org/wp-admin/admin-ajax.php",
+                    security: "0b866da29d",
+                    gallery_scrolloffset: 20,
+                    eppathtoscripts: "https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/scripts/",
+                    eppath: "https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/",
+                    epresponsiveselector: ["iframe.__youtube_prefs_widget__"],
+                    version: "13.1.2.4",
+                    epdovol: true,
+                    evselector: 'iframe.__youtube_prefs__[src], iframe[src*="youtube.com/embed/"], iframe[src*="youtube-nocookie.com/embed/"]',
+                    ajax_compat: false,
+                    ytapi_load: 'light',
+                    stopMobileBuffer: true                };</script>
+            <script>if (document.location.protocol != "https:") {document.location = document.URL.replace(/^http:/i, "https:");}</script><script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js?ver=1.7.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/jetpack/_inc/build/related-posts/related-posts.min.js?ver=20191011'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var title = {"unfolded":"Expand","folded":"Collapse"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/bbspoiler/inc/bbspoiler.js?ver=5.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var cnArgs = {"ajaxurl":"https:\/\/blog.documentfoundation.org\/wp-admin\/admin-ajax.php","hideEffect":"none","onScroll":"no","onScrollOffset":"100","cookieName":"cookie_notice_accepted","cookieValue":"true","cookieTime":"2592000","cookiePath":"\/","cookieDomain":".blog.documentfoundation.org","redirection":"","cache":"","refuse":"no","revoke_cookies":"0","revoke_cookies_opt":"automatic","secure":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/cookie-notice/js/front.min.js?ver=1.2.48'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var es_data = {"messages":{"es_empty_email_notice":"Please enter email address","es_rate_limit_notice":"You need to wait for sometime before subscribing again","es_single_optin_success_message":"Successfully Subscribed.","es_email_exists_notice":"Email Address already exists!","es_unexpected_error_notice":"Oops.. Unexpected error occurred.","es_invalid_email_notice":"Invalid email address","es_try_later_notice":"Please try after some time"},"es_ajax_url":"https:\/\/blog.documentfoundation.org\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/email-subscribers/lite/public/js/email-subscribers-public.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var GDPR = {"ajaxurl":"https:\/\/blog.documentfoundation.org\/wp-admin\/admin-ajax.php","logouturl":"","i18n":{"aborting":"Aborting","logging_out":"You are being logged out.","continue":"Continue","cancel":"Cancel","ok":"OK","close_account":"Close your account?","close_account_warning":"Your account will be closed and all data will be permanently deleted and cannot be recovered. Are you sure?","are_you_sure":"Are you sure?","policy_disagree":"By disagreeing you will no longer have access to our site and will be logged out."},"is_user_logged_in":"","refresh":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/gdpr/assets/js/gdpr-public.js?ver=2.1.0'></script>
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js?ver=1.8.16'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/themes/ribbon/js/modernizr.min.js?ver=5.3'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/themes/ribbon/js/customscript.js?ver=5.3'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/scripts/ytprefs.min.js?ver=13.1.2.4'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/scripts/jquery.cookie.min.js?ver=13.1.2.4'></script>
+<link rel='https://api.w.org/' href='https://blog.documentfoundation.org/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.documentfoundation.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.documentfoundation.org/wp-includes/wlwmanifest.xml" /> 
+<!--Theme by MyThemeShop.com-->
+<link rel='shortlink' href='https://blog.documentfoundation.org/?p=9114' />
+<link rel="alternate" type="application/json+oembed" href="https://blog.documentfoundation.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.documentfoundation.org%2Fblog%2F2019%2F12%2F06%2Fimprovements-in-libreoffices-powerpoint-presentation-support%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://blog.documentfoundation.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.documentfoundation.org%2Fblog%2F2019%2F12%2F06%2Fimprovements-in-libreoffices-powerpoint-presentation-support%2F&#038;format=xml" />
+<!-- Analytics by WP-Statistics v12.6.11 - https://wp-statistics.com/ -->
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<style type='text/css'>img#wpstats{display:none}</style><link rel="icon" href="https://blog.documentfoundation.org/wp-content/uploads/2015/10/TDF_Logo_Wiki-50x50.png" sizes="32x32" />
+<link rel="icon" href="https://blog.documentfoundation.org/wp-content/uploads/2015/10/TDF_Logo_Wiki.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://blog.documentfoundation.org/wp-content/uploads/2015/10/TDF_Logo_Wiki.png" />
+<meta name="msapplication-TileImage" content="https://blog.documentfoundation.org/wp-content/uploads/2015/10/TDF_Logo_Wiki.png" />
+			<style type="text/css" id="wp-custom-css">
+				/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+.post-single-content {
+	clear: both;
+}
+
+.comment-form-url {
+	display: none;
+}			</style>
+		</head>
+<body data-rsssl=1 id ="blog" class="post-template-default single single-post postid-9114 single-format-standard main cookies-not-set cat-19-id cat-14-id cat-11-id">
+	<header class="main-header">
+		<div class="container">
+			<div id="header">
+																<h2 id="logo">
+								<a href="https://blog.documentfoundation.org"><img src="https://blog.documentfoundation.org/wp-content/uploads/2015/02/tdflogo.png" alt="The Document Foundation Blog"></a>
+							</h2><!-- END #logo -->
+													 <div class="widget-header">
+											            </div>             
+			</div><!--#header-->
+            <div class="secondary-navigation">
+				<nav id="navigation" >
+											<ul id="menu-menu" class="menu"><li id="menu-item-2687" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2687"><a target="_blank" rel="noopener noreferrer" href="https://www.documentfoundation.org">TDF Home</a>
+<ul class="sub-menu">
+	<li id="menu-item-3517" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3517"><a target="_blank" rel="noopener noreferrer" href="https://www.documentfoundation.org/foundation/statutes/">TDF Statutes</a></li>
+</ul>
+</li>
+<li id="menu-item-2688" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2688"><a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org">LibreOffice Home</a>
+<ul class="sub-menu">
+	<li id="menu-item-3518" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3518"><a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/discover/libreoffice/">Discover LibreOffice</a></li>
+	<li id="menu-item-3523" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3523"><a target="_blank" rel="noopener noreferrer" href="https://devcentral.libreoffice.org/">LibreOffice DevCentral</a></li>
+</ul>
+</li>
+<li id="menu-item-3502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3502"><a href="https://blog.documentfoundation.org/tdf-docs/">Documents</a>
+<ul class="sub-menu">
+	<li id="menu-item-3512" class="ppr-new-window ppr-nofollow ppr-rewrite menu-item menu-item-type-post_type menu-item-object-page menu-item-3512"><a target="_blank" rel="nofollow" href="https://wiki.documentfoundation.org/TDF/Ledgers">TDF Ledgers</a></li>
+	<li id="menu-item-8262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8262"><a href="https://www.documentfoundation.org/foundation/financials/">Annual Report</a></li>
+	<li id="menu-item-8261" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8261"><a href="https://wiki.documentfoundation.org/Gallery_Flyers">LibreOffice Flyers</a></li>
+</ul>
+</li>
+<li id="menu-item-4593" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4593"><a href="https://blog.documentfoundation.org/pictures/">Pictures</a></li>
+<li id="menu-item-3525" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3525"><a href="https://wiki.documentfoundation.org/Events">Events</a></li>
+<li id="menu-item-7097" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7097"><a href="https://blog.documentfoundation.org/tenders/">Tenders</a></li>
+<li id="menu-item-3550" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3550"><a href="https://blog.documentfoundation.org/media-hub/">Media Hub</a>
+<ul class="sub-menu">
+	<li id="menu-item-3522" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3522"><a href="https://blog.documentfoundation.org/blog/category/press-releases/">Press Releases</a></li>
+	<li id="menu-item-3553" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3553"><a href="https://blog.documentfoundation.org/media-hub/press-clippings/">Press Clippings</a></li>
+</ul>
+</li>
+<li id="menu-item-4880" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4880"><a href="https://shop.spreadshirt.de/documentfoundation/">Merchandise</a></li>
+<li id="menu-item-3519" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3519"><a target="_blank" rel="noopener noreferrer" href="https://www.libreoffice.org/donate/">Donate</a>
+<ul class="sub-menu">
+	<li id="menu-item-5692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5692"><a href="https://blog.documentfoundation.org/donations-questions-answers/">Donation help</a></li>
+</ul>
+</li>
+</ul>									</nav>
+			</div>
+		</div><!--.container-->        
+	</header>
+	<div class="main-container"><div id="page" class="single">
+	<div class="content">
+		<article class="article">
+			<div id="content_box" >
+									<div id="post-9114" class="g post post-9114 type-post status-publish format-standard hentry category-development category-libreoffice category-technology cat-19-id cat-14-id cat-11-id">
+						<div class="single_post">
+							<div class="post-date-ribbon"><div class="corner"></div>06 Dec 2019</div>
+														<header>
+								<h1 class="title single-title">Improvements in LibreOffice’s PowerPoint presentation support</h1>
+								<span class="theauthor single-postmeta">Posted in <a href="https://blog.documentfoundation.org/blog/category/development/" rel="nofollow">Development</a>, <a href="https://blog.documentfoundation.org/blog/category/libreoffice/" rel="nofollow">LibreOffice</a>, <a href="https://blog.documentfoundation.org/blog/category/technology/" rel="nofollow">Technology</a> By <a rel="nofollow" href="https://blog.documentfoundation.org/blog/author/buovjaga/" title="Posts by Ilmari Lauhakangas" rel="author">Ilmari Lauhakangas</a> On December 6, 2019</span>
+							</header><!--.headline_area-->
+							<div class="post-single-content box mark-links">
+								<p><img src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/pptx_before_after.png" width="800" /></p>
+<p>LibreOffice&#8217;s native file format is <a href="http://opendocumentformat.org/">OpenDocument</a>, a fully open and standardised format that&#8217;s great for sharing documents and long-term data storage. Of course, LibreOffice does its best to open files made by other office software as well, even if they&#8217;re stored in <a href="https://www.tfir.io/never-use-microsofts-ooxml-pseudo-standard-format/">pseudo-&#8220;standards&#8221; with cryptic and obfuscated contents</a>. Compatibility with PowerPoint PPT(X) presentations is therefore a challenge, but developers are working hard on improvements&#8230;</p>
+<p>A few months ago, <a href="https://blog.documentfoundation.org/blog/2019/09/04/libreoffice-developers-team-up-to-improve-ppt-pptx-powerpoint-file-support/">we announced an initiative to improve the support of PPT and PPTX files in LibreOffice</a>. Lots of great work happened since then and the results are collected below!</p>
+<p>Everyone is invited to participate in the PowerPoint support initiative, either in development or testing. If you are interested in joining, please send an email to <a href="mailto:ilmari.lauhakangas@libreoffice.org">ilmari.lauhakangas@libreoffice.org</a>.</p>
+<h2 class="western">Import/export</h2>
+<p>Stephan Bergmann (Red Hat):</p>
+<p><a href="https://gerrit.libreoffice.org/plugins/gitiles/core/+/ecf708e90d96d5a72491e40fa679c47e66eebd49%5E!/">Speed up loading a PPT file with equation objects</a></p>
+<hr />
+<p>Noel Grandin (Collabora):</p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=121740">Speed up loading a PPT file with equation objects</a></p>
+<hr />
+<p>Miklos Vajna (Collabora):</p>
+<p><a href="https://gerrit.libreoffice.org/plugins/gitiles/core/+/1e64d9ebaa231caef5fb062009b8f76465e415f4%5E!/">Add PPTX import/export for semi-transparent shape text</a></p>
+<div id="attachment_9122" style="width: 177px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9122" data-attachment-id="9122" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/miklos_transparent-text_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_transparent-text_before.png" data-orig-size="167,69" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="miklos_transparent-text_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_transparent-text_before.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_transparent-text_before.png" class="size-full wp-image-9122" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_transparent-text_before.png" alt="Transparent text before Miklos’s implementation" width="167" height="69" /><p id="caption-attachment-9122" class="wp-caption-text">Transparent text before Miklos’s implementation</p></div>
+<div id="attachment_9121" style="width: 177px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9121" data-attachment-id="9121" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/miklos_transparent-text_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_transparent-text_after.png" data-orig-size="167,69" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="miklos_transparent-text_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_transparent-text_after.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_transparent-text_after.png" class="size-full wp-image-9121" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_transparent-text_after.png" alt="Transparent text after Miklos’s implementation" width="167" height="69" /><p id="caption-attachment-9121" class="wp-caption-text">Transparent text after Miklos’s implementation</p></div>
+<p></p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=127964">PPTX import: don’t set shape fill from the style in case the background fill is already set</a></p>
+<div id="attachment_9125" style="width: 489px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9125" data-attachment-id="9125" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/miklos_127964_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_before.png" data-orig-size="479,359" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="miklos_127964_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_before-300x225.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_before.png" class="wp-image-9125 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_before.png" alt="Shape fill before Miklos’s fix" width="479" height="359" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_before.png 479w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_before-300x225.png 300w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_before-320x240.png 320w" sizes="(max-width: 479px) 100vw, 479px" /><p id="caption-attachment-9125" class="wp-caption-text">Shape fill before Miklos’s fix</p></div>
+<div id="attachment_9124" style="width: 489px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9124" data-attachment-id="9124" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/miklos_127964_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_after.png" data-orig-size="479,360" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="miklos_127964_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_after-300x225.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_after.png" class="wp-image-9124 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_after.png" alt="Shape fill after Miklos’s fix" width="479" height="360" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_after.png 479w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_after-300x225.png 300w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_127964_after-320x240.png 320w" sizes="(max-width: 479px) 100vw, 479px" /><p id="caption-attachment-9124" class="wp-caption-text">Shape fill after Miklos’s fix</p></div>
+<p></p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=117658">PPTX import: fixed duplication of math objects</a></p>
+<div id="attachment_9127" style="width: 729px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9127" data-attachment-id="9127" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/miklos_117658_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_before.png" data-orig-size="719,539" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="miklos_117658_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_before-300x225.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_before.png" class="wp-image-9127 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_before.png" alt="Math objects before Miklos’s fix" width="719" height="539" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_before.png 719w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_before-300x225.png 300w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_before-320x240.png 320w" sizes="(max-width: 719px) 100vw, 719px" /><p id="caption-attachment-9127" class="wp-caption-text">Math objects before Miklos’s fix</p></div>
+<div id="attachment_9126" style="width: 729px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9126" data-attachment-id="9126" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/miklos_117658_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_after.png" data-orig-size="719,539" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="miklos_117658_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_after-300x225.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_after.png" class="wp-image-9126 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_after.png" alt="Math objects after Miklos’s fix" width="719" height="539" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_after.png 719w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_after-300x225.png 300w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/miklos_117658_after-320x240.png 320w" sizes="(max-width: 719px) 100vw, 719px" /><p id="caption-attachment-9126" class="wp-caption-text">Math objects after Miklos’s fix</p></div>
+<hr />
+<p>Tamás Zolnai (Collabora):</p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=127372">PPTX export: don’t change shape’s background transparency</a></p>
+<div id="attachment_9129" style="width: 649px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9129" data-attachment-id="9129" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/tamasz_127372_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_before.png" data-orig-size="639,359" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="tamasz_127372_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_before-300x169.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_before.png" class="wp-image-9129 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_before.png" alt="Background transparency before Tamás’s fix" width="639" height="359" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_before.png 639w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_before-300x169.png 300w" sizes="(max-width: 639px) 100vw, 639px" /><p id="caption-attachment-9129" class="wp-caption-text">Background transparency before Tamás’s fix</p></div>
+<div id="attachment_9128" style="width: 649px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9128" data-attachment-id="9128" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/tamasz_127372_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_after.png" data-orig-size="639,359" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="tamasz_127372_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_after-300x169.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_after.png" class="wp-image-9128 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_after.png" alt="Background transparency after Tamás’s fix" width="639" height="359" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_after.png 639w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127372_after-300x169.png 300w" sizes="(max-width: 639px) 100vw, 639px" /><p id="caption-attachment-9128" class="wp-caption-text">Background transparency after Tamás’s fix</p></div>
+<p></p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=127379">PPTX export: don’t lose the gradient background fill of a slide</a></p>
+<div id="attachment_9137" style="width: 539px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9137" data-attachment-id="9137" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/tamasz_127379_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127379_after.png" data-orig-size="529,294" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="tamasz_127379_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127379_after-300x167.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127379_after.png" class="wp-image-9137 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127379_after.png" alt="Gradient fill after Tamás’s fix" width="529" height="294" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127379_after.png 529w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasz_127379_after-300x167.png 300w" sizes="(max-width: 529px) 100vw, 529px" /><p id="caption-attachment-9137" class="wp-caption-text">Gradient fill after Tamás’s fix</p></div>
+<hr />
+<p>Xisco Faulí (TDF):</p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=79007">PPTX import: display shapes with washout mode</a></p>
+<div id="attachment_9139" style="width: 649px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9139" data-attachment-id="9139" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/xisco_79007_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_before.png" data-orig-size="639,359" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="xisco_79007_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_before-300x169.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_before.png" class="wp-image-9139 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_before.png" alt="Shapes not displayed before Xisco’s fix" width="639" height="359" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_before.png 639w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_before-300x169.png 300w" sizes="(max-width: 639px) 100vw, 639px" /><p id="caption-attachment-9139" class="wp-caption-text">Shapes not displayed before Xisco’s fix</p></div>
+<div id="attachment_9138" style="width: 649px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9138" data-attachment-id="9138" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/xisco_79007_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_after.png" data-orig-size="639,359" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="xisco_79007_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_after-300x169.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_after.png" class="wp-image-9138 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_after.png" alt="Shapes displayed after Xisco’s fix" width="639" height="359" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_after.png 639w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_79007_after-300x169.png 300w" sizes="(max-width: 639px) 100vw, 639px" /><p id="caption-attachment-9138" class="wp-caption-text">Shapes displayed after Xisco’s fix</p></div>
+<p></p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=127901">PPTX export: handle image colour/graphics modes correctly</a></p>
+<div id="attachment_9141" style="width: 538px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9141" data-attachment-id="9141" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/xisco_127901_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_before.png" data-orig-size="528,296" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="xisco_127901_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_before-300x168.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_before.png" class="wp-image-9141 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_before.png" alt="Colour modes handled incorrectly before Xisco’s fix" width="528" height="296" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_before.png 528w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_before-300x168.png 300w" sizes="(max-width: 528px) 100vw, 528px" /><p id="caption-attachment-9141" class="wp-caption-text">Colour modes handled incorrectly before Xisco’s fix</p></div>
+<div id="attachment_9140" style="width: 538px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9140" data-attachment-id="9140" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/xisco_127901_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_after.png" data-orig-size="528,296" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="xisco_127901_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_after-300x168.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_after.png" class="wp-image-9140 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_after.png" alt="Colour modes handled correctly after Xisco’s fix" width="528" height="296" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_after.png 528w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127901_after-300x168.png 300w" sizes="(max-width: 528px) 100vw, 528px" /><p id="caption-attachment-9140" class="wp-caption-text">Colour modes handled correctly after Xisco’s fix</p></div>
+<p></p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=127129">PPTX import: don’t lose text highlighting in table cells</a></p>
+<div id="attachment_9143" style="width: 601px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9143" data-attachment-id="9143" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/xisco_127129_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_before.png" data-orig-size="591,81" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="xisco_127129_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_before-300x41.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_before.png" class="wp-image-9143 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_before.png" alt="Text highlighting not displayed before Xisco’s fix" width="591" height="81" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_before.png 591w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_before-300x41.png 300w" sizes="(max-width: 591px) 100vw, 591px" /><p id="caption-attachment-9143" class="wp-caption-text">Text highlighting not displayed before Xisco’s fix</p></div>
+<div id="attachment_9142" style="width: 601px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9142" data-attachment-id="9142" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/xisco_127129_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_after.png" data-orig-size="591,80" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="xisco_127129_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_after-300x41.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_after.png" class="wp-image-9142 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_after.png" alt="Text highlighting displayed after Xisco’s fix" width="591" height="80" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_after.png 591w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_127129_after-300x41.png 300w" sizes="(max-width: 591px) 100vw, 591px" /><p id="caption-attachment-9142" class="wp-caption-text">Text highlighting displayed after Xisco’s fix</p></div>
+<p></p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=128096">PPTX export: save text highlighting</a></p>
+<div id="attachment_9145" style="width: 88px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9145" data-attachment-id="9145" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/xisco_128096_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_128096_before.png" data-orig-size="78,48" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="xisco_128096_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_128096_before.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_128096_before.png" class="size-full wp-image-9145" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_128096_before.png" alt="No highlighting before Xisco’s fix" width="78" height="48" /><p id="caption-attachment-9145" class="wp-caption-text">No highlighting before Xisco’s fix</p></div>
+<div id="attachment_9144" style="width: 88px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9144" data-attachment-id="9144" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/xisco_128096_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_128096_after.png" data-orig-size="78,48" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="xisco_128096_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_128096_after.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_128096_after.png" class="size-full wp-image-9144" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_128096_after.png" alt="Highlighting after Xisco’s fix" width="78" height="48" /><p id="caption-attachment-9144" class="wp-caption-text">Highlighting after Xisco’s fix</p></div>
+<p></p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=118776">PPTX import: respect no fill colour for text</a></p>
+<div id="attachment_9147" style="width: 477px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9147" data-attachment-id="9147" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/xisco_118776_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_before.png" data-orig-size="467,251" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="xisco_118776_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_before-300x161.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_before.png" class="wp-image-9147 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_before.png" alt="Text visible before Xisco’s fix" width="467" height="251" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_before.png 467w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_before-300x161.png 300w" sizes="(max-width: 467px) 100vw, 467px" /><p id="caption-attachment-9147" class="wp-caption-text">Text visible before Xisco’s fix</p></div>
+<div id="attachment_9146" style="width: 475px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9146" data-attachment-id="9146" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/xisco_118776_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_after.png" data-orig-size="465,251" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="xisco_118776_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_after-300x162.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_after.png" class="wp-image-9146 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_after.png" alt="Text invisible after Xisco’s fix" width="465" height="251" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_after.png 465w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/xisco_118776_after-300x162.png 300w" sizes="(max-width: 465px) 100vw, 465px" /><p id="caption-attachment-9146" class="wp-caption-text">Text invisible after Xisco’s fix</p></div>
+<hr />
+<p>Gülşah Köse (Collabora):</p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=126060">PPTX import: implement z-rotation of 3D text transformation</a></p>
+<div id="attachment_9149" style="width: 996px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9149" data-attachment-id="9149" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/gulsah_126060_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_before.png" data-orig-size="986,539" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="gulsah_126060_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_before-300x164.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_before.png" class="wp-image-9149 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_before.png" alt="Text not rotated before Gülşah’s implementation" width="986" height="539" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_before.png 986w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_before-300x164.png 300w" sizes="(max-width: 986px) 100vw, 986px" /><p id="caption-attachment-9149" class="wp-caption-text">Text not rotated before Gülşah’s implementation</p></div>
+<div id="attachment_9148" style="width: 969px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9148" data-attachment-id="9148" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/gulsah_126060_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_after.png" data-orig-size="959,539" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="gulsah_126060_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_after-300x169.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_after.png" class="wp-image-9148 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_after.png" alt="Text rotated after Gülşah’s implementation" width="959" height="539" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_after.png 959w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_126060_after-300x169.png 300w" sizes="(max-width: 959px) 100vw, 959px" /><p id="caption-attachment-9148" class="wp-caption-text">Text rotated after Gülşah’s implementation</p></div>
+<p></p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=127090">PPTX export: preserve textbox rotation attribute</a></p>
+<div id="attachment_9151" style="width: 264px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9151" data-attachment-id="9151" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/gulsah_127090_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_before.png" data-orig-size="254,253" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="gulsah_127090_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_before.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_before.png" class="size-full wp-image-9151" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_before.png" alt="Text goes bonkers before Gülşah’s fix" width="254" height="253" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_before.png 254w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_before-150x150.png 150w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_before-65x65.png 65w" sizes="(max-width: 254px) 100vw, 254px" /><p id="caption-attachment-9151" class="wp-caption-text">Text goes bonkers before Gülşah’s fix</p></div>
+<div id="attachment_9150" style="width: 262px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9150" data-attachment-id="9150" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/gulsah_127090_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_after.png" data-orig-size="252,253" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="gulsah_127090_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_after.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_after.png" class="size-full wp-image-9150" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_after.png" alt="Text stays put after Gülşah’s fix" width="252" height="253" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_after.png 252w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_after-150x150.png 150w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/gulsah_127090_after-65x65.png 65w" sizes="(max-width: 252px) 100vw, 252px" /><p id="caption-attachment-9150" class="wp-caption-text">Text stays put after Gülşah’s fix</p></div>
+<hr />
+<p>Tamás Bunth (Collabora):</p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=126324">PPTX import: custom date as custom XTextField</a></p>
+<div id="attachment_9153" style="width: 670px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9153" data-attachment-id="9153" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/tamasb_126324_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_before.png" data-orig-size="660,86" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="tamasb_126324_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_before-300x39.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_before.png" class="wp-image-9153 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_before.png" alt="Dates before Tamás’s fix" width="660" height="86" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_before.png 660w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_before-300x39.png 300w" sizes="(max-width: 660px) 100vw, 660px" /><p id="caption-attachment-9153" class="wp-caption-text">Dates before Tamás’s fix</p></div>
+<div id="attachment_9152" style="width: 644px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9152" data-attachment-id="9152" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/tamasb_126324_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_after.png" data-orig-size="634,86" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="tamasb_126324_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_after-300x41.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_after.png" class="wp-image-9152 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_after.png" alt="Dates after Tamás’s fix" width="634" height="86" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_after.png 634w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/tamasb_126324_after-300x41.png 300w" sizes="(max-width: 634px) 100vw, 634px" /><p id="caption-attachment-9152" class="wp-caption-text">Dates after Tamás’s fix</p></div>
+<hr />
+<p>Mark Hung (PPT/X team):</p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=98603">PPTX import/export: handle complex text properly</a></p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=106638">PPTX import: reset font settings, if necessary</a></p>
+<div id="attachment_9155" style="width: 729px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9155" data-attachment-id="9155" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/mark_106638_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_before.png" data-orig-size="719,244" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="mark_106638_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_before-300x102.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_before.png" class="wp-image-9155 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_before.png" alt="Text before Mark’s fix" width="719" height="244" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_before.png 719w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_before-300x102.png 300w" sizes="(max-width: 719px) 100vw, 719px" /><p id="caption-attachment-9155" class="wp-caption-text">Text before Mark’s fix</p></div>
+<div id="attachment_9154" style="width: 729px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9154" data-attachment-id="9154" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/mark_106638_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_after.png" data-orig-size="719,221" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="mark_106638_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_after-300x92.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_after.png" class="wp-image-9154 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_after.png" alt="Text after Mark’s fix" width="719" height="221" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_after.png 719w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/mark_106638_after-300x92.png 300w" sizes="(max-width: 719px) 100vw, 719px" /><p id="caption-attachment-9154" class="wp-caption-text">Text after Mark’s fix</p></div>
+<hr />
+<p>Luke Deller (PPT/X team):</p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=118036">PPTX import: Fix IsTransparent() for unloaded graphics</a></p>
+<div id="attachment_9157" style="width: 1083px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9157" data-attachment-id="9157" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/luke_118036_before/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_before.png" data-orig-size="1073,53" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="luke_118036_before" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_before-300x15.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_before-1024x51.png" class="wp-image-9157 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_before.png" alt="Blue line not displayed before Luke’s fix" width="1073" height="53" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_before.png 1073w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_before-300x15.png 300w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_before-1024x51.png 1024w" sizes="(max-width: 1073px) 100vw, 1073px" /><p id="caption-attachment-9157" class="wp-caption-text">Blue line not displayed before Luke’s fix</p></div>
+<div id="attachment_9156" style="width: 1039px" class="wp-caption alignnone"><img aria-describedby="caption-attachment-9156" data-attachment-id="9156" data-permalink="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/luke_118036_after/" data-orig-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_after.png" data-orig-size="1029,53" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="luke_118036_after" data-image-description="" data-medium-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_after-300x15.png" data-large-file="https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_after-1024x53.png" class="wp-image-9156 size-full" src="https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_after.png" alt="Blue line displayed after Luke’s fix" width="1029" height="53" srcset="https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_after.png 1029w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_after-300x15.png 300w, https://blog.documentfoundation.org/wp-content/uploads/2019/12/luke_118036_after-1024x53.png 1024w" sizes="(max-width: 1029px) 100vw, 1029px" /><p id="caption-attachment-9156" class="wp-caption-text">Blue line displayed after Luke’s fix</p></div>
+<hr />
+<h2 class="western">Housekeeping</h2>
+<p>Julien Nabet:</p>
+<p><a href="https://gerrit.libreoffice.org/plugins/gitiles/core/+/d820136dab6271dd591842002b2591e041801cf7%5E%21/">Save/restore locking properly in ImplSdPPTImport::Import</a></p>
+<p><a href="https://gerrit.libreoffice.org/plugins/gitiles/core/+/b32ac08a12380228202c396fba36d8ecd85252da%5E!/">sd: prefix members of SdrPowerPointImport</a></p>
+<p><a href="https://gerrit.libreoffice.org/plugins/gitiles/core/+/a81489978cb96d819044be054f7ceabc4f8eccb2%5E!/">cppcheck: fix 2 funcArgOrderDifferent</a></p>
+<hr />
+<h2 class="western">Various</h2>
+<p>Mike Kaganski (Collabora):</p>
+<p><a href="https://bugs.documentfoundation.org/show_bug.cgi?id=127164">PPTX export: disable undo during save</a></p>
+<p><strong>Thanks to everyone for their great work!</strong></p>
+<div class="shariff" data-title="Improvements in LibreOffice’s PowerPoint presentation support" data-info-url="http://ct.de/-2467514" data-backend-url="https://blog.documentfoundation.org/wp-content/plugins/shariff-sharing/backend/index.php" data-temp="/tmp" data-ttl="60" data-service="tlr" data-services='["facebook","twitter","linkedin","reddit","info"]' data-image="https://blog.documentfoundation.org/wp-content/uploads/2019/12/pptx_before_after.png" data-url="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/" data-lang="en" data-theme="color" data-orientation="horizontal"></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related Posts</em></h3>
+</div>																							</div>
+						</div><!--.post-content box mark-links-->
+						  
+						  
+					</div><!--.g post-->
+					<!-- You can start editing here. -->
+<div class="total-comments"><h4>No Responses</h4></div>
+<div id="comments">
+	<ol class="commentlist">
+		<div class="navigation">
+			<div class="alignleft"></div>
+			<div class="alignright"></div>
+		</div>
+				<div class="navigation">
+			<div class="alignleft"></div>
+			<div class="alignright"></div>
+		</div>
+	</ol>
+</div>
+<div id="commentsAdd">
+	<div id="respond" class="box m-t-6">
+			<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://blog.documentfoundation.org/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea autocomplete="nope"  id="d05b6b58dc"  name="d05b6b58dc"   cols="45" rows="8" maxlength="65525" required="required"></textarea><textarea id="comment" aria-hidden="true" name="comment" autocomplete="nope" style="padding:0;clip:rect(1px, 1px, 1px, 1px);position:absolute !important;white-space:nowrap;height:1px;width:1px;overflow:hidden;" tabindex="-1"></textarea><script type="text/javascript">document.getElementById("comment").setAttribute( "id", "a00d78884d20cc92f204b164eccbb0f9" );document.getElementById("d05b6b58dc").setAttribute( "id", "comment" );</script></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="gdpr-terms-container">
+    <label>
+        <input type="checkbox" required name="gdpr_terms" id="gdpr_terms" value="1" />
+        		        
+                    I accept the <a href='https://www.documentfoundation.org/privacy' target='_blank'>Privacy Policy</a>        *
+    </label>
+</p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='9114' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+		</div>
+</div>
+							</div>
+		</article>
+		<aside class="sidebar c-4-12">
+	<div id="sidebars" class="g">
+		<div class="sidebar">
+			<ul class="sidebar_list">
+				<li class="widget_text widget widget-sidebar"><div class="textwidget custom-html-widget"><div align="left">
+<a href="https://www.libreoffice.org/download/"><img src="https://blog.documentfoundation.org/wp-content/uploads/2018/02/lo60introcubes300.gif" alt="LibreOffice 6.0">
+</a>
+</div></div></li><li class="widget_text widget widget-sidebar"><div class="textwidget custom-html-widget"><div align="left">
+<a href="https://www.libreoffice.org/donate/"><img src="https://blog.documentfoundation.org/wp-content/uploads/2017/12/donateanimation-en.gif" alt="Donate">
+</a>
+</div></div></li><li class="widget widget-sidebar"><h3>Subscribe to Blog Posts</h3>
+        <div class="emaillist">
+            <form action="#" method="post" class="es_subscription_form es_shortcode_form" id="es_subscription_form_1575782781" data-source="ig-es">
+				                    <div class="es_caption">To receive an email when blog posts are published, you must confirm that you have carefully read and agreed to The Document Foundation's Privacy Policy</div>
+								<div class="es-field-wrap"><label>Name<br/><input type="text" name="name" placeholder="" value="" /></label></div>				<div class="es-field-wrap"><label>Email*<br/><input class="es_required_field es_txt_email" type="email" name="email" value="" placeholder="" required/></label></div>				<input type="hidden" name="lists[]" value="1" />				<input type="hidden" name="form_id" value="0" />
+                <input type="hidden" name="es_email_page" value="9114"/>
+                <input type="hidden" name="es_email_page_url" value="https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/"/>
+                <input type="hidden" name="status" value="Unconfirmed"/>
+                <input type="hidden" name="es-subscribe" id="es-subscribe" value="f9da83c8b5"/>
+                <label style="position:absolute;top:-99999px;left:-99999px;z-index:-99;"><input type="email" name="es_hp_email" class="es_required_field" tabindex="-1" autocomplete="-1" value="" /></label>
+				<div class="es-field-wrap">
+                <input type="checkbox" name="es-gdpr-agree" id="es-gdpr-agree" value="1" required="required"> I accept the <a href='https://www.documentfoundation.org/privacy' target='_blank'>Privacy Policy</a></div>				<p><label class="gdpr-label"><input type="checkbox" name="user_consents[privacy-policy]" id="privacy-policy-consent" value="1" required >I confirm to have carefully read and agreed to The Document Foundation's <a href="" target="_blank">Privacy Policy</a>.</label></p>                <input type="submit" name="submit" class="es_subscription_form_submit es_submit_button es_textbox_button" id="es_subscription_form_submit_1575782781" value="Submit"/>
+
+				                
+                <span class="es_spinner_image" id="spinner-image"><img src="https://blog.documentfoundation.org/wp-content/plugins/email-subscribers/lite/public/images/spinner.gif"/></span>
+
+            </form>
+
+            <span class="es_subscription_message" id="es_subscription_message_1575782781"></span>
+        </div>
+
+		</li><li class="widget widget-sidebar"><h3>Search</h3><form method="get" id="searchform" class="search-form" action="https://blog.documentfoundation.org" _lpchecked="1">
+	<fieldset>
+		<input type="text" name="s" id="s" value="Search this site..." onblur="if (this.value == '') {this.value = 'Search this site...';}" onfocus="if (this.value == 'Search this site...') {this.value = '';}" >
+		<input type="submit" value="Search" onclick="if(this.value=='Search this Site...')this.value='';" />
+	</fieldset>
+</form></li><li class="widget_text widget widget-sidebar"><h3>CII Badge</h3><div class="textwidget custom-html-widget"><a href="https://bestpractices.coreinfrastructure.org/projects/307"><img src="https://bestpractices.coreinfrastructure.org/projects/307/badge" alt="CII Badge"></a></div></li><li class="widget widget-sidebar"><h3><a class="rsswidget" href="http://planet.documentfoundation.org/"><img class="rss-widget-icon" style="border:0" width="14" height="14" src="https://blog.documentfoundation.org/wp-includes/images/rss.png" alt="RSS" /></a> <a class="rsswidget" href="https://planet.documentfoundation.org/">TDF Planet</a></h3><ul><li><a class='rsswidget' href='https://qa.blog.documentfoundation.org/2019/12/07/qa-report-november-2019/'>QA/Dev Report: November 2019</a></li><li><a class='rsswidget' href='https://blog.documentfoundation.org/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/'>Improvements in LibreOffice’s PowerPoint presentation support</a></li><li><a class='rsswidget' href='https://blog.documentfoundation.org/blog/2019/12/05/celebrating-international-volunteer-day/'>Celebrating International Volunteer Day</a></li><li><a class='rsswidget' href='https://libreoffice-dev.blogspot.com/2019/12/fixed-terrible-regression.html'>Fixed a terrible regression</a></li><li><a class='rsswidget' href='https://blog.documentfoundation.org/blog/2019/12/04/month-of-libreoffice-november-2019-the-winners/'>Month of LibreOffice, November 2019: The winners!</a></li><li><a class='rsswidget' href='https://blog.documentfoundation.org/blog/2019/11/30/libreoffice-monthly-recap-november-2019/'>LibreOffice monthly recap: November 2019</a></li><li><a class='rsswidget' href='https://blog.documentfoundation.org/blog/2019/11/29/local-event-update-libreoffice-at-openfest-in-sofia-bulgaria/'>Local event update: LibreOffice at OpenFest in Sofia, Bulgaria</a></li><li><a class='rsswidget' href='https://libreoffice-dev.blogspot.com/2019/11/filter-by-months-and-years-in-calc.html'>Filter by months and years in Calc pivot table</a></li><li><a class='rsswidget' href='http://llunak.blogspot.com/2019/11/skia-branch-merged-to-master.html'>Skia branch merged to master</a></li><li><a class='rsswidget' href='http://www.gnome.org/~michael/blog/2019-11-25.html'>2019-11-25 Monday.</a></li></ul></li><li class="widget widget-sidebar"><h3>Meta</h3>			<ul>
+						<li><a rel="nofollow" href="https://blog.documentfoundation.org/wp-login.php">Log in</a></li>
+			<li><a href="https://blog.documentfoundation.org/feed/">Entries feed</a></li>
+			<li><a href="https://blog.documentfoundation.org/comments/feed/">Comments feed</a></li>
+			<li><a href="https://wordpress.org/">WordPress.org</a></li>			</ul>
+			</li>			</ul>
+		</div>
+	</div><!--sidebars-->
+</aside>	</div><!--#page-->
+</div><!--.container-->
+</div>
+	<footer>
+		<div class="container">
+			<div class="footer-widgets">
+					<div class="f-widget f-widget-1">
+		<div class="widget"><h3>Copyright</h3>			<div class="textwidget"><p>Unless otherwise specified, all text and images on this website are licensed under the <a href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>.<br />
+This does not include the source code of LibreOffice, which is licensed under the Mozilla Public License (<a href="http://www.libreoffice.org/download/license/">MPLv2</a>).</p>
+</div>
+		</div>	</div>
+	<div class="f-widget f-widget-2">
+		<div class="widget"><h3>Trademarks</h3>			<div class="textwidget"><p><strong>LibreOffice</strong> and <strong>The Document Foundation</strong> are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TDF/Policies/Trademark_Policy">Trademark Policy</a>.</p>
+</div>
+		</div>	</div>
+	<div class="f-widget last">
+		<div class="widget_text widget"><h3>Legal Information</h3><div class="textwidget custom-html-widget"><a href="http://www.documentfoundation.org/imprint"><strong>Impressum (Legal Info)</strong></a><br/>
+<a href="http://www.documentfoundation.org/privacy"><strong>Privacy Policy</strong></a><br/>
+<a href="https://blog.documentfoundation.org/privacy-tools/"><strong>Privacy Tools</strong></a></div></div><div class="widget"><h3>Credits</h3>			<div class="textwidget"><p>Theme: Ribbon by <a href="http://mythemeshop.com/">MyThemeShop</a>.</p>
+</div>
+		</div>	</div>
+			</div><!--.footer-widgets-->
+		</div><!--.container-->
+        <div class="copyrights"><!--start copyrights-->
+<div class="row" id="copyright-note">
+<span><a href="https://blog.documentfoundation.org/" title="">The Document Foundation Blog</a> Copyright &copy; 2019.</span>
+<div class="top">Theme by <a href="http://mythemeshop.com/">MyThemeShop</a>. <a href="#top" class="toplink">Back to Top &uarr;</a></div>
+</div>
+<!--end copyrights-->
+</div> 
+	</footer><!--footer-->
+<!--start footer code-->
+<!--end footer code-->
+<div class="gdpr gdpr-overlay"></div>
+<div class="gdpr gdpr-privacy-bar" style="display:none;">
+	<div class="gdpr-wrapper">
+		<div class="gdpr-content">
+			<p>To continue navigation on the website, you need to acknowledge our privacy policy by clicking on the "Privacy Preferences" on the right of this message and following the instructions contained in the dialogue which will open above this banner.</p>
+		</div>
+		<div class="gdpr-right">
+						<div class="gdpr-buttons">
+				<button class="gdpr-preferences" type="button">Privacy Preferences</button>
+				<button class="gdpr-agreement" type="button">I Agree</button>
+			</div>
+			<span class="gdpr-close"></span>
+		</div>
+	</div>
+</div>
+
+<div class="gdpr gdpr-privacy-preferences">
+	<div class="gdpr-wrapper">
+		<form method="post" class="gdpr-privacy-preferences-frm">
+			<input type="hidden" name="action" value="gdpr_update_privacy_preferences">
+			<input type="hidden" id="update-privacy-preferences-nonce" name="update-privacy-preferences-nonce" value="66b0bb5221" /><input type="hidden" name="_wp_http_referer" value="/blog/2019/12/06/improvements-in-libreoffices-powerpoint-presentation-support/" />			<header>
+				<div class="gdpr-box-title">
+					<h3>Privacy Preference Center</h3>
+					<span class="gdpr-close"></span>
+				</div>
+			</header>
+			<div class="gdpr-mobile-menu">
+				<button type="button">Options</button>
+			</div>
+			<div class="gdpr-content">
+				<div class="gdpr-tabs">
+					<ul class="">
+						<li><button type="button" class="gdpr-tab-button gdpr-active" data-target="gdpr-consent-management">Consent Management</button></li>
+																	</ul>
+					<ul class="gdpr-policies">
+																													<li><a href="https://www.documentfoundation.org/privacy" target="_blank">Privacy Policy</a></li>
+																		</ul>
+				</div>
+				<div class="gdpr-tab-content">
+					<div class="gdpr-consent-management gdpr-active">
+						<header>
+							<h4>Consent Management</h4>
+						</header>
+						<div class="gdpr-info">
+							<p>Thank you for visiting our website and your interest in our services and products. As the protection of your personal data is an important concern for us, please click on the &quot;More information&quot; link to access our Privacy Policy page - which will open in a separate browser tab - where we explain what information we collect during your visit to our website, how it is processed, and whether or how it may be used.<br />
+Once you have carefully read our Privacy Policy page, close the browser tab to return to this page and click on the &quot;Save Preferences&quot; button under this text to acknowledge it, close the dialogue and return to the website.<br />
+We take all the necessary technical and organisational security measures to protect your personal data from loss and misuse. Your data is stored in a secure operating environment that is not accessible to the public.</p>
+																								<div class="gdpr-cookies-used">
+										<div class="gdpr-cookie-title">
+											<p>Privacy Policy</p>
+																							<span class="gdpr-always-active">Required</span>
+												<input type="hidden" name="user_consents[]" value="privacy-policy" checked style="display:none;">
+																					</div>
+										<div class="gdpr-cookies">
+											<span>I confirm to have carefully read and agreed to The Document Foundation's <a href="" target="_blank">Privacy Policy</a>.</span>
+										</div>
+									</div>
+																					</div>
+					</div>
+														</div>
+				<input type="hidden" name="all_cookies" value="[]">
+			</div>
+			<footer>
+				<input type="submit" value="Save Preferences">
+			</footer>
+		</form>
+	</div>
+</div>
+
+<div class="gdpr gdpr-general-confirmation">
+	<div class="gdpr-wrapper">
+		<header>
+			<div class="gdpr-box-title">
+				<h3></h3>
+				<span class="gdpr-close"></span>
+			</div>
+		</header>
+		<div class="gdpr-content">
+			<p></p>
+		</div>
+		<footer>
+			<button class="gdpr-ok">OK</button>
+		</footer>
+	</div>
+</div>
+<script src="https://blog.documentfoundation.org/wp-content/plugins/shariff-sharing/dep/shariff.complete.js"></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-includes/js/comment-reply.min.js?ver=5.3'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201949'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var qpprFrontData = {"linkData":{"https:\/\/blog.documentfoundation.org\/tdf-docs\/tdf-ledgers\/":[1,1,"https:\/\/wiki.documentfoundation.org\/TDF\/Ledgers"],"https:\/\/blog.documentfoundation.org\/privacy-policy\/":[1,1,"https:\/\/www.documentfoundation.org\/privacy"],"https:\/\/blog.documentfoundation.org\/libreoffice-docs\/libreoffice-flyers\/":[1,0,""],"https:\/\/blog.documentfoundation.org\/tdf-docs\/annual-report\/":[1,0,""]},"siteURL":"https:\/\/blog.documentfoundation.org","siteURLq":"https:\/\/blog.documentfoundation.org"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/quick-pagepost-redirect-plugin/js/qppr_frontend_script.min.js?ver=5.1.9'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/wp-review/public/js/js.cookie.min.js?ver=2.1.4'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpUtilSettings = {"ajax":{"url":"\/wp-admin\/admin-ajax.php"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-includes/js/wp-util.min.js?ver=5.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpreview = {"ajaxurl":"https:\/\/blog.documentfoundation.org\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/wp-review/public/js/main.js?ver=5.2.8'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/enlighter/resources/mootools-core-yc.js?ver=3.10.0'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/enlighter/resources/EnlighterJS.min.js?ver=3.10.0'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/youtube-embed-plus/scripts/fitvids.min.js?ver=13.1.2.4'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-includes/js/wp-embed.min.js?ver=5.3'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/jetpack/_inc/build/spin.min.js?ver=1.3'></script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/jetpack/_inc/build/jquery.spin.min.js?ver=1.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/blog.documentfoundation.org\/wp-admin\/admin-ajax.php","nonce":"4814eee230","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/blog.documentfoundation.org\/wp-login.php?redirect_to=https%3A%2F%2Fblog.documentfoundation.org%2Fblog%2F2019%2F12%2F06%2Fimprovements-in-libreoffices-powerpoint-presentation-support%2F","blog_id":"1","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">Email (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Name (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Website<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.documentfoundation.org/wp-content/plugins/jetpack/_inc/build/carousel/jetpack-carousel.min.js?ver=20190102'></script>
+<script type="text/javascript">/* <![CDATA[ */EnlighterJS_Config = {"selector":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"language":"generic","theme":"enlighter","indent":2,"hover":"hoverEnabled","showLinenumbers":true,"rawButton":true,"infoButton":true,"windowButton":true,"rawcodeDoubleclick":false,"grouping":true,"cryptex":{"enabled":false,"email":"mail@example.tld"}};!function(){var a=function(a){var b="Enlighter Error: ";console.error?console.error(b+a):console.log&&console.log(b+a)};return window.addEvent?"undefined"==typeof EnlighterJS?void a("Javascript Resources not loaded yet!"):"undefined"==typeof EnlighterJS_Config?void a("Configuration not loaded yet!"):void window.addEvent("domready",function(){EnlighterJS.Util.Init(EnlighterJS_Config.selector.block,EnlighterJS_Config.selector.inline,EnlighterJS_Config)}):void a("MooTools Framework not loaded yet!")}();;/* ]]> */</script><script type='text/javascript' src='https://stats.wp.com/e-201949.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:8.0',blog:'102499332',post:'9114',tz:'0',srv:'blog.documentfoundation.org'} ]);
+	_stq.push([ 'clickTrackerInit', '102499332', '9114' ]);
+</script>
+
+			<div id="cookie-notice" role="banner" class="cn-bottom wp-default" style="color: #fff; background-color: #000;" aria-label="Cookie Notice"><div class="cookie-notice-container"><span id="cn-notice-text">We use only those functional cookies which are absolutely necessary to ensure that we give you the best navigation experience on our website. If you continue to use this site we will assume that you are happy with them.</span><a href="#" id="cn-accept-cookie" data-cookie-set="accept" class="cn-set-cookie cn-button wp-default button">Ok</a><a href="https://www.documentfoundation.org/privacy" target="_blank" id="cn-more-info" class="cn-more-info cn-button wp-default button">Check the Privacy Policy</a>
+				</div>
+				
+			</div></body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plasma Mobile: weekly update: part 9-10</title>
+    <meta name="description" content="The Plasma Mobile team is happy to present the blogpost with updates from week 9 and 10.">
+    <link rel="canonical" href="/2019/12/06/Plasma-Mobile-Weekly-update-9-10.html">
+    <!-- Stylesheets -->
+    <link rel='stylesheet' href='/plugins/siteorigin-panels/css/front-flex.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='/css/maxmegamenu/style.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='/css/dashicons.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='/themes/quest/assets/css/plugins-all.min.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='/themes/plasma-min/style.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='/css/fonts.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='/plugins/easy-table/themes/default/style.css' type='text/css' media='all' />
+    <link rel="stylesheet" href="/plugins/modal-video/css/modal-video.min.css">
+    <link rel='stylesheet' type='text/css' href='/css/findyourway/style.css' title='Default'>
+    <link rel='stylesheet' type='text/css' href='/css/findyourway/plain.css' title='Bird Eye View'>
+    <!-- Java-Script -->
+    <script type='text/javascript' src='/js/jquery/jquery.js'></script>
+    <script type='text/javascript' src='/js/jquery/jquery-migrate.min.js'></script>
+    <script type='text/javascript' src='/js/imagesloaded.min.js'></script>
+    <script type='text/javascript' src='/js/masonry.min.js'></script>
+    <script type='text/javascript' src='/themes/quest/assets/js/quest-and-plugins.js'></script>
+    <script src="/plugins/modal-video/js/modal-video.min.js"></script>
+    <link rel="shortcut icon" href="/favicon.png" />
+    <!-- Bundled inline stylesheets-->
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="home page-template-default page page-id-29 wide siteorigin-panels siteorigin-panels-before-js siteorigin-panels-home mega-menu-primary">
+    <header id="masthead" class="main-header" role="banner">
+      <div class="pageHeader">
+        <div class="row">
+          <div class="site-branding col-md-3">
+            <h1 class="logo">
+              <a href="/index.html">
+                <img src="/img/logo.svg" alt="Plasma Mobile">
+              </a>
+            </h1>
+          </div>
+          <!-- .site-branding -->
+          <nav id="site-navigation" class="main-navigation col-md-9" role="navigation">
+            <div>
+              <div id="mega-menu-wrap-primary" class="mega-menu-wrap">
+                <div class="mega-menu-toggle" tabindex="0">
+                  <div class='mega-toggle-block mega-menu-toggle-block mega-toggle-block-right mega-toggle-block-1' id='mega-toggle-block-1'></div>
+                </div>
+                <ul id="mega-menu-primary" class="mega-menu mega-menu-horizontal mega-no-js" data-event="hover_intent" data-effect="disabled" data-effect-speed="200" data-second-click="close" data-document-click="collapse" data-vertical-behaviour="standard" data-breakpoint="991" data-unbind="true">
+                  <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="/index.html" tabindex="0">Home</a></li>
+                  <li class="mega-nav-link mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-51"><a class="mega-menu-link" href="">Project</a>
+                    <ul class="mega-sub-menu">
+                      <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="/vision" tabindex="0">Vision</a></li>
+                      <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="/screenshots" tabindex="0">Screenshots</a></li>
+                      <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="https://phabricator.kde.org/project/view/28/" tabindex="0">Task Board</a></li>
+                      <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="https://docs.plasma-mobile.org">Documentation</a></li>
+                      <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="/faq">FAQ</a></li>
+                      <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="/roadmap">Roadmap</a></li>
+                    </ul>
+                  </li>
+                  <li class="mega-nav-link mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-align-bottom-left mega-menu-flyout mega-menu-item-51"><a class="mega-menu-link" href="" tabindex="0">Community</a>
+                    <ul class="mega-sub-menu">
+                      <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="/findyourway" tabindex="0">Contributing</a></li>
+                      <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="/join" tabindex="0">Join</a></li>
+                    </ul>
+                  </li>
+                  <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="/get" tabindex="0">Install</a></li>
+                  <li class='mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-align-bottom-left mega-menu-flyout mega-has-icon'><a class="mega-menu-link" href="/blog" tabindex="0">Blog</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <!-- site-navigation -->
+        </div>
+      </div>
+    </header>
+    <!-- masthead -->
+    <div id="content">
+      <div class="quest-row site-content">
+        <div class="container">
+          <div class="row">
+            <div id="primary" class="content-area single col-md-12">
+              <main id="main" class="site-main" role="main">
+                <article id="post-29" class="post-29 page type-page status-publish hentry">
+                  <header class="entry-header">
+                    <h1 class="post-title entry-title"><a href="index.html" rel="bookmark">Home</a></h1>
+                  </header>
+                  <div class="w3-container">
+                    <div class="post-header">
+                      <a href="/blog">
+                        <h4><i class="fa fa-angle-left"></i> Back</h4>
+                      </a>
+                      <h1>Plasma Mobile: weekly update: part 9-10</h1>
+                      <p class="meta">Dec 6, 2019 • Plasma Mobile team</p>
+                    </div>
+                    <hr>
+                    <article class="post-content">
+                      <p>The Plasma Mobile team is happy to present the blogpost with updates from week 9 and 10.</p>
+                      <h2 id="applications">Applications</h2>
+                      <h3 id="calindori">Calindori</h3>
+                      <p>Calindori, the calendar application, now <a href="https://invent.kde.org/kde/calindori/commit/2ec3f541a848420e8a90058695a0007001fa73a2">offers a flat event view</a> which allows to show all events in single card list view. The <a href="https://invent.kde.org/kde/calindori/commit/13b3a93bd36d04ce75679615298c7cf26d1371ac">events are sorted by start date</a>.</p>
+                      <p><img src="/img/screenshots/calindori_201912.png" alt="Calindori showing flat event view" /></p>
+                      <h3 id="kaidan">Kaidan</h3>
+                      <p>Kaidan, the Jabber/XMPP client, has had multiple changes merged, <a href="https://invent.kde.org/kde/kaidan/merge_requests/355">including a branch from pasnox to overhaul multimedia messages</a>. This new change allows to:</p>
+                      <ul>
+                        <li>Send voice and video messages from within the application.</li>
+                        <li>Take photos from within the application.</li>
+                        <li>Share your location in chat messages.</li>
+                        <li>Play videos and sounds directly in the chats.</li>
+                      </ul>
+                      <p>Kaidan also <a href="https://invent.kde.org/kde/kaidan/merge_requests/404">gained the capability to search through messages</a>.</p>
+                      <h3 id="spacebar">Spacebar</h3>
+                      <p>Jonah Brüchert merged several improvements in Spacebar, the application used to send SMS messages.</p>
+                      <ul>
+                        <li>Use <a href="https://invent.kde.org/kde/spacebar/commit/b6d8f543762ad1637e5313f17bd07a8a3030dcaf">unicode emojis instead of a custom emoji picker</a>.</li>
+                        <li>Added a <a href="https://invent.kde.org/kde/spacebar/commit/b08ad616218eb973ee8afcc48aed15c77d232d20">loading animation in the chats page</a>.</li>
+                        <li>Fix display of phone numbers and contact names. Previously in some cases just Javascript’s <code class="highlighter-rouge">undefined</code> was displayed.</li>
+                        <li>Some general visual improvements on the conversation page. There is more space for messages and the input field has a more chat-app like design.</li>
+                      </ul>
+                      <p>Spacebar was updated in postmarketOS by Bhushan Shah so that SMS now works correctly on supported devices.</p>
+                      <h3 id="plasma-phonebook">Plasma Phonebook</h3>
+                      <p>Nicolas Fella committed a change to <a href="https://invent.kde.org/kde/plasma-phonebook/commit/38a52c7e0dfcba389f52d9f0c873ecd38d868cac">sort the contacts list and add section delegates</a>. <a href="https://invent.kde.org/kde/plasma-phonebook/commit/44a336c04684fe86eab2ef62c4abf2484996223d">It now also shows the fallback avatar if a contact doesn’t have a picture</a>.</p>
+                      <p><img src="/img/screenshots/plasma-phonebook.png" alt="Plasma Phonebook section delegates" class="blog-post-image-small" /></p>
+                      <h3 id="plasma-settings">Plasma Settings</h3>
+                      <p>Aleix Pol committed a change to <a href="https://invent.kde.org/kde/plasma-settings/commit/2b9ad2da7bde81512bbe7ad420024d6cd5fe4298">save settings before closing a page</a> as well as a <a href="https://invent.kde.org/kde/plasma-settings/commit/1fa66624379c841885fb6b49b6c3a0da08f9ef3f">change to call ::load on the configuration module</a>. These two changes fix the translations KCM on mobile.</p>
+                      <p><img src="/img/screenshots/plamo-discover-translated.jpg" alt="Translated discover application on PlaMo" class="blog-post-image-small" /></p>
+                      <h2 id="want-to-be-part-of-it">Want to be part of it?</h2>
+                      <p>Next time your name could be here! To find out the right task for you, from promotion to core system development, check out <a href="https://www.plasma-mobile.org/findyourway">Find your way in Plasma Mobile</a>. We are also always happy to welcome new contributors on our <a href="https://www.plasma-mobile.org/join">public channels</a>. See you there!</p>
+                    </article>
+                  </div>
+                  <footer class="entry-footer">
+                  </footer>
+                  <!-- .entry-footer -->
+                </article>
+                <!-- #post-## -->
+              </main>
+              <!-- #main -->
+            </div>
+            <!-- #primary -->
+          </div>
+          <!-- .row -->
+        </div>
+        <!-- .container -->
+      </div>
+      <!-- .quest-row -->
+    </div>
+    <!-- #content -->
+    <footer class="quest-row main-footer">
+      <div class="container">
+        <div class="row">
+          <article class="col-md-4 widget_black_studio_tinymce" id="black-studio-tinymce-9">
+            <h3>Press</h3>
+            <div class="textwidget">
+              <ul class="footer-links">
+                <li><a href="https://dot.kde.org/2015/07/25/plasma-mobile-free-mobile-platform/" target="_blank">KDE Dot!</a></li>
+                <li><a href="https://planet.kde.org/" target="_blank">Planet KDE</a></li>
+              </ul>
+            </div>
+          </article>
+          <article class="col-md-4 widget_black_studio_tinymce" id="black-studio-tinymce-8">
+            <h3>Community</h3>
+            <div class="textwidget">
+              <ul class="footer-links">
+                <li><a href="https://forum.kde.org/viewforum.php?f=293" target="_blank">Community Forums</a></li>
+              </ul>
+            </div>
+          </article>
+          <article class="col-md-4 widget_black_studio_tinymce" id="black-studio-tinymce-10">
+            <h3>Social</h3>
+            <div class="textwidget">
+              <ul class="footer-links">
+                <li><a href="https://twitter.com/kdecommunity" target="_blank">KDE Community on Twitter</a></li>
+                <li><a href="https://mastodon.technology/@kde" target="_blank">KDE on Mastodon</a></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="developerLinks">
+        <a href="https://community.kde.org/Get_Involved" target="_blank">Get Involved in KDE</a>
+      </div>
+    </footer>
+    <footer id="colophon" class="copyright quest-row" role="contentinfo">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 copyright-text">
+            <span style="float: right;">Plasma Mobile © <a href="http://ev.kde.org/">2015-19 KDE e.v.</a></span>
+          </div>
+          <div class="col-md-6 social-icon-container clearfix">
+            <ul>
+            </ul>
+          </div>
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end container -->
+    </footer>
+    <!-- end quest-row -->
+    <!-- Full width for the index page -->
+    <script type='text/javascript'>
+      var panelsStyles = {"fullContainer":"body"};
+    </script>
+    <script type='text/javascript' src='/plugins/siteorigin-panels/js/styling-2516.min.js'></script>
+    <!-- Open panel menus on hover -->
+    <script type='text/javascript' src='/js/hoverIntent.min.js'></script>
+    <script type='text/javascript'>
+      var megamenu = {"timeout":"300","interval":"100"};
+    </script>
+    <!-- back to top arrow -->
+    <a href="#0" class="cd-top"><i class="fa fa-angle-up"></i></a>
+    <!-- Mobile menu -->
+    <script type='text/javascript' src='/plugins/megamenu/js/maxmegamenu.js'></script>
+  </body>
+</html>

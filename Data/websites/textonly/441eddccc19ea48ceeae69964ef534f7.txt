@@ -1,0 +1,392 @@
+take control of your network
+tech articles
+open source
+Methods to Accelerate Linux Kernel Development using Yocto Project and the NXP MCIMX8M-EVK 
+ 
+				A discussion of techniques to accelerate development with the Linux Kernel and related when working with the Yocto Project and an NXP i.MX EVK system.
+			
+
+						Dec 07, 2019
+					
+MCIMX8M-EVK
+Build,
+		Install, and Develop from Source with Yocto Linux and the NXP
+		MCIMX8M-EVK
+MCIMX8M-EVK
+We are working with the NXP release "L4.14.98-2.0.0_ga". This
+		was developed using Yocto Project 2.5 (Sumo).
+Sumo was released April 2018. Yocto Project is currently
+		developing a 3.0 release.
+meta-fsl-bsp-release
+https://source.codeaurora.org/external/imx/meta-fsl-bsp-release
+There is an EVKB and EVK. We are using the EVKB, and this has
+		an upgrade to the WIFI over the EVK. The PCB design files currently
+		posted on nxp.com are not for our EVKB.
+NXP MCIMX8M-EVK
+In this article, we discuss the following steps in order:
+load the kernel
+share kernel
+			patches
+Create a toolchain for building the
+	Linux kernel outside the Yocto project
+Build, Install, and Develop from Source with Yocto
+		Linux and the NXP MCIMX8M-EVK
+Build the GNU toolchain / SDK for the NXP BSP as shown below.
+	Note that our build machine is an Ubuntu Linux 18.04 Intel PC.
+
+$ cd /opt/nxp/
+$ source sources/poky/oe-init-build-env bld-wayland/
+
+$ bitbake fsl-image-qt5-validation-imx -c populate_sdk
+
+$ ls /opt/nxp/bld-wayland/tmp/work
+aarch64-mx8m-poky-linux  all-poky-linux        sdk-provides-dummy-nativesdk-pokysdk-linux  x86_64-linux
+aarch64-poky-linux       imx8mqevk-poky-linux  sdk-provides-dummy-target-poky-linux        x86_64-nativesdk-pokysdk-linux
+
+$ cd /opt/nxp/bld-wayland/tmp/deploy/sdk
+$ ls
+...
+fsl-imx-wayland-glibc-x86_64-fsl-image-qt5-validation-imx-aarch64-toolchain-4.14-sumo.sh
+...
+
+./fsl*.sh
+
+NXP i.MX Release Distro SDK installer version 4.14-sumo
+=======================================================
+Enter target directory for SDK (default: /opt/fsl-imx-wayland/4.14-sumo): 
+You are about to install the SDK to "/opt/fsl-imx-wayland/4.14-sumo". Proceed[Y/n]? Y
+Extracting SDK...............................................................................................done
+Setting it up...done
+SDK has been successfully set up and is ready to be used.
+Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+ $ . /opt/fsl-imx-wayland/4.14-sumo/environment-setup-aarch64-poky-linux
+
+Since we're going to be using this toolchain primarily to build
+	the Linux Kernel, let's make the following change to the environment
+	script:
+
+- export LDFLAGS="-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed"
++ export LDFLAGS="-O1 --hash-style=gnu --as-needed"
+
+Now, let's source our toolchain environment, clone the linux-imx
+	kernel outside our Yocto tree, and give our toolchain a try:
+
+cd /build
+$ source /opt/fsl-imx-wayland/4.14-sumo/environment-setup-aarch64-poky-linux
+
+$ echo $CROSS_COMPILE
+aarch64-poky-linux-
+
+$ echo $ARCH
+arm64
+
+$ aarch64-poky-linux-gcc --version
+...
+aarch64-poky-linux-gcc (GCC) 7.3.0
+
+$ git clone https://source.codeaurora.org/external/imx/linux-imx.git
+Cloning into 'linux-imx'...
+
+$ cd linux-imx
+$ git checkout 5d6cbeaf
+...
+HEAD is now at 5d6cbeafb80c MLK-21447: ASoC: fsl_rpmsg_i2s: underrun in m4 for msg delayed
+
+$ make V=1 LOADADDR=20008000 O=build_evk/ defconfig
+...
+# configuration written to .config
+#
+make[1]: Leaving directory '/build/linux-imx/build_evk'
+
+$ find . -name '.config'
+./build_evk/.config
+
+Note above that our build output is being written to
+	/build/linux-imx/build_evk
+Build the linux-imx kernel
+Now that we have our toolchain and repo set up, let's build the
+	linux-imx kernel and modules:
+
+$ cd /build/linux-imx
+
+# build the kernel
+$ make V=1 LOADADDR=20008000 O=build_evk/
+
+# compile the kernel modules
+$ make V=1 LOADADDR=20008000 O=build_evk/ modules
+
+# install the modules
+$ make V=1 LOADADDR=20008000 O=build_evk/ modules_install INSTALL_MOD_PATH=modules
+
+$ ls build_evk/vmlinux
+build_evk/vmlinux
+
+$ ls build_evk/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk.dtb
+build_evk/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk.dtb
+
+$ ls build_evk/modules/lib/modules/
+4.14.98-05983-g5d6cbeafb80c
+
+
+$ make V=1 LOADADDR=20008000 O=build_evk/ cscope
+
+$ cd build_evk
+$ cscope -d
+
+Your terminal should become a Cscope command window. Try typing
+	in "start_kernel" into "Find this global definition". Cscope is
+	fantastic for a quick lookup on where structs and the like are defined.
+Use U-boot to perform an NFS boot
+This section assumes you have connected your NXP EVKB to your
+	(Linux) PC via the Type-B USB connector. On Ubuntu Linux, we like
+	kermit.
+If you login after your EVK has already booted Linux, you'll get
+	a login as shown below. Log in and then reboot. Note that you'll want
+	to stop U-boot from booting again, so be ready to hit a key when you
+	see the U-boot shell prompt.
+
+NXP i.MX Release Distro 4.14-sumo imx8mqevk ttymxc0
+
+imx8mqevk login: 
+
+$ reboot
+...
+...
+...
+
+U-Boot 2018.03-imx_v2018.03_4.14.98_2.0.0_ga+g87a19df5e4 (Oct 19 2019 - 21:39:32 +0000)
+
+CPU:   Freescale i.MX8MQ rev2.1 1500 MHz (running at 1000 MHz)
+CPU:   Commercial temperature grade (0C to 95C) at 43C
+Reset cause: POR
+Model: Freescale i.MX8MQ EVK
+DRAM:  3 GiB
+TCPC:  Vendor ID [0x1fc9], Product ID [0x5110], Addr [I2C0 0x50]
+MMC:   FSL_SDHC: 0, FSL_SDHC: 1
+Loading Environment from MMC... OK
+No panel detected: default to HDMI
+Display: HDMI (1280x720)
+In:    serial
+Out:   serial
+Err:   serial
+
+ BuildInfo:
+  - ATF 1cb68fa
+  - U-Boot 2018.03-imx_v2018.03_4.14.98_2.0.0_ga+g87a19df5e4
+
+switch to partitions #0, OK
+mmc1 is current device
+flash target is MMC:1
+Net:   eth0: ethernet@30be0000
+Fastboot: Normal
+Normal Boot
+Hit any key to stop autoboot:  0 
+
+
+> setenv bootdelay 10 
+> saveenv
+Saving Environment to MMC... Writing to MMC(1)... OK
+
+Let's take a look at our U-Boot environment:
+
+u-boot=> printenv
+baudrate=115200
+boot_fdt=try
+bootcmd=mmc dev ${mmcdev}; if mmc rescan; then if run loadbootscript; then run bootscript; else if run loadimage; then run mmcboot; else run netboot; fi; fi; else booti ${loadaddr} - ${fdt_addr}; fi
+bootcmd_mfg=run mfgtool_args;if iminfo ${initrd_addr}; then if test ${tee} = yes; then bootm ${tee_addr} ${initrd_addr} ${fdt_addr}; else booti ${loadaddr} ${initrd_addr} ${fdt_addr}; fi; else echo "Run fastboot ..."; fastboot 0; fi;
+bootdelay=2
+bootscript=echo Running bootscript from mmc ...; source
+console=ttymxc0,115200 earlycon=ec_imx6q,0x30860000,115200
+emmc_dev=0
+ethaddr=00:04:9f:06:12:fc
+ethprime=FEC
+fastboot_dev=mmc1
+fdt_addr=0x43000000
+fdt_file=fsl-imx8mq-evk.dtb
+fdt_high=0xffffffffffffffff
+fdtcontroladdr=fc8fee60
+image=Image
+initrd_addr=0x43800000
+initrd_high=0xffffffffffffffff
+jh_clk=
+jh_mmcboot=setenv fdt_file fsl-imx8mq-evk-root.dtb; setenv jh_clk clk_ignore_unused; if run loadimage; then run mmcboot; else run jh_netboot; fi;
+jh_netboot=setenv fdt_file fsl-imx8mq-evk-root.dtb; setenv jh_clk clk_ignore_unused; run netboot;
+kboot=booti
+loadaddr=0x40480000
+loadbootscript=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};
+loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}
+loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}
+mfgtool_args=setenv bootargs console=${console},${baudrate} rdinit=/linuxrc clk_ignore_unused
+mmcargs=setenv bootargs ${jh_clk} console=${console} root=${mmcroot}
+mmcautodetect=yes
+mmcboot=echo Booting from mmc ...; run mmcargs; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then booti ${loadaddr} - ${fdt_addr}; else echo WARN: Cannot load the DT; fi; else echo wait for boot; fi;
+mmcdev=1
+mmcpart=1
+mmcroot=/dev/mmcblk1p2 rootwait rw
+netargs=setenv bootargs ${jh_clk} console=${console} root=/dev/nfs ip=dhcp nfsroot=${serverip}:${nfsroot},v3,tcp
+netboot=echo Booting from net ...; run netargs;  if test ${ip_dyn} = yes; then setenv get_cmd dhcp; else setenv get_cmd tftp; fi; ${get_cmd} ${loadaddr} ${image}; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if ${get_cmd} ${fdt_addr} ${fdt_file}; then booti ${loadaddr} - ${fdt_addr}; else echo WARN: Cannot load the DT; fi; else booti; fi;
+script=boot.scr
+sd_dev=1
+soc_type=imx8mq
+
+
+u-boot=> setenv serverip <NFS server IP addr>
+u-boot=> setenv ipaddr <target IP addr>
+u-boot=> saveenv
+
+
+> printenv bootcmd
+bootcmd=mmc dev ${mmcdev}; if mmc rescan; then if run loadbootscript; then run bootscript; else if run loadimage; then run mmcboot; else run netboot; fi; fi; else booti ${loadaddr} - ${fdt_addr}; fi
+
+
+u-boot=> fatload mmc 1:1 0x40480000 Image
+23007744 bytes read in 989 ms (22.2 MiB/s)
+
+
+u-boot=> fatload mmc 1:1 0x43000000 fsl-imx8mq-evk.dtb
+44727 bytes read in 16 ms (2.7 MiB/s)
+
+
+setenv bootargs "console=ttymxc0,115200 earlycon=ec_imx6q,0x30860000,115200 root=/dev/mmcblk1p2 rootwait rw"
+
+
+booti 0x40480000 - 0x43000000
+
+
+u-boot=> setenv nfs_boot "tftp 0x40000000 evk/bsp/nfs.img; source 0x40000000"
+u-boot=> saveenv
+Saving Environment to MMC... Writing to MMC(1)... OK
+
+
+$ cd /build/tftp/evk/bsp
+$ more nfs.txt 
+setenv bootargs root=/dev/nfs nfsroot=192.168.3.75:/build/rootfs/evk/rootfs,v4,tcp ip=192.168.3.99:192.168.3.75:192.168.3.1:255.255.255.0:i
+mx8mqevk:eth0:off console=ttymxc0,115200 earlycon=ec_imx6q,0x30860000,115200 
+tftp 0x40480000 evk/bsp/Image
+tftp 0x43000000 evk/bsp/fsl-imx8mq-evk.dtb
+booti 0x40480000 - 0x43000000
+
+$ mkimage -T script -C none -n "uboot load script" -d nfs.txt nfs.img
+
+
+$ sudo apt install u-boot-tools
+
+192.168.3.75: Our TFTP/NFS server, which is also our Ubuntu
+		18.04 build machine
+192.168.3.99: Our NXP EVK
+192.168.3.1: Our Ethernet gateway
+/build/rootfs/evk/rootfs: local rootfs folder copied from
+		Yocto Project build
+fsl-imx8mq-evk.dtb
+
+$ cd /opt/nxp/bld-wayland/tmp/work/imx8mqevk-poky-linux/fsl-image-qt5-validation-imx/1.0-r0
+$ sudo cp -r rootfs <nfs rootfs folder>
+$ cd <nfs rootfs folder>
+$ sudo chown -R root:root *
+
+Once these steps are complete, we can perform an NFS boot as
+	follows:
+
+> run nfs_boot
+Using ethernet@30be0000 device
+TFTP from server 192.168.3.75; our IP address is 192.168.3.99
+Filename 'evk/bsp/nfs.img'.
+Load address: 0x40000000
+Loading: #
+	 63.5 KiB/s
+done
+Bytes transferred = 393 (189 hex)
+## Executing script at 40000000
+Using ethernet@30be0000 device
+TFTP from server 192.168.3.75; our IP address is 192.168.3.99
+Filename 'evk/bsp/Image'.
+Load address: 0x40480000
+Loading: #################################################################
+	 #################################################################
+	 ...
+	 #######
+	 4.2 MiB/s
+done
+Bytes transferred = 23327232 (163f200 hex)
+Using ethernet@30be0000 device
+TFTP from server 192.168.3.75; our IP address is 192.168.3.99
+Filename 'evk/bsp/fsl-imx8mq-evk.dtb'.
+Load address: 0x43000000
+Loading: #########
+	 418.9 KiB/s
+done
+Bytes transferred = 44646 (ae66 hex)
+## Flattened Device Tree blob at 43000000
+   Booting using the fdt blob at 0x43000000
+   Using Device Tree in place at 0000000043000000, end 000000004300de65
+
+Starting kernel ...
+
+Create and share patches via email
+Below we show modifying the linux-imx kernel, creating a patch,
+	and emailing it using Git tools:
+
+# add a printk to mx6s_capture.c and diff it
+$ git diff drivers/media/platform/mxc/capture/mx6s_capture.c
+..
+@@ -2018,6 +2021,8 @@ static int mx6s_csi_probe(struct platform_device *pdev)
+ 
+        csi_dev->vdev = vdev;
+ 
++       printk("CSI Bridge base regs=0x%lx\n",csi_dev->regbase);
++
+        video_set_drvdata(csi_dev->vdev, csi_dev);
+        mutex_lock(&csi_dev->lock);
+
+# create a dev branch for custom patches
+$ git checkout -b development
+M	drivers/media/platform/mxc/capture/mx6s_capture.c
+
+$ git add drivers/media/platform/mxc/capture/mx6s_capture.c
+
+$ git commit -m 'add a printk to probe'
+
+$ git format-patch -1
+0001-add-a-printk-to-probe.patch
+
+$ git send-email --to <recipient> --suppress-cc=all 0001-add-a-printk-to-probe.patch
+
+
+$ git am < 0001-add-a-printk-to-probe.patch
+Applying: add a printk to probe
+
+We'll continue to update this article as we continue building our
+	expertise with the NXP MCIMX8M-EVK.
+References and Resources
+Linux Kernel documentation
+How do I install and run a TFTP server?
+Network File System (NFS)
+Mounting the root filesystem via NFS (nfsroot)
+Acronyms and Terms
+OCRAM: On-Chip RAM Memory Controller
+OP-TEE: Open Portable Trusted Execution Environment
+SPL: Second Program Loader
+SRC: i.MX8 System Reset Controller
+TCM: Tightly-Coupled-Memory
+TZ: Trust Zone
+mailing
+		list
+Related articles on this site:
+Linux Command Line Tips for Networking
+Various Notes and Examples for Using and Managing a Network from the Linux Command Line
+Linux Command Line Tips
+Various Notes on Using and Managing a Linux System from the Command Line
+Use DNF Package Manager on a Yocto Linux Development System
+We show an example of the use of DNF package manager along with supporting notes with our Yocto-built T1040RDB development board.
+Build, Install, and Develop from Source with Yocto Linux and the NXP MCIMX8M-EVK
+We are documenting how we build a Yocto Linux image with the NXP MCIMX8M-EVK evaluation kit for the i.MX 8MQuad processor.
+subscribe to mailing list:
+Please help us improve this article by adding your comment or
+			question:
+your email address will be kept
+				private
+authenticate with a 3rd party
+				for enhanced features, such as image upload
+notify me of a reply
+© 2019 Mind Chasers Inc.
+privacy policy

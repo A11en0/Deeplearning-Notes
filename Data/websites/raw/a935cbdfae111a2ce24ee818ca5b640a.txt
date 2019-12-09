@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>OpenWrt 19.07.0 second release candidate - Installing and Using OpenWrt - OpenWrt Forum</title>
+    <meta name="description" content="Highlights in OpenWrt 19.07.0-rc2
+The OpenWrt community is proud to announce the second release candidate of the upcoming OpenWrt 19.07 stable version series. It incorporates 126 commits since the previous release candid&amp;hellip;">
+    <meta name="generator" content="Discourse 2.4.0.beta8 - https://github.com/discourse/discourse version e7bd288d7b1019c6986a7eac7d8f9cb9505cb0bb">
+<link rel="icon" type="image/png" href="https://forum.openwrt.org/uploads/default/optimized/2X/3/37524349baa2267b422eda243e5a5961bd8f1f6e_2_32x32.png">
+<link rel="apple-touch-icon" type="image/png" href="https://forum.openwrt.org/uploads/default/optimized/2X/d/db0b03f66dd0b341e2ada2aac4957a6f4c206955_2_180x180.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+<link rel="canonical" href="https://forum.openwrt.org/t/openwrt-19-07-0-second-release-candidate/49593" />
+<script type="application/ld+json">{"@context":"http://schema.org","@type":"WebSite","url":"https://forum.openwrt.org","potentialAction":{"@type":"SearchAction","target":"https://forum.openwrt.org/search?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<link rel="search" type="application/opensearchdescription+xml" href="https://forum.openwrt.org/opensearch.xml" title="OpenWrt Forum Search">
+
+      <link href="/stylesheets/desktop_2_6b1c318528f999da6707cba4f978520e7410748b.css?__ws=forum.openwrt.org" media="all" rel="stylesheet" data-target="desktop" data-theme-id="5"/>
+      <link href="/stylesheets/desktop_theme_5_bebac024d301a3335c93d93b7bf857e5e44e477c.css?__ws=forum.openwrt.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="5"/>
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of &#39;OpenWrt 19.07.0 second release candidate&#39;" href="https://forum.openwrt.org/t/openwrt-19-07-0-second-release-candidate/49593.rss" />
+    <meta property="og:site_name" content="OpenWrt Forum" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="https://forum.openwrt.org/uploads/default/original/2X/1/1f939c64b4d285b298dd1428f5d948ef09688424.png" />
+<meta property="og:image" content="https://forum.openwrt.org/uploads/default/original/2X/1/1f939c64b4d285b298dd1428f5d948ef09688424.png" />
+<meta property="og:url" content="https://forum.openwrt.org/t/openwrt-19-07-0-second-release-candidate/49593" />
+<meta name="twitter:url" content="https://forum.openwrt.org/t/openwrt-19-07-0-second-release-candidate/49593" />
+<meta property="og:title" content="OpenWrt 19.07.0 second release candidate" />
+<meta name="twitter:title" content="OpenWrt 19.07.0 second release candidate" />
+<meta property="og:description" content="Highlights in OpenWrt 19.07.0-rc2 The OpenWrt community is proud to announce the second release candidate of the upcoming OpenWrt 19.07 stable version series. It incorporates 126 commits since the previous release candidate 19.07.0-rc1.  With this release, the OpenWrt project brings all supported targets back to a single common kernel version and further refines and broadens existing device support. It also provides initial support for the new  ath79  target, the future device tree based success..." />
+<meta name="twitter:description" content="Highlights in OpenWrt 19.07.0-rc2 The OpenWrt community is proud to announce the second release candidate of the upcoming OpenWrt 19.07 stable version series. It incorporates 126 commits since the previous release candidate 19.07.0-rc1.  With this release, the OpenWrt project brings all supported targets back to a single common kernel version and further refines and broadens existing device support. It also provides initial support for the new  ath79  target, the future device tree based success..." />
+<meta name="twitter:label1" value="Reading time" />
+<meta name="twitter:data1" value="4 mins 🕑" />
+<meta name="twitter:label2" value="Likes" />
+<meta name="twitter:data2" value="12 ❤" />
+<meta property="article:published_time" content="2019-12-02T18:31:59+00:00" />
+<meta property="og:ignore_canonical" content="true" />
+
+        <link rel="next" href="/t/openwrt-19-07-0-second-release-candidate/49593?page=2">
+
+
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"QAPage","name":"OpenWrt 19.07.0 second release candidate","mainEntity":{"@type":"Question","name":"OpenWrt 19.07.0 second release candidate","text":"Highlights in OpenWrt 19.07.0-rc2\n\nThe OpenWrt community is proud to announce the second release candidate of the upcoming OpenWrt 19.07 stable version series. It incorporates <a href=\"https://openwrt.org/releases/19.07/changelog-19.07.0-rc2\">126 commits<\/a> since the <a href=\"https://openwrt.org/releases/19.07/notes-19.07.0-rc1\">previous release candidate 19.07.0-rc1<\/a>.\n\nWith this release, the OpenWrt project brings all supported ta&hellip;","upvoteCount":8,"answerCount":0,"dateCreated":"2019-12-02T18:31:59.801Z","author":{"@type":"Person","name":"Melquisedec Machado"}}}</script>
+  </head>
+  <body class="crawler">
+    
+<script src="/theme-javascripts/4124744a26ccba430580ea162e798f92dffc1b50.js?__ws=forum.openwrt.org"></script>
+    <header>
+      <a href="/">
+          <img src="https://forum.openwrt.org/uploads/default/original/2X/c/cefd23e3c0d85883f3994c2926facc273ea70bc0.png" alt="OpenWrt Forum" id="site-logo" style="max-width: 150px;">
+      </a>
+    </header>
+    <div id="main-outlet" class="wrap">
+        <h1 class="crawler-topic-title">
+    <a href="/t/openwrt-19-07-0-second-release-candidate/49593">OpenWrt 19.07.0 second release candidate</a>
+  </h1>
+
+  <div id='breadcrumbs'>
+      <div id="breadcrumb-0" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"
+>
+        <a href="/c/general" itemprop="url" class='badge-wrapper bullet'>
+          <span class="badge-category-bg"></span>
+          <span itemprop="title" class='category-title'>Installing and Using OpenWrt</span>
+        </a>
+      </div>
+  </div>
+
+
+  
+
+
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/melqui'><span itemprop='name'>melqui</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2019-12-02T18:31:59Z'>
+              <time itemprop='dateModified' datetime='2019-12-02T18:32:33Z' class='post-time'>
+                December 2, 2019,  6:32pm
+              </time>
+          <span itemprop='position'>#1</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <h2>Highlights in OpenWrt 19.07.0-rc2</h2>
+<p>The OpenWrt community is proud to announce the second release candidate of the upcoming OpenWrt 19.07 stable version series. It incorporates <a href="https://openwrt.org/releases/19.07/changelog-19.07.0-rc2">126 commits</a> since the <a href="https://openwrt.org/releases/19.07/notes-19.07.0-rc1">previous release candidate 19.07.0-rc1</a>.</p>
+<p>With this release, the OpenWrt project brings all supported targets back to a single common kernel version and further refines and broadens existing device support. It also provides initial support for the new  <code>ath79</code>  target, the future device tree based successor of the popular  <code>ar71xx</code>  target. For 19.07, both targets are still built, but it is recommended to switch to the  <code>ath79</code>  target whenever possible: future releases of OpenWrt will drop support for the  <code>ar71xx</code>  target.</p>
+<p>Highlights of this release candidate since the previous OpenWrt <a href="https://openwrt.org/releases/19.07/notes-19.07.0-rc1">19.07.0-rc1 release candidate</a> are:</p>
+<ul>
+<li>
+<p><strong>Linux kernel</strong>  updated to versions  <strong>4.14.156</strong>  (from 4.14.151 in v19.07.0-rc1)</p>
+</li>
+<li>
+<p><strong>GCC update</strong>  to version  <strong>7.5.0</strong>  (from 7.4.0 in v19.07.0-rc1)</p>
+</li>
+<li>
+<p><strong>Hostapd update</strong>  to version  <strong>2.9</strong></p>
+</li>
+<li>
+<p><strong>Device support bugfixes</strong>  for many devices</p>
+</li>
+<li>
+<p><strong>Security fixes</strong>  for curl, e2fsprogs, expat, wolfssl, intel-microcode</p>
+</li>
+<li>
+<p><strong>Sysupgrade bugfix</strong>  for an issue that could cause sysupgrade to silently fail to upgrade</p>
+</li>
+<li>
+<p><strong>Added support</strong>  for the following devices: YunCore XD4200 and A782, TP-Link Archer C60 v1/v2, ALFA Network Quad-E4G and R36M-E4G, AVM FRITZ!Repeater 1200</p>
+</li>
+<li>
+<p><strong>Disable image generation</strong>  for several devices due to insufficient flash space for the default set of packages. Images can still be built with the help of the <a href="https://openwrt.org/docs/guide-user/additional-software/imagebuilder">ImageBuilder</a> or <a href="https://openwrt.org/docs/guide-developer/using_the_sdk">SDK</a> with a more minimal set of packages</p>
+</li>
+</ul>
+<p>When upgrading from 19.07.0-rc1, if you are affected by the sysupgrade bug, you need to manually edit  <code>/lib/upgrade/stage2</code>  and add  <code>/usr/share/libubox/jshn.sh</code>  to list of files in the  <code>install_file</code>  line (around line 51).</p>
+<p>Known issues:</p>
+<ul>
+<li>
+<p>Sysupgrade from  <code>ar71xx</code>  to  <code>ath79</code>  and vice versa is not officially supported, a full manual reinstall is recommended to switch targets for devices supported by both  <code>ar71xx</code>  and  <code>ath79</code></p>
+</li>
+<li>
+<p>Images for some device became too big to support a persistent overlay, causing such models to lose configuration after a reboot. If you experience this problem, please report the affected device and consider downgrading to OpenWrt 18.06 or using the Image Builder to pack a smaller custom image</p>
+</li>
+<li>
+<p>Some optional GUI packages crash with an error about missing “cbi.lua”, install the  <code>luci-compat</code>  package to fix these</p>
+</li>
+<li>
+<p>Possible Wi-Fi issues with ath10k-based boards. If you encounter such an issue, please <a href="https://openwrt.org/bugs">file a bug report</a> against openwrt-19.07.</p>
+</li>
+</ul>
+<p><a href="https://openwrt.org/releases/19.07/notes-19.07.0-rc2" class="onebox" target="_blank">https://openwrt.org/releases/19.07/notes-19.07.0-rc2</a><br>
+<a href="https://downloads.openwrt.org/releases/19.07.0-rc2/targets/" class="onebox" target="_blank">https://downloads.openwrt.org/releases/19.07.0-rc2/targets/</a></p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="8" />
+           <span class='post-likes'>8 Likes</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+                  <div itemprop='itemListElement' itemscope itemtype='http://schema.org/ListItem'>
+                    <a href="https://forum.openwrt.org/t/openwrt-19-07-0-first-release-candidate/48040/166" itemprop='item'>
+                      <meta itemprop='url' content='https://forum.openwrt.org/t/openwrt-19-07-0-first-release-candidate/48040/166'>
+                      <meta itemprop='position' content='8'>
+                      <span itemprop='name'>OpenWrt 19.07.0 first release candidate</span>
+                    </a>
+                  </div>
+                  <div itemprop='itemListElement' itemscope itemtype='http://schema.org/ListItem'>
+                    <a href="https://forum.openwrt.org/t/any-one-else-running-a-r7800-with-19-07-0-rc2/49738/3" itemprop='item'>
+                      <meta itemprop='url' content='https://forum.openwrt.org/t/any-one-else-running-a-r7800-with-19-07-0-rc2/49738/3'>
+                      <meta itemprop='position' content='9'>
+                      <span itemprop='name'>Any one else running a R7800 with 19.07.0-rc2?</span>
+                    </a>
+                  </div>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/elvisimprsntr'><span itemprop='name'>elvisimprsntr</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2019-12-03T02:45:46Z'>
+              <time itemprop='dateModified' datetime='2019-12-03T02:46:29Z' class='post-time'>
+                December 3, 2019,  2:46am
+              </time>
+          <span itemprop='position'>#2</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>25+ hours, so far, so good.</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://forum.openwrt.org/uploads/default/original/2X/0/0bffa69b08d5d4351220122cdd28762d0f9a0c83.png" data-download-href="https://forum.openwrt.org/uploads/default/0bffa69b08d5d4351220122cdd28762d0f9a0c83" title="53"><img src="https://forum.openwrt.org/uploads/default/optimized/2X/0/0bffa69b08d5d4351220122cdd28762d0f9a0c83_2_690x284.png" alt="53" data-base62-sha1="1I8YQRDsIcIysKqyB5Srs5MQJY7" width="690" height="284" srcset="https://forum.openwrt.org/uploads/default/optimized/2X/0/0bffa69b08d5d4351220122cdd28762d0f9a0c83_2_690x284.png, https://forum.openwrt.org/uploads/default/optimized/2X/0/0bffa69b08d5d4351220122cdd28762d0f9a0c83_2_1035x426.png 1.5x, https://forum.openwrt.org/uploads/default/optimized/2X/0/0bffa69b08d5d4351220122cdd28762d0f9a0c83_2_1380x568.png 2x" data-small-upload="https://forum.openwrt.org/uploads/default/optimized/2X/0/0bffa69b08d5d4351220122cdd28762d0f9a0c83_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">53</span><span class="informations">1846×762 30 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/dynasticorpheus'><span itemprop='name'>dynasticorpheus</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2019-12-03T08:47:43Z'>
+              <time itemprop='dateModified' datetime='2019-12-03T17:52:13Z' class='post-time'>
+                December 3, 2019,  5:52pm
+              </time>
+          <span itemprop='position'>#3</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Getting extreme jitter/latency (ping from router to device) when moving the pads (e.g. send a lot of packets I guess) on my Google Stadia controller which is connected via 5GHZ wifi. No problems whatsoever when using rc-1 nor when using usb cable instead of WIFI.</p>
+<p>Can someone provide hints at what packages I should look first to try and pinpoint the issue as part of creating a bug report?</p>
+<p>edit: device = wrt3200acm / wrt32x</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/beerisnotacrime'><span itemprop='name'>beerisnotacrime</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T10:20:13Z' class='post-time'>
+                December 3, 2019, 10:20am
+              </time>
+          <span itemprop='position'>#4</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I have the same problem of <a class="mention" href="/u/dynasticorpheus">@dynasticorpheus</a></p>
+<p>This is a screnshot where i ping the stadia controller, connected to 5ghz wifi, from the router itself.</p>
+<p>In red you can see ping spikes when i move pads on the controller.</p>
+<p>No issues on OpenWrt 19.07.0-rc1 r10649-c4fdb377a2</p>
+<p><div class="lightbox-wrapper"><a class="lightbox" href="https://forum.openwrt.org/uploads/default/original/3X/a/9/a9699605a43746a35b176050084ccc61c1911f8f.png" data-download-href="https://forum.openwrt.org/uploads/default/a9699605a43746a35b176050084ccc61c1911f8f" title="57"><img src="https://forum.openwrt.org/uploads/default/optimized/3X/a/9/a9699605a43746a35b176050084ccc61c1911f8f_2_255x500.png" alt="57" data-base62-sha1="oaGUobDeiJ7d1nrfPNeIX647E7R" width="255" height="500" srcset="https://forum.openwrt.org/uploads/default/optimized/3X/a/9/a9699605a43746a35b176050084ccc61c1911f8f_2_255x500.png, https://forum.openwrt.org/uploads/default/optimized/3X/a/9/a9699605a43746a35b176050084ccc61c1911f8f_2_382x750.png 1.5x, https://forum.openwrt.org/uploads/default/optimized/3X/a/9/a9699605a43746a35b176050084ccc61c1911f8f_2_510x1000.png 2x" data-small-upload="https://forum.openwrt.org/uploads/default/optimized/3X/a/9/a9699605a43746a35b176050084ccc61c1911f8f_2_10x10.png"><div class="meta">
+<svg class="fa d-icon d-icon-far-image svg-icon" aria-hidden="true"><use xlink:href="#far-image"></use></svg><span class="filename">57</span><span class="informations">790×1548 327 KB</span><svg class="fa d-icon d-icon-discourse-expand svg-icon" aria-hidden="true"><use xlink:href="#discourse-expand"></use></svg>
+</div></a></div></p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/Forceflow'><span itemprop='name'>Forceflow</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T13:44:34Z' class='post-time'>
+                December 3, 2019,  1:44pm
+              </time>
+          <span itemprop='position'>#5</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Upgraded TP-Link WDR 4300 from RC1 to RC2. All looking fine atm.</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/xback'><span itemprop='name'>xback</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T16:28:51Z' class='post-time'>
+                December 3, 2019,  4:28pm
+              </time>
+          <span itemprop='position'>#6</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>which device is this?</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="2" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/dynasticorpheus'><span itemprop='name'>dynasticorpheus</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-03T17:53:09Z' class='post-time'>
+                December 3, 2019,  5:53pm
+              </time>
+          <span itemprop='position'>#8</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>wrt3200acm / wrt32x</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/Sti'><span itemprop='name'>Sti</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <meta itemprop='datePublished' content='2019-12-04T06:31:40Z'>
+              <time itemprop='dateModified' datetime='2019-12-04T06:34:56Z' class='post-time'>
+                December 4, 2019,  6:34am
+              </time>
+          <span itemprop='position'>#9</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>TP-Link Archer C60 v2 ath79, when enabled 5ghz radio, memory rapidly decreases and luci shows error within 1 minutes: <em>Failed to create CGI process: Out of memory.</em></p>
+<p>When I disable 5ghz radio in 1 minutes before error (under ~12mb) memory gets back to the normal (~30mb)</p>
+<p>When 5ghz radio disabled there is no problem.</p>
+<p>2.4 ghz works flawlessly.</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+            <div class='crawler-linkback-list' itemscope itemtype='http://schema.org/ItemList'>
+                  <div itemprop='itemListElement' itemscope itemtype='http://schema.org/ListItem'>
+                    <a href="https://forum.openwrt.org/t/tp-link-archer-c60-v2-19-07-0-rc2-ath79-snapshot-out-of-memory/49725/2" itemprop='item'>
+                      <meta itemprop='url' content='https://forum.openwrt.org/t/tp-link-archer-c60-v2-19-07-0-rc2-ath79-snapshot-out-of-memory/49725/2'>
+                      <meta itemprop='position' content='1'>
+                      <span itemprop='name'>Tp-link Archer C60 v2, 19.07.0-rc2-ath79 snapshot. Out of memory</span>
+                    </a>
+                  </div>
+            </div>
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/beerisnotacrime'><span itemprop='name'>beerisnotacrime</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-04T09:03:58Z' class='post-time'>
+                December 4, 2019,  9:03am
+              </time>
+          <span itemprop='position'>#10</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>wrt3200acm</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/eginnc'><span itemprop='name'>eginnc</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-04T12:57:41Z' class='post-time'>
+                December 4, 2019, 12:57pm
+              </time>
+          <span itemprop='position'>#11</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>rc2 working fine without issues on EdgeRouter X (home gateway) and Linksys EA8500 (AP wired to EdgeRouter X).</p>
+<p>rc2 not working on EA6350v3 (AP wired to EdgeRouter X).  Memory usage starts high and climbs until the oom_reaper does it's thing and starts killing processes after 12-24 hours.  Tried: rc1, snapshots, replacing ath10k-4019-ct with non-ct packages on rc2, full reset and reconfigure with minimum packages installed (just luci and luci-stats): same issue with all preceding debug attempts.  Details in bug report and other posts.  I won't repeat that here.</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/castillofrancodamian'><span itemprop='name'>castillofrancodamian</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-04T17:13:53Z' class='post-time'>
+                December 4, 2019,  5:13pm
+              </time>
+          <span itemprop='position'>#12</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I have version 1 of Archer C60 with ath79 and I installed ath10k and not ath10k-ct because it became unstable.</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/flavioweb'><span itemprop='name'>flavioweb</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-05T16:07:33Z' class='post-time'>
+                December 5, 2019,  4:07pm
+              </time>
+          <span itemprop='position'>#13</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>If i want to try the same, i need just to remove "*-ct" and install no "-ct" via opkg and restart router, or there are some fancy settings to do?</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="2" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/castillofrancodamian'><span itemprop='name'>castillofrancodamian</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-05T16:58:11Z' class='post-time'>
+                December 5, 2019,  4:58pm
+              </time>
+          <span itemprop='position'>#14</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I also did that and after restarting it does not turn on the radio. So I had to create my firmware image with ImageBuilder.</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/Jack007'><span itemprop='name'>Jack007</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-05T19:56:33Z' class='post-time'>
+                December 5, 2019,  7:56pm
+              </time>
+          <span itemprop='position'>#15</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>I manually remove the -ct driver and firmware (luci-system-software)</p>
+<ul>
+<li>kmod-ath10k-ct</li>
+<li>ath10k-firmware-qca9xxx-ct</li>
+</ul>
+<p>and then manually install classic drivers</p>
+<ul>
+<li>kmod-ath10k</li>
+<li>ath10k-firmware-qca9xxx</li>
+</ul>
+<p>Mostly followed by a restart.</p>
+<p>I find the classic driver to be more stable than the -ct ones.</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="1" />
+           <span class='post-likes'>1 Like</span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/eginnc'><span itemprop='name'>eginnc</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-06T10:52:07Z' class='post-time'>
+                December 6, 2019, 10:52am
+              </time>
+          <span itemprop='position'>#16</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <aside class="quote no-group" data-post="15" data-topic="49593">
+<div class="title">
+<div class="quote-controls"></div>
+<img alt width="20" height="20" src="https://forum.openwrt.org/letter_avatar/jack007/40/5_02a1aaf4b66063a8f4cce7151aec9469.png" class="avatar"> Jack007:</div>
+<blockquote>
+<p>I find the classic driver to be more stable than the -ct ones.</p>
+</blockquote>
+</aside>
+<p>Just the opposite for my ipq4018 EA6350v3.  A few clients would not connect due to connection delays and 5G signal to noise and speed were much worse when I tried the classic drivers.  That, and the classic drivers did not fix the system crashes.  Many months ago, snapshot and pre-rc1 19.07 worked well on my EA6350v3, but currently it's just not usable.</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/farr4744'><span itemprop='name'>farr4744</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-06T12:21:57Z' class='post-time'>
+                December 6, 2019, 12:21pm
+              </time>
+          <span itemprop='position'>#17</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Using a TP-Link c2600.  Had to revert to 18.06.05 from 19.07 rc2.  The latter was causing terrible delays in wifi, such that streaming services frequently resorted to the spinning wheel of frustration.  Once some time had passed, ~30 seconds or so, operation would resume normally.  I use my router strictly as an AP hardwired to a Netgate pfsense sg-1100.  Upon reverting to 18.06.05 (which process was very smooth), problem has gone away.</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/odrt'><span itemprop='name'>odrt</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-06T12:50:01Z' class='post-time'>
+                December 6, 2019, 12:50pm
+              </time>
+          <span itemprop='position'>#18</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Did you try switching from the new default ath10k-ct back to traditional ath10k?</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/farr4744'><span itemprop='name'>farr4744</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-06T13:28:57Z' class='post-time'>
+                December 6, 2019,  1:28pm
+              </time>
+          <span itemprop='position'>#20</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Hmmm... not sure about that.  What I did was to reflash the rc2 firmware with the sysupgrade 18.06.05 version for the c2600.  Does that make sense?</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="1" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/spyking'><span itemprop='name'>spyking</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-06T14:37:59Z' class='post-time'>
+                December 6, 2019,  2:37pm
+              </time>
+          <span itemprop='position'>#21</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>It was my aggressive ublock rules, sorry for the noise!</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+    <div itemscope itemtype='http://schema.org/DiscussionForumPosting' class='topic-body crawler-post'>
+        <div class='crawler-post-meta'>
+          <span class="creator" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <a itemprop="url" href='/u/odrt'><span itemprop='name'>odrt</span></a>
+            
+          </span>
+
+          <span class="crawler-post-infos">
+              <time itemprop='datePublished' datetime='2019-12-06T17:36:15Z' class='post-time'>
+                December 6, 2019,  5:36pm
+              </time>
+          <span itemprop='position'>#22</span>
+          </span>
+        </div>
+        <div class='post' itemprop='articleBody'>
+          <p>Sure, it makes sense for now to get back to a stable working router. But: 18.06 will get out of security patch maintenance in the future and then you may want to upgrade to 19.07, sooner or later.</p>
+<p>If you have stability problems specifically with ath10k**-ct**, then you could switch to traditional ath10k (no -ct) to see, if that helps.</p>
+<p>Maybe also a bug report what the stability problem symptoms are could be of help so that 19.07 problems could get fixed.</p>
+        </div>
+
+        <meta itemprop='headline' content='OpenWrt 19.07.0 second release candidate'>
+
+        <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+           <meta itemprop="interactionType" content="http://schema.org/LikeAction"/>
+           <meta itemprop="userInteractionCount" content="0" />
+           <span class='post-likes'></span>
+         </div>
+
+         <div itemprop="interactionStatistic" itemscope itemtype="http://schema.org/InteractionCounter">
+            <meta itemprop="interactionType" content="http://schema.org/CommentAction"/>
+            <meta itemprop="userInteractionCount" content="0" />
+          </div>
+
+
+    </div>
+
+    <div role='navigation' itemscope itemtype='http://schema.org/SiteNavigationElement' class="topic-body crawler-post">
+        <span itemprop='name'><b><a rel="next" itemprop="url" href="/t/openwrt-19-07-0-second-release-candidate/49593?page=2">next page →</a></b></span>
+    </div>
+
+
+
+
+
+    </div>
+    <footer class="container wrap">
+      <nav class='crawler-nav' itemscope itemtype='http://schema.org/SiteNavigationElement'>
+        <ul>
+        <li itemprop="name"><a href='/' itemprop="url">Home </a></li>
+        <li itemprop="name"><a href='/categories' itemprop="url">Categories </a></li>
+        <li itemprop="name"><a href='/guidelines' itemprop="url">FAQ/Guidelines </a></li>
+        <li itemprop="name"><a href='/tos' itemprop="url">Terms of Service </a></li>
+        <li itemprop="name"><a href='/privacy' itemprop="url">Privacy Policy </a></li>
+        </ul>
+      </nav>
+      <p class='powered-by-link'>Powered by <a href="https://www.discourse.org">Discourse</a>, best viewed with JavaScript enabled</p>
+    </footer>
+    
+    
+  </body>
+  
+</html>

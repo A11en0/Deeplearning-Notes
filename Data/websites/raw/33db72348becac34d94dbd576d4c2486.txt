@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<title>This week in KDE: GTK CSD support and more! &#8211; Adventures in Linux and KDE</title>
+
+<!-- Async WordPress.com Remote Login -->
+<script id="wpcom_remote_login_js">
+var wpcom_remote_login_extra_auth = '';
+function wpcom_remote_login_remove_dom_node_id( element_id ) {
+	var dom_node = document.getElementById( element_id );
+	if ( dom_node ) { dom_node.remove(); }
+}
+function wpcom_remote_login_remove_dom_node_classes( class_name ) {
+	var dom_nodes = document.querySelectorAll( '.' + class_name );
+	for ( var i = 0; i < dom_nodes.length; i++ ) {
+		dom_nodes[i].remove();
+	}
+}
+function wpcom_remote_login_final_cleanup() {
+	wpcom_remote_login_remove_dom_node_classes( "wpcom_remote_login_msg" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_validate" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_js" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_iframe" );
+	wpcom_remote_login_remove_dom_node_id( "wpcom_request_access_styles" );
+}
+
+// Watch for messages back from the remote login
+window.addEventListener( "message", function( e ) {
+	if ( e.origin === "https://r-login.wordpress.com" ) {
+		var data = {};
+		try {
+			data = JSON.parse( e.data );
+		} catch( e ) {
+			wpcom_remote_login_final_cleanup();
+			return;
+		}
+
+		if ( data.msg === 'LOGIN' ) {
+			// Clean up the login check iframe
+			wpcom_remote_login_remove_dom_node_id( "wpcom_remote_login_key" );
+
+			var id_regex = new RegExp( /^[0-9]+$/ );
+			var token_regex = new RegExp( /^.*|.*|.*$/ );
+			if (
+				token_regex.test( data.token )
+				&& id_regex.test( data.wpcomid )
+			) {
+				// We have everything we need to ask for a login
+				var script = document.createElement( "script" );
+				script.setAttribute( "id", "wpcom_remote_login_validate" );
+				script.src = '/remote-login.php?wpcom_remote_login=validate'
+					+ '&wpcomid=' + data.wpcomid
+					+ '&token=' + encodeURIComponent( data.token )
+					+ '&host=' + window.location.protocol
+						+ '//' + window.location.hostname;
+				document.body.appendChild( script );
+			}
+
+			return;
+		}
+
+		// Safari ITP, not logged in, so redirect
+		if ( data.msg === 'LOGIN-REDIRECT' ) {
+			window.location = 'https://wordpress.com/log-in?redirect_to=' + window.location.href;
+			return;
+		}
+
+		// Safari ITP, storage access failed, remove the request
+		if ( data.msg === 'LOGIN-REMOVE' ) {
+			var css_zap = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } @media screen and ( max-width: 782px ) { html { margin-top: 0 !important; } * html body { margin-top: 0 !important; } }';
+			var style_zap = document.createElement( 'style' );
+			style_zap.type = 'text/css';
+			style_zap.appendChild( document.createTextNode( css_zap ) );
+			document.body.appendChild( style_zap );
+
+			var e = document.getElementById( 'wpcom_request_access_iframe' );
+			e.parentNode.removeChild( e );
+
+			document.cookie = 'wordpress_com_login_access=denied; path=/; max-age=31536000';
+
+			return;
+		}
+
+		// Safari ITP
+		if ( data.msg === 'REQUEST_ACCESS' ) {
+			console.log( 'request access: safari' );
+
+			// Check ITP iframe enable/disable knob
+			if ( wpcom_remote_login_extra_auth !== 'safari_itp_iframe' ) {
+				return;
+			}
+
+			// If we are in a "private window" there is no ITP.
+			var private_window = false;
+			try {
+				var opendb = window.openDatabase( null, null, null, null );
+			} catch( e ) {
+				private_window = true;
+			}
+
+			if ( private_window ) {
+				console.log( 'private window' );
+				return;
+			}
+
+			var iframe = document.createElement( 'iframe' );
+			iframe.id = 'wpcom_request_access_iframe';
+			iframe.setAttribute( 'scrolling', 'no' );
+			iframe.setAttribute( 'sandbox', 'allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-top-navigation-by-user-activation' );
+			iframe.src = 'https://r-login.wordpress.com/remote-login.php?wpcom_remote_login=request_access&origin=' + encodeURIComponent( data.origin ) + '&wpcomid=' + encodeURIComponent( data.wpcomid );
+
+			var css = 'html { -webkit-transition: margin-top 1s; transition: margin-top 1s; } /* 9001 */ html { margin-top: 46px !important; } * html body { margin-top: 46px !important; } @media screen and ( max-width: 660px ) { html { margin-top: 71px !important; } * html body { margin-top: 71px !important; } #wpcom_request_access_iframe { display: block; height: 71px !important; } } #wpcom_request_access_iframe { border: 0px; height: 46px; position: fixed; top: 0; left: 0; width: 100%; min-width: 100%; z-index: 99999; background: #23282d; } ';
+
+			var style = document.createElement( 'style' );
+			style.type = 'text/css';
+			style.id = 'wpcom_request_access_styles';
+			style.appendChild( document.createTextNode( css ) );
+			document.body.appendChild( style );
+
+			document.body.appendChild( iframe );
+		}
+
+		if ( data.msg === 'DONE' ) {
+			wpcom_remote_login_final_cleanup();
+		}
+	}
+}, false );
+
+// Inject the remote login iframe after the page has had a chance to load
+// more critical resources
+window.addEventListener( "DOMContentLoaded", function( e ) {
+	var iframe = document.createElement( "iframe" );
+	iframe.style.display = "none";
+	iframe.setAttribute( "scrolling", "no" );
+	iframe.setAttribute( "id", "wpcom_remote_login_key" );
+	iframe.src = "https://r-login.wordpress.com/remote-login.php"
+		+ "?wpcom_remote_login=key"
+		+ "&origin=aHR0cHM6Ly9wb2ludGllc3RzdGljay5jb20%3D"
+		+ "&wpcomid=140354881"
+		+ "&time=1575782999";
+	document.body.appendChild( iframe );
+}, false );
+</script>
+<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//pointieststick.wordpress.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//widgets.wp.com' />
+<link rel='dns-prefetch' href='//wordpress.com' />
+<link rel="alternate" type="application/rss+xml" title="Adventures in Linux and KDE &raquo; Feed" href="https://pointieststick.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Adventures in Linux and KDE &raquo; Comments Feed" href="https://pointieststick.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Adventures in Linux and KDE &raquo; This week in KDE: GTK CSD support and&nbsp;more! Comments Feed" href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/feed/" />
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1573557586h&ver=5.3"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='all-css-0-1' href='https://s1.wp.com/_static/??-eJyNkdFuwyAMRX9o4GRdlu1h6rcA8TJakyBsVOXvR0n6km3RXpCuuQfbF7hF5eZJcBIIWUXKo58YbtHNQXHwhMtOacf8BL9jCckIDirOLDt1hJG/IsMFJRp3VVX9sD+8Yy7SYhrLTULodaMbsNnTAJbmittk0gIsC+E/nqnUY8dNHLNu3mytbnt9gsGzrM1Zr2Sd50/+MxMp9oIKBy9+GrcgoNHtq36GmlfZg2WdZ22wrx4Feo+m1EM0cneE0scgYSi2I2zLwMaEzKqcweeg5KuA9UPO4aPt+q57eXtvTpdvB1jUhA==?cssminify=yes' type='text/css' media='all' />
+<link rel='stylesheet' id='wpcom-block-editor-styles-css'  href='//widgets.wp.com/wpcom-block-editor/common.min.css?ver=20191125210840' media='all' />
+<link rel='stylesheet' id='all-css-2-1' href='https://s2.wp.com/_static/??-eJydUNEKwjAM/CFjVJjig/gtWxe7uDYta8fw780cKNOxB6GUu2svyQWHCCZIJsnoe4iutywJTfBeJXDckrL0pWxV2SCjhMzqTm8wPSzXtCTUTd8X4Y83N+S1e+wrZKkpkl46gXLHqaEODpjyw9E/xjFS5YJp/2rLYqbWMERdzFrqgWtLOWEOEWJIipZnni0qgI5WZg4yI3BzJXdr1o40lFVoXwk/dDRd/WVfFOejnt3p/gRfP75Y?cssminify=yes' type='text/css' media='all' />
+<link rel='stylesheet' id='print-css-3-1' href='https://s2.wp.com/wp-content/mu-plugins/global-print/global-print.css?m=1465851035h&cssminify=yes' type='text/css' media='print' />
+<link rel='stylesheet' id='all-css-4-1' href='https://s0.wp.com/_static/??-eJx9jt0OgjAMRl/IUVDw58LwLGWOUS0boSXGt3cmEDEkXrVNzvf1wHMwNgZ1QaGfzMCTpyCAVimGBsfvllmRHazwhW0nZiOkzrgbKQU/t0CeFcdsD55jg4nQFzsBUVSy0DCGx6ZyZTBEUdMy0gjS4Zhql/kvJdFS+sXRx99jE9LO9UmnK2e/D1D316I6VVV5vuSH+xu+6GgR?cssminify=yes' type='text/css' media='all' />
+<style id='jetpack-global-styles-frontend-style-inline-css'>
+@import url('https://fonts.googleapis.com/css?family=-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif:regular,bold,italic,bolditalic|-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif:regular,bold,italic,bolditalic|');:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<script>
+var related_posts_js_options = {"post_heading":"h4"};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??-eJyFj9EOwiAMRX9Ihntw0wfjtyCrpAgFKbjo1wuJPrgsmjRpbnpy762co0DSrkzA0ta5FUiP9+osb+QvQHg0SWXoPNIH1oEyUG5sDJw9MCsDK1cfzuhAFIZUAco15hKWnC8iumKQWCZwNWoSzXWhVty/H0G6I8x/MQs5Kn0VCRifrfPJH/vd2B+24zDs7QszQHB9'></script>
+<link rel='stylesheet' id='all-css-0-2' href='https://s0.wp.com/wp-content/mu-plugins/highlander-comments/style.css?m=1530132353h&cssminify=yes' type='text/css' media='all' />
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='https://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563h&#038;ver=20110606' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://pointieststick.wordpress.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s1.wp.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='This week in KDE: Polishing it&nbsp;up' href='https://pointieststick.com/2019/11/23/this-week-in-kde-polishing-it-up/' />
+<meta name="generator" content="WordPress.com" />
+<link rel="canonical" href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/" />
+<link rel='shortlink' href='https://wp.me/p9uUIp-149' />
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fpointieststick.com%2F2019%2F11%2F30%2Fthis-week-in-kde-gtk-csd-support-and-more%2F&amp;for=wpcom-auto-discovery" /><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fpointieststick.com%2F2019%2F11%2F30%2Fthis-week-in-kde-gtk-csd-support-and-more%2F&amp;for=wpcom-auto-discovery" />
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="This week in KDE: GTK CSD support and more!" />
+<meta property="og:url" content="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/" />
+<meta property="og:description" content="I&#8217;ve got big news today. Something major landed: full support for the GTK_FRAME_EXTENTS_ protocol, which hugely improves the user experience for running GTK apps that use client-side decorati…" />
+<meta property="article:published_time" content="2019-12-01T05:51:08+00:00" />
+<meta property="article:modified_time" content="2019-12-01T19:12:36+00:00" />
+<meta property="og:site_name" content="Adventures in Linux and KDE" />
+<meta property="og:image" content="https://i.imgur.com/mxQUzsg.png" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@wordpressdotcom" />
+<meta name="twitter:text:title" content="This week in KDE: GTK CSD support and&nbsp;more!" />
+<meta name="twitter:card" content="summary" />
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="shortcut icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="icon" type="image/x-icon" href="https://s1.wp.com/i/favicon.ico" sizes="16x16 24x24 32x32 48x48" />
+<link rel="apple-touch-icon-precomposed" href="https://s2.wp.com/i/webclip.png" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://pointieststick.com/osd.xml" title="Adventures in Linux and KDE" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com" />
+<meta name="application-name" content="Adventures in Linux and KDE" /><meta name="msapplication-window" content="width=device-width;height=device-height" /><meta name="msapplication-task" content="name=Subscribe;action-uri=https://pointieststick.com/feed/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s1.wp.com/i/favicon.ico" /><meta name="description" content="I&#039;ve got big news today. Something major landed: full support for the GTK_FRAME_EXTENTS_ protocol, which hugely improves the user experience for running GTK apps that use client-side decoration headerbars! This includes GNOME apps and an increasing number of 3rd-party GTK apps too. In particular, these apps now display window shadows and have proper resize areas&hellip;" />
+<link rel="amphtml" href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/amp/"></head>
+
+<body class="post-template-default single single-post postid-4101 single-format-standard wp-embed-responsive customizer-styles-applied has-sidebar highlander-enabled highlander-light">
+
+<div id="page" class="hfeed site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<div id="hero-header" class="site-hero-section">
+		<header id="masthead" class="site-header" role="banner">
+			<div class="inner">
+				<div class="site-branding">
+					
+											<a class="site-logo-link" href="https://pointieststick.com/">
+							<img alt="" class="site-logo-image no-grav" width="80" height="80" src="https://secure.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=160&#038;d=blank&#038;r=g" />
+						</a><!-- .site-logo-link -->
+													<p class="site-title"><a href="https://pointieststick.com/" rel="home">Adventures in Linux and KDE</a></p>
+										</div><!-- .site-branding -->
+
+				
+									<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" id="primary-menu-button">
+						Menu					</button><!-- .menu-toggle -->
+				
+			</div><!-- .inner -->
+		</header><!-- #masthead -->
+	</div>
+
+				<nav id="site-navigation" class="main-navigation" role="navigation">
+			<div class="menu-primary-container"><ul id="primary-menu" class="menu"><li id="menu-item-1508" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1508"><a href="https://community.kde.org/Get_Involved">Get involved</a></li>
+<li id="menu-item-1505" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1505"><a href="https://community.kde.org/Get_Involved/development">Develop for KDE</a></li>
+<li id="menu-item-1506" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1506"><a href="https://community.kde.org/Get_Involved/Bug_Reporting">File a bug</a></li>
+<li id="menu-item-1507" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1507"><a href="https://community.kde.org/Infrastructure/Phabricator">Submit a patch</a></li>
+<li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10"><a href="https://pointieststick.com/contact/">Contact me</a></li>
+</ul></div>		</nav><!-- .main-navigation -->
+	
+	
+	
+	<div id="content-wrapper" class="content-wrapper">
+		<div id="content" class="site-content">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-4101" class="post-4101 post type-post status-publish format-standard hentry category-this-week-in-kde">
+			<header class="entry-header">
+			<h1 class="entry-title">This week in KDE: GTK CSD support and&nbsp;more!</h1>		</header><!-- .entry-header -->		<div class="entry-meta">
+			<span class="byline">
+				<a href="https://pointieststick.com/author/pointieststick/" title="Posts by Nate" rel="author">Nate</a>			</span>
+							<span class="cat-links">
+					<a href="https://pointieststick.com/category/this-week-in-kde/" rel="category tag">This Week in KDE</a>				</span><!-- .cat-links -->
+			
+			
+			<span class="published-on">
+				<time class="entry-date published" datetime="2019-11-30T22:51:08-07:00">November 30, 2019</time><time class="updated" datetime="2019-12-01T12:12:36-07:00">December 1, 2019</time>			</span>
+
+			<span class="word-count">3 Minutes</span>		</div><!-- .entry-meta -->
+	
+	<div class="entry-content">
+		<p>I&#8217;ve got big news today. Something major landed: full support for the <tt>GTK_FRAME_EXTENTS_</tt> protocol, which hugely improves the user experience for running GTK apps that use client-side decoration headerbars! This includes GNOME apps and an increasing number of 3rd-party GTK apps too. In particular, these apps now display window shadows and have proper resize areas without needing to use a thick border. Here&#8217;s how Gedit now looks:</p>
+<p><img class="aligncenter" src="https://i.imgur.com/Ar2KgDi.png" /></p>
+<p>It&#8217;s almost native-looking! And it fits right in with the rest of your apps.</p>
+<p>I&#8217;d like to extend a big thanks for Vlad Zahorodnii who has been <a href="https://phabricator.kde.org/D24660">working hard on this for months</a>! The feature lands in the upcoming Plasma 5.18 LTS.</p>
+<p>But wait, there&#8217;s more&#8230;</p>
+<h2>More New Features</h2>
+<ul>
+<li>All Plasma widgets <a href="https://notmart.org/blog/2019/11/plasma-edit-mode-refinements/">can now show or hide the background frame when placed on the desktop</a> (Marco Martin, Plasma 5.18.0):
+<div class="jetpack-video-wrapper"><span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='1100' height='619' src='https://www.youtube.com/embed/tk6EQfhAyn4?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span></div>
+<li>Plasma Network Manager <a href="https://phabricator.kde.org/D24691">now supports WPA3 encryption</a> (Jan Grulich, Plasma 5.18.0)</li>
+</ul>
+<h2>Bugfixes &amp; Performance Improvements</h2>
+<ul>
+<li>When using Dolphin&#8217;s built-in search feature, <a href="https://bugs.kde.org/show_bug.cgi?id=412952">text you enter no longer automatically becomes double-quoted</a> (Ismael Asensio, Dolphin 19.12.0)</li>
+<li>Fixed a bug that <a href="https://bugs.kde.org/show_bug.cgi?id=414402">could cause the &#8220;Open Containing Folder&#8221; feature to fail to launch Dolphin after the first time it was used</a> (Elvis Angelaccio, Dolphin 19.12.0)</li>
+<li>Konsole <a href="https://invent.kde.org/kde/konsole/commit/9bc892eff0dd3a19346182650b8b6d5ef0436aee">now automatically strips out &#8220;file://&#8221; when pasting local URLs</a> (Ahmad Samir, Konsole 20.04.0)</li>
+<li>An invisible square that eats clicks <a href="https://bugs.kde.org/show_bug.cgi?id=357443">no longer appears in the top-left corner of the screen after you suspend compositing and restart KWin while an app that displays a System Tray icon is running</a> (Konrad Materka, Plasma 5.17.4)</li>
+<li>Album art on the lock screen <a href="https://bugs.kde.org/show_bug.cgi?id=414487">no longer becomes outrageously gigantic when the media title is really really long</a> (Apurv Jyotirmay, Plasma 5.17.4)</li>
+<li>The weather widget&#8217;s weather station configuration window <a href="https://cgit.kde.org/kdeplasma-addons.git/commit/?id=647549a006f34374eb7dcc64d4fa6058401bdab9">now has a better default size and margins</a>, and <a href="https://bugs.kde.org/show_bug.cgi?id=414441">the &#8220;no weather stations found&#8221; text no longer overflows the view</a> (me: Nate Graham, Plasma 5.17.4):<br />
+<img class="aligncenter" src="https://i.imgur.com/fA95qgh.png" /></li>
+<li>When using the Task Manager to unminimize a group of minimized windows, <a href="https://bugs.kde.org/show_bug.cgi?id=368867">the windows are restored stacked in the order they were minimized rather than semi-randomly</a> (Eike Hein, Plasma 5.18.0) </li>
+<li>The cursor <a href="https://bugs.kde.org/show_bug.cgi?id=414109">no longer unexpectedly changes its appearance when hovering over a GTK app by default</a> (Kai Uwe Broulik, Plasma 5.18.0)</li>
+<li>Network Notifications <a href="https://bugs.kde.org/show_bug.cgi?id=410893">no longer displays almost-invisible icons when using a dark plasma theme but a light apps color scheme</a> (Nicolas Fella, Plasma 5.18.0)</li>
+<li>This is more of a developer quality-of-life improvement, but <a href="https://bugs.kde.org/show_bug.cgi?id=362946">compiling the Keyboard KCM in plasma-desktop is now much faster and no longer brings your system to its knees with a recursive forkbomb</a> (Harald Sitter, Plasma 5.18.0)</li>
+<li>Tab views in QML-based user interfaces <a href="https://bugs.kde.org/show_bug.cgi?id=413311">now match the background color of the frame when using many non-default color schemes</a> (Filip Fila, Frameworks 5.65)</li>
+<li><a href="https://bugs.kde.org/show_bug.cgi?id=413181">Fixed the margins on a variety of standalone dialog and assistant windows</a> (me: Nate Graham, Frameworks 5.65)</li>
+</ul>
+<h2>User Interface Improvements</h2>
+<ul>
+<li>The sidebar toolbar in Discover <a href="https://bugs.kde.org/show_bug.cgi?id=389533">is now a real toolbar that doesn&#8217;t scroll away</a>. My change to do this had to be reverted because it caused problems in some apps, but Marco Martin graciously picked it up and <a href="https://phabricator.kde.org/D25425">re-implemented it in a better way.</a> Thanks Marco! (Marco Martin, Plasma 5.18.0)</li>
+<li>Discover&#8217;s <a href="https://phabricator.kde.org/D25430">Task progress sheet now looks like it&#8217;s supposed to</a> (Marco Martin, Plasma 5.18.0):<br />
+<img class="aligncenter" src="https://i.imgur.com/EuIdd6N.png" /></li>
+<li>Visible notifications <a href="https://phabricator.kde.org/D25566">now move out of the way rather than disappearing when the System Tray popup is open in the same area</a> (Kai Uwe Broulik, Plasma 5.18.0):<br />
+<div style="width: 640px;" class="wp-video"><!--[if lt IE 9]><script>document.createElement('video');</script><![endif]-->
+<video class="wp-video-shortcode" id="video-4101-1" width="640" height="360" preload="metadata" controls="controls"><source type="video/webm" src="http://s1.webmshare.com/MxLLd.webm?_=1" /><a href="http://s1.webmshare.com/MxLLd.webm">http://s1.webmshare.com/MxLLd.webm</a></video></div></li>
+<li>The user avatar shown in the Kickoff Application Launcher <a href="https://bugs.kde.org/show_bug.cgi?id=386656">is now framed in a circle, just like on the lock and login screens</a> (Scott Harvey and me: Nate Graham, Plasma 5.18.0):<br />
+<img class="aligncenter" src="https://i.imgur.com/mxQUzsg.png" /></li>
+</ul>
+<h2>How You Can Help</h2>
+<p>Do you love KDE&#8217;s apps? Would you like to help develop for them? I knew you would. 🙂 It&#8217;s really fun, and you can have a major impact. Many of KDE&#8217;s apps are quite beginner-friendly; among them are Dolphin, Elisa, and Spectacle. See the <a href="https://community.kde.org/Get_Involved#Beginner-friendly_projects">full list here</a>! These apps&#8217; maintainers as well as KDE&#8217;s experienced developers are happy to help and mentor newcomers who want to contribute. For more information on how to get help and who to ask, see <a href="https://community.kde.org/Get_Involved#Start_Here.21" rel="nofollow">https://community.kde.org/Get_Involved#Start_Here.21</a></p>
+<p>More generally, have a look at <a href="https://community.kde.org/Get_Involved" rel="nofollow">https://community.kde.org/Get_Involved</a> and find out more ways to help be part of a project that really matters. Each contributor makes a huge difference in KDE; you are not a number or a cog in a machine! You don&#8217;t have to already be a programmer, either. I wasn&#8217;t when I got started. Try it, you’ll like it! We don’t bite!</p>
+<p>Finally, consider <a href="https://www.kde.org/community/donations/index.php">making a tax-deductible donation</a> to the <a href="https://ev.kde.org/">KDE e.V. foundation</a>.</p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-4101" class="share-twitter sd-button share-icon" href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?share=twitter" target="_blank" title="Click to share on Twitter"><span>Twitter</span></a></li><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-4101" class="share-facebook sd-button share-icon" href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?share=facebook" target="_blank" title="Click to share on Facebook"><span>Facebook</span></a></li><li class="share-end"></li></ul></div></div></div><div class='sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-unloaded' id='like-post-wrapper-140354881-4101-5dec8a571b320' data-src='//widgets.wp.com/likes/index.html?ver=20190321#blog_id=140354881&amp;post_id=4101&amp;origin=pointieststick.wordpress.com&amp;obj_id=140354881-4101-5dec8a571b320&amp;domain=pointieststick.com' data-name='like-post-frame-140354881-4101-5dec8a571b320'><h3 class='sd-title'>Like this:</h3><div class='likes-widget-placeholder post-likes-widget-placeholder' style='height: 55px;'><span class='button'><span>Like</span></span> <span class="loading">Loading...</span></div><span class='sd-text-color'></span><a class='sd-link-color'></a></div>
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div></div>	</div><!-- .entry-content -->
+
+	<div class="entry-footer">
+			</div><!-- .entry-footer -->
+
+	<div class="entry-author-wrapper">
+			<div class="entry-author author-avatar-show">
+				<div class="author-avatar">
+			<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=80&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-80' height='80' width='80' />		</div><!-- .author-avatar -->
+		
+		<div class="author-heading">
+			<h2 class="author-title">Published by <span class="author-name">Nate</span></h2>
+		</div><!-- .author-heading -->
+
+		<p class="author-bio">
+						<a class="author-link" href="https://pointieststick.com/author/pointieststick/" rel="author">
+				View all posts by Nate			</a>
+		</p><!-- .author-bio -->
+	</div><!-- .entry-auhtor -->
+		<div class="site-posted-on">
+			<strong>Published</strong>
+			<time class="entry-date published" datetime="2019-11-30T22:51:08-07:00">November 30, 2019</time><time class="updated" datetime="2019-12-01T12:12:36-07:00">December 1, 2019</time>		</div><!-- .site-posted-on -->
+	</div>
+</article><!-- #post-## -->
+
+			
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://pointieststick.com/2019/11/23/this-week-in-kde-polishing-it-up/" rel="prev"><span class="meta-nav screen-reader-text">Previous Post</span> This week in KDE: Polishing it&nbsp;up</a></div></div>
+	</nav>
+			
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			37 thoughts on &ldquo;<span>This week in KDE: GTK CSD support and&nbsp;more!</span>&rdquo;		</h2><!-- .comments-title -->
+
+		
+		<ol class="comment-list">
+					<li id="comment-7620" class="comment even thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-7620" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/f85ca829222f0dfd807cf3289834150a?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nicholas</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7620">
+							<time datetime="2019-12-01T00:36:30-07:00">
+								December 1, 2019 at 12:36 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>This is looking great. Every week I see KDE getting better and better and I still question how it bypasses my expectations each time.</p>
+<p id="comment-like-7620" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7620&#038;_wpnonce=9a0d140df0" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7620" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7620#respond' data-commentid="7620" data-postid="4101" data-belowelement="div-comment-7620" data-respondelement="respond" aria-label='Reply to Nicholas'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7630" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-7630" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7630">
+							<time datetime="2019-12-01T12:11:17-07:00">
+								December 1, 2019 at 12:11 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I know how you feel. 🙂</p>
+<p id="comment-like-7630" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7630&#038;_wpnonce=d4847888c1" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7630" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7630#respond' data-commentid="7630" data-postid="4101" data-belowelement="div-comment-7630" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7621" class="comment byuser comment-author-vavooon even thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-7621" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/04f7b01032d60c3c0f5ef8795b600897?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">vavooon</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7621">
+							<time datetime="2019-12-01T00:51:51-07:00">
+								December 1, 2019 at 12:51 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>GTK CSD shadows😍😍😍</p>
+<p id="comment-like-7621" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7621&#038;_wpnonce=5589d0a41b" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7621" class="comment-like-feedback">Liked by <a href="#" class="view-likers" data-like-count="2">2 people</a></span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7621#respond' data-commentid="7621" data-postid="4101" data-belowelement="div-comment-7621" data-respondelement="respond" aria-label='Reply to vavooon'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7694" class="comment odd alt depth-2 highlander-comment">
+			<article id="div-comment-7694" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/0bcbcb2f5dcece91d4c78e0bad9b362f?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Eric</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7694">
+							<time datetime="2019-12-07T08:38:23-07:00">
+								December 7, 2019 at 8:38 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>That&#8217;s a huge improvement, as in the current state a GTK window above another window with the same background color cannot be distinguished from one another. 🙂 Good job!!!</p>
+<p id="comment-like-7694" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7694&#038;_wpnonce=4e8b38a659" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7694" class="comment-like-feedback">Liked by <a href="#" class="view-likers" data-like-count="1">1 person</a></span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7694#respond' data-commentid="7694" data-postid="4101" data-belowelement="div-comment-7694" data-respondelement="respond" aria-label='Reply to Eric'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7622" class="comment even thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-7622" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/325ae03f2043d5711b3ff84f058eecc0?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Peter</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7622">
+							<time datetime="2019-12-01T03:06:34-07:00">
+								December 1, 2019 at 3:06 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>&gt; The cursor no longer unexpectedly changes its appearance when hovering over a GTK app by default (Kai Uwe Broulik, Plasma 5.18.0)</p>
+<p>This bug report still says &#8220;reported&#8221; only?</p>
+<p id="comment-like-7622" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7622&#038;_wpnonce=9fafb5d833" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7622" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7622#respond' data-commentid="7622" data-postid="4101" data-belowelement="div-comment-7622" data-respondelement="respond" aria-label='Reply to Peter'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7631" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-7631" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7631">
+							<time datetime="2019-12-01T12:13:24-07:00">
+								December 1, 2019 at 12:13 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Oops, I linked to the wrong bug. The correct one is <a href="https://bugs.kde.org/show_bug.cgi?id=414109" rel="nofollow ugc">https://bugs.kde.org/show_bug.cgi?id=414109</a>. I&#8217;ve corrected the post now. Thanks for pointing this out!</p>
+<p id="comment-like-7631" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7631&#038;_wpnonce=ae9c927476" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7631" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7631#respond' data-commentid="7631" data-postid="4101" data-belowelement="div-comment-7631" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7623" class="comment even thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-7623" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/a38343534716482edb26d433ff179c82?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">KayDeeMee</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7623">
+							<time datetime="2019-12-01T04:00:57-07:00">
+								December 1, 2019 at 4:00 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Just..wow. Plasma 5.18 IS &#8220;the year of the linux desktop&#8221;, for sure. It&#8217;s very satisfying to be able to follow the progress easily here on your site, Nate, thanks a lot. Also it&#8217;s very reassuring to know that there are so many talented people working together on things big and small to continuously make KDE better. It really does make a difference while choosing a desktop/distro when you know that there&#8217;s more than one or two people doing everything and there&#8217;s a risk they just give up one day, and that you can reach out easily to someone that can help with any issue that you may encounter. This is all just great, enjoyable fun, very cool and excuse my French: GODDAMN FANTASTIC! I thank you, my computers thank you and come Plasma 5.18 all my friends/familys computers (old and new) will thank you as well.</p>
+<p id="comment-like-7623" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7623&#038;_wpnonce=5dcfbb86f3" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7623" class="comment-like-feedback">Liked by <a href="#" class="view-likers" data-like-count="1">1 person</a></span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7623#respond' data-commentid="7623" data-postid="4101" data-belowelement="div-comment-7623" data-respondelement="respond" aria-label='Reply to KayDeeMee'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7632" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-7632" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7632">
+							<time datetime="2019-12-01T12:15:39-07:00">
+								December 1, 2019 at 12:15 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I feel similarly. One-man projects or very small teams are always a bit disconcerting. But KDE&#8217;s developer community is humongous! The pace of improvement is pretty amazing. Believe it or not, sometimes I get a bit frustrated that it isn&#8217;t even faster! There are so many cool things in the pipeline that are like 80%+ done. But that&#8217;s the way all projects are, ultimately. the old 80/20 rule strikes again!</p>
+<p id="comment-like-7632" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7632&#038;_wpnonce=993df2028d" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7632" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7632#respond' data-commentid="7632" data-postid="4101" data-belowelement="div-comment-7632" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7624" class="comment even thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-7624" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/325ae03f2043d5711b3ff84f058eecc0?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Peter</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7624">
+							<time datetime="2019-12-01T04:34:17-07:00">
+								December 1, 2019 at 4:34 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>&gt; The weather widget’s weather station configuration window now has a better default size and margins, and the “no weather stations found” text no longer overflows the view (me: Nate Graham, Plasma 5.17.4):</p>
+<p>Is it a bug that there are alternating row colors displayed in the screenshot, although no items were found?</p>
+<p id="comment-like-7624" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7624&#038;_wpnonce=54074ca190" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7624" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7624#respond' data-commentid="7624" data-postid="4101" data-belowelement="div-comment-7624" data-respondelement="respond" aria-label='Reply to Peter'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7633" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-7633" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7633">
+							<time datetime="2019-12-01T12:16:33-07:00">
+								December 1, 2019 at 12:16 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Yeah, that&#8217;s a minor visual bug. I&#8217;ll fix it once I port the QtQuickControls1 table view to be a QtQuickControls2 list view.</p>
+<p id="comment-like-7633" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7633&#038;_wpnonce=5d890d4fc5" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7633" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7633#respond' data-commentid="7633" data-postid="4101" data-belowelement="div-comment-7633" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7625" class="comment byuser comment-author-hessaam even thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-7625" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/cb272dbd371203cad7be481f9861268d?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Hesam</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7625">
+							<time datetime="2019-12-01T04:34:30-07:00">
+								December 1, 2019 at 4:34 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Wow! This is amazing!</p>
+<p>Thank you Nate for informing us about everything in KDE, and a big thank you to all contributors of KDE.</p>
+<p>Best thing about KDE: It&#8217;s build by users, for users!</p>
+<p id="comment-like-7625" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7625&#038;_wpnonce=e1bd6dbeba" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7625" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7625#respond' data-commentid="7625" data-postid="4101" data-belowelement="div-comment-7625" data-respondelement="respond" aria-label='Reply to Hesam'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7634" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-7634" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7634">
+							<time datetime="2019-12-01T12:16:50-07:00">
+								December 1, 2019 at 12:16 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>You&#8217;re very welcome!</p>
+<p id="comment-like-7634" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7634&#038;_wpnonce=c0d7bbdc39" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7634" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7634#respond' data-commentid="7634" data-postid="4101" data-belowelement="div-comment-7634" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7626" class="comment byuser comment-author-motang even thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-7626" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/ae9f2fdb422884a3438d5a949b60b1ba?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">motang</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7626">
+							<time datetime="2019-12-01T05:48:47-07:00">
+								December 1, 2019 at 5:48 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>This is excellent. So now Firefox will look like a native application on KDE Plasma.</p>
+<p id="comment-like-7626" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7626&#038;_wpnonce=bc51b68e3e" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7626" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7626#respond' data-commentid="7626" data-postid="4101" data-belowelement="div-comment-7626" data-respondelement="respond" aria-label='Reply to motang'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7635" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-7635" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7635">
+							<time datetime="2019-12-01T12:18:12-07:00">
+								December 1, 2019 at 12:18 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Yeah, except for <a href="https://bugs.kde.org/show_bug.cgi?id=407639" rel="nofollow ugc">https://bugs.kde.org/show_bug.cgi?id=407639</a>, which is ultimately a Firefox issue tracked with <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1562507" rel="nofollow ugc">https://bugzilla.mozilla.org/show_bug.cgi?id=1562507</a>.</p>
+<p id="comment-like-7635" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7635&#038;_wpnonce=3a90babef8" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7635" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7635#respond' data-commentid="7635" data-postid="4101" data-belowelement="div-comment-7635" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7627" class="comment byuser comment-author-lebaux even thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-7627" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/58fee95f7413bb5aeb03b891ef84aa76?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn"><a href='http://w00t.com' rel='external nofollow ugc' class='url'>LeBaux</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7627">
+							<time datetime="2019-12-01T06:00:38-07:00">
+								December 1, 2019 at 6:00 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>As always, nice writeup. Thank you.</p>
+<p id="comment-like-7627" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7627&#038;_wpnonce=93c1c22987" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7627" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7627#respond' data-commentid="7627" data-postid="4101" data-belowelement="div-comment-7627" data-respondelement="respond" aria-label='Reply to LeBaux'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7636" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-7636" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7636">
+							<time datetime="2019-12-01T12:18:53-07:00">
+								December 1, 2019 at 12:18 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>You&#8217;re welcome!</p>
+<p id="comment-like-7636" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7636&#038;_wpnonce=fe7322f9e1" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7636" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7636#respond' data-commentid="7636" data-postid="4101" data-belowelement="div-comment-7636" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7628" class="comment even thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-7628" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/889dd67954750235cd7a981990cbd281?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">shaolin</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7628">
+							<time datetime="2019-12-01T06:29:24-07:00">
+								December 1, 2019 at 6:29 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Great improvements, especially GTK one seems like will be a great quality of life improvement.</p>
+<p id="comment-like-7628" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7628&#038;_wpnonce=4ace25e19b" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7628" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7628#respond' data-commentid="7628" data-postid="4101" data-belowelement="div-comment-7628" data-respondelement="respond" aria-label='Reply to shaolin'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7639" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-2 highlander-comment">
+			<article id="div-comment-7639" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7639">
+							<time datetime="2019-12-01T12:22:47-07:00">
+								December 1, 2019 at 12:22 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Indeed!</p>
+<p id="comment-like-7639" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7639&#038;_wpnonce=3044dc8471" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7639" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7639#respond' data-commentid="7639" data-postid="4101" data-belowelement="div-comment-7639" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7629" class="comment even thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-7629" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://i2.wp.com/pbs.twimg.com/profile_images/1149898950981365760/AnEPjRDf_normal.jpg?resize=48%2C48' class='avatar avatar-48' height='48' width='48' />						<b class="fn"><a href='http://twitter.com/gusbemacbe' rel='external nofollow ugc' class='url'>Gustavo Benedito dos Reis Costa (@gusbemacbe)</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7629">
+							<time datetime="2019-12-01T12:07:16-07:00">
+								December 1, 2019 at 12:07 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>And will the GTK-based and Electron-based apps open ther KDE dialog instead of that old-fashioned GTK dialog?</p>
+<p id="comment-like-7629" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7629&#038;_wpnonce=f1d1519f42" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7629" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7629#respond' data-commentid="7629" data-postid="4101" data-belowelement="div-comment-7629" data-respondelement="respond" aria-label='Reply to Gustavo Benedito dos Reis Costa (@gusbemacbe)'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7638" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-2 parent highlander-comment">
+			<article id="div-comment-7638" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7638">
+							<time datetime="2019-12-01T12:22:33-07:00">
+								December 1, 2019 at 12:22 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>It&#8217;s up to the apps themselves to either hook into KIO directly (as LibreOffice does) or use the GTKFilePickerNative API and force the use of XDG desktop portals when in a Plasma environment (as Firefox and Thunderbird and many GNOME apps do). But there&#8217;s nothing we can do on the KDE side to force this.</p>
+<p>Please file bugs against apps that use the GTK file dialog when run on Plasma!</p>
+<p id="comment-like-7638" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7638&#038;_wpnonce=4584da040e" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7638" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7638#respond' data-commentid="7638" data-postid="4101" data-belowelement="div-comment-7638" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7642" class="comment even depth-3 parent highlander-comment">
+			<article id="div-comment-7642" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://i2.wp.com/pbs.twimg.com/profile_images/1149898950981365760/AnEPjRDf_normal.jpg?resize=48%2C48' class='avatar avatar-48' height='48' width='48' />						<b class="fn"><a href='http://twitter.com/gusbemacbe' rel='external nofollow ugc' class='url'>Gustavo Benedito dos Reis Costa (@gusbemacbe)</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7642">
+							<time datetime="2019-12-01T13:01:15-07:00">
+								December 1, 2019 at 1:01 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<blockquote><p>Please file bugs against apps that use the GTK file dialog when run on Plasma!</p></blockquote>
+<p>The issues have already published a lot of years ago, they were closed and is no solved solved. Here are:</p>
+<p><a href="https://bugs.kde.org/show_bug.cgi?id=402077" rel="nofollow ugc">https://bugs.kde.org/show_bug.cgi?id=402077</a><br />
+<a href="https://superuser.com/questions/944119/replace-gtk-file-dialog-with-alternative" rel="nofollow ugc">https://superuser.com/questions/944119/replace-gtk-file-dialog-with-alternative</a></p>
+<p id="comment-like-7642" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7642&#038;_wpnonce=8fbda245a5" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7642" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7642#respond' data-commentid="7642" data-postid="4101" data-belowelement="div-comment-7642" data-respondelement="respond" aria-label='Reply to Gustavo Benedito dos Reis Costa (@gusbemacbe)'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7647" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-4 highlander-comment">
+			<article id="div-comment-7647" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7647">
+							<time datetime="2019-12-01T20:03:26-07:00">
+								December 1, 2019 at 8:03 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p><a href="https://bugs.kde.org/show_bug.cgi?id=402077" rel="nofollow ugc">https://bugs.kde.org/show_bug.cgi?id=402077</a> is marked as already fixed. We need bug reports filed against the apps that don&#8217;t display the correct file dialogs. Can you find or file them?</p>
+<p id="comment-like-7647" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7647&#038;_wpnonce=0a0213fed8" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7647" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7647#respond' data-commentid="7647" data-postid="4101" data-belowelement="div-comment-7647" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7637" class="comment byuser comment-author-zalbarath666 even thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-7637" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/8bbdf0ac6b966d9ff3db75f0bd8a5726?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn"><a href='http://zalbarath666.wordpress.com/' rel='external nofollow ugc' class='url'>Zalbarath</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7637">
+							<time datetime="2019-12-01T12:18:57-07:00">
+								December 1, 2019 at 12:18 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I have a question about GTK CSDs and their behavior logic.</p>
+<p>What will happen when the titlebar is stripped (by latte or some script)? This is a typical option for global menus and maximized windows. Stripping titlebar ensures that there is no redundant stripe since all functionality is moved to upper panel (buttons, appmenu, titles plus other panel&#8217;s elements).</p>
+<p>I assume that the CSD will be exempt from that stripping. Unless latte developer will do his magic and creates another widget that will move CSD functionality into panel&#8230; All is possible 😉</p>
+<p>Anyway, what about the buttons and title? This could create doubled elements, so I&#8217;m curious if the new option already has a solution for global menu with upper panel setup behavior? I know that this isn&#8217;t the official available setup but maybe the new CSD option included option for it? If not, it will be brought to the table by many users so it&#8217;s better to think of it before the official release.</p>
+<p>I kinda enjoy the idea about the additional widget with CSD buttons where we could tweak, turn on/off certain elements but is there any space for that on a panel? It&#8217;s already pretty filled with buttons, title, menu, system tray, clock and few additional widgets (like for weather).</p>
+<p>In general, I think it&#8217;s a good idea to support officially CSDs. Plasma always has been inclusive, even if some elements weren&#8217;t native to it and that is why it makes it so powerful. One DE that rules them all ;D.</p>
+<p id="comment-like-7637" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7637&#038;_wpnonce=c817f9c64a" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7637" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7637#respond' data-commentid="7637" data-postid="4101" data-belowelement="div-comment-7637" data-respondelement="respond" aria-label='Reply to Zalbarath'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7640" class="comment byuser comment-author-pointieststick bypostauthor odd alt depth-2 parent highlander-comment">
+			<article id="div-comment-7640" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7640">
+							<time datetime="2019-12-01T12:25:42-07:00">
+								December 1, 2019 at 12:25 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>CSD apps have no titlebar to strip. I imagine that titlebar-stripping apps will just ignore these windows. I *think* it would be technically possible to remove the close/minimize/maximize buttons from the headerbar when it&#8217;s maximized as we do have a hook into their ordering and visibility. I don&#8217;t know if that&#8217;s been implemented yet though. Our next thing is going to be trying to make order and visiblity of those buttons in CSD headerbar apps respect the settings you&#8217;re using for SSD apps.</p>
+<p id="comment-like-7640" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7640&#038;_wpnonce=99056e763d" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7640" class="comment-like-feedback">Liked by <a href="#" class="view-likers" data-like-count="1">1 person</a></span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7640#respond' data-commentid="7640" data-postid="4101" data-belowelement="div-comment-7640" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7641" class="comment byuser comment-author-zalbarath666 even depth-3 highlander-comment">
+			<article id="div-comment-7641" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/8bbdf0ac6b966d9ff3db75f0bd8a5726?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn"><a href='http://zalbarath666.wordpress.com/' rel='external nofollow ugc' class='url'>Zalbarath</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7641">
+							<time datetime="2019-12-01T12:31:46-07:00">
+								December 1, 2019 at 12:31 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Yeah. Especially when we move buttons to the left side so the CSD buttons order may look weird.<br />
+Having an option to enable stripping buttons in maximized mode would be awesome. The CSD stripe would be effectively like a toolbar. A bit weird and empty one in maximized mode but nothing is perfect. CSDs have cons, and we have to accept it, especially that there are no standards to CSDs (different elements on each program).</p>
+<p id="comment-like-7641" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7641&#038;_wpnonce=8569700c7c" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7641" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7641#respond' data-commentid="7641" data-postid="4101" data-belowelement="div-comment-7641" data-respondelement="respond" aria-label='Reply to Zalbarath'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7644" class="comment odd alt thread-odd thread-alt depth-1 highlander-comment">
+			<article id="div-comment-7644" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/b5f271440675349a371af12e96be5e04?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Jos</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7644">
+							<time datetime="2019-12-01T16:04:42-07:00">
+								December 1, 2019 at 4:04 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>The faster build of the the keyboard kcm is because the rendering of the keyboard layouts has been redone. From the issue: “a new standalone binary that previews any<br />
+model/layout/variant/options combination as requested and a qtquick UI<br />
+which simplifies the actual rendering substantially.”</p>
+<p><a href="https://bugs.kde.org/show_bug.cgi?id=362946" rel="nofollow ugc">https://bugs.kde.org/show_bug.cgi?id=362946</a></p>
+<p id="comment-like-7644" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7644&#038;_wpnonce=f21ebcab02" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7644" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7644#respond' data-commentid="7644" data-postid="4101" data-belowelement="div-comment-7644" data-respondelement="respond" aria-label='Reply to Jos'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-7645" class="comment even thread-even depth-1 highlander-comment">
+			<article id="div-comment-7645" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://2.gravatar.com/avatar/25d5265bef5f5d933c8bb42d6f8e17a3?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Christian Herenz</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7645">
+							<time datetime="2019-12-01T17:32:51-07:00">
+								December 1, 2019 at 5:32 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>&#8230; they really need a weather station in FoobarFungusMungusReallyLongText 🤪</p>
+<p id="comment-like-7645" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7645&#038;_wpnonce=5e5f542c40" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7645" class="comment-like-feedback">Liked by <a href="#" class="view-likers" data-like-count="1">1 person</a></span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7645#respond' data-commentid="7645" data-postid="4101" data-belowelement="div-comment-7645" data-respondelement="respond" aria-label='Reply to Christian Herenz'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-7652" class="comment byuser comment-author-skierpage odd alt thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-7652" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/181ae3c6e4a87c35bfbd987c5838a135?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn"><a href='http://www.skierpage.com/blog/' rel='external nofollow ugc' class='url'>skierpage</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7652">
+							<time datetime="2019-12-02T16:36:45-07:00">
+								December 2, 2019 at 4:36 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Great stuff! Regarding &#8220;Visible notifications now move out of the way rather than disappearing when the System Tray popup is open in the same area&#8221;: 1. the video doesn&#8217;t play on Firefox for Android even though the play/pause button toggles and the progress indicators animate. 2. In Fedora the notification about &#8220;17 updates available&#8221; obscures the Plasma pop-up behind it with the details of the packages and the button to update; will this fix address that usability glitch?</p>
+<p id="comment-like-7652" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7652&#038;_wpnonce=888ee7e4b9" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7652" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7652#respond' data-commentid="7652" data-postid="4101" data-belowelement="div-comment-7652" data-respondelement="respond" aria-label='Reply to skierpage'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7653" class="comment byuser comment-author-pointieststick bypostauthor even depth-2 highlander-comment">
+			<article id="div-comment-7653" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7653">
+							<time datetime="2019-12-02T17:11:25-07:00">
+								December 2, 2019 at 5:11 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Yes, it does.</p>
+<p id="comment-like-7653" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7653&#038;_wpnonce=b831fe67c2" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7653" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7653#respond' data-commentid="7653" data-postid="4101" data-belowelement="div-comment-7653" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7657" class="comment odd alt thread-even depth-1 parent highlander-comment">
+			<article id="div-comment-7657" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/a187900fe6fa2afe276a79dcf32b0b11?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">John</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7657">
+							<time datetime="2019-12-03T11:19:28-07:00">
+								December 3, 2019 at 11:19 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>hello Nate, I noticed that a while ago you switched off windows borders. Now I cannot distinguish the edge of a window overlapping another window. That is not very handy. It this a temporary situation? Thanks! John</p>
+<p id="comment-like-7657" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7657&#038;_wpnonce=28112e5402" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7657" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7657#respond' data-commentid="7657" data-postid="4101" data-belowelement="div-comment-7657" data-respondelement="respond" aria-label='Reply to John'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7658" class="comment byuser comment-author-pointieststick bypostauthor even depth-2 parent highlander-comment">
+			<article id="div-comment-7658" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7658">
+							<time datetime="2019-12-03T12:06:50-07:00">
+								December 3, 2019 at 12:06 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>That&#8217;s what the window shadows are for. Have you turned them off?</p>
+<p id="comment-like-7658" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7658&#038;_wpnonce=b464283f1f" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7658" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7658#respond' data-commentid="7658" data-postid="4101" data-belowelement="div-comment-7658" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7669" class="comment odd alt depth-3 parent highlander-comment">
+			<article id="div-comment-7669" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/a187900fe6fa2afe276a79dcf32b0b11?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">John</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7669">
+							<time datetime="2019-12-05T01:46:51-07:00">
+								December 5, 2019 at 1:46 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Thanks for the friendly advice Nate, I always get a good feeling from you!<br />
+I did not change any shadow settings (*)<br />
+I did not manage to find in system settings a setting to turn on/off shadows (**), the information on Google seems outdated, kde system setting changes (changed?) a lot each release 🙂<br />
+From my Google search I got the idea to use System Settings &#8211; Hardware &#8211; Display and Monitor to switch the Rendering backend to OpenGL3.1 (it was on 2.0) and that did the trick. No idea why this was on 2.0. </p>
+<p>Anyway, my GUI system is much more usable with shadows!</p>
+<p>(*) I always use the default settings due to this reasoning: Don&#8217;t trust my system otherwise since I feel it is impossible for developers to test all scenario&#8217;s (Exponential increase of complexity / all combinations).</p>
+<p>(**)<br />
+system setting crashed on my while I navigated some pages (sorry, I do not remember the actual scenario).</p>
+<p id="comment-like-7669" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7669&#038;_wpnonce=7c51dafbea" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7669" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7669#respond' data-commentid="7669" data-postid="4101" data-belowelement="div-comment-7669" data-respondelement="respond" aria-label='Reply to John'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7675" class="comment byuser comment-author-pointieststick bypostauthor even depth-4 highlander-comment">
+			<article id="div-comment-7675" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7675">
+							<time datetime="2019-12-05T08:38:56-07:00">
+								December 5, 2019 at 8:38 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Glad you got it working! I guess your graphics hardware is somehow subtly incompatible with OpenGL 2.0.</p>
+<p>The System Settings crash should be fixed in the next Frameworks release (coming out in two days).</p>
+<p id="comment-like-7675" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7675&#038;_wpnonce=f806802246" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7675" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7675#respond' data-commentid="7675" data-postid="4101" data-belowelement="div-comment-7675" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-7659" class="comment byuser comment-author-otaviomad odd alt thread-odd thread-alt depth-1 parent highlander-comment">
+			<article id="div-comment-7659" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/7a9a2e6807ce23e0e5231a0f38e6b7f3?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn"><a href='http://gravatar.com/otaviomad' rel='external nofollow ugc' class='url'>otaviomad</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7659">
+							<time datetime="2019-12-03T13:10:13-07:00">
+								December 3, 2019 at 1:10 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>A lot of these posts have window decorations without the white circle in the close button. That looks so much better, and yet I could never find where you can obtain that or an announcement for a system-wide theme change. Could you explain it to me?</p>
+<p id="comment-like-7659" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7659&#038;_wpnonce=e79b130600" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7659" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7659#respond' data-commentid="7659" data-postid="4101" data-belowelement="div-comment-7659" data-respondelement="respond" aria-label='Reply to otaviomad'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7662" class="comment byuser comment-author-pointieststick bypostauthor even depth-2 parent highlander-comment">
+			<article id="div-comment-7662" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7662">
+							<time datetime="2019-12-03T14:47:55-07:00">
+								December 3, 2019 at 2:47 pm							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>System Settings &gt; Application Style &gt; Window Decorations &gt; Breeze &gt; Click on inline Edit button (it looks like a pencil) &gt; Uncheck &#8220;Draw a circle around close button&#8221;</p>
+<p id="comment-like-7662" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7662&#038;_wpnonce=4c94c284db" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7662" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7662#respond' data-commentid="7662" data-postid="4101" data-belowelement="div-comment-7662" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7677" class="comment byuser comment-author-otaviomad odd alt depth-3 parent highlander-comment">
+			<article id="div-comment-7677" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://1.gravatar.com/avatar/7a9a2e6807ce23e0e5231a0f38e6b7f3?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">otaviomad</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7677">
+							<time datetime="2019-12-05T10:23:53-07:00">
+								December 5, 2019 at 10:23 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>No way it&#8217;s that easy. Now for a way to transfer that to GTK&#8217;s CSD</p>
+<p id="comment-like-7677" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7677&#038;_wpnonce=01688e1fc4" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7677" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7677#respond' data-commentid="7677" data-postid="4101" data-belowelement="div-comment-7677" data-respondelement="respond" aria-label='Reply to otaviomad'>Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-7678" class="comment byuser comment-author-pointieststick bypostauthor even depth-4 highlander-comment">
+			<article id="div-comment-7678" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://0.gravatar.com/avatar/997b6be07dbf0cb9296ec4464ada5088?s=48&#038;d=https%3A%2F%2Fs0.wp.com%2Fi%2Fmu.gif&#038;r=G' class='avatar avatar-48' height='48' width='48' />						<b class="fn">Nate</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#comment-7678">
+							<time datetime="2019-12-05T10:31:14-07:00">
+								December 5, 2019 at 10:31 am							</time>
+						</a>
+											</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>That&#8217;s in progress too. 🙂</p>
+<p id="comment-like-7678" data-liked=comment-not-liked class="comment-likes comment-not-liked"><a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?like_comment=7678&#038;_wpnonce=164f80a1f0" class="comment-like-link needs-login" rel="nofollow" data-blog="140354881"><span>Like</span></a><span id="comment-like-count-7678" class="comment-like-feedback">Like</span></p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/?replytocom=7678#respond' data-commentid="7678" data-postid="4101" data-belowelement="div-comment-7678" data-respondelement="respond" aria-label='Reply to Nate'>Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .comment-list -->
+
+		
+	
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://pointieststick.com/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate><input type="hidden" id="highlander_comment_nonce" name="highlander_comment_nonce" value="f50e09a52c" /><input type="hidden" name="_wp_http_referer" value="/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/" />
+<input type="hidden" name="hc_post_as" id="hc_post_as" value="guest" />
+
+<div class="comment-form-field comment-textarea">
+	<label for="comment">Enter your comment here...</label>
+	<div id="comment-form-comment"><textarea id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div id="comment-form-identity">
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display:none;">
+				<a href="#comment-form-guest" id="postas-guest" class="nascar-signin-link"
+                   title="Login via Guest">
+									</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:WordPress.com" id="postas-wordpress" class="nascar-signin-link"
+                   title="Login via WordPress.com">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#0087be" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg>				</a>
+			</li>
+			<li>
+			<li>
+				<a href="#comment-form-load-service:Twitter" id="postas-twitter" class="nascar-signin-link"
+                   title="Login via Twitter">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#1DA1F2" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg>				</a>
+			</li>
+			<li>
+				<a href="#comment-form-load-service:Facebook" id="postas-facebook" class="nascar-signin-link"
+                   title="Login via Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#3B5998" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg>				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a href="https://gravatar.com/site/signup/" target="_blank">				<img src="https://s0.wp.com/i/mu.gif" alt="Gravatar" width="25" class="no-grav" />
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="required">(required)</span> <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" type="email" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(required)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" type="text" value="" /></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" type="url" value="" /></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://s0.wp.com/i/mu.gif" alt="WordPress.com Logo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" />
+				<input type="hidden" name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" />
+						<p class="comment-form-posting-as pa-wordpress">
+			<strong></strong>
+			You are commenting using your WordPress.com account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'wordpress' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#0087be" d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.18 2.986-.51-.024-.037-.046-.078-.065-.123l-2.762-7.57zM3.008 12c0 3.56 2.07 6.634 5.068 8.092L3.788 8.342c-.5 1.117-.78 2.354-.78 3.658zm15.06-.454c0-1.112-.398-1.88-.74-2.48-.456-.74-.883-1.368-.883-2.11 0-.825.627-1.595 1.51-1.595.04 0 .078.006.116.008-1.598-1.464-3.73-2.36-6.07-2.36-3.14 0-5.904 1.613-7.512 4.053.21.008.41.012.58.012.94 0 2.395-.114 2.395-.114.484-.028.54.684.057.74 0 0-.487.058-1.03.086l3.275 9.74 1.968-5.902-1.4-3.838c-.485-.028-.944-.085-.944-.085-.486-.03-.43-.77.056-.742 0 0 1.484.114 2.368.114.94 0 2.397-.114 2.397-.114.486-.028.543.684.058.74 0 0-.488.058-1.03.086l3.25 9.665.897-2.997c.456-1.17.684-2.137.684-2.907zm1.82-3.86c.04.286.06.593.06.924 0 .912-.17 1.938-.683 3.22l-2.746 7.94c2.672-1.558 4.47-4.454 4.47-7.77 0-1.564-.4-3.033-1.1-4.314zM12 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://s0.wp.com/i/mu.gif" alt="Google photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" />
+				<input type="hidden" name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" />
+						<p class="comment-form-posting-as pa-googleplus">
+			<strong></strong>
+			You are commenting using your Google account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'googleplus' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" x="0px" y="0px" viewBox="0 0 60 60" ><path fill="#519bf7" d="M56.3,30c0,-1.6 -0.2,-3.4 -0.6,-5h-3.1H42.2H30v10.6h14.8C44,39.3 42,42 39.1,43.9l8.8,6.8C53,46 56.3,39 56.3,30z" /><path fill="#3db366" d="M30,57.5c6.7,0 13.1,-2.4 17.9,-6.8l-8.8,-6.8c-2.5,1.6 -5.6,2.4 -9.1,2.4c-7.2,0 -13.3,-4.7 -15.4,-11.2l-9.3,7.1C9.8,51.3 19.1,57.5 30,57.5z" /><path fill="#fdc600" d="M5.3,42.2l9.3,-7.1c-0.5,-1.6 -0.8,-3.3 -0.8,-5.1s0.3,-3.5 0.8,-5.1l-9.3,-7.1C3.5,21.5 2.5,25.6 2.5,30S3.5,38.5 5.3,42.2z" /><path fill="#f15b44" d="M40.1,17.4l8,-8C43.3,5.1 37,2.5 30,2.5C19.1,2.5 9.8,8.7 5.3,17.8l9.3,7.1c2.1,-6.5 8.2,-11.1 15.4,-11.1C33.9,13.7 37.4,15.1 40.1,17.4z" /></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://s0.wp.com/i/mu.gif" alt="Twitter picture" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" />
+				<input type="hidden" name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" />
+						<p class="comment-form-posting-as pa-twitter">
+			<strong></strong>
+			You are commenting using your Twitter account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'twitter' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#1DA1F2" d="M22.23 5.924c-.736.326-1.527.547-2.357.646.847-.508 1.498-1.312 1.804-2.27-.793.47-1.67.812-2.606.996C18.325 4.498 17.258 4 16.078 4c-2.266 0-4.103 1.837-4.103 4.103 0 .322.036.635.106.935-3.41-.17-6.433-1.804-8.457-4.287-.353.607-.556 1.312-.556 2.064 0 1.424.724 2.68 1.825 3.415-.673-.022-1.305-.207-1.86-.514v.052c0 1.988 1.415 3.647 3.293 4.023-.344.095-.707.145-1.08.145-.265 0-.522-.026-.773-.074.522 1.63 2.038 2.817 3.833 2.85-1.404 1.1-3.174 1.757-5.096 1.757-.332 0-.66-.02-.98-.057 1.816 1.164 3.973 1.843 6.29 1.843 7.547 0 11.675-6.252 11.675-11.675 0-.178-.004-.355-.012-.53.802-.578 1.497-1.3 2.047-2.124z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="https://s0.wp.com/i/mu.gif" alt="Facebook photo" width="25" class="no-grav" />
+			</div>
+
+				<div class="comment-form-fields">
+				<input type="hidden" name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" />
+				<input type="hidden" name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" />
+						<p class="comment-form-posting-as pa-facebook">
+			<strong></strong>
+			You are commenting using your Facebook account.			<span class="comment-form-log-out">
+				(&nbsp;<a href="javascript:HighlanderComments.doExternalLogout( 'facebook' );">Log&nbsp;Out</a>&nbsp;/&nbsp;
+				<a href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)
+			</span>
+			<span class="pa-icon"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" viewBox="0 0 24 24" ><rect x="0" fill="none" width="24" height="24"/><g><path fill="#3B5998" d="M20.007 3H3.993C3.445 3 3 3.445 3 3.993v16.013c0 .55.445.994.993.994h8.62v-6.97H10.27V11.31h2.346V9.31c0-2.325 1.42-3.59 3.494-3.59.993 0 1.847.073 2.096.106v2.43h-1.438c-1.128 0-1.346.537-1.346 1.324v1.734h2.69l-.35 2.717h-2.34V21h4.587c.548 0 .993-.445.993-.993V3.993c0-.548-.445-.993-.993-.993z"/></g></svg></span>
+		</p>
+					</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+var highlander_expando_javascript = function(){
+	var input = document.createElement( 'input' ),
+	    comment = jQuery( '#comment' );
+
+	if ( 'placeholder' in input ) {
+		comment.attr( 'placeholder', jQuery( '.comment-textarea label' ).remove().text() );
+	}
+
+	// Expando Mode: start small, then auto-resize on first click + text length
+	jQuery( '#comment-form-identity' ).hide();
+	jQuery( '#comment-form-subscribe' ).hide();
+	jQuery( '#commentform .form-submit' ).hide();
+
+	comment.css( { 'height':'10px' } ).one( 'focus', function() {
+		var timer = setInterval( HighlanderComments.resizeCallback, 10 )
+		jQuery( this ).animate( { 'height': HighlanderComments.initialHeight } ).delay( 100 ).queue( function(n) { clearInterval( timer ); HighlanderComments.resizeCallback(); n(); } );
+		jQuery( '#comment-form-identity' ).slideDown();
+		jQuery( '#comment-form-subscribe' ).slideDown();
+		jQuery( '#commentform .form-submit' ).slideDown();
+	});
+}
+jQuery(document).ready( highlander_expando_javascript );
+</script>
+
+<div id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of new comments via email.</label></p><p class="post-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;"/> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog"  style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+
+
+
+<p class="form-submit"><input name="submit" type="submit" id="comment-submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='4101' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="4424ed8313" /></p>
+<input type="hidden" name="genseq" value="1575782999" />
+<p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="116"/></p></form>	</div><!-- #respond -->
+	<div style="clear: both"></div>
+</div><!-- #comments -->
+
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+<div id="secondary" class="widget-area" role="complementary">
+	<aside id="search-3" class="widget widget_search"><form role="search" method="get" class="search-form" action="https://pointieststick.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form></aside><aside id="follow_button_widget-3" class="widget widget_follow_button_widget">
+		<a class="wordpress-follow-button" href="https://pointieststick.com" data-blog="https://pointieststick.com" data-lang="en" data-show-follower-count="true">Follow Adventures in Linux and KDE on WordPress.com</a>
+		<script type="text/javascript">(function(d){var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');p.type = 'text/javascript';p.async = true;p.src = '//widgets.wp.com/platform.js';f.parentNode.insertBefore(p,f);}(document));</script>
+
+		</aside><aside id="blog_subscription-3" class="widget widget_blog_subscription jetpack_subscription_widget"><h1 class="widget-title"><label for="subscribe-field">Follow via Email</label></h1>
+            <form action="https://subscribe.wordpress.com" method="post" accept-charset="utf-8"
+                  id="subscribe-blog">
+									<p>Enter your email address to follow this blog and receive notifications of new posts by email.</p>
+<p>Join 287 other followers</p>
+                    <p><input type="text" name="email" style="width: 95%; padding: 1px 2px"
+                              placeholder="Enter your email address" value=""
+                              id="subscribe-field"/></p>
+				
+                <p>
+                    <input type="hidden" name="action" value="subscribe"/>
+                    <input type="hidden" name="blog_id" value="140354881"/>
+                    <input type="hidden" name="source" value="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/"/>
+                    <input type="hidden" name="sub-type" value="widget"/>
+                    <input type="hidden" name="redirect_fragment" value="blog_subscription-3"/>
+					<input type="hidden" id="_wpnonce" name="_wpnonce" value="4638958ac8" />                    <button type="submit"
+	                    		                	                >
+	                    Follow                    </button>
+                </p>
+            </form>
+			
+</aside><aside id="rss_links-3" class="widget widget_rss_links"><h1 class="widget-title">Follow via RSS</h1><ul><li><a href="https://pointieststick.com/feed/" title="Subscribe to Posts">RSS - Posts</a></li></ul>
+</aside><aside id="top-posts-3" class="widget widget_top-posts"><h1 class="widget-title">Popular posts</h1><ul class='widgets-list-layout no-grav'>
+					<li>
+						<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/" title="This week in KDE: GTK CSD support and more!" class="bump-view" data-bump-view="tp" aria-current="page">
+								<img width="40" height="40" src="https://i0.wp.com/i.imgur.com/Ar2KgDi.png?resize=40%2C40&#038;ssl=1" alt="This week in KDE: GTK CSD support and more!" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://pointieststick.com/2019/11/30/this-week-in-kde-gtk-csd-support-and-more/" title="This week in KDE: GTK CSD support and more!" class="bump-view" data-bump-view="tp" aria-current="page">This week in KDE: GTK CSD support and more!</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://pointieststick.com/2018/01/13/flatpak-support-in-discover/" title="Flatpak support in Discover" class="bump-view" data-bump-view="tp">
+								<img width="40" height="40" src="https://i2.wp.com/i.imgur.com/lYg5uTd.png?resize=40%2C40&#038;ssl=1" alt="Flatpak support in Discover" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://pointieststick.com/2018/01/13/flatpak-support-in-discover/" title="Flatpak support in Discover" class="bump-view" data-bump-view="tp">Flatpak support in Discover</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://pointieststick.com/2019/10/13/this-week-in-kde-plasma-5-17-approaches/" title="This week in KDE: Plasma 5.17 approaches" class="bump-view" data-bump-view="tp">
+								<img width="40" height="40" src="https://i0.wp.com/i.imgur.com/KNufKIe.png?resize=40%2C40&#038;ssl=1" alt="This week in KDE: Plasma 5.17 approaches" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://pointieststick.com/2019/10/13/this-week-in-kde-plasma-5-17-approaches/" title="This week in KDE: Plasma 5.17 approaches" class="bump-view" data-bump-view="tp">This week in KDE: Plasma 5.17 approaches</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://pointieststick.com/2019/09/28/this-week-in-kde-towards-plasma-5-18/" title="This week in KDE: Towards Plasma 5.18" class="bump-view" data-bump-view="tp">
+								<img width="40" height="40" src="https://i0.wp.com/i.imgur.com/dAQvvWi.png?resize=40%2C40&#038;ssl=1" alt="This week in KDE: Towards Plasma 5.18" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://pointieststick.com/2019/09/28/this-week-in-kde-towards-plasma-5-18/" title="This week in KDE: Towards Plasma 5.18" class="bump-view" data-bump-view="tp">This week in KDE: Towards Plasma 5.18</a>
+							</div>
+													</li>
+										<li>
+						<a href="https://pointieststick.com/2019/11/23/this-week-in-kde-polishing-it-up/" title="This week in KDE: Polishing it up" class="bump-view" data-bump-view="tp">
+								<img width="40" height="40" src="https://i0.wp.com/i.imgur.com/0ulwmxw.png?resize=40%2C40&#038;ssl=1" alt="This week in KDE: Polishing it up" data-pin-nopin="true" class="widgets-list-layout-blavatar"/>
+							</a>
+							<div class="widgets-list-layout-links">
+								<a href="https://pointieststick.com/2019/11/23/this-week-in-kde-polishing-it-up/" title="This week in KDE: Polishing it up" class="bump-view" data-bump-view="tp">This week in KDE: Polishing it up</a>
+							</div>
+													</li>
+					</ul>
+</aside><aside id="categories-3" class="widget widget_categories"><h1 class="widget-title">Categories</h1>		<ul>
+				<li class="cat-item cat-item-12233"><a href="https://pointieststick.com/category/discover/">Discover</a>
+</li>
+	<li class="cat-item cat-item-606063834"><a href="https://pointieststick.com/category/new-contributor-friendliness/">New Contributor Friendliness</a>
+</li>
+	<li class="cat-item cat-item-686543024"><a href="https://pointieststick.com/category/this-week-in-kde/">This Week in KDE</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://pointieststick.com/category/uncategorized/">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-603605952"><a href="https://pointieststick.com/category/usability-productivity/">Usability &amp; Productivity</a>
+</li>
+	<li class="cat-item cat-item-86713"><a href="https://pointieststick.com/category/user-interface-design/">User Interface Design</a>
+</li>
+	<li class="cat-item cat-item-98497"><a href="https://pointieststick.com/category/world-domination/">World Domination</a>
+</li>
+		</ul>
+			</aside><aside id="archives-3" class="widget widget_archive"><h1 class="widget-title">Archives</h1>		<ul>
+				<li><a href='https://pointieststick.com/2019/11/'>November 2019</a></li>
+	<li><a href='https://pointieststick.com/2019/10/'>October 2019</a></li>
+	<li><a href='https://pointieststick.com/2019/09/'>September 2019</a></li>
+	<li><a href='https://pointieststick.com/2019/08/'>August 2019</a></li>
+	<li><a href='https://pointieststick.com/2019/07/'>July 2019</a></li>
+	<li><a href='https://pointieststick.com/2019/06/'>June 2019</a></li>
+	<li><a href='https://pointieststick.com/2019/05/'>May 2019</a></li>
+	<li><a href='https://pointieststick.com/2019/04/'>April 2019</a></li>
+	<li><a href='https://pointieststick.com/2019/03/'>March 2019</a></li>
+	<li><a href='https://pointieststick.com/2019/02/'>February 2019</a></li>
+	<li><a href='https://pointieststick.com/2019/01/'>January 2019</a></li>
+	<li><a href='https://pointieststick.com/2018/12/'>December 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/11/'>November 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/10/'>October 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/09/'>September 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/08/'>August 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/07/'>July 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/06/'>June 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/05/'>May 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/04/'>April 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/03/'>March 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/02/'>February 2018</a></li>
+	<li><a href='https://pointieststick.com/2018/01/'>January 2018</a></li>
+	<li><a href='https://pointieststick.com/2017/12/'>December 2017</a></li>
+		</ul>
+			</aside><aside id="custom_html-3" class="widget_text widget widget_custom_html"><h1 class="widget-title">Tip jar</h1><div class="textwidget custom-html-widget"><strong>LiberaPay:</strong><br /><a href="https://liberapay.com/ngraham/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a>
+<br />
+<strong>PayPal:</strong><br /><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=Y279422B3LMRE"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="donate with PayPal" /></a>
+</div></aside></div><!-- #secondary -->
+
+		</div><!-- #content -->
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+						<div class="site-info">
+				<a href="https://wordpress.com/?ref=footer_blog" rel="nofollow">Blog at WordPress.com.</a>
+				
+							</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- #content-wrapper -->
+</div><!-- #page -->
+
+<!--  -->
+<script src='//0.gravatar.com/js/gprofiles.js?ver=201949y'></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/wp-content/mu-plugins/gravatar-hovercards/wpgroho.js?m=1380573781h'></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	<div class="grofile-hash-map-997b6be07dbf0cb9296ec4464ada5088">
+	</div>
+	<div class="grofile-hash-map-f85ca829222f0dfd807cf3289834150a">
+	</div>
+	<div class="grofile-hash-map-997b6be07dbf0cb9296ec4464ada5088">
+	</div>
+	<div class="grofile-hash-map-04f7b01032d60c3c0f5ef8795b600897">
+	</div>
+	<div class="grofile-hash-map-0bcbcb2f5dcece91d4c78e0bad9b362f">
+	</div>
+	<div class="grofile-hash-map-325ae03f2043d5711b3ff84f058eecc0">
+	</div>
+	<div class="grofile-hash-map-a38343534716482edb26d433ff179c82">
+	</div>
+	<div class="grofile-hash-map-cb272dbd371203cad7be481f9861268d">
+	</div>
+	<div class="grofile-hash-map-ae9f2fdb422884a3438d5a949b60b1ba">
+	</div>
+	<div class="grofile-hash-map-58fee95f7413bb5aeb03b891ef84aa76">
+	</div>
+	<div class="grofile-hash-map-889dd67954750235cd7a981990cbd281">
+	</div>
+	<div class="grofile-hash-map-68042f75d2da7338b986b2d6fbf1e002">
+	</div>
+	<div class="grofile-hash-map-8bbdf0ac6b966d9ff3db75f0bd8a5726">
+	</div>
+	<div class="grofile-hash-map-b5f271440675349a371af12e96be5e04">
+	</div>
+	<div class="grofile-hash-map-25d5265bef5f5d933c8bb42d6f8e17a3">
+	</div>
+	<div class="grofile-hash-map-181ae3c6e4a87c35bfbd987c5838a135">
+	</div>
+	<div class="grofile-hash-map-a187900fe6fa2afe276a79dcf32b0b11">
+	</div>
+	<div class="grofile-hash-map-7a9a2e6807ce23e0e5231a0f38e6b7f3">
+	</div>
+	</div>
+<script>
+var HighlanderComments = {"loggingInText":"Logging In\u2026","submittingText":"Posting Comment\u2026","postCommentText":"Post Comment","connectingToText":"Connecting to %s","commentingAsText":"%1$s: You are commenting using your %2$s account.","logoutText":"Log Out","loginText":"Log In","connectURL":"https:\/\/pointieststick.wordpress.com\/public.api\/connect\/?action=request&domain=pointieststick.com","logoutURL":"https:\/\/pointieststick.wordpress.com\/wp-login.php?action=logout&_wpnonce=c5f636f619","homeURL":"https:\/\/pointieststick.com\/","postID":"4101","gravDefault":"blank","enterACommentError":"Please enter a comment","enterEmailError":"Please enter your email address here","invalidEmailError":"Invalid email address","enterAuthorError":"Please enter your name here","gravatarFromEmail":"This picture will show whenever you leave a comment. Click to customize it.","logInToExternalAccount":"Log in to use details from one of these accounts.","change":"Change","changeAccount":"Change Account","comment_registration":"","userIsLoggedIn":"","isJetpack":"","text_direction":"ltr"};
+</script>
+<script type='text/javascript' src='https://s0.wp.com/_static/??/wp-content/js/jquery/jquery.autoresize.js,/wp-content/mu-plugins/highlander-comments/script.js?m=1573483029j'></script>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/pointieststick.com\/2019\/11\/30\/this-week-in-kde-gtk-csd-support-and-more\/":4101};
+	</script>
+				<link rel='stylesheet' id='all-css-0-3' href='https://s1.wp.com/_static/??-eJyFjEEOwiAQRS8kndS20Y3xLBRGQmWAMKVNby8xYliYuJq8+XkP9ihU8Cv6FaLLxnoGkwvOmIyYXVBPhj2qQBU+55GK1SnmEzQJyqJWEnIMnu2GYrMaw4/PV7deuayRYWEg1FaiQ3r3GohOHpiEQyPV0ZH1//WytVylO9366TJM134Yz8sLmOBhiQ==?cssminify=yes' type='text/css' media='all' />
+<script>
+var comment_like_text = {"loading":"Loading..."};
+</script>
+<script>
+var actionbardata = {"siteID":"140354881","siteName":"Adventures in Linux and KDE","siteURL":"https:\/\/pointieststick.com","icon":"<img alt='' src='https:\/\/s2.wp.com\/i\/logo\/wpcom-gray-white.png' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/independent-publisher-2","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fpointieststick.com%2F2019%2F11%2F30%2Fthis-week-in-kde-gtk-csd-support-and-more%2F&signup_flow=account&domain=pointieststick.com","themeURL":"https:\/\/wordpress.com\/theme\/independent-publisher-2\/","xhrURL":"https:\/\/pointieststick.com\/wp-admin\/admin-ajax.php","nonce":"ba82c56fd6","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"4638958ac8\" \/>","referer":"https:\/\/pointieststick.com\/2019\/11\/30\/this-week-in-kde-gtk-csd-support-and-more\/","canFollow":"1","feedID":"91464283","statusMessage":"","customizeLink":"https:\/\/pointieststick.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fpointieststick.wordpress.com%2F2019%2F11%2F30%2Fthis-week-in-kde-gtk-csd-support-and-more%2F","postID":"4101","shortlink":"https:\/\/wp.me\/p9uUIp-149","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/pointieststick.com\/4101","statsLink":"https:\/\/wordpress.com\/stats\/post\/4101\/pointieststick.com","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Independent Publisher 2","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"Join 287 other followers","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fpointieststick.com%2F2019%2F11%2F30%2Fthis-week-in-kde-gtk-csd-support-and-more%2F&signup_flow=account&domain=pointieststick.com\">Log in now.<\/a>","stats":"Stats"}};
+</script>
+<script>
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+</script>
+<script>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script type='text/javascript'>
+var mejsL10n = {"language":"en","strings":{"mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen-off":"Turn off Fullscreen","mejs.fullscreen-on":"Go Fullscreen","mejs.download-video":"Download Video","mejs.fullscreen":"Fullscreen","mejs.time-jump-forward":["Jump forward 1 second","Jump forward %1 seconds"],"mejs.loop":"Toggle Loop","mejs.play":"Play","mejs.pause":"Pause","mejs.close":"Close","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.time-skip-back":["Skip back 1 second","Skip back %1 seconds"],"mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.mute-toggle":"Mute Toggle","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.ad-skip":"Skip ad","mejs.ad-skip-info":["Skip in 1 second","Skip in %1 seconds"],"mejs.source-chooser":"Source Chooser","mejs.stop":"Stop","mejs.speed-rate":"Speed Rate","mejs.live-broadcast":"Live Broadcast","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+</script>
+<script type='text/javascript' src='https://s1.wp.com/_static/??-eJydkttuwjAMhl9oITshxsW0R5nS1G3d5jQ7KePt57KBCkIV7CaJHX+288d6l5SNIUPIumddw4gW0veq5wc9u/JFJVdaDKwdDsD6q0CBzoTaAS0E2+i9uNQv1E90pXmHCe6BzhyX4JFqi5gVUKsqF+3AEiPc0fjbYJzy2FhCruMuXObKHXgpmUqlMdSQQBaJF9shd0DqeWonmBFbkzH+k+cBk7wlDKqJtrBq8KQ3ButKff5qguT2K4//qSb5NFvClNVBjgXVTS0lVGVIe8MZSE4qjkCEUz8n350ZMhnRfQmyk5ATdDotRBNwioFxBDVKX/GKZ67UXE4PNRpw4A8pZ4aSKZYCZi+TfDfrsSWT4SZQ7ub2TQxNn0pArEf0EK+NwVzMAdlDVi+rR/05/X0TaenPU+SsGmeQNHeGMLTHXaAP//603rxuN2/r9bb/ARbIkKw='></script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src='https://widgets.wp.com/likes/master.html?ver=20190321#ver=20190321' scrolling='no' id='likes-master' name='likes-master' style='display:none;'></iframe>
+		<div id='likes-other-gravatars'><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="//stats.wp.com/w.js?60" type="text/javascript" async defer></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'140354881','blog_tz':'-7','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'140354881','v':'wpcom','tz':'-7','user_id':'0','post':'4101','subd':'pointieststick'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1TaVhzUzFMbjdWNHpwZGhTayxPSUFCMGNrd29+Smw0TDhnZmRTK0hlRi9QSGh6bi9GXVhBJWIlZlR5U1JMLU8/MkNtblkvY1dldi1Cdz1FW1N6S0NteFFsTTZdcCVqdmgvLFhfenh5LDhvTmx3RWZoQ29YRjVJWm89LW42X3ZoTl91a0R1c2d0N0VBXzFwLlk0VTljal1zLHJLR2JjNFpPJndCSk89PSVxY3lrelErRV9iWCsyZSVfSm09VXpbejJTSVt0by5hMG0zRGYsSlEwOC4majhyS1hjZ19HLUVnVi1+TlE/N3csaG8waHYmWy4wT0xYRX5PLWZHVzRycWp0M2FdLT15T3BqXVhqcGIxTUNhblRzdG40b1dBMmRSak1QLmdQTElIYll5U0Jwc1Vwbl10LkNzWEMubzZHQXJNa3xxRVdiL1UtU1lGfDZm'}]);
+_stq.push([ 'clickTrackerInit', '140354881', '4101' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+</body>
+</html>

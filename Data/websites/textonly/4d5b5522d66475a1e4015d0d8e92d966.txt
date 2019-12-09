@@ -1,0 +1,72 @@
+The Amnesic Incognito Live System
+Tails helps thousands of people stay safe online every day. And it's free.
+Donate today to protect and sustain Tails!
+Tails ayuda a miles de personas a navegar con seguridad cada dÃ­a y es gratis.
+Â¡Dona hoy para apoyar y proteger Tails!
+Tails hilft tÃ¤glich tausenden Menschen sicher im Netz zu sein, und das unentgeltlich.
+Spende heute, um Tails am Leben zu halten!
+Tails helps thousands of people stay safe online every day. And it's free.
+Donate today to protect and sustain Tails!
+Chaque jour, Tails protÃ¨ge gratuitement des milliers de personnes sur le net.
+Donnez aujourd'hui pour soutenir et protÃ©ger Tails !
+Tails helps thousands of people stay safe online every day. And it's free.
+Donate today to protect and sustain Tails!
+Tails ajuda milhares de pessoas a se protegerem na Internet todos os dias, e Ã© gratuito.
+Donate today to protect and sustain Tails!
+Tails 4.1 is out
+
+Tails 4.1 is out
+
+RecentChanges
+Preferences
+English
+   
+Tails 
+4.1
+
+
+2019-12-03
+Getting started…
+Documentation
+Help & Support
+many security
+vulnerabilities
+Changes and upgrades
+Fixed problems
+Known issues
+Get Tails 4.1
+What's coming up?
+https://keys.openpgp.org/
+https://zkaan2xfbuxia2wpf7ofnkbz6r5zdbbvxbunvp5g2iebopbfc4iqmbad.onion/
+keys.openpgp.org is more trustworthy than other OpenPGP public key
+servers because it only references an OpenPGP public key after
+sending a confirmation email to the email addresses listed in the
+key.
+keys.openpgp.org does not distribute third-party signatures, which
+are the signatures on a key that were made by some other key.
+Third-party signatures are the signatures used to create the OpenPGP
+Web of Trust.
+OpenPGP certificate
+flooding attacks
+Tor Browser
+Thunderbird
+Thunderbird
+Show Passphrase
+Tails Greeter
+Open in Terminal
+None specific to this release.
+long-standing issues
+Automatic upgrades are available from 4.0 to 4.1.
+manual upgrade
+Follow our installation instructions:
+Install from Windows
+Install from macOS
+Install from Linux
+All the data on this USB stick will be lost.
+If you don't need installation or upgrade instructions, you can directly download
+Tails 4.1:
+For USB sticks (USB image)
+For DVDs and virtual machines (ISO image)
+contribute to
+Tails
+security/Numerous security holes in 4.0

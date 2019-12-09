@@ -1,0 +1,53 @@
+
+        How to integrate Ubuntu with Active Directory
+      
+
+          Download the whitepaper
+        
+
+        Ubiquitous use of Microsoft tools coupled with increasing popularity of open source Linux software for enterprise presents new challenges for non-Microsoft operating systems that require seamless integration with Active Directory for authentication and identity management. This is because Active Directory was never designed as a cross-platform directory service.
+      
+Ubuntu Desktop
+BeyondTrust’s
+Integrating Ubuntu Desktop into an existing Active Directory architecture can be an automated and effortless process
+
+        This whitepaper provides detailed insights and step-by-step instructions for using PBIS Open to integrate Ubuntu Desktop into Active Directory and suggests alternative solutions in cases where it is not a suitable option.
+      
+
+        What can I learn from this whitepaper?
+      
+
+          Overview, benefits and drawbacks of using PBIS Open to integrate third party operating systems into an existing Microsoft Active Directory architecture.
+        
+
+          Detailed steps for PBIS Open set up and integrating Ubuntu into Active Directory.
+        
+
+          Alternative tools to integrate Ubuntu into Active Directory.
+        
+First Name:
+Work email:
+Company Name:
+Phone Number:
+I agree to receive
+          information about Canonical’s products and services.
+Canonical’s Privacy Notice
+Privacy Policy
+Download the whitepaper
+Back to top
+What is OpenStack
+Certifications
+Organisations
+Digital signage
+Embedded Linux
+Community support
+Alternative downloads
+Ubuntu flavours
+Public cloud
+Press centre
+© 2019 Canonical Ltd. Ubuntu and Canonical are registered trademarks of Canonical Ltd.
+Legal information
+Data privacy
+Report
+                a bug on this site
+Go to the top of the page

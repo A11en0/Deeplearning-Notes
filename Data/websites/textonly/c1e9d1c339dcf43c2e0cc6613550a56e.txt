@@ -1,0 +1,84 @@
+Press J to jump to the feed. Press question mark to learn the rest of the keyboard shortcuts
+User account menu
+I made a program that makes Debian Apt feel almost exactly like Arch Pacman!!
+Software Release
+u/CadenMitchell
+I made a program that makes Debian Apt feel almost exactly like Arch Pacman!!
+Software Release
+So there I was, decking out my 13-year-old PC with a fresh install of Lubuntu, trying to install some packages. I started typing in a package command but quickly realized I had just entered a Pacman command instead of an Apt command!! This gave me an idea! I quickly began work on a Bash script that would solve this problem for good! I made a Pacman-style frontend for Apt! Seven hours well-spent! :P
+So jokes aside, I actually did complete this script. I ended up needing to write it twice because I corrupted the first version of it. I've ported all the major and most common commands so far. Everything down to the help and version dialog is Pacman-like! I know this sort of only satisfies a very niche group of Linux power users but I thought I'd post this somewhere for others to try out! The source code and packaged Debian installer package are available on my GitLab!
+https://gitlab.com/TriVoxel/deb-pacman
+117 comments
+81% Upvoted
+Log in or sign up to leave a comment
+controversial
+So now we have a front end for a front end for a package manager.
+DamnThatsLaser
+It's called a wrapper
+Continue this thread
+Yo Dawg....
+edited 3 days ago
+Had a quick look at it and it looks like a good opportunity to use case statements:
+case $1 in
+    "-S")
+        echo "option -S";;
+    "-h"|"--help")
+        echo "option -h or --help";;
+    *)
+        echo "non of the above matched";;
+esac
+
+Consider using shellcheck to check for common shell scripting issues.
+CadenMitchell
+Original Poster
+I haven't heard of that before! Will implement it into v2.0! :-)
+Continue this thread
+CadenMitchell
+Original Poster
+Continue this thread
+quantumbyte
+I guess after writing that you probably remembered the apt commands anyway lol
+install, remove, update, upgrade, autoremove
+I think they are not so hard to remember.
+27-82-41-124
+Right? Also I feel the opposite of OP, I would love to type apt commands but have them converted to pacman, as a Ubuntu user who tried manjaro w/ pacman, a big factor in why I didn't stay was I couldn't stand having to learn pacman... Apt is so much more readable and friendly.
+edited 3 days ago
+pacman -Ql foo
+Granted, his wrapper doesn't cover that, but it is one thing that always trips me up.
+Continue this thread
+Jacko10101010101
+no but its long to write... deb could use an alias...
+Continue this thread
+The good thing about apt is, the commands(install, remove, etc) and modifiers(--installed as in apt list --installed) all make sense and the meaning behind is very easy to understand, unlike pacman with its  -Syuu. I mean, the hell, how should anyone know that -Sw stands for download but not install while apt does this as simple as "apt download package".
+Morganamilo
+how should anyone know that -Sw stands for download but not install
+pacman --sync --downloadonly
+I made the same thing ~one year ago.
+However it supports 21 different package managers and is customizable to the core (you an add your own package manager and change the syntax of the argvs).
+https://github.com/emilengler/sysget
+Damn boi good work
+Does it search every package manager you have installed? So if I have apt, pip, npm, flatpak will it list all the candidates?
+Continue this thread
+REDDITWASRIGHT
+You should use getopt to parse the command line arguments.
+elif [[ $1 = '-R' || $1 = '--remove' ]];then
+    if [[ $2 = '--noconfirm' ]];then
+
+-R --noconfirm
+--noconfirm -R
+https://www.computerhope.com/unix/bash/getopts.htm
+Arch Linux Team
+I'm horrified.
+GlouGlouFou
+By writing this script you probably learned to remember all useful apt commands. Now you don't even need your script :D
+View entire discussion (117 comments)
+Jan 25, 2008
+All things Linux and GNU/Linux -- this is neither a community exclusively about the kernel Linux, nor is exclusively about the GNU operating system.
+Using Reddit
+Reddit coins
+Reddit premium
+Reddit gifts
+Communities
+Content policy
+Privacy policy
+Reddit Inc © 2019. All rights reserved

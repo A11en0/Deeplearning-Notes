@@ -1,0 +1,106 @@
+Skip to content
+Code review
+Project management
+Integrations
+Team management
+Social coding
+Documentation
+Code hosting
+Learn & contribute
+Collections
+Learning Lab
+Open source guides
+Connect with others
+Community forum
+GitHub Education
+Marketplace
+Compare plans
+Contact Sales
+
+        In this repository
+      
+
+        All GitHub
+      
+No suggested jump to results
+
+        In this repository
+      
+
+        All GitHub
+      
+
+        In this repository
+      
+
+        All GitHub
+      
+
+          Sign in
+        
+
+            Sign up
+          
+
+      1
+    
+
+      2
+    
+
+      1
+    
+awesome-make
+Pull requests
+
+              Dismiss
+            
+Join GitHub today
+GitHub is home to over 40 million developers working together to host and review code, manage projects, and build software together.
+
+          No description, website, or topics provided.
+        
+
+              9
+            
+
+            1
+          
+
+              0
+            
+
+            0
+          
+
+          New pull request
+        
+
+              Use Git or checkout with SVN using the web URL.
+            
+Download ZIP
+adelarsq/awesome-make
+download GitHub Desktop
+download GitHub Desktop
+download Xcode
+download the GitHub extension for Visual Studio
+Update README.md
+Latest commit
+
+        7988c78
+      
+Dec 6, 2019
+Latest commit message
+Commit time
+Failed to load latest commit information.
+Update README.md
+Dec 6, 2019
+Oficial Reference
+Seamlessly Run Composer On HHVM Inside Docker: Introducing make-docker-command
+The Language Agnostic, All-Purpose, Incredible, Makefile
+Automation and Make
+Recursive Make
+Self-Documented Makefile
+Can GNU make handle filenames with spaces?
+© 2019 GitHub, Inc.
+Contact GitHub

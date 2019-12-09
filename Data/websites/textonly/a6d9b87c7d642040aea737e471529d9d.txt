@@ -1,0 +1,38 @@
+Screenshots
+Documentation
+Contributing
+Plasma Mobile: weekly update: part 9-10
+Dec 6, 2019 • Plasma Mobile team
+The Plasma Mobile team is happy to present the blogpost with updates from week 9 and 10.
+Applications
+offers a flat event view
+events are sorted by start date
+including a branch from pasnox to overhaul multimedia messages
+Send voice and video messages from within the application.
+Take photos from within the application.
+Share your location in chat messages.
+Play videos and sounds directly in the chats.
+gained the capability to search through messages
+Jonah Brüchert merged several improvements in Spacebar, the application used to send SMS messages.
+unicode emojis instead of a custom emoji picker
+loading animation in the chats page
+Some general visual improvements on the conversation page. There is more space for messages and the input field has a more chat-app like design.
+Spacebar was updated in postmarketOS by Bhushan Shah so that SMS now works correctly on supported devices.
+Plasma Phonebook
+sort the contacts list and add section delegates
+It now also shows the fallback avatar if a contact doesn’t have a picture
+Plasma Settings
+save settings before closing a page
+change to call ::load on the configuration module
+Want to be part of it?
+Find your way in Plasma Mobile
+public channels
+
+                  
+Community Forums
+KDE Community on Twitter
+KDE on Mastodon
+Get Involved in KDE
+2015-19 KDE e.v.
+
+            

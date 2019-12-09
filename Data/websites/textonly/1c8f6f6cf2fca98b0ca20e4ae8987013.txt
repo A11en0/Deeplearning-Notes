@@ -1,0 +1,60 @@
+Skip to main content
+Gaming & Culture
+Mobile Site
+Staff Directory
+Advertise with Ars
+Gaming & Culture
+Front page layout
+Black on white
+White on black
+Sign up or login to join the discussions!
+Having trouble?
+Sign up to comment and more
+
+      it's not a phone—yet—but it's a linux    —
+
+Librem 5 backers have begun receiving their Linux phones
+The first Librem 5 backers have begun receiving mostly working prototype devices.
+Dec 2, 2019 7:05 pm UTC
+reader comments
+ with 67 posters participating, including story author
+Share this story
+Share on Facebook
+Share on Twitter
+Share on Reddit
+
+                      Lifting the lid off the Librem 5's box, you see the phone and a "getting started" manual.                    
+
+                      The Librem 5's accessories nestled beneath the phone: a charging cable, headphones, and a USB wall wart.                    
+
+                      The backplate to the Librem 5 removes easily, exposing the battery, Wi-Fi module, and cellular modem.                    
+
+                      Removing the battery is also a trivial task. Hopefully, this means easier battery upgrades down the line: this is a 2000mAh battery, not the originally promised 3500mAh.                    
+
+                      Powering on the Librem 5 for the first time walks you through a standard-looking welcome-and-setup process, beginning with language selection.                    
+Further Reading
+The Librem 5 has been “shipping” for a month—but not to backers
+What the Librem 5 isn't (yet)
+First of all, it's not really a "phone" yet. There's no audio when attempting to place a phone call. The cameras also don't appear to work yet. Azdle reports "installing and opening up Cheese"—Cheese is a very basic Linux video application, installed by default in many distros—"I just get a message saying 'no device found.'" There's also effectively no power management yet, so the Librem doesn't last long on battery. It takes a long time to charge as well.
+reader comments
+ with 67 posters participating, including story author
+Share this story
+Share on Facebook
+Share on Twitter
+Share on Reddit
+jim.salter@arstechnica.com
+login or create an account
+Ars Technica
+Related Stories
+Sponsored Stories
+Today on Ars
+View Mobile Site
+Advertise with us
+Newsletter Signup
+Join the Ars Orbital Transmission mailing list to get weekly updates delivered to your inbox.
+Sign me up →
+User Agreement
+Privacy Policy and Cookie Statement
+Ars Technica Addendum
+Read our affiliate link policy
+Your California Privacy Rights

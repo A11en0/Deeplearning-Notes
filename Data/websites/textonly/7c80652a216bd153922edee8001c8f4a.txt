@@ -1,0 +1,260 @@
+Inane Observations
+$ sudo fix_it
+Forwarding game controllers and other input over SSH
+01 December 2019
+02 December 2019
+input-over-ssh (legacy)
+input-over-ssh
+python-evdev
+Then navigate to the root directory on the client and run:
+python -m input_over_ssh.client -L
+
+python -u -m input_over_ssh.client -p /dev/input/event1 | ssh hostname.example.com 'PYTHONPATH=/path/to/input-over-ssh python -m input_over_ssh.server'
+
+For the adventurous, you ought to be able to replace ssh with netcat/socat over UDP to further reduce latency.
+In combination with a VNC server/client setup, this could be used as a open-source alternative to services like Steam Remote Play.
+python -m input_over_ssh.client --help
+Quick Links
+December 2019 (3)
+November 2019 (5)
+October 2019 (5)
+September 2019 (6)
+August 2019 (4)
+
+								guide (32)
+							
+
+								linux (28)
+							
+
+								misc (15)
+							
+
+								ebook (14)
+							
+
+								drm (12)
+							
+
+								gaming (10)
+							
+
+								reverse engineering (10)
+							
+
+								security (9)
+							
+
+								cryptography (8)
+							
+
+								encryption (8)
+							
+
+								clara hd (7)
+							
+
+								ereader (7)
+							
+
+								kobo (7)
+							
+
+								meeting procedure (6)
+							
+
+								music (6)
+							
+
+								parliamentary procedure (6)
+							
+
+								review (6)
+							
+
+								victoria (6)
+							
+
+								arch linux (5)
+							
+
+								books (5)
+							
+
+								elections (5)
+							
+
+								ptv (5)
+							
+
+								public transport (5)
+							
+
+								windows (5)
+							
+
+								defective by design (4)
+							
+
+								digital rights management (4)
+							
+
+								dota (4)
+							
+
+								error (4)
+							
+
+								medicine (4)
+							
+
+								meme (4)
+							
+
+								science fiction (4)
+							
+
+								video (4)
+							
+
+								amd (3)
+							
+
+								creative commons (3)
+							
+
+								dank (3)
+							
+
+								java (3)
+							
+
+								mac (3)
+							
+
+								monash (3)
+							
+
+								obfuscation (3)
+							
+
+								rant (3)
+							
+
+								raspberry pi (3)
+							
+
+								road rules (3)
+							
+
+								south australia (3)
+							
+
+								wine (3)
+							
+
+								youtube (3)
+							
+
+								ati (2)
+							
+
+								audio (2)
+							
+
+								clayton (2)
+							
+
+								defense of the ancients (2)
+							
+
+								finances (2)
+							
+
+								hybrid graphics (2)
+							
+
+								ib (2)
+							
+
+								intel (2)
+							
+
+								interview (2)
+							
+
+								kodi (2)
+							
+
+								law (2)
+							
+
+								league of legends (2)
+							
+
+								lol (2)
+							
+
+								macintosh (2)
+							
+
+								mbbs (2)
+							
+
+								md (2)
+							
+
+								med in review (2)
+							
+
+								metro trains (2)
+							
+
+								minivmac (2)
+							
+
+								mmi (2)
+							
+
+								parliament (2)
+							
+
+								politics (2)
+							
+
+								programming (2)
+							
+
+								proportional representation (2)
+							
+
+								steam (2)
+							
+
+								ukulele (2)
+							
+
+								undergraduate (2)
+							
+
+								video editing (2)
+							
+
+								vline (2)
+							
+
+								voting systems (2)
+							
+
+								xbmc (2)
+							
+
+								xbone (2)
+							
+
+								yarra trams (2)
+							
+RunasSudo (Lee Yingtong Li)
+blog@yingtongli.me
+GNU AGPL v3
+CC BY-SA 4.0 International

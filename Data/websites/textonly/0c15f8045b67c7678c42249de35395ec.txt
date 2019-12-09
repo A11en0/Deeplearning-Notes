@@ -1,0 +1,49 @@
+Get started
+About ITNEXT
+Write for ITNEXT
+Vacancies @ LINKIT
+Linux: protecting configuration files
+Dennis Zimmer
+No matter if you’re running a linux environment on premise or in a cloud instance using any distribution (i. e. Ubuntu, Centos, RHEL or something else), you want to know if something has been touched.
+CodeNotary allows you exactly that in the most simple way and the verification counterpart is even stored safely outside of your environment.
+The following blog post covers the notarization of the /etc directory where configuration files are typically stored and the automatic authentication whenever you log in.
+Install vcn
+Notarize file or folder
+change your bash profile to authenticate whenever logging in
+some example
+Install vcn
+There are plenty of different ways to install the vcn Command line tool. And of course you can build it yourself. The GitHub repository can be found here:
+https://github.com/vchain-us/vcn
+and the latest release:
+https://github.com/vchain-us/vcn/releases/latest
+If you want a quick installation (Linux, MacOS), you can also use our installation script:
+bash <(curl http://getvcn.codenotary.io -L)
+Notarize file or folder
+As vcn is installed and running we can notarize the folder or files we like to verify everytime we log in. These could be:
+configuration files (Apache, NGINX, Firewall services, Sudoers files and much more)
+folders containing configuration files
+file or folders that should never change unnoticed
+CodeNotary 
+The notarization of the /etc folder
+vcn a dir:///etc
+ vcn n /path/file 
+Change your bash profile to authenticate whenever logging in
+Instead of authenticate or verify the configuration folder /etc everytime we log in, we want to do that in an automatic way. This example is simple but could be enhanced very easily to secure the environment even more.
+nano ~/.profile
+CHECKSUM=$(sha256sum /usr/local/bin/vcn | cut -d " " -f 1) 
+curl -s https://api.codenotary.io/authenticate/$CHECKSUM?org=vchain.us | grep -q :0 
+Save the file and the next login is already checking the /etc folder.
+Some example
+Nothing changed since the notarization took place:
+After changing the /etc/sudoers file
+As you could see its so easy and straightforward to use CodeNotary to protect your directories or folders. That works for Linux, MacOS and of course Windows as well (we’re covering Microsoft Windows another time).
+Originally published at 
+https://www.codenotary.io
+ on December 3, 2019.
+ITNEXT is a platform for IT developers & software engineers to share knowledge, connect, collaborate, learn and experience next-gen technologies.
+File Management
+Dennis Zimmer
+Fullstack Monitoring, Analytics, Security: VMware, Docker, Kubernetes, Applications
+ITNEXT is a platform for IT developers & software engineers to share knowledge, connect, collaborate, learn and experience next-gen technologies.
+Write the first response
+Become a member

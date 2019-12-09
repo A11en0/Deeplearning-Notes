@@ -1,0 +1,126 @@
+This app works best with JavaScript enabled.
+This week inÂ Matrix
+This Week in Matrix 2019-12-06
+This Week in Matrix
+Matrix Live ð
+Status of Matrix
+announced the availability of zipped hoodies
+local Post Office
+Dept of Spec ð
+Here's your news for what happened in spec-land last week!
+Merged MSCs
+MSC2367: Add reason field to all membership events
+MSC2324: Facilitating early releases of software dependent on spec
+MSCs in Final Comment Period
+No MSCs are in FCP...
+MSC2380: Matrix Media Information API
+MSC2370: Resolve URL API
+MSC2375: Appservice Invite States
+MSC2376: Disable URL Previews
+TravisR confirmed:
+The spec core team is focused on implementing a bunch of MSCs so that we can make progress with the spec.
+Dept of Servers ð¢
+This week we've mainly been tying up loose ends on the matrix.org data centre migration. Outside of that one interesting feature to land on develop is that of configurable message retention. It means that as an admin you can set a default period after which messages will be removed from the server (a year say), whatâs more the default is configurable on a per room basis via state events. Note, this feature applies to messages only, not media (on its way!). Configurable message retention will be make it into the next versioned release.
+matrix-synapse-ldap3
+matrix-synapse-ldap3
+https://github.com/matrix-org/matrix-synapse-ldap3/releases/tag/v0.1.4
+Dept of Clients ð±
+Alexandre Franke
+off Flathub
+New features:
+Translation strings have been updated
+Newlines now work when markdown is enabled
+Account settings can be accessed again
+Redaction is working again
+Compatibility with HTTP-only (non HTTPS) servers has been restored
+Some crashes fixed
+Under the hood:
+Code refactor is still going
+Adrien Plazas
+RiotX 0.9.1
+Released v0.9.1 on Thursday! This version includes a new login flow and account creation flow. Read marker has been reworked, to simplify user experience on mobile. Also you can type and send user pills.
+We are now working on room and user profiles, and matrix.to link handling. Verification in DM development is progressing well. Also we implemented a first version of breadcrumbs, to switch between recent rooms very quickly.
+Riot-iOS 0.10.3 is on its way to Apple review. The release note is:
+This release includes bug fixes and improvements, like:
+Ask permission before opening a widget and the integration manager.
+Display room name, user name and user avatar in the Jitsi conference screen.
+Support Welsh and Italian languages.
+https://github.com/manuroe/messagerie
+Messagerie is a chat app written to test SwiftUI and Combine to make a real and, hopefully, useful app.
+Messagerie misses a lot of things but it has:
+Support of Matrix using SwiftMatrixSDK
+Multi-account (swipe the navigation bar to switch accounts)
+Dark mode and auto-sizing fonts (well, they come for free)
+4 screens at the moment: a Matrix login screen, a room list, a room screen and a very early beginning of a SwiftUI text composer to post text message
+This is a personal and a side project, but RiotX-iOS will probably take benefit from it.
+Riot Web means Cross Signing!
+Riot Web is largely focused on nudging cross-signing forward over the last week. Key verification and cross-signing setup continues to make progress. We've also fixed a few bugs and merged some accessibility improvements.
+Dept of Ops ð 
+matrix-docker-ansible-deploy
+matrix-docker-ansible-deploy
+riot-desktop-builder docker image
+docker image
+Dept of Bots ð¤
+msc-chatbot
+msc_resolver2 is back and now isn't annoying with all new features like:
+actually showing you the MSC title when it links it
+not posting the same links multiple times
+not posting a link when you've already linked the msc in the original message
+ignoring edits
+ignoring content of replies
+https://github.com/anoadragon453/msc-chatbot
+malobot - send or receive location messages
+https://github.com/vranki/malobot/
+Dept of Ping ð
+schwukas.de
+aime.lesmatric.es
+room409.xyz
+aryasenna.net
+matrix.okeso.net
+matrix.vgorcum.com
+Final Thoughts ð­
+#matrix-forums:permaweb.io
+there is a Matrix feature which enables spoilers
+That's all I know ð
+#twim:matrix.org
+Zipped Hoodies Now Available
+Post Contents
+Matrix Live ð
+Dept of Status of Matrix ð¡
+Dept of Spec ð
+Dept of Servers ð¢
+Dept of Clients ð±
+Dept of Ops ð 
+Dept of Bots ð¤
+Dept of Ping ð
+Final Thoughts ð­
+That's all I know ð
+This Week in Matrix 2019-12-06
+Zipped Hoodies Now Available
+This Week in Matrix 2019-11-29
+Synapse 1.6.0 released
+This Week in Matrix 2019-11-22
+This Week in Matrix 2019-11-15
+Avoiding unwelcome visitors on private Matrix servers
+Client-server r0.6.0 and Identity Service r0.3.0 releases
+This Week in Matrix 2019-11-08
+Fun and games with certificate transparency logs
+This Week in Matrix 2019-11-01
+Synapse 1.5.0 released
+This Week in Matrix 2019-10-26
+Synapse 1.4.1 released
+This Week in Matrix 2019-10-18
+This Week in Matrix 2019-10-11
+New Vector raises $8.5M to accelerate Matrix/Riot/Modular
+This Week in Matrix 2019-10-04
+matrix-appservice-slack bridge 1.0 is here!
+Synapse 1.4.0 released
+Getting Started
+Client-Server API
+InstallÂ Synapse
+Develop Docs
+APIÂ Playground
+This week in Matrix
+Security Disclosure Policy
+Code of Conduct for Matrix.org
+Â© 2019 The Matrix.org Foundation C.I.C.

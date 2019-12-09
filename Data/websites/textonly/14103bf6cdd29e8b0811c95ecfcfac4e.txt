@@ -1,0 +1,121 @@
+Microsoft Starts Forced Feature Updates on Windows 10 1809
+Evil Corp Hackers Charged For Stealing Over $100 Million
+UK Retailer Sweaty Betty Hacked to Steal Customer Payment Info
+BMW Infiltrated by Hackers Hunting for Automotive Trade Secrets
+Moscow Cops Sell Access to City CCTV, Facial Recognition Data
+Clever Microsoft Phishing Scam Creates a Local Login Form
+FBI Recommends Securing Your Smart TVs and IoT Devices
+The Week in Ransomware - December 6th 2019 - 'We have seen better days'
+Most Downloaded
+STOPDecrypter
+AuroraDecrypter
+FilesLockerDecrypter
+360 Total Security
+Junkware Removal Tool
+Virus Removal Guides
+Most Viewed
+Remove the Full System Care PUP
+Remove the Searchpowerapp.com Search Redirect
+Remove the Power App Chrome Extension
+Remove the HD Video Player PUP
+Remove Security Tool and SecurityTool (Uninstall Guide)
+How to remove Antivirus 2009 (Uninstall Instructions)
+How to Remove WinFixer / Virtumonde / Msevents / Trojan.vundo
+How to remove Google Redirects or the TDSS, TDL3, or Alureon rootkit using TDSSKiller
+Locky Ransomware Information, Help Guide, and FAQ
+CryptoLocker Ransomware Information Guide and FAQ
+CryptorBit and HowDecrypt Information Guide and FAQ
+CryptoDefense and How_Decrypt Ransomware Information Guide and FAQ
+Fix a Missing api-ms-win-crt-runtime-l1-1-0.dll DLL in Windows
+How to Use Windows Defender to Scan a Folder for Malware
+How to Find the Windows Defender Version Installed in Windows 10
+How to Enable the Windows 10 Tamper Protection Security Feature
+How to start Windows in Safe Mode
+How to remove a Trojan, Virus, Worm, or other Malware
+How to show hidden files in Windows 7
+How to see hidden files in Windows
+IT Certification Courses
+Gear + Gadgets
+Startup Database
+Uninstall Database
+File Database
+Chat on Discord
+Send us a Tip!
+Welcome Guide
+New Linux Vulnerability Lets Attackers Hijack VPN Connections
+New Linux Vulnerability Lets Attackers Hijack VPN Connections
+Sergiu Gatlan
+December 5, 2019
+Security researchers found a new vulnerability allowing potential attackers to hijack VPN connections on affected *NIX devices and inject arbitrary data payloads into IPv4 and IPv6 TCP streams.
+CVE-2019-14899
+The vulnerability is known to impact most Linux distributions and Unix-like operating systems including FreeBSD, OpenBSD, macOS, iOS, and Android.
+A currently incomplete list of vulnerable operating systems and the init systems they came with is available below, with more to be added once they are tested and found to be affected:
+All VPN implementations are affected
+"Additionally, we are able to determine the exact seq and ack numbers by counting encrypted packets and/or examining their size. This allows us to inject data into the TCP stream and hijack connections," the researchers said.
+Attacks exploiting CVE-2019-14899 work against OpenVPN, WireGuard, and IKEv2/IPSec, but the researchers are still testing their feasibility against Tor.
+They also note that the VPN technology used does not seem to be of importance since the attacks worked during their tests even when the responses they got from targets were encrypted, given that the size of the packets and the number of packets sent was enough to find the type of data packets that were being delivered through the encrypted VPN tunnel.
+This attack did not work against any Linux distribution we tested until the release of Ubuntu 19.10, and we noticed that the rp_filter settings were set to “loose” mode. We see that the default settings in sysctl.d/50-default.conf in the systemd repository were changed from “strict” to “loose” mode on November 28, 2018, so distributions using a version of systemd without modified configurations after this date are now vulnerable. Most Linux distributions we tested which use other init systems leave the value as 0, the default for the Linux kernel.
+released after November 28, 2018
+Given this, all Linux distributions using a systemd version with default configurations after this date are vulnerable.
+It's important to note though that, despite some distros with specific systemd versions being vulnerable, the flaw is known to impact a variety of init systems and it is not only related to systemd as shown by the list of affected OSs available above.
+AWS VPN products
+Mitigation is possible
+Mitigation is possible according to the researchers and it can be potentially achieved by turning reverse path filtering on, by using bogon filtering —filtering bogus (fake) IP addresses — or with the help of encrypted packet size and timing.
+These are the steps needed to run an attack designed to exploit this vulnerability and hijack a target's VPN connection:
+The research team is planning to publish a paper with an in-depth analysis of this vulnerability and its implications but only after finding an adequate workaround.
+Related Articles:
+Dozens of VNC Vulnerabilities Found in Linux, Windows Solutions
+NVIDIA Patches Severe Flaws in Mercedes Infotainment System Chips
+Ubuntu Linux Gets Intel Microcode Update to Fix CPU Hangs
+Actively Exploited StrandHogg Vulnerability Affects Android OS
+Android Camera App Bug Lets Apps Record Video Without Permission
+Vulnerability
+Sergiu Gatlan
+Warthog-Fan
+ - 1 day ago
+It looks like as many people are switching to Linux to avoid using Windows 10 we may be seeing more malware directed at Linux systems, whereas up until now, the Linux user base was so small that it wasn't worth the hackers' time to try to infiltrate.
+ - 1 day ago
+I think a crap ton of the internet is Linux/*NIX servers are mostly on it because it’s more secure than windows... & a lot of people use their phones/tablets which is a form of it too... so...
+MadScientist42
+ - 1 day ago
+ - 46 minutes ago
+That's not correct. Devuan, Slackware, Android, the BSDs, and iOS all have this in common: None use systemd (the last two aren't even Linux). This problem is clearly more profound than your assertion! The bug affects a plaethora of Unix-like operating systems, both with and without systemd (from the article). The facts are right there, the very same ones mentioned by other sources. Google, anyone?
+Community Rules
+You need to login in order to post a comment
+Register Now
+You may also like:
+Popular Stories
+BMW Infiltrated by Hackers Hunting for Automotive Trade Secrets
+Some Hardware-based Password Managers Have Poor Security
+Newsletter Sign Up
+BleepingComputer
+Latest Downloads
+Malwarebytes for Mac
+Version: 4.0
+Malwarebytes Anti-Malware
+Version: 4.0
+Version: 7.4.2.0
+Version: NA
+Windows Repair (All In One)
+Version: 4.6.1
+Newsletter Sign Up
+Main Sections
+Virus Removal Guides
+Startup Database
+Uninstall Database
+File Database
+Forum Rules
+Useful Resources
+Welcome Guide
+About BleepingComputer
+Send us a Tip!
+Advertising
+Write for BleepingComputer
+Social & Feeds
+Terms of Use
+ Privacy Policy
+Remember Me
+Sign in anonymously
+Register Now
+Help us understand the problem. What is going on with this comment?
+Submitting...

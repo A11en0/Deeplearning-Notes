@@ -1,0 +1,20 @@
+[systemd-devel] systemd 244 released
+systemd tag bot
+donotreply-systemd-tag at refi64.com
+       
+Fri Nov 29 16:37:24 UTC 2019
+[systemd-devel] How to apply for partition type GUID for Linux /boot?
+
+[systemd-devel] How to execute Shell before rootfs mount on centos7
+
+Messages sorted by:
+[ subject ]
+https://github.com/systemd/systemd/archive/v244.tar.gz
+[systemd-devel] How to apply for partition type GUID for Linux /boot?
+
+[systemd-devel] How to execute Shell before rootfs mount on centos7
+
+Messages sorted by:
+[ subject ]
+More information about the systemd-devel
+mailing list

@@ -1,0 +1,325 @@
+totally not insane
+06 December 2019
+Articles from this series:
+Creating sockets
+Addressing of AF_INET, AF_INET6 and AF_UNIX
+struct sockaddr
+sa_family_t
+struct sockaddr
+struct sockaddr_in
+struct sockaddr_in6
+struct
+sockaddr_un
+struct sockaddr_storage
+sockaddr_storage
+sa_family_t
+// padding, usually 126 bytes
+Let's talk about the nature of addresses of AF_INET, AF_INET6 and AF_UNIX families.
+AF_INET Addresses
+struct sockaddr_in
+sockaddr_in
+sa_family_t
+/* address family: AF_INET */
+/* port in network byte order */
+/* internet address */
+/* address in network byte order */
+struct in_addr
+"0100000001"
+hexadecimal
+# mixed dot-decimal
+# dot-decimal
+"1.2.3.071"
+"1.2.3.0x71"
+hexadecimal
+# trailing whitespace
+"1.2.3.4 a"
+"256.0.0.1"
+inet_pton()
+only accepts a well known IPv4
+dotted-decimal notation
+"1.2.3.071"
+getaddrinfo()
+struct
+sockaddr *
+struct in_addr
+AF_INET6 Addresses
+In AF_INET6 the address is encoded in "struct sockaddr_in6":
+sockaddr_in6
+sa_family_t
+sin6_family
+/* AF_INET6 */
+/* port number */
+sin6_flowinfo
+/* IPv6 flow information */
+/* IPv6 address */
+sin6_scope_id
+/* Scope ID (new in 2.4) */
+/* IPv6 address */
+struct in6_addr
+# eight 4-digit hex groups
+'0:1:2:3:4:5:6:7'
+# :: abbreviates zero groups
+'::DEAD:BEEF'
+'1080::8:800:200C:417A'
+'FF01::101'
+'::1:20:0:0'
+# leading zeros are fine (up to 4 characters), and not octal
+'0::01:020:0000:0'
+# IPv4-compatible IPv6 address, must be in correct dotted-decimal format
+'0:0:0:0:0:0:1.2.3.4'
+'::1.2.3.4'
+'::FFFF:1.2'
+# Shortcutting embedded IPv4 notation is not allowed
+# Explicit hexadecimal is not allowed
+# Groups of more than 4 characters are not allowed
+# Multiple zero group are not allowed
+struct in6_addr
+struct sockaddr_in6
+sin6_flowinfo
+sin6_scope_id
+sin6_flowinfo
+sin6_scope_id
+Reserved IP addresses
+It's sometimes useful to filter traffic, and deny connections to
+reserved IP addresses. For example, if you connect to user-specified
+IP, then for security you might want to block target IP of
+127.0.0.1. But of course that isn't enough, you need to think about
+whole 127.0.0.0/8 subnet. How about ::1? How about ::ffff:127.0.0.1? Don't forget to also
+consider 169.254.0.0/16 and fe80:: networks!
+Special-purpose IPv4 addresses
+IANA IPv4 Special-Purpose Address Registry
+Wiki: Reserved IP addresses
+IPv4 network
+Description
+"this" network
+"private use"
+100.64.0.0/10
+"Shared Address Space" for CGNATs
+127.0.0.0/8
+169.254.0.0/16
+"link local"
+172.16.0.0/12
+"private use"
+192.0.0.0/24
+"IETF Protocol Assignments"
+192.0.2.0/24
+"documentation TEST-NET-1"
+192.88.99.0/24
+"6to4 Relay Anycast"
+192.168.0.0/16
+"private use"
+198.18.0.0/15
+"benchmarking"
+198.51.100.0/24
+"documentation TEST-NET-2"
+203.0.113.0/24
+"documentation TEST-NET-3"
+224.0.0.0/4
+"IPv4 multicast"
+240.0.0.0/4
+255.255.255.255/32
+"limited broadcast"
+Special-purpose IPv6 addresses
+IANA IPv6 Global Unicast Address Assignments
+Wiki: Reserved IP addresses
+IPv6 network
+Description
+"unspecified address"
+"loopback address"
+"IPv4 Compatible"
+::ffff:0:0/96
+"IPv4-mapped Address"
+::ffff:0:0:0/96
+"IPv4-translated ipv6 address
+64:ff9b::/96
+"IPv4-IPv6 Translators"
+"Discard-Only Address Block"
+"IETF Protocol Assignments"
+RFC4380, RFC5991
+2001:1::1/128
+"Port Control Protocol Anycast"
+2001:2::/48
+"benchmarking"
+2001:3::/32
+2001:5::/32
+"EID space for LISP"
+2001:10::/28
+2001:20::/28
+2001:db8::/32
+"Documentation"
+"6bone testing"
+"6bone historical"
+"Unique local"
+"link-scoped unicast"
+"IPv6 multicast"
+"site-local"
+Using DNS - getaddrinfo
+getaddrinfo()
+getaddrinfo()
+Name Service
+Switch
+/etc/host.conf
+On my Ubuntu host glibc resolver first parses "/etc/host.conf". This file
+is obsolete these days, and its "trim" and "reorder" settings affect
+only "gethostbyname", "gethostbyname2" and "gethostbyaddr"
+functions. The "multi" setting is only read by "ns_files".
+Testing these parameters is hard, but can be achieved with
+RESOLV_ADD_TRIM_DOMAINS, RESOLV_MULTI and RESOLV_REORDER environment
+variables. For example, we can see how the "trim" parameter influences
+results of "gethostbyaddr":
+$ RESOLV_ADD_TRIM_DOMAINS
+/etc/resolv.conf
+Following reading "/etc/host.conf", glibc pre-loads
+"/etc/resolv.conf". This finishes the resolver module
+bootstrapping. After this the Name Service Switch kicks in and reads
+"/etc/nsswitch.conf".
+"nsswitch.conf" on my Ubuntu Bionic contains the following "hosts" section:
+bionic$ cat /etc/nsswitch.conf | grep -i hosts
+hosts: files mdns4_minimal [NOTFOUND=return] dns myhostname
+This reads as:
+First, call "files" module which parses "/etc/hosts".
+Then call "mdns4_minimal". It's  able to resolve .local domains.
+Then try the "dns" module.
+Finally, the query goes to "myhostname" module
+call "__nss_configure_lookup" function
+#include <nss.h>
+#include <stdlib.h>
+__attribute__
+constructor
+preload_nss
+"NSS_CONFIG"
+__nss_configure_lookup
+As an example, let's debug the "myhostname" NSS module:
+$ LD_PRELOAD
+getaddrinfo()
+/etc/gai.conf
+getaddrinfo()
+glibc bug report
+an article by Daniel Stenberg
+Modern glibc resolver module adheres to the order returned by the DNS
+resolver. Most recursive DNS resolvers don't amend the order of the
+response - it's usually preserved from the DNS authoritative
+response. There are many interesting caveats, as mandated by RFC3484:
+Within AAAA, IPv4-mapped-IPv6 takes precedence.
+It's followed by addresses glibc believes are from local networks.
+Followed by unsorted list of other IP's.
+getaddrinfo
+browsers (with DoH)
+/etc/resolv.conf
+Without understanding of specific client DNS library it's impossible
+to make any assumptions about ordering of IP addresses the client
+software is receiving. In practice though, at least in the context of
+web browsers, the DNS load balancing works well. As long as the
+authoritative DNS server serves IP addresses in randomized order, the
+servers load-balance well and receive similar number of requests.
+Happy eyeballs
+Even though the first IPv6 draft standard was published in 1998, the
+protocol is still not fully adopted. In order to facilitate
+deployments of dual-stack - IPv4 and IPv6 - systems, many techniques
+have been proposed. The engineers try to prioritize IPv6 and give it
+better chance on dual systems.
+While getting IPv6 to work on servers is relatively straightforward
+it's more complex at client side. End hosts may change networks over
+time (mobility) and often need to use to networks with broken IPv6
+routing.
+in Apple iOS
+Launch two DNS queries, AAAA and A.
+If A answers first, wait for AAAA answer or at most "Resolution Delay" of usually 50ms.
+On AAAA answer, or after the timeout, order the returned addresses.
+Ordering should interleave A and AAAA, giving preference to AAAA and hosts with know small RTT.
+Begin establishing TCP connections.
+Wait "Connection Attempt Delay" - usually between 10 and 250ms - before trying next address.
+Don't abort connections in the process of being established - use concurrent connections.
+When first connection is successfully established, abort all other connections.
+The idea is to establish both IPv6 as well as IPv4 connections, giving
+preference to IPv6 and servers closer to the user. By staggering the
+connection attempts Happy Eyeballs avoids building network pressure.
+many problems in early implementations
+had been proved to be successful
+AF_UNIX Addresses
+Thus far we discussed working with AF_INET and AF_INET6 addresses and
+how the glibc machinery works for DNS resolution. It's time to discuss
+AF_UNIX address family.
+struct sockaddr_un
+sockaddr_un
+sa_family_t
+/* AF_UNIX */
+/* pathname */
+Bound to a pathname
+Bound to a pathname
+The most common usage is to bind the UNIX socket to a path. Like:
+SOCK_STREAM
+sockaddr_un
+"/tmp/unix-socket"
+SOCKADDR_UN_SIZE
+A better technique when starting up a server working with UNIX sockets bound to pathname is to:
+Create new socket under new name.
+You can inspect all the pathnames used by the system by looking into "/proc/net/unix":
+/proc/net/unix
+getsockname
+getpeername
+UNIX Sockets live in a namespace local to a machine.  If a user has
+access to a path of pathname bound UNIX socket, like
+"/tmp/unix-socket", then the connect() will succeed. There are a
+couple of exceptions though - it won't run over network filesystems
+like NFS. From a modern Linux point of view though - sharing a
+directory with pathname bound UNIX sockets with Docker container, or
+network-namespaced process is totally fine.
+sockaddr_un
+sockaddr_un
+sockaddr_un
+sockaddr_un
+The created sockets are named '\x00' and '\x00\x00' respectively:
+$ cat /proc/net/unix
+000000000000: 00000002 00000000 00000000 0002 01 146452179 @
+000000000000: 00000002 00000000 00000000 0002 01 146452180 @@
+SOCKADDR_UN_SIZE
+#define SOCKADDR_UN_SIZE(sun) \
+  ((sun)->sun_path[0] == '\x00' \
+    ? __builtin_offsetof(struct sockaddr_un, sun_path) + 1 \
+      + strnlen(&(sun)->sun_path[1], sizeof((sun)->sun_path)) \
+    : sizeof(struct sockaddr_un))
+sizeof(struct
+sockaddr_un)
+is used in systemd
+In order to avoid printing '\x00' character onto the terminal, many
+Linux tools substitute the '\x00' characters with '@'. Doing this on
+whole string is excessive, but handling first character in manageable
+way is important. It's critical to clearly specify if socket is
+abstract or bound to a path. If your tool accepts UNIX socket path as
+a parameter, remember to allow for abstract names - substitute leading
+'@' character with '\x00'.
+Abstract sockets are tied to a network namespace. A process from one
+netns won't be able to access abstract socket from another network
+namespace, even when both run on the same machine.
+When should you use UNIX sockets bound to pathnames and when abstract
+names? Abstract names automatically disappear when server socket is
+closed, but unlike pathname sockets, don't have permissions.
+Furthermore, abstract sockets are a non portable Linux extension.
+Autobind feature
+sockaddr_un
+__builtin_offsetof
+sockaddr_un
+sockaddr_un
+getsockname
+On my server this yields:
+This behavior is called "autobind feature". Notice: there are only 2^20 unique autobind addresses.
+getsockname
+getpeername
+this article on Twitter!
+The following people gave valuable feedback on this article:
+Per Mildner
+Vincent Bernat
+"UNIX Network Programming: The
+  sockets networking API, Volume 1"
+struct sockaddr_storage
+
+#define STATIC_ASSERT(COND,MSG) \
+    typedef char static_assertion_##MSG[(!!(COND))*2-1]
+STATIC_ASSERT(sizeof(struct sockaddr_un) <= sizeof(struct sockaddr_storage), \
+    sockaddr_storage_size_check);
+YCombinator
+
+      leave a comment here.
+    
+More Articles →

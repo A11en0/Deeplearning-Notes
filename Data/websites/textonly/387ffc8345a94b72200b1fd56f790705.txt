@@ -1,0 +1,41 @@
+Become a member
+Get started
+Linux File System
+Hi Everyone! I’m back with the new blog, Today I will be discussing about the Linux File System. Have you ever saw various directories in your Linux systems and wonder why even they exist. Why can’t we just have a single directory and keep everything in it?
+Introduction to Linux file system
+Linux File System is a method of organizing and storing various information in a way that it can easily manage. Every data in the Unix system manged through files. These files organized in directories. A combination of these files and folders creates a file system.
+As you can see in the above diagram a representation of directories, you’ll get in every Linux/Unix system.
+Why we need the linux file system?
+Assume you are working on a project which is in a directory, it requires multiple files and folders :
+Binary files
+Configuration files
+Metadata files during execution
+You are keeping everything in a single directory then it’ll look like the same as above in the picture. If another software comes into the picture which has its own configuration files.
+Things will be very messy to manage the same type of files for each and every software, It will not be easy to manage everything and will lead to chaos and it is not necessary that everyone follows the same convention if a new person comes into the picture then he’ll manage his files in his own way that will make it difficult to understand the hierarchy of file systems.
+Convention over Configuration
+According to this philosophy, the same type of files will be kept in the same directory it will look like something as follows:
+Binary files — — — — — — — — — — — — -> /bin
+Configuration files — — — — — — — — — — — — -> /etc
+Log files — — — — — — — — — — — — –> /log
+Data files — — — — — — — — — — — — –> /var
+Metadata files during execution — — — — — –> /tmp
+Libraries — — — — — — — — — — — — –> /lib
+Something like in the following picture:
+Lets go and discuss some important directories which plays a major role in Linux/Unix file system:
+/ (slash): 
+/usr/include 
+Here are some basic confusions lots of people are dealing with finding the difference between some similar type of directories, Lets discuss some
+/bin vs /usr/bin vs /sbin vs /usr/local/bin
+This might get almost clear out when I explained the significance of /usr in the above paragraph. Since Unix designers planned /usr to be the local directories of individual users so it contained all of the sub-directories like /usr/bin, /usr/sbin, /usr/local/bin. But the question remains the same how the content is different?
+/usr/bin is a standard directory on Unix-like operating systems that contains most of the executable files that are not needed for booting or repairing the system.
+A few of the most commonly used are awk, clear, diff, du, env, file, find, free, gzip, less, locate, man, sudo, tail, telnet, time, top, vim, wc, which, and zip.
+The /usr/sbin directory contains non-vital system utilities that are used after booting.
+This is in contrast to the /sbin directory, whose contents include vital system utilities that are necessary before the /usr directory has been mounted (i.e., attached logically to the main filesystem).
+A few of the more familiar programs in /usr/sbin are adduser, chroot, groupadd, and userdel.
+It also contains some daemons, which are programs that run silently in the background, rather than under the direct control of a user, waiting until they are activated by a particular event or condition such as crond and sshd.
+I hope this blog will clarify the purpose of these directories so that you understand the Linux file system more effectively.
+File Management
+File Management System
+Linux File System
+See responses (1)
+Become a member

@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-GB">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-GB">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-GB">
+<!--<![endif]-->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <title>Thermal testing Raspberry Pi 4 - Raspberry Pi</title>
+    <link rel="icon" type="image/png" href="https://www.raspberrypi.org/app/themes/mind-control/images/favicon.png" />
+    <link rel="profile" href="http://gmpg.org/xfn/11" />
+    <link rel="pingback" href="https://www.raspberrypi.org/wp/xmlrpc.php" />
+    <link rel="publisher" href="https://plus.google.com/+RaspberryPi" />
+    <!--[if lt IE 9]><script src="https://www.raspberrypi.org/app/themes/mind-control/js/html5.js"></script><![endif]-->
+    <link
+        rel="preconnect stylesheet"
+        href="https://fonts.googleapis.com/css?family=Rubik:300,500,700|Space+Mono"
+        media="all"
+        type="text/css"
+    />
+    
+<!-- This site is optimized with the Yoast SEO plugin v12.6.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Raspberry Pi 4 just got a lot cooler! The last four months of firmware updates have taken over half a watt out of idle power and nearly a watt out of fully loaded power"/>
+<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<link rel="canonical" href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Thermal testing Raspberry Pi 4 - Raspberry Pi" />
+<meta property="og:description" content="Raspberry Pi 4 just got a lot cooler! The last four months of firmware updates have taken over half a watt out of idle power and nearly a watt out of fully loaded power" />
+<meta property="og:url" content="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/" />
+<meta property="og:site_name" content="Raspberry Pi" />
+<meta property="article:publisher" content="https://www.facebook.com/raspberrypi" />
+<meta property="article:tag" content="testing" />
+<meta property="article:tag" content="thermal" />
+<meta property="article:tag" content="heat" />
+<meta property="article:section" content="Raspberry Pi Resources" />
+<meta property="article:published_time" content="2019-11-28T13:40:24+00:00" />
+<meta property="og:image" content="https://www.raspberrypi.org/app/uploads/2019/11/thermal-raspberry-pi-4-500x372.png" />
+<meta property="og:image:secure_url" content="https://www.raspberrypi.org/app/uploads/2019/11/thermal-raspberry-pi-4-500x372.png" />
+<meta property="og:image:width" content="500" />
+<meta property="og:image:height" content="372" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Raspberry Pi 4 just got a lot cooler! The last four months of firmware updates have taken over half a watt out of idle power and nearly a watt out of fully loaded power" />
+<meta name="twitter:title" content="Thermal testing Raspberry Pi 4 - Raspberry Pi" />
+<meta name="twitter:site" content="@Raspberry_Pi" />
+<meta name="twitter:image" content="https://www.raspberrypi.org/app/uploads/2019/11/thermal-raspberry-pi-4.png" />
+<meta name="twitter:creator" content="@Raspberry_Pi" />
+<script type='application/ld+json' class='yoast-schema-graph yoast-schema-graph--main'>{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.raspberrypi.org/#website","url":"https://www.raspberrypi.org/","name":"Raspberry Pi","description":"Teach, learn and make with Raspberry Pi","potentialAction":{"@type":"SearchAction","target":"https://www.raspberrypi.org/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#primaryimage","url":"https://www.raspberrypi.org/app/uploads/2019/11/thermal-raspberry-pi-4.png","width":2015,"height":1501},{"@type":"WebPage","@id":"https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#webpage","url":"https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/","inLanguage":"en-GB","name":"Thermal testing Raspberry Pi 4 - Raspberry Pi","isPartOf":{"@id":"https://www.raspberrypi.org/#website"},"primaryImageOfPage":{"@id":"https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#primaryimage"},"datePublished":"2019-11-28T13:40:24+00:00","dateModified":"2019-11-28T13:40:24+00:00","author":{"@id":"https://www.raspberrypi.org/#/schema/person/1f6623cf4074cd83c2d31ee6ed9bf341"},"description":"Raspberry Pi 4 just got a lot cooler! The last four months of firmware updates have taken over half a watt out of idle power and nearly a watt out of fully loaded power"},{"@type":["Person"],"@id":"https://www.raspberrypi.org/#/schema/person/1f6623cf4074cd83c2d31ee6ed9bf341","name":"Alex Bate","image":{"@type":"ImageObject","@id":"https://www.raspberrypi.org/#authorlogo","url":"https://secure.gravatar.com/avatar/3bcc62a16150b91b4029a6b566b4d492?s=96&d=mm&r=g","caption":"Alex Bate"},"description":"\ufeff\ufeff\ufeffAlex spends her days updating our social media accounts with awesome Pi-ness. When she\u2019s not googling Raspberry Pi, she's YouTubing how to build foam props while attempting to write her first novel.","sameAs":[]}]}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Raspberry Pi &raquo; Thermal testing Raspberry Pi 4 Comments Feed" href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/feed/" />
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.10.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var mi_version         = '7.10.0';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-46270871-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-46270871-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('set', 'anonymizeIp', true);
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.raspberrypi.org\/wp\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.3"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='bootflat-forms-css'  href='https://www.raspberrypi.org/app/themes/mind-control/css/bootflat-forms.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://www.raspberrypi.org/wp/wp-includes/css/dist/block-library/style.min.css?ver=5.3' type='text/css' media='all' />
+<link rel='stylesheet' id='main-css'  href='https://www.raspberrypi.org/app/themes/mind-control/style.min.css?ver=1575644698' type='text/css' media='all' />
+<link rel='stylesheet' id='flags-css'  href='https://www.raspberrypi.org/app/themes/mind-control/css/flags.css?ver=1575644698' type='text/css' media='all' />
+<link rel='stylesheet' id='fullcalendar-css'  href='https://www.raspberrypi.org/app/themes/mind-control/js/fullcalendar/fullcalendar.css?ver=1575644698' type='text/css' media='all' />
+<link rel='stylesheet' id='modaal-css'  href='https://www.raspberrypi.org/app/themes/mind-control/css/modal/modaal.min.css?ver=1575644698' type='text/css' media='all' />
+<link rel='stylesheet' id='prism-css'  href='https://www.raspberrypi.org/app/themes/mind-control/css/prism.css?ver=1575644698' type='text/css' media='all' />
+<link rel='stylesheet' id='qtip-css'  href='https://www.raspberrypi.org/app/themes/mind-control/js/qtip/jquery.qtip.min.css?ver=1575644698' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[]","home_url":"https:\/\/www.raspberrypi.org","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/plugins/google-analytics-for-wordpress/assets/js/frontend.js?ver=7.10.0'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/wp/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/wp/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/wp/wp-includes/js/dist/vendor/moment.min.js?ver=2.22.2'></script>
+<script type='text/javascript'>
+moment.locale( 'en_GB', {"months":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthsShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"weekdaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"week":{"dow":1},"longDateFormat":{"LT":"g:i a","LTS":null,"L":null,"LL":"jS M Y","LLL":"F j, Y g:i a","LLLL":null}} );
+</script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/fullcalendar/fullcalendar.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/prism.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/qtip/jquery.qtip.min.js?ver=1575644698'></script>
+<link rel='https://api.w.org/' href='https://www.raspberrypi.org/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.raspberrypi.org/wp/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.raspberrypi.org/wp/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.3" />
+<link rel='shortlink' href='https://www.raspberrypi.org/?p=54866' />
+<link rel="alternate" type="application/json+oembed" href="https://www.raspberrypi.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.raspberrypi.org%2Fblog%2Fthermal-testing-raspberry-pi-4%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.raspberrypi.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.raspberrypi.org%2Fblog%2Fthermal-testing-raspberry-pi-4%2F&#038;format=xml" />
+<script type="text/javascript" src="//www.raspberrypi.org/?wordfence_syncAttackData=1575752660.8239" async></script></head>
+
+<body class="post-template-default single single-post postid-54866 single-format-standard new-header">
+    <header class="o-header">
+    <nav class="o-container o-header__container">
+        <a class="o-header__home-link" href="/">
+            <span class="u-visually-hidden">Home</span>
+        </a>
+
+        <div class="o-header__nav">
+            <ul class="c-nav">
+                                    <li class="c-nav__item">
+                        <a
+                            class="c-nav__link c-nav__link--products"
+                            href="/products/"
+                        >
+                            Products                        </a>
+                    </li>
+                                    <li class="c-nav__item">
+                        <a
+                            class="c-nav__link c-nav__link--blog"
+                            href="/blog/"
+                        >
+                            Blog                        </a>
+                    </li>
+                                    <li class="c-nav__item">
+                        <a
+                            class="c-nav__link c-nav__link--downloads"
+                            href="/downloads/"
+                        >
+                            Downloads                        </a>
+                    </li>
+                                    <li class="c-nav__item">
+                        <a
+                            class="c-nav__link c-nav__link--community"
+                            href="/community/"
+                        >
+                            Community                        </a>
+                    </li>
+                                    <li class="c-nav__item">
+                        <a
+                            class="c-nav__link c-nav__link--help"
+                            href="/help/"
+                        >
+                            Help                        </a>
+                    </li>
+                                    <li class="c-nav__item">
+                        <a
+                            class="c-nav__link c-nav__link--forums"
+                            href="/forums/"
+                        >
+                            Forums                        </a>
+                    </li>
+                                    <li class="c-nav__item">
+                        <a
+                            class="c-nav__link c-nav__link--education"
+                            href="/education/"
+                        >
+                            Education                        </a>
+                    </li>
+                                    <li class="c-nav__item">
+                        <a
+                            class="c-nav__link c-nav__link--projects"
+                            href="https://projects.raspberrypi.org/?ref=nav"
+                        >
+                            Projects                        </a>
+                    </li>
+                            </ul>
+        </div>
+
+        <div class="o-header__spacer"></div>
+
+        <div class="o-header__search-toggle">
+            <span aria-hidden="true" class="c-search-toggle">
+                <span class="u-visually-hidden">Open Search Input</span>
+            </span>
+        </div>
+
+        <div class="o-header__toggle">
+            <span aria-hidden="true" class="c-nav-toggle">
+                <span class="c-nav-toggle__icon">
+                    <span class="c-nav-toggle__icon-inner">
+                        <span class="u-visually-hidden">Open Navigation</span>
+                    </span>
+                </span>
+            </span>
+        </div>
+    </nav>
+</header>
+
+<div class="o-header__search">
+    <form action="/" class="c-search" role="search" method="GET">
+        <div class="o-container c-search__container">
+            <input type="search" class="c-search__input" placeholder="Search Raspberry Pi" name="s" />
+            <button class="c-search__submit">Search</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    var header = document.querySelector('.o-header')
+    var navToggle = document.querySelector('.c-nav-toggle')
+
+    navToggle.addEventListener('click', function (event) {
+        event.preventDefault()
+
+        header.classList.toggle('o-header--nav-open')
+
+        document.querySelector('.c-nav-toggle__icon').classList.toggle('c-nav-toggle__icon--open')
+        document.querySelector('.c-nav-toggle__icon-inner').classList.toggle('c-nav-toggle__icon-inner--open')
+    })
+
+    var searchToggle = document.querySelector('.c-search-toggle')
+
+    searchToggle.addEventListener('click', function (event) {
+        event.preventDefault()
+
+        var searchContainer = document.querySelector('.o-header__search')
+        var searchInput = document.querySelector('.c-search__input')
+
+        searchInput.blur()
+        searchToggle.classList.toggle('c-search-toggle--open')
+        searchContainer.classList.toggle('o-header__search--open')
+
+        if (searchContainer.classList.contains('o-header__search--open')) {
+            searchInput.focus()
+        }
+    })
+</script>
+
+    <div class="container">
+        <div class="main">
+<section class="posts">
+    <article class="post single-post">
+        <header class="post-header">
+    <h1><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/">Thermal testing Raspberry Pi 4</a></h1>
+
+    <div class="post-meta-container">
+        <ul class="post-meta">
+            <li class="author"><a href="/author/alexbate">Alex Bate</a></li>
+            <li class="date"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/">28th Nov 2019</a></li>
+            <li class="num-comments"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comments" class="open-comments-top">38 Comments</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="entry-content">
+    <p><em>Raspberry Pi 4 just got a lot cooler! The last four months of firmware updates have taken over half a watt out of idle power and nearly a watt out of fully loaded power. For The MagPi magazine, Gareth Halfacree gets testing.</em></p>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Pi-4_ANGLE_TRANS_THERMAL-1.png"><img class="aligncenter size-full wp-image-54912" src="https://www.raspberrypi.org/app/uploads/2019/11/Pi-4_ANGLE_TRANS_THERMAL-1.png" alt="" width="1699" height="1300" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Pi-4_ANGLE_TRANS_THERMAL-1.png 1699w, https://www.raspberrypi.org/app/uploads/2019/11/Pi-4_ANGLE_TRANS_THERMAL-1-300x230.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Pi-4_ANGLE_TRANS_THERMAL-1-768x588.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Pi-4_ANGLE_TRANS_THERMAL-1-500x383.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/Pi-4_ANGLE_TRANS_THERMAL-1-1411x1080.png 1411w" sizes="(max-width: 1699px) 100vw, 1699px" /></a></p>
+<h2>Raspberry Pi 4 Model B</h2>
+<p>Raspberry Pi 4 launched with a wealth of new features to tempt users into upgrading: a more powerful CPU and GPU, more memory, Gigabit Ethernet, and USB 3.0 support. More processing power means more electrical power, and Raspberry Pi 4 is the most power-hungry member of the family.</p>
+<p>The launch of a new Raspberry Pi model is only the beginning of the story. Development is continuous, with new software and firmware improving each board long after it has rolled off the factory floor.</p>
+<h2>Raspberry Pi 4 updates</h2>
+<p>Raspberry Pi 4 is no exception: since launch, there has been a series of updates which have reduced its power needs and, in doing so, enabled it to run considerably cooler. These updates apply to any Raspberry Pi 4, whether you picked one up on launch day or are only just now making a purchase.</p>
+<p>This feature takes a look at how each successive firmware release has improved Raspberry Pi 4, using a synthetic workload designed &#8211; unlike a real-world task &#8211; to make the system-on-chip (SoC) get as hot as possible in as short a time as possible.</p>
+<p>Read on to see what wonders a simple firmware update can work.</p>
+<h3>How we tested Raspberry Pi 4 firmware revisions</h3>
+<p>To test how well each firmware revision handles the heat, a power-hungry synthetic workload was devised to represent a worst-case scenario: the <code>stress-ng</code> CPU stress-testing utility places all four CPU cores under heavy and continuous load. Meanwhile, the <code>glxgears</code> tool exercises the GPU. Both tools can be installed by typing the following at the Terminal:</p>
+<p><code>sudo apt install stress-ng mesa-utils</code></p>
+<p>The CPU workload can be run with the following command:</p>
+<p><code>stress-ng --cpu 0 --cpu-method fft</code></p>
+<p>The command will run for a full day at default settings; to cancel, press <strong>CTRL+C</strong> on the keyboard.</p>
+<p>To run the GPU workload, type:</p>
+<p><code>glxgears -fullscreen</code></p>
+<p>This will display a 3D animation of moving gears, filling the entire screen. To close it, press <strong>ALT+F4</strong> on the keyboard.</p>
+<p>For more information on how both tools work, type:</p>
+<p><code>man stress-ng</code><br />
+<code>man glxgears</code></p>
+<p>During the testing for this feature, both of the above workloads are run simultaneously for ten minutes. Afterwards, Raspberry Pi is allowed to cool for five minutes.</p>
+<p>The thermal imagery was taken at idle, then again after 60 seconds of the <code>stress-ng</code> load alone.</p>
+<h2>Baseline test: Raspberry Pi 3B+</h2>
+<div id="attachment_42332" style="width: 1510px" class="wp-caption aligncenter"><a href="https://www.raspberrypi.org/app/uploads/2018/03/770A5614-3.jpg"><img aria-describedby="caption-attachment-42332" class="wp-image-42332 size-full" src="https://www.raspberrypi.org/app/uploads/2018/03/770A5614-3.jpg" alt="" width="1500" height="1002" srcset="https://www.raspberrypi.org/app/uploads/2018/03/770A5614-3.jpg 1500w, https://www.raspberrypi.org/app/uploads/2018/03/770A5614-3-300x200.jpg 300w, https://www.raspberrypi.org/app/uploads/2018/03/770A5614-3-768x513.jpg 768w, https://www.raspberrypi.org/app/uploads/2018/03/770A5614-3-500x334.jpg 500w" sizes="(max-width: 1500px) 100vw, 1500px" /></a><p id="caption-attachment-42332" class="wp-caption-text">Already well established, Raspberry Pi 3 Model B+ was the device to beat</p></div>
+<p>Before Raspberry Pi 4 came on the scene, Raspberry Pi 3 Model B+ was the must-have single-board computer. Benefiting from all the work that had gone into the earlier Raspberry Pi 3 Model B alongside improved hardware, Raspberry Pi 3B+ was &#8211; and still is &#8211; a popular device. Let&#8217;s see how well it performs before testing Raspberry Pi 4.</p>
+<h3>Power draw</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-1.png"><img class="aligncenter size-full wp-image-54904" src="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-1.png" alt="" width="1147" height="361" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-1.png 1147w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-1-300x94.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-1-768x242.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-1-500x157.png 500w" sizes="(max-width: 1147px) 100vw, 1147px" /></a></p>
+<p>An efficient processor and an improved design for the power circuitry compared to its predecessor help keep Raspberry Pi 3B+ power draw down: at idle, the board draws just 1.91W; when running the synthetic workload, that increases to 5.77W.</p>
+<h3>Thermal imaging</h3>
+
+		<style type="text/css">
+			#gallery-14 {
+				margin: auto;
+			}
+			#gallery-14 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 50%;
+			}
+			#gallery-14 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-14 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>
+		<div id='gallery-14' class='gallery galleryid-54866 gallery-columns-2 gallery-size-medium'><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi3bplus-idle/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi3bplus-idle-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-14-54875" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi3bplus-idle-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi3bplus-idle-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi3bplus-idle-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi3bplus-idle-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-14-54875'>
+				Raspberry Pi 3B+ heat distribution (idle)
+				</dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi3bplus-load/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi3bplus-load-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-14-54876" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi3bplus-load-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi3bplus-load-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi3bplus-load-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi3bplus-load-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-14-54876'>
+				Raspberry Pi 3B+ heat distribution (load)
+				</dd></dl><br style="clear: both" />
+		</div>
+
+<p>A thermal camera shows where the power goes. At idle, the system-on-chip is relatively cool while the combined USB and Ethernet controller to the middle-right is a noticeable hot spot; at load, measured after 60 seconds of a CPU-intensive synthetic workload, the SoC is by far the hottest component at 58.1°C.</p>
+<h3>Thermal throttling</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-3-Model-B.png"><img class="aligncenter size-full wp-image-54892" src="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-3-Model-B.png" alt="" width="2500" height="1546" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-3-Model-B.png 2500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-3-Model-B-300x186.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-3-Model-B-768x475.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-3-Model-B-500x309.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-3-Model-B-1746x1080.png 1746w" sizes="(max-width: 2500px) 100vw, 2500px" /></a></p>
+<p>This chart measures Raspberry Pi 3B+ CPU speed and temperature during a ten-minute power-intensive synthetic workload. The test runs on both the CPU and GPU, and is followed by a five-minute cooldown. Raspberry Pi 3B+ quickly reaches the &#8216;soft throttle&#8217; point of 60°C, designed to prevent the SoC hitting the hard-throttle maximum limit of 80°C, and the CPU remains throttled at 1.2GHz for the duration of the benchmark run.</p>
+<h2>Raspberry Pi 4 Launch Firmware</h2>
+<div id="attachment_52137" style="width: 2195px" class="wp-caption aligncenter"><a href="https://www.raspberrypi.org/app/uploads/2019/06/HERO-ALT.jpg"><img aria-describedby="caption-attachment-52137" class="wp-image-52137 size-full" src="https://www.raspberrypi.org/app/uploads/2019/06/HERO-ALT.jpg" alt="" width="2185" height="1561" srcset="https://www.raspberrypi.org/app/uploads/2019/06/HERO-ALT.jpg 2185w, https://www.raspberrypi.org/app/uploads/2019/06/HERO-ALT-300x214.jpg 300w, https://www.raspberrypi.org/app/uploads/2019/06/HERO-ALT-768x549.jpg 768w, https://www.raspberrypi.org/app/uploads/2019/06/HERO-ALT-500x357.jpg 500w, https://www.raspberrypi.org/app/uploads/2019/06/HERO-ALT-1512x1080.jpg 1512w" sizes="(max-width: 2185px) 100vw, 2185px" /></a><p id="caption-attachment-52137" class="wp-caption-text">The fastest Raspberry Pi ever made demanded the most power</p></div>
+<p>Raspberry Pi 4 Model B launched with a range of improvements over Raspberry Pi 3B+, including a considerably more powerful CPU, a new GPU, up to four times the memory, and USB 3.0 ports. All that new hardware came at a cost: higher power draw and heat output. So let&#8217;s see how Raspberry Pi 4 performed at launch.</p>
+<h3>Power Draw</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-2.png"><img class="aligncenter size-full wp-image-54905" src="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-2.png" alt="" width="1159" height="360" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-2.png 1159w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-2-300x93.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-2-768x239.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-2-500x155.png 500w" sizes="(max-width: 1159px) 100vw, 1159px" /></a></p>
+<p>There&#8217;s no denying it, Raspberry Pi 4 was a hungry beast at launch. Even idling at the Raspbian desktop, the board draws 2.89W, hitting a peak of 7.28W under a worst-case synthetic CPU and GPU workload &#8211; a hefty increase over Raspberry Pi 3 B+.</p>
+<h3>Thermal Imaging</h3>
+
+		<style type="text/css">
+			#gallery-16 {
+				margin: auto;
+			}
+			#gallery-16 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 50%;
+			}
+			#gallery-16 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-16 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>
+		<div id='gallery-16' class='gallery galleryid-54866 gallery-columns-2 gallery-size-medium'><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi4-launch-idle/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi4-launch-idle-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-16-54879" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi4-launch-idle-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-launch-idle-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-launch-idle-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-launch-idle-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-16-54879'>
+				Raspberry Pi 4 (idle)
+				</dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi4-launch-load/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi4-launch-load-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-16-54880" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi4-launch-load-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-launch-load-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-launch-load-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-launch-load-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-16-54880'>
+				Raspberry Pi 4 (load)
+				</dd></dl><br style="clear: both" />
+		</div>
+
+<p>Thermal imaging shows that Raspberry Pi 4, using the launch-day firmware, runs hot even at idle, with hot spots at the USB controller to the middle-right and power-management circuitry to the bottom-left. Under a heavy synthetic load, the SoC hits 72.1°C by the 60-second mark.</p>
+<h3>Thermal Throttling</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-Launch-Firmware.png"><img class="aligncenter size-full wp-image-54893" src="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-Launch-Firmware.png" alt="" width="2500" height="1546" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-Launch-Firmware.png 2500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-Launch-Firmware-300x186.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-Launch-Firmware-768x475.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-Launch-Firmware-500x309.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-Launch-Firmware-1746x1080.png 1746w" sizes="(max-width: 2500px) 100vw, 2500px" /></a></p>
+<p>Raspberry Pi 4 manages to go longer than Raspberry Pi 3 B+ before the synthetic workload causes it to throttle; but throttle it does after just 65 seconds. As the workload runs, the CPU drops from 1.5GHz to a stable 1GHz, then dips as low as 750MHz towards the end.</p>
+<h2>Raspberry Pi 4 VLI Firmware</h2>
+<div id="attachment_52151" style="width: 1738px" class="wp-caption aligncenter"><a href="https://www.raspberrypi.org/app/uploads/2019/06/HDMI_CU.jpg"><img aria-describedby="caption-attachment-52151" class="size-full wp-image-52151" src="https://www.raspberrypi.org/app/uploads/2019/06/HDMI_CU.jpg" alt="" width="1728" height="1152" srcset="https://www.raspberrypi.org/app/uploads/2019/06/HDMI_CU.jpg 1728w, https://www.raspberrypi.org/app/uploads/2019/06/HDMI_CU-300x200.jpg 300w, https://www.raspberrypi.org/app/uploads/2019/06/HDMI_CU-768x512.jpg 768w, https://www.raspberrypi.org/app/uploads/2019/06/HDMI_CU-500x333.jpg 500w, https://www.raspberrypi.org/app/uploads/2019/06/HDMI_CU-1620x1080.jpg 1620w" sizes="(max-width: 1728px) 100vw, 1728px" /></a><p id="caption-attachment-52151" class="wp-caption-text">USB power management brings some relief for Raspberry Pi heat</p></div>
+<p>The first major firmware update developed for Raspberry Pi 4 brought power management features to the Via Labs Inc. (VLI) USB controller. The VLI controller is responsible for handling the two USB 3.0 ports, and the firmware update allowed it to run cooler.</p>
+<h3>Power Draw</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-3.png"><img class="aligncenter size-full wp-image-54906" src="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-3.png" alt="" width="1171" height="745" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-3.png 1171w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-3-300x191.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-3-768x489.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-3-500x318.png 500w" sizes="(max-width: 1171px) 100vw, 1171px" /></a></p>
+<p>Even without anything connected to Raspberry Pi 4&#8217;s USB 3.0 ports, the VLI firmware upgrade has a noticeable impact: idle power draw has dropped to 2.62W, while the worst-case draw under a heavy synthetic workload sits at 7.01W.</p>
+<h3>Thermal Imaging</h3>
+
+		<style type="text/css">
+			#gallery-18 {
+				margin: auto;
+			}
+			#gallery-18 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 50%;
+			}
+			#gallery-18 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-18 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>
+		<div id='gallery-18' class='gallery galleryid-54866 gallery-columns-2 gallery-size-medium'><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi4-vli-idle/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vli-idle-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-18-54881" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vli-idle-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vli-idle-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vli-idle-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vli-idle-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-18-54881'>
+				Raspberry Pi 4 VLI firmware (idle)
+				</dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi4-vli-load/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vli-load-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-18-54882" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vli-load-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vli-load-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vli-load-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vli-load-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-18-54882'>
+				Raspberry Pi 4 VLI firmware (load)
+				</dd></dl><br style="clear: both" />
+		</div>
+
+<p>The biggest impact on heat is seen, unsurprisingly, on the VLI chip to the middle-right; the VLI firmware helps keep the SoC in the centre and the power-management circuitry at the bottom-left cooler than the launch firmware. The SoC reached 71.4°C under load &#8211; a small, but measurable, improvement.</p>
+<h3>Thermal Throttling</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-Update.png"><img class="aligncenter size-full wp-image-54894" src="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-Update.png" alt="" width="2500" height="1546" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-Update.png 2500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-Update-300x186.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-Update-768x475.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-Update-500x309.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-Update-1746x1080.png 1746w" sizes="(max-width: 2500px) 100vw, 2500px" /></a></p>
+<p>Enabling power management on the VLI chip has a dramatic impact on performance in the worst-case synthetic workload: the throttle point is pushed back to 77 seconds, the CPU spends more time at its full 1.5GHz speed, and it doesn&#8217;t drop to 750MHz at all. The SoC also cools marginally more rapidly at the end of the test.</p>
+<h2>Raspberry Pi 4 VLI, SDRAM firmware</h2>
+<div id="attachment_52149" style="width: 1738px" class="wp-caption aligncenter"><a href="https://www.raspberrypi.org/app/uploads/2019/06/POWER_CU.jpg"><img aria-describedby="caption-attachment-52149" class="size-full wp-image-52149" src="https://www.raspberrypi.org/app/uploads/2019/06/POWER_CU.jpg" alt="" width="1728" height="1152" srcset="https://www.raspberrypi.org/app/uploads/2019/06/POWER_CU.jpg 1728w, https://www.raspberrypi.org/app/uploads/2019/06/POWER_CU-300x200.jpg 300w, https://www.raspberrypi.org/app/uploads/2019/06/POWER_CU-768x512.jpg 768w, https://www.raspberrypi.org/app/uploads/2019/06/POWER_CU-500x333.jpg 500w, https://www.raspberrypi.org/app/uploads/2019/06/POWER_CU-1620x1080.jpg 1620w" sizes="(max-width: 1728px) 100vw, 1728px" /></a><p id="caption-attachment-52149" class="wp-caption-text">With VLI tamed, it&#8217;s the memory&#8217;s turn now</p></div>
+<p>The next firmware update, designed to be used alongside the VLI power management features, changes how Raspberry Pi 4&#8217;s memory &#8211; LPDDR4 SDRAM &#8211; operates. While having no impact on performance, it helps to push the power draw down still further at both idle and load.</p>
+<h3>Power Draw</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-4.png"><img class="aligncenter size-full wp-image-54908" src="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-4.png" alt="" width="1173" height="751" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-4.png 1173w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-4-300x192.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-4-768x492.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-4-500x320.png 500w" sizes="(max-width: 1173px) 100vw, 1173px" /></a></p>
+<p>As with the VLI update, the SDRAM update brings a welcome drop in power draw at both idle and load. Raspberry Pi 4 now draws 2.47W at idle and 6.79W running a worst-case synthetic load &#8211; a real improvement from the 7.28W at launch.</p>
+<h3>Thermal Imaging</h3>
+
+		<style type="text/css">
+			#gallery-20 {
+				margin: auto;
+			}
+			#gallery-20 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 50%;
+			}
+			#gallery-20 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-20 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>
+		<div id='gallery-20' class='gallery galleryid-54866 gallery-columns-2 gallery-size-medium'><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi4-vlisdram-idle/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdram-idle-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-20-54883" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdram-idle-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdram-idle-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdram-idle-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdram-idle-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-20-54883'>
+				Raspberry Pi 4 VLI, SDRAM (idle)
+				</dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi4-vlisdram-load/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdram-load-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-20-54884" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdram-load-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdram-load-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdram-load-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdram-load-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-20-54884'>
+				Raspberry Pi 4 VLI, SDRAM (load)
+				</dd></dl><br style="clear: both" />
+		</div>
+
+<p>Thermal imaging shows the biggest improvement yet, with both the SoC and the power-management circuitry running considerably cooler at idle after the installation of this update. After 60 seconds of load, the SoC is noticeably cooler at 68.8°C &#8211; a drop of nearly 3°C over the VLI firmware alone.</p>
+<h3>Thermal Throttling</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-VLI-and-SDRAM-Update.png"><img class="aligncenter size-full wp-image-54896" src="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-VLI-and-SDRAM-Update.png" alt="" width="2500" height="1546" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-VLI-and-SDRAM-Update.png 2500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-VLI-and-SDRAM-Update-300x186.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-VLI-and-SDRAM-Update-768x475.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-VLI-and-SDRAM-Update-500x309.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-VLI-and-SDRAM-Update-1746x1080.png 1746w" sizes="(max-width: 2500px) 100vw, 2500px" /></a></p>
+<p>A cooler SoC means better performance: the throttle point under the worst-case synthetic workload is pushed back to 109 seconds, after which Raspberry Pi 4 continues to bounce between full 1.5GHz and throttled 1GHz speeds for the entire ten-minute benchmark run &#8211; bringing the average speed up considerably.</p>
+<h2>Raspberry Pi 4 VLI, SDRAM, Clocking, and Load-Step Firmware</h2>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/CHIPS_CU.jpg"><img class="aligncenter wp-image-54932 size-full" src="https://www.raspberrypi.org/app/uploads/2019/11/CHIPS_CU.jpg" alt="" width="5760" height="3840" srcset="https://www.raspberrypi.org/app/uploads/2019/11/CHIPS_CU.jpg 5760w, https://www.raspberrypi.org/app/uploads/2019/11/CHIPS_CU-300x200.jpg 300w, https://www.raspberrypi.org/app/uploads/2019/11/CHIPS_CU-768x512.jpg 768w, https://www.raspberrypi.org/app/uploads/2019/11/CHIPS_CU-500x333.jpg 500w, https://www.raspberrypi.org/app/uploads/2019/11/CHIPS_CU-1620x1080.jpg 1620w" sizes="(max-width: 5760px) 100vw, 5760px" /></a></p>
+<p>September 2019&#8217;s firmware update includes several changes, while bringing with it the VLI power management and SDRAM firmware updates. The biggest change is how the BCM2711B0 SoC on Raspberry Pi 4 increases and decreases its clock-speed in response to demand and temperature.</p>
+<h3>Power Draw</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-5.png"><img class="aligncenter size-full wp-image-54909" src="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-5.png" alt="" width="1166" height="743" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-5.png 1166w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-5-300x191.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-5-768x489.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-5-500x319.png 500w" sizes="(max-width: 1166px) 100vw, 1166px" /></a></p>
+<p>The September firmware update has incremental improvements: idle power draw is down to 2.36W and load under the worst-case synthetic workload to a peak of 6.67W, all without any reduction in raw performance or loss of functionality.</p>
+<h3>Thermal Imaging</h3>
+
+		<style type="text/css">
+			#gallery-22 {
+				margin: auto;
+			}
+			#gallery-22 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 50%;
+			}
+			#gallery-22 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-22 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>
+		<div id='gallery-22' class='gallery galleryid-54866 gallery-columns-2 gallery-size-medium'><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi4-vlisdramclocking-idle/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdramclocking-idle-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-22-54885" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdramclocking-idle-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdramclocking-idle-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdramclocking-idle-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdramclocking-idle-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-22-54885'>
+				Raspberry Pi 4 VLI, SDRAM, Clocking (idle)
+				</dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi4-vlisdramclocking-load/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdramclocking-load-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-22-54886" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdramclocking-load-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdramclocking-load-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdramclocking-load-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-vlisdramclocking-load-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-22-54886'>
+				Raspberry Pi 4 VLI, SDRAM, Clocking (load)
+				</dd></dl><br style="clear: both" />
+		</div>
+
+<p>Improved processor clocking brings a noticeable drop in idle temperature throughout the circuit board. At load, everything&#8217;s improved &#8211; the SoC peaked at 65°C after 60 seconds of the synthetic workload, while both the VLI chip and the power-management circuitry are clearly cooler than under previous firmwares.</p>
+<h3>Thermal Throttling</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-SDRAM-Clocking-Load-Step.png"><img class="aligncenter size-full wp-image-54897" src="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-SDRAM-Clocking-Load-Step.png" alt="" width="2500" height="1546" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-SDRAM-Clocking-Load-Step.png 2500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-SDRAM-Clocking-Load-Step-300x186.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-SDRAM-Clocking-Load-Step-768x475.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-SDRAM-Clocking-Load-Step-500x309.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Raspberry-Pi-4-VLI-SDRAM-Clocking-Load-Step-1746x1080.png 1746w" sizes="(max-width: 2500px) 100vw, 2500px" /></a></p>
+<p>With this firmware, Raspberry Pi 4&#8217;s throttle point under the worst-case synthetic workload is pushed back all the way to 155 seconds &#8211; more than double the time the launch-day firmware took to hit the same point. The overall average speed is also brought up, thanks to more aggressive clocking back up to 1.5GHz.</p>
+<h2>Raspberry Pi 4 Beta Firmware</h2>
+<div id="attachment_53688" style="width: 2010px" class="wp-caption aligncenter"><a href="https://www.raspberrypi.org/app/uploads/2019/09/BC_CHIP_CU.jpg"><img aria-describedby="caption-attachment-53688" class="wp-image-53688 size-full" src="https://www.raspberrypi.org/app/uploads/2019/09/BC_CHIP_CU.jpg" alt="" width="2000" height="1333" srcset="https://www.raspberrypi.org/app/uploads/2019/09/BC_CHIP_CU.jpg 2000w, https://www.raspberrypi.org/app/uploads/2019/09/BC_CHIP_CU-300x200.jpg 300w, https://www.raspberrypi.org/app/uploads/2019/09/BC_CHIP_CU-768x512.jpg 768w, https://www.raspberrypi.org/app/uploads/2019/09/BC_CHIP_CU-500x333.jpg 500w, https://www.raspberrypi.org/app/uploads/2019/09/BC_CHIP_CU-1620x1080.jpg 1620w" sizes="(max-width: 2000px) 100vw, 2000px" /></a><p id="caption-attachment-53688" class="wp-caption-text">Currently in testing, this beta release is cutting-edge</p></div>
+<p>Nobody at Raspberry Pi is resting on their laurels. Beta firmware is in testing and due for public release soon. It brings with it many improvements, including finer-grained control over SoC operating voltages and optimised clocking for the HDMI video state machines.</p>
+<p>To upgrade your Raspberry Pi to the latest firmware, open a Terminal window and enter:</p>
+<p><code>sudo apt update</code><br />
+<code>sudo apt full-upgrade</code></p>
+<p>Now restart Raspberry Pi using:</p>
+<p><code>sudo shutdown - r now</code></p>
+<h3>Power Draw</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-6.png"><img class="aligncenter size-full wp-image-54910" src="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-6.png" alt="" width="1165" height="742" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-6.png 1165w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-6-300x191.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-6-768x489.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-4-Power-Draw-6-500x318.png 500w" sizes="(max-width: 1165px) 100vw, 1165px" /></a></p>
+<p>The beta firmware decreases power draw at idle to reduce overall power usage, while tweaking the voltage of the SoC to drop power draw at load without harming performance. The result: a drop to 2.1W idle, and 6.41W at load &#8211; the best yet.</p>
+<h3>Thermal Imaging</h3>
+
+		<style type="text/css">
+			#gallery-24 {
+				margin: auto;
+			}
+			#gallery-24 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 50%;
+			}
+			#gallery-24 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-24 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>
+		<div id='gallery-24' class='gallery galleryid-54866 gallery-columns-2 gallery-size-medium'><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi4-latest-idle/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi4-latest-idle-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-24-54877" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi4-latest-idle-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-latest-idle-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-latest-idle-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-latest-idle-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-24-54877'>
+				Raspberry Pi 4 beta (idle)
+				</dd></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/pi4-latest-load/'><img width="300" height="200" src="https://www.raspberrypi.org/app/uploads/2019/11/pi4-latest-load-300x200.png" class="attachment-medium size-medium" alt="" aria-describedby="gallery-24-54878" srcset="https://www.raspberrypi.org/app/uploads/2019/11/pi4-latest-load-300x200.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-latest-load-768x511.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-latest-load-500x333.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/pi4-latest-load-1624x1080.png 1624w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+			</dt>
+				<dd class='wp-caption-text gallery-caption' id='gallery-24-54878'>
+				Raspberry Pi 4 beta (load)
+				</dd></dl><br style="clear: both" />
+		</div>
+
+<p>The improvements made at idle are clear to see on thermal imaging: the majority of Raspberry Pi 4&#8217;s circuit board is below the bottom 35°C measurement point for the first time. After 60 seconds of load, there&#8217;s a smaller but still measurable improvement, with a peak measured temperature of 64.8°C.</p>
+<h3>Thermal Throttling</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware.png"><img class="aligncenter size-full wp-image-54898" src="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware.png" alt="" width="2500" height="1546" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware.png 2500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-300x186.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-768x475.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-500x309.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-1746x1080.png 1746w" sizes="(max-width: 2500px) 100vw, 2500px" /></a></p>
+<p>While Raspberry Pi 4 does still throttle with the beta firmware, thanks to the heavy demands of the synthetic workload used for testing, it delivers the best results yet: throttling occurs at the 177s mark while the new clocking controls bring the average clock speed up markedly. The firmware also allows Raspberry Pi 4 to up-clock more at idle, improving the performance of background tasks.</p>
+<h2>Keep cool with Raspberry Pi 4 orientation</h2>
+<div id="attachment_54887" style="width: 2026px" class="wp-caption aligncenter"><a href="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-on-side-Placeholder-Photo.jpeg"><img aria-describedby="caption-attachment-54887" class="wp-image-54887 size-full" src="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-on-side-Placeholder-Photo.jpeg" alt="" width="2016" height="1512" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-on-side-Placeholder-Photo.jpeg 2016w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-on-side-Placeholder-Photo-300x225.jpeg 300w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-on-side-Placeholder-Photo-768x576.jpeg 768w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-on-side-Placeholder-Photo-500x375.jpeg 500w, https://www.raspberrypi.org/app/uploads/2019/11/Raspberry-Pi-on-side-Placeholder-Photo-1440x1080.jpeg 1440w" sizes="(max-width: 2016px) 100vw, 2016px" /></a><p id="caption-attachment-54887" class="wp-caption-text">Firmware upgrades offer great gains, but what about putting Raspberry Pi on its side?</p></div>
+<p>While running the latest firmware will result in considerable power draw and heat management improvements, there&#8217;s a trick to unlock even greater gains: adjusting the orientation of Raspberry Pi. For this test, Raspberry Pi 4 with the beta firmware installed was stood upright with the GPIO header at the bottom and the power and HDMI ports at the top.</p>
+<h3>Thermal Throttling</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-Vertical-Orientation.png"><img class="aligncenter size-full wp-image-54899" src="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-Vertical-Orientation.png" alt="" width="2500" height="1546" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-Vertical-Orientation.png 2500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-Vertical-Orientation-300x186.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-Vertical-Orientation-768x475.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-Vertical-Orientation-500x309.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/Thermal-Throttling-Pi-4-Beta-Firmware-Vertical-Orientation-1746x1080.png 1746w" sizes="(max-width: 2500px) 100vw, 2500px" /></a></p>
+<p>Simply moving Raspberry Pi 4 into a vertical orientation has an immediate impact: the SoC idles around 2°C lower than the previous best and heats a lot more slowly &#8211; allowing it to run the synthetic workload for longer without throttling and maintain a dramatically improved average clock speed.</p>
+<p>There are several factors at work: having the components oriented vertically improves convection, allowing the surrounding air to draw the heat away more quickly, while lifting the rear of the board from a heat-insulating desk surface dramatically increases the available surface area for cooling.</p>
+<h3>Throttle Point Timing</h3>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/Time-to-Throttle.png"><img class="aligncenter size-full wp-image-54911" src="https://www.raspberrypi.org/app/uploads/2019/11/Time-to-Throttle.png" alt="" width="2500" height="1546" srcset="https://www.raspberrypi.org/app/uploads/2019/11/Time-to-Throttle.png 2500w, https://www.raspberrypi.org/app/uploads/2019/11/Time-to-Throttle-300x186.png 300w, https://www.raspberrypi.org/app/uploads/2019/11/Time-to-Throttle-768x475.png 768w, https://www.raspberrypi.org/app/uploads/2019/11/Time-to-Throttle-500x309.png 500w, https://www.raspberrypi.org/app/uploads/2019/11/Time-to-Throttle-1746x1080.png 1746w" sizes="(max-width: 2500px) 100vw, 2500px" /></a></p>
+<p>This chart shows how long it took to reach the throttle point under the synthetic workload. Raspberry Pi 3B+ sits at the bottom, soft-throttling after just 19 seconds. Each successive firmware update for Raspberry Pi 4, meanwhile, pushes the throttle point further and further &#8211; though the biggest impact can be achieved simply by adjusting Raspberry Pi&#8217;s orientation.</p>
+<h2>Real World Testing</h2>
+<p>Synthetic benchmarks aside, how do the boards perform with real workloads?</p>
+<p>Looking at the previous pages, it&#8217;s hard to get a real idea of the difference in performance between Raspberry Pi 3B+ and Raspberry Pi 4. The synthetic benchmark chosen for the thermal throttle tests performs power-hungry operations which are rarely seen in real-world workloads, and repeats them over and over again with no end.</p>
+<h3>Compiling Linux</h3>
+<p>In this test, both Raspberry Pi 3B+ and Raspberry Pi 4 are given the task of compiling the Linux kernel from its source code. It&#8217;s a good example of a CPU-heavy workload which occurs in the real world, and is much more realistic than the deliberately taxing synthetic workload of earlier tests.</p>
+<p>With this workload, Raspberry Pi 4 easily emerges the victor. Despite its CPU running only 100MHz faster than Raspberry Pi 3B+ at its full speed, it&#8217;s considerably more efficient &#8211; and, combined with the ability to run without hitting its thermal throttle point, completes the task in nearly half the time.</p>
+<h3>Kernel compile: Raspberry Pi 3B+</h3>
+<p>Raspberry Pi 3B+ throttles very early on in the benchmark compilation test and remains at a steady 1.2GHz until a brief period of cooling, as the compiler switches from a CPU-heavy workload to a storage-heavy workload, allows it to briefly spike back to its 1.4GHz default again. Compilation finished in 5097 seconds &#8211; one hour, 24 minutes, and 57 seconds.</p>
+<h3>Kernel compile: Raspberry Pi 4 model B</h3>
+<p>The difference between the synthetic and real-world workloads is clear to see: at no point during the compilation did Raspberry Pi 4 reach a high enough temperature to throttle, remaining at its full 1.5GHz throughout &#8211; bar, as with Raspberry Pi 3 B+, a brief period when a change in compiler workload allowed it to drop to its idle speeds. Compilation finished in 2660 seconds &#8211; 44 minutes and 20 seconds.</p>
+<h2>Get The MagPi magazine issue 88 now</h2>
+<p>This article is from today’s brand-new issue of The MagPi magazine, the official Raspberry Pi magazine. Buy it from all good newsagents, <a href="https://store.rpipress.cc/products/the-magpi-magazine-88">Raspberry Pi Press</a>, and the <a href="https://www.raspberrypi.org/raspberry-pi-store/">Raspberry Pi Store, Cambridge</a>.</p>
+<p><a href="https://www.raspberrypi.org/app/uploads/2019/11/001_MagPi88_COVER-WEB.jpg"><img class="aligncenter size-full wp-image-54916" src="https://www.raspberrypi.org/app/uploads/2019/11/001_MagPi88_COVER-WEB.jpg" alt="" width="500" height="658" srcset="https://www.raspberrypi.org/app/uploads/2019/11/001_MagPi88_COVER-WEB.jpg 500w, https://www.raspberrypi.org/app/uploads/2019/11/001_MagPi88_COVER-WEB-190x250.jpg 190w" sizes="(max-width: 500px) 100vw, 500px" /></a></p>
+<p><a href="https://magpi.raspberrypi.org/subscribe/new">Subscribe to pay less</a> per issue and support our work, or <a href="https://magpi.raspberrypi.org/issues/88">download the free PDF to give it a try first.</a></p>
+</div>
+
+
+        <footer class="post-footer">
+                <div class="post-tags"><a href="https://www.raspberrypi.org/blog/tag/testing/" rel="tag">testing</a><a href="https://www.raspberrypi.org/blog/tag/thermal/" rel="tag">thermal</a><a href="https://www.raspberrypi.org/blog/tag/heat/" rel="tag">heat</a></div>
+            <br style="clear: both;" />
+        </footer>
+
+        <aside class="comments">
+            <a class="anchor" id="comments"></a>
+
+    <h2 class="comments-title">
+        <a href="#" class="open-comments-bottom">
+            38 comments        </a>
+    </h2>
+
+    <ol class="commentlist">
+        		<li class="comment even thread-even depth-1" id="comment-1519345">
+				<div id="div-comment-1519345" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/d59cb9321a7a2a3ea5e5790345279ac2?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Matt Williams</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519345">
+			28th Nov 2019 at 2:08 pm				</a>
+						</div>
+
+		<p>Very cool</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519345#respond' data-commentid="1519345" data-postid="54866" data-belowelement="div-comment-1519345" data-respondelement="respond" aria-label='Reply to Matt Williams'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1519347">
+				<div id="div-comment-1519347" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/b80501a27404590a6229d0deed200522?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Ivan Zhidov</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519347">
+			28th Nov 2019 at 2:33 pm				</a>
+						</div>
+
+		<p>Good work, good point about orientation as well as trapping heat underneath.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519347#respond' data-commentid="1519347" data-postid="54866" data-belowelement="div-comment-1519347" data-respondelement="respond" aria-label='Reply to Ivan Zhidov'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1519348">
+				<div id="div-comment-1519348" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/fa80776b6ae63aa14e4b33b3a14786b9?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Ed</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519348">
+			28th Nov 2019 at 2:36 pm				</a>
+						</div>
+
+		<p>Errant space in the reboot command: should be -r.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519348#respond' data-commentid="1519348" data-postid="54866" data-belowelement="div-comment-1519348" data-respondelement="respond" aria-label='Reply to Ed'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1519349">
+				<div id="div-comment-1519349" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/6c8315313c2df7a3dc354e374f57e50d?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">3lackhawk</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519349">
+			28th Nov 2019 at 2:42 pm				</a>
+						</div>
+
+		<p>One of the reason why I like RPi&#8217;s philosophy is this.You spend time to optimize the software. Keep up your great work!</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519349#respond' data-commentid="1519349" data-postid="54866" data-belowelement="div-comment-1519349" data-respondelement="respond" aria-label='Reply to 3lackhawk'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1519350">
+				<div id="div-comment-1519350" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/36273fc06db286cdb271eae2af77a5ea?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn"><a href='https://www.flickr.com/photos/ultrapurple/25353111150/' rel='external nofollow ugc' class='url'>Giles Read</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519350">
+			28th Nov 2019 at 3:55 pm				</a>
+						</div>
+
+		<p>Interesting to see you&#8217;re now using thermal IR to help assess performance. </p>
+<p>Back in 2016 I did some work with the Pi 3 using a thermal video camera &#8211; you can actually see different parts of the processor &#8216;light up&#8217; as the &#8216;thinking&#8217; switches to different parts of the silicon. </p>
+<p>I&#8217;m not sure if the Akismet system allows linking to Flickr from the body of a message but if you click my name above you should get to the first of two videos.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519350#respond' data-commentid="1519350" data-postid="54866" data-belowelement="div-comment-1519350" data-respondelement="respond" aria-label='Reply to Giles Read'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1519351">
+				<div id="div-comment-1519351" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/fd19dbfe6cd8eefa3ff1320e96dfbb19?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Andrew Waite</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519351">
+			28th Nov 2019 at 4:28 pm				</a>
+						</div>
+
+		<p>I would think that housing the RPi4 in a case would make these results worse.<br />
+Active cooling with a fan gave the best cooling performance at ExplainingComputers (<a href="https://www.youtube.com/channel/UCbiGcwDWZjz05njNPrJU7jA" rel="nofollow ugc">https://www.youtube.com/channel/UCbiGcwDWZjz05njNPrJU7jA</a>).<br />
+A fan header to throttle a case fan depending on the CPU temperature would be a nice feature on the next Raspberry Pi model.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519351#respond' data-commentid="1519351" data-postid="54866" data-belowelement="div-comment-1519351" data-respondelement="respond" aria-label='Reply to Andrew Waite'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-1519354">
+				<div id="div-comment-1519354" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/7bc60a28afa9d6f751a56a7c61c00084?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">crumble</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519354">
+			28th Nov 2019 at 4:57 pm				</a>
+						</div>
+
+		<p>And headless? Can the new SoC run without the GPU?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519354#respond' data-commentid="1519354" data-postid="54866" data-belowelement="div-comment-1519354" data-respondelement="respond" aria-label='Reply to crumble'>Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-1519405">
+				<div id="div-comment-1519405" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/709aa04ceaadcd47d614d221b850cf3f?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">timg236</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519405">
+			29th Nov 2019 at 7:13 pm				</a>
+						</div>
+
+		<p>GPU a rather broad term on Raspberry Pi and includes common bus infrastructure. However, in headless mode V3D &amp; HDMI will be off and the bus management only has to worry about ARM performance rather than realtime display requirements. Therefore, power consumption will generally be lower in headless mode.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519405#respond' data-commentid="1519405" data-postid="54866" data-belowelement="div-comment-1519405" data-respondelement="respond" aria-label='Reply to timg236'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-1519355">
+				<div id="div-comment-1519355" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/aa45c3754a5bd4933867f62543def1f3?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">andrum99</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519355">
+			28th Nov 2019 at 5:10 pm				</a>
+						</div>
+
+		<p>Already read that on his website &#8211; a very interesting analysis. No doubt further improvements will be made. As recommended on this blog, a Pimoroni fan shim is well worth it &#8211; no throttling whatsoever.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519355#respond' data-commentid="1519355" data-postid="54866" data-belowelement="div-comment-1519355" data-respondelement="respond" aria-label='Reply to andrum99'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-1519361">
+				<div id="div-comment-1519361" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/5651cfe9e8fd532291d64c12e461ac83?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn"><a href='http://www.paluweb.nl' rel='external nofollow ugc' class='url'>Erik Zandboer</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519361">
+			28th Nov 2019 at 8:33 pm				</a>
+						</div>
+
+		<p>Awesome work! For me a Pi3B+ is more than I&#8217;d ever need&#8230; As they are impossible to get nowadays I am considering to use a 4B without any cooling &#8211; Could that work if I underclock by default? It appears it would work, and you could end up with an awesome piece of hardware that requires no extra cooling and consumes not too much power. I wonder how much you need to underclock to get to Pi 3B+ levels&#8230; And whether the 4B would still be useable at that point.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519361#respond' data-commentid="1519361" data-postid="54866" data-belowelement="div-comment-1519361" data-respondelement="respond" aria-label='Reply to Erik Zandboer'>Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-liz even depth-2 parent" id="comment-1519384">
+				<div id="div-comment-1519384" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/9f08ae85d0ab83fff9b3bf876d1ddc91?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn"><a href='http://www.raspberrypi.org' rel='external nofollow ugc' class='url'>Liz Upton</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519384">
+			29th Nov 2019 at 9:30 am				</a>
+						</div>
+
+		<p>You don&#8217;t need to underclock &#8211; if you read the article linked here, you&#8217;ll see that the firmware updates mean you don&#8217;t need cooling.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519384#respond' data-commentid="1519384" data-postid="54866" data-belowelement="div-comment-1519384" data-respondelement="respond" aria-label='Reply to Liz Upton'>Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-3" id="comment-1519512">
+				<div id="div-comment-1519512" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/e7a881b4dfba8e3ffdd480e74c51d72c?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Michael M. Mulligan</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519512">
+			1st Dec 2019 at 8:14 pm				</a>
+						</div>
+
+		<p>One reason to underclock is to reduce idle (or low-load) power. This is especially helpful when running on (or using backup power from) a battery.  The thermal management does not, if I understand it correctly, reduce either idle or low-load power consumption.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519512#respond' data-commentid="1519512" data-postid="54866" data-belowelement="div-comment-1519512" data-respondelement="respond" aria-label='Reply to Michael M. Mulligan'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even depth-3" id="comment-1519546">
+				<div id="div-comment-1519546" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/e083dfe758da450f16bddc9f8b6f35f6?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Anders</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519546">
+			2nd Dec 2019 at 3:20 pm				</a>
+						</div>
+
+		<p>Don&#8217;t need cooling for a CPU Raspberry Pi 4 in the Raspberry Pi case?  Or uncased? </p>
+<p>The article results seem to imply no casing.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519546#respond' data-commentid="1519546" data-postid="54866" data-belowelement="div-comment-1519546" data-respondelement="respond" aria-label='Reply to Anders'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt depth-2" id="comment-1519460">
+				<div id="div-comment-1519460" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/4e0f48d4a761384930747a72d80f6bbc?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Unrulycow</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519460">
+			30th Nov 2019 at 5:14 pm				</a>
+						</div>
+
+		<p>If you get a case that acts as a heatsink like FLIRC, you don&#8217;t need active cooling or underclocking.  This link shows performance with original firmware, but gives a good idea of how much the case matters.<br />
+<a href="https://www.phoronix.com/scan.php?page=article&#038;item=raspberrypi-4-cooling&#038;num=1" rel="nofollow ugc">https://www.phoronix.com/scan.php?page=article&#038;item=raspberrypi-4-cooling&#038;num=1</a></p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519460#respond' data-commentid="1519460" data-postid="54866" data-belowelement="div-comment-1519460" data-respondelement="respond" aria-label='Reply to Unrulycow'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-1519362">
+				<div id="div-comment-1519362" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/66d0e270ad2fc20a494d786f37b6b81e?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Michael Hill</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519362">
+			28th Nov 2019 at 9:04 pm				</a>
+						</div>
+
+		<p>Excellent work to keep continuously improving the product even after it&#8217;s shipped!</p>
+<p>The pictures appear to show the Pi without any heatsinks installed.  Several after-market bundles (e.g., CanaKit) supply heatsinks for the CPU and SoC, and I&#8217;m curious as to how those would affect the benchmark results for any given firmware version.</p>
+<p>Thank you for the excellent products!</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519362#respond' data-commentid="1519362" data-postid="54866" data-belowelement="div-comment-1519362" data-respondelement="respond" aria-label='Reply to Michael Hill'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-1519363">
+				<div id="div-comment-1519363" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/26b2bce01dc7df617bb7f443e8984270?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">dean bl</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519363">
+			28th Nov 2019 at 9:29 pm				</a>
+						</div>
+
+		<p>I&#8217;d love to reproduce this with my setup.  What did you do to generate the graphs?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519363#respond' data-commentid="1519363" data-postid="54866" data-belowelement="div-comment-1519363" data-respondelement="respond" aria-label='Reply to dean bl'>Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment even depth-2" id="comment-1519522">
+				<div id="div-comment-1519522" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/117d094ae5a8d5746610d22c73c52184?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Milliways</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519522">
+			1st Dec 2019 at 11:28 pm				</a>
+						</div>
+
+		<p>I too would like to see the code that produced these graphs.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519522#respond' data-commentid="1519522" data-postid="54866" data-belowelement="div-comment-1519522" data-respondelement="respond" aria-label='Reply to Milliways'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt depth-2" id="comment-1519525">
+				<div id="div-comment-1519525" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/117d094ae5a8d5746610d22c73c52184?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Milliways</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519525">
+			2nd Dec 2019 at 1:02 am				</a>
+						</div>
+
+		<p>I would like to run similar tests on my system, and would like the code that produced the graphs if this is available.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519525#respond' data-commentid="1519525" data-postid="54866" data-belowelement="div-comment-1519525" data-respondelement="respond" aria-label='Reply to Milliways'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-1519364">
+				<div id="div-comment-1519364" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/34a34c0e4f38a75cbfb2091c1cdd680b?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">chris stagg</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519364">
+			28th Nov 2019 at 9:59 pm				</a>
+						</div>
+
+		<p>Would be interesting how the new firmware affects overclocked scenarios.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519364#respond' data-commentid="1519364" data-postid="54866" data-belowelement="div-comment-1519364" data-respondelement="respond" aria-label='Reply to chris stagg'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-1519406">
+				<div id="div-comment-1519406" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/18ab126cece780bba40bed59f3577b51?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Stefan</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519406">
+			29th Nov 2019 at 7:18 pm				</a>
+						</div>
+
+		<p>I dont have any problem with throttling, but my Raspi 4 is idling constantly around 65 degrees celsius, with almost no CPU load. Using the &#8220;official&#8221; case, closed, without any holes drilled.</p>
+<p>So I just hope this temperature will not lead to any damage in the long run. Or maybe I should buy an &#8220;unofficial&#8221; case with holes that allows air flow&#8230;?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519406#respond' data-commentid="1519406" data-postid="54866" data-belowelement="div-comment-1519406" data-respondelement="respond" aria-label='Reply to Stefan'>Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment even depth-2" id="comment-1519439">
+				<div id="div-comment-1519439" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/15398d1bcd9aeabce9bc462729fa5ac6?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn"><a href='https://www.coolipi.com' rel='external nofollow ugc' class='url'>Lada</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519439">
+			30th Nov 2019 at 8:54 am				</a>
+						</div>
+
+		<p>My slightly overclocked RPI4 (1850MHz) is idling around 36 degrees Celsius. The new firmware haven&#8217;t had any dramatic effect on this temperature in my (CooliPi 4B) case &#8211; all passive.</p>
+<p>I miss ambient temperature in the article, it&#8217;s not comparable without it. Mine was 25-26 degrees Celsius.</p>
+<p>With regard to the stress program, I find linpack marginally more loading than stress (about 2 degrees Celsius).</p>
+<p>What I&#8217;m curious is the impact of the new VLI firmware on USB3 throughput and its throttling. It needs to be further  investigated. My coolercase cools the VLI chip directly though, so it might be used as a reference against a naked RPI.</p>
+<p>I also miss a test with an official case. Most users would want to have their RPIs cased and not placed vertically to collect dust.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519439#respond' data-commentid="1519439" data-postid="54866" data-belowelement="div-comment-1519439" data-respondelement="respond" aria-label='Reply to Lada'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt depth-2" id="comment-1519550">
+				<div id="div-comment-1519550" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/5b2ca64f8ba976fe5959487b1ff10548?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">James Simpson</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519550">
+			2nd Dec 2019 at 5:18 pm				</a>
+						</div>
+
+		<p>Ambient Temperature 	24 C<br />
+RPI4 Idle		33 C<br />
+Ran &#8216;stress-ng &#8211;cpu 0 &#8211;cpu-method fft&#8217;  and &#8216;glxgears -fullscreen&#8217; on different desktops simultaneously<br />
+Frequency 1500 MHz with no throttling. Latest firmware 02/12/2019. glxgears -fullscreen 60 FPS<br />
+30 minutes 55 C.</p>
+<p>Pi4 in wooden home built case with heat sink and ducted 0.35W fan and holes in case underside.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519550#respond' data-commentid="1519550" data-postid="54866" data-belowelement="div-comment-1519550" data-respondelement="respond" aria-label='Reply to James Simpson'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-1519429">
+				<div id="div-comment-1519429" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/b98f52ee9944357a8ef16191460ee393?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Pax</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519429">
+			30th Nov 2019 at 4:47 am				</a>
+						</div>
+
+		<p>I would very much like to know at what speed RPI 1/Z/2/3/3+ &amp; 4,<br />
+can safely run without thermal throttling firmware?</p>
+<p>also now that the last patents on MPEG2 has expired, are there any plans on releasing documentation on the hardware, to be competitive with for example the opensource Cedrus Video Decoder for the Allwinner series of chips, now included in Linux 5.5?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519429#respond' data-commentid="1519429" data-postid="54866" data-belowelement="div-comment-1519429" data-respondelement="respond" aria-label='Reply to Pax'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-1519451">
+				<div id="div-comment-1519451" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/2791c47b643f18be17f3a19946d12be8?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">TheMonk</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519451">
+			30th Nov 2019 at 2:04 pm				</a>
+						</div>
+
+		<p>A very interesting article indeed.<br />
+Could a firmware update possibly resolve the issue with WiFi drop-out and HDMI resolution<br />
+<a href="https://www.enricozini.org/blog/2019/himblick/raspberry-pi-4-loses-wifi-at-2560x1440-screen-resolution/" rel="nofollow ugc">https://www.enricozini.org/blog/2019/himblick/raspberry-pi-4-loses-wifi-at-2560&#215;1440-screen-resolution/</a><br />
+<a href="https://www.androidauthority.com/raspberry-pi-4-bug-wifi-resolution-1059644/" rel="nofollow ugc">https://www.androidauthority.com/raspberry-pi-4-bug-wifi-resolution-1059644/</a><br />
+As I understand according to Eben Upton using properly shielded HDMI cable solves the issue.<br />
+Has anyone tested this?<br />
+If I buy recommended, original Raspberry Pi HDMI cables this will not be an issue?<br />
+<a href="https://raspberrypi.dk/produkt/micro-hdmi-til-hdmi-kabel/" rel="nofollow ugc">https://raspberrypi.dk/produkt/micro-hdmi-til-hdmi-kabel/</a><br />
+Regards<br />
+TheMonk</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519451#respond' data-commentid="1519451" data-postid="54866" data-belowelement="div-comment-1519451" data-respondelement="respond" aria-label='Reply to TheMonk'>Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment even depth-2" id="comment-1519555">
+				<div id="div-comment-1519555" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/15398d1bcd9aeabce9bc462729fa5ac6?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn"><a href='https://www.coolipi.com' rel='external nofollow ugc' class='url'>Lada</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519555">
+			2nd Dec 2019 at 7:43 pm				</a>
+						</div>
+
+		<p>If you look closely at RPI4 top layer, (for example on my pic here <a href="https://www.coolipi.com/RESET.html" rel="nofollow ugc">https://www.coolipi.com/RESET.html</a> ), you&#8217;ll notice that HDMI differential pairs are routed from (mostly) left bottom side of the BCM chip. These are the closest to the antenna and not shielded. Guess what irradiates more, a shielded cable or a microstrip (albeit of a differential pair) or this ?</p>
+<p>So covering them with a metal plate should ease EMI interference. Don&#8217;t short-circuit anything though! An EMI gasket could help.</p>
+<p>Be aware of the fact, that direct metal (isolated) on the microstrip lines decreases line impedance and may cause the output driver to drive it with a slightly higher current (but it depends whether it is a current or voltage driver). I can&#8217;t remember, but AFAIK it&#8217;s LVDS differential signalling. Other effects include impedance mismatches.</p>
+<p>So, to do it correctly means you need to put a dielectric layer on the pcb top and then a metallic sheet on top of it. Like a sandwich of thick paper and an aluminum foil. A brick of chocolate might help ;-P</p>
+<p>I put a note to test it with our heatsink and maybe sell it.</p>
+<p>If it doesn&#8217;t help enough, you always have a chance to slightly lower HDMI clock (and compensate it with reduced blanking times to sustain framerate). Which is what I suspect RPF will do in the next update, but it&#8217;d involve painful setup to define just this resolution slightly skewed.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519555#respond' data-commentid="1519555" data-postid="54866" data-belowelement="div-comment-1519555" data-respondelement="respond" aria-label='Reply to Lada'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1519453">
+				<div id="div-comment-1519453" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/24266811185ef79e31b3af89772948fd?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Alex</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519453">
+			30th Nov 2019 at 2:49 pm				</a>
+						</div>
+
+		<p>I mean that is absolutely great &#8211; release this berry, say that it can run 4k at 60hz, but never support it officially &#8211; I mean the official os, it still cannot play video files which are 4k resolution&#8230; omg guys:(( so developers;(((</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519453#respond' data-commentid="1519453" data-postid="54866" data-belowelement="div-comment-1519453" data-respondelement="respond" aria-label='Reply to Alex'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1519491">
+				<div id="div-comment-1519491" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/32d352263f63ddbd706d73fc8de8de79?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn"><a href='http://www.garatronic.fr' rel='external nofollow ugc' class='url'>Frédéric Pierson</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519491">
+			1st Dec 2019 at 10:46 am				</a>
+						</div>
+
+		<p>In the real life, we use the Pi with a screen connected on it, USB is also used at least for a mouse and a keyboard. Ethernet can be also useful. But for sure power supply must be connected. Why all connectors are unplugged on your hybrid thermal pictures ? Why heat is not dissipated by connectors and other pieces of metal ? What kind of thermal measurement instrument do yo use ?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519491#respond' data-commentid="1519491" data-postid="54866" data-belowelement="div-comment-1519491" data-respondelement="respond" aria-label='Reply to Frédéric Pierson'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1519494">
+				<div id="div-comment-1519494" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/5b2ca64f8ba976fe5959487b1ff10548?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">James Simpson</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519494">
+			1st Dec 2019 at 11:38 am				</a>
+						</div>
+
+		<p>Ran the &#8216;stress-ng &#8211;cpu o &#8211;cpu-method fft&#8217; on my Pi 4 with a ducted 0.35W fan plus heat sink in a home-made wooden case. Reached 52 C (run for 48 mins.) with no throttling and no over-clocking.<br />
+Ambient temperature 23.5 C.</p>
+<p>Very happy.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519494#respond' data-commentid="1519494" data-postid="54866" data-belowelement="div-comment-1519494" data-respondelement="respond" aria-label='Reply to James Simpson'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1519505">
+				<div id="div-comment-1519505" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/310a5e4c400e0e6b7cd466d07da3c6a9?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Admin User</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519505">
+			1st Dec 2019 at 5:45 pm				</a>
+						</div>
+
+		<p>Booting from external USB, supported in firmware, is on my must have list.</p>
+<p>There are hacks that accomplish this, but you have to start with the SD card.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519505#respond' data-commentid="1519505" data-postid="54866" data-belowelement="div-comment-1519505" data-respondelement="respond" aria-label='Reply to Admin User'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1519544">
+				<div id="div-comment-1519544" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/70459ba681a96931b68dbd8517c022ad?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Chuck</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519544">
+			2nd Dec 2019 at 2:04 pm				</a>
+						</div>
+
+		<p>Thank you very much for the article!  My Pi4 (my first Pi) in the Official case as part of a &#8220;desktop&#8221; kit throttled with minutes on the first day I owned it back in September doing nothing more stressful than accessing the Internet.  I found that interesting but not troubling as I bought the Pi4 as an educational exercise.  I 3d-printed a case in temperature color changing PLA and the case changed colors in a similar pattern to the exotic thermal images in the article quickly.</p>
+<p>The throttling, combined with seemingly everyone&#8217;s desire to overclock everything, has created and supported a cottage industry of cooling devices and cases.  Small packages from Amazon have arrived weekly since then.</p>
+<p>Looking forward to further articles.</p>
+<p>BTW, I now have four (4) Pi4s and a PiZero.</p>
+<p>&#8212; Chuck</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519544#respond' data-commentid="1519544" data-postid="54866" data-belowelement="div-comment-1519544" data-respondelement="respond" aria-label='Reply to Chuck'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1519603">
+				<div id="div-comment-1519603" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/b99619d37374f7020c58e8b48505b58f?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">benjamin</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519603">
+			4th Dec 2019 at 7:11 am				</a>
+						</div>
+
+		<p>You guys should mention, that IO performance over IO almost halved and sequential transfers are slower.</p>
+<p><a href="https://www.cnx-software.com/2019/12/01/run-raspberry-pi-4-cooler-new-firmware-easy-trick/#comment-569212" rel="nofollow ugc">https://www.cnx-software.com/2019/12/01/run-raspberry-pi-4-cooler-new-firmware-easy-trick/#comment-569212</a></p>
+<p>If you&#8217;re running from an external SSDs, thats a serios drop of performance</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519603#respond' data-commentid="1519603" data-postid="54866" data-belowelement="div-comment-1519603" data-respondelement="respond" aria-label='Reply to benjamin'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-1519620">
+				<div id="div-comment-1519620" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/e7a881b4dfba8e3ffdd480e74c51d72c?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Michael M. Mulligan</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519620">
+			4th Dec 2019 at 2:08 pm				</a>
+						</div>
+
+		<p>Has anyone tried a Peltier heat pump with a heatsink?  Looking at DigiKey.com, ones that would work at 5v and about 14mm on a side seem to be expensive (30-40 USD), but they are quiet, non-mechanical devices.</p>
+<p>For example the Marlow NL1023T-04AC seems to be a decent match for the problem &#8211; at least for the CPU (SOC).</p>
+<p>This is clearly not for everyone due to the price, but if a fast, quiet 4 is your desire it might work.</p>
+<p>MMM</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519620#respond' data-commentid="1519620" data-postid="54866" data-belowelement="div-comment-1519620" data-respondelement="respond" aria-label='Reply to Michael M. Mulligan'>Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment even depth-2 parent" id="comment-1519654">
+				<div id="div-comment-1519654" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/6f899503647093c850e1ff49ae8aab15?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn"><a href='https://www.coolipi.com' rel='external nofollow ugc' class='url'>CooliPi</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519654">
+			5th Dec 2019 at 9:18 am				</a>
+						</div>
+
+		<p>A Peltier always increases power consumption and without an adequate heatsink next to it, it even increases temperature of the cooled part. If your concern is low temperatures, go for a big passive solution first, then (if it can&#8217;t get the heat away) insert copper columns into critical heat path, then add heatpipes and lastly insert a Peltier between the best heatsink and a CPU.</p>
+<p>A fan can be combined with any of the solutions.</p>
+<p>We went the first route, which is the cheapest of them all, even though it&#8217;s more expensive than a weak cooling solution. Quiet. Long lasting.</p>
+<p>If you click my name, you&#8217;ll get to our solution.</p>
+<p>We&#8217;ve even successfully tried to immerse it into liquid nitrogen, very funny. I&#8217;ve yet to release a video.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519654#respond' data-commentid="1519654" data-postid="54866" data-belowelement="div-comment-1519654" data-respondelement="respond" aria-label='Reply to CooliPi'>Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-3" id="comment-1519700">
+				<div id="div-comment-1519700" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/e7a881b4dfba8e3ffdd480e74c51d72c?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Michael M. Mulligan</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519700">
+			6th Dec 2019 at 8:09 am				</a>
+						</div>
+
+		<p>I agree that a heat pump without a heat exchanger (heat sink) would not improve the situation.  A Peltier cooler would most likely use more power than a fan but would likely have a longer life and make less noise.  The choice would depend on what a particular user was trying to optimize.</p>
+<p>The heat sink from SensorEq looks like a nice solution assuming there is sufficient room, the WiFi performance is not too adversely effected, and the price appropriate for the user.  It has the great advantage of cooling all the major heat generators.</p>
+<p>But I was just asking if anyone had tried a Peltier heat pump + small heatsink and, if so, what were the results.  If no one reports such experience, I am tempted to try the combination.  I think that&#8217;s in the spirit of the whole RPi movement.</p>
+<p>MMM</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519700#respond' data-commentid="1519700" data-postid="54866" data-belowelement="div-comment-1519700" data-respondelement="respond" aria-label='Reply to Michael M. Mulligan'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1519631">
+				<div id="div-comment-1519631" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/b71e68f741c775ada18a225b92a1930c?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Nick</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519631">
+			4th Dec 2019 at 10:12 pm				</a>
+						</div>
+
+		<p>I still haven&#8217;t bought a Pi 4 because there&#8217;s no news on an updated hardware revision to fix the USB-C implementation on the board. And seeing how the IO performance suffered after the new firmware updates also makes me wait until there&#8217;s proper software support for everything on the board, or maybe Pi 4+ (or 5) comes out.</p>
+<p>For me, this is the most off-putting Pi that I&#8217;d love to have but I keep waiting for better news. If I wouldn&#8217;t have almost every previous model, I&#8217;d probably have a Pi 4 by now, though.</p>
+<p>I look forward to seeing this SBC in its best shape and I&#8217;m really glad that so much work has already been put into making it happen. It really feels it&#8217;s getting really close to what it was meant to be in the first place. Thanks for constantly pushing updates! This is, without a doubt, the best reason to own these small PCs, beside their vast versatility.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519631#respond' data-commentid="1519631" data-postid="54866" data-belowelement="div-comment-1519631" data-respondelement="respond" aria-label='Reply to Nick'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1519709">
+				<div id="div-comment-1519709" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/ae1ca2f41252adaaf874e922fd1989b9?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn"><a href='http://www.stanto.com' rel='external nofollow ugc' class='url'>Stanto</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519709">
+			6th Dec 2019 at 1:57 pm				</a>
+						</div>
+
+		<p>Would it not be better to run glxgears with :</p>
+<p>vblank_mode=0 glxgears</p>
+<p>That way you&#8217;re not limiting the rendering to the refresh rate of the screen?</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519709#respond' data-commentid="1519709" data-postid="54866" data-belowelement="div-comment-1519709" data-respondelement="respond" aria-label='Reply to Stanto'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-1519710">
+				<div id="div-comment-1519710" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/daef45be0600c88bd6e3e70ba9e7b524?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Gray</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519710">
+			6th Dec 2019 at 4:00 pm				</a>
+						</div>
+
+		<p>Is there any plan to offer an alternate firmware with the later thermal fixes, but not the first? I understand that USB IO performance was cut pretty much in half by the VLI changes &#8211; which is pretty unfortunate.</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519710#respond' data-commentid="1519710" data-postid="54866" data-belowelement="div-comment-1519710" data-respondelement="respond" aria-label='Reply to Gray'>Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-1519713">
+				<div id="div-comment-1519713" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="https://secure.gravatar.com/avatar/e7a881b4dfba8e3ffdd480e74c51d72c?s=32&#038;d=mm&#038;r=g" width="32" height="32" alt="Avatar" class="avatar avatar-32wp-user-avatar wp-user-avatar-32 alignnone photo avatar-default" />			<cite class="fn">Michael M. Mulligan</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/#comment-1519713">
+			6th Dec 2019 at 9:01 pm				</a>
+						</div>
+
+		<p>Better yet, if possible, would be a combination of firmware and software that would allow the user to control the trade-off between power and performance.</p>
+<p>MMM</p>
+
+		<div class="reply"><a rel='nofollow' class='comment-reply-link' href='https://www.raspberrypi.org/blog/thermal-testing-raspberry-pi-4/?replytocom=1519713#respond' data-commentid="1519713" data-postid="54866" data-belowelement="div-comment-1519713" data-respondelement="respond" aria-label='Reply to Michael M. Mulligan'>Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    </ol>
+
+
+
+	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/blog/thermal-testing-raspberry-pi-4/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://www.raspberrypi.org/wp/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='54866' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2dc31e5ade" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="196"/></p></form>	</div><!-- #respond -->
+	<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>        </aside>
+    </article>
+</section>
+
+<aside class="sidebar static-sidebar">
+    <aside class="post-meta">
+    <div class="author-photo">
+        <a href="/blog/author/alexbate">
+            <img src="https://secure.gravatar.com/avatar/3bcc62a16150b91b4029a6b566b4d492?s=100&#038;d=mm&#038;r=g" width="100" height="100" alt="Avatar" class="avatar avatar-100 wp-user-avatar wp-user-avatar-100 photo avatar-default" />        </a>
+    </div>
+
+    <div class="author-bio-post-meta">
+        <div class="author-bio">
+            <strong>
+                Posted by
+                <a href="/blog/author/alexbate">
+                    Alex Bate                </a>
+            </strong>
+            <br />
+            <em>
+                Social Media Manager<br />
+                Hummus Enthusiast            </em>
+        </div>
+
+        <div class="post-date">
+            28th Nov 2019 at 1:40 pm        </div>
+    </div>
+</aside>
+
+<nav class="posts">
+    <ul>
+            <li class="prev"><a href="https://www.raspberrypi.org/blog/your-amazing-raspberry-pi-projects-iusemyraspberrypifor/" rel="prev">Your amazing Raspberry Pi projects #IUseMyRaspberryPiFor</a></li>
+            <li class="active"><a href="#">Thermal testing Raspberry Pi 4</a></li>
+            <li class="next"><a href="https://www.raspberrypi.org/blog/make-your-own-nfc-data-cufflinks/" rel="next">Make your own NFC data cufflinks</a></li>
+            <li><a href="/blog/">Blog feed</a></li>
+        <li><a href="/archive/">View the Archive</a></li>
+        <li class="feed"><a href="/feed/">RSS Feed</a></li>
+    </ul>
+</nav>
+
+<aside class="related-posts" style="clear: both;">
+    <ul class="grid community">
+        <li style="background: white url('https://www.raspberrypi.org/app/themes/mind-control/images/piweekly/rpi-weekly.png') no-repeat top center;">
+            <a href="/weekly/" class="a"></a>
+            <div class="text">
+                <a href="/weekly/">
+                    <div class="inner">
+                        <h3>Raspberry Pi Weekly</h3>
+                        <p class="excerpt">Stay connected with the Raspberry Pi community: read our newsletter!</p>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+
+    <h3 class="cta community"><a href="/weekly/">Sign up now</a></h3>
+
+</aside>
+
+<div style="clear: both;"></div>
+
+</aside>
+
+        <div style="clear: both;"></div>
+    </div>
+
+    <div style="clear: both;"></div>
+</div>
+
+<footer class="o-footer">
+    <div class="o-footer__slice">
+        <div class="o-footer__container">
+                            <div class="o-footer__nav">
+                    <div class="c-footer-nav">
+                        <span class="c-footer-nav__title">
+                            About Us                        </span>
+
+                        <ul class="c-footer-nav__list">
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/about"
+                                >
+                                    About us                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/about/meet-the-team"
+                                >
+                                    Our team                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/about/governance"
+                                >
+                                    Governance                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/safeguarding"
+                                >
+                                    Safeguarding                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/about/supporters"
+                                >
+                                    Our supporters                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="https://raspberrypi.workable.com/"
+                                >
+                                    Jobs                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/contact"
+                                >
+                                    Contact us                                </a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </div>
+                            <div class="o-footer__nav">
+                    <div class="c-footer-nav">
+                        <span class="c-footer-nav__title">
+                            Support                        </span>
+
+                        <ul class="c-footer-nav__list">
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/help"
+                                >
+                                    Help                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/documentation"
+                                >
+                                    Documentation                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="https://projects.raspberrypi.org/"
+                                >
+                                    Projects                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/training"
+                                >
+                                    Training                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/downloads"
+                                >
+                                    Downloads                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/research-and-insights"
+                                >
+                                    Research                                </a>
+                            </li>
+                                                        <li class="c-footer-nav__item">
+                                <a
+                                    class="c-footer-nav__link"
+                                    href="/help/faqs"
+                                >
+                                    FAQ                                </a>
+                            </li>
+                                                    </ul>
+                    </div>
+                </div>
+            
+            <div class="o-footer__newsletter">
+                <form
+                    action="https://raspberrypi.hosted.phplist.com/lists/?p=subscribe&amp;id=1"
+                    class="c-footer-newsletter"
+                    method="POST"
+                >
+                    <span class="c-footer-newsletter__legend">
+                        Sign up to our newsletter
+                    </span>
+                    <input
+                        class="c-footer-newsletter__input"
+                        name="email"
+                        placeholder="Your email here"
+                        required
+                        type="email"
+                    />
+                    <input type="hidden" name="htmlemail" value="1" />
+                    <input type="hidden" name="list[3]" value="signup" />
+                    <input type="hidden" name="listname[3]" value="Raspberry Pi Weekly" />
+                    <input
+                        class="c-footer-newsletter__input--verification-code"
+                        type="text"
+                        name="VerificationCodeX"
+                        value=""
+                        size="20"
+                    />
+                    <button class="c-footer-newsletter__button" name="subscribe">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <div class="o-footer__info">
+                <ul class="c-footer-social">
+                                        <li class="c-footer-social__item">
+                        <a
+                            class="c-footer-social__link c-footer-social__link--facebook"
+                            href="https://www.facebook.com/raspberrypi"
+                        >
+                            <span class="u-visually-hidden">
+                                Like Raspberry Pi on Facebook                            </span>
+                        </a>
+                    </li>
+                                        <li class="c-footer-social__item">
+                        <a
+                            class="c-footer-social__link c-footer-social__link--twitter"
+                            href="https://twitter.com/Raspberry_Pi"
+                        >
+                            <span class="u-visually-hidden">
+                                Follow Raspberry Pi on Twitter                            </span>
+                        </a>
+                    </li>
+                                        <li class="c-footer-social__item">
+                        <a
+                            class="c-footer-social__link c-footer-social__link--instagram"
+                            href="https://www.instagram.com/raspberrypifoundation/"
+                        >
+                            <span class="u-visually-hidden">
+                                Check out what we’re having for lunch on Instagram                            </span>
+                        </a>
+                    </li>
+                                        <li class="c-footer-social__item">
+                        <a
+                            class="c-footer-social__link c-footer-social__link--youtube"
+                            href="https://youtube.com/raspberrypi"
+                        >
+                            <span class="u-visually-hidden">
+                                Subscribe to the Raspberry Pi YouTube channel                            </span>
+                        </a>
+                    </li>
+                                    </ul>
+
+                <div class="o-footer__charity">
+                    <p class="c-footer-charity">
+                        Raspberry Pi Foundation<br />
+                        UK Registered Charity 1129409
+                    </p>
+                </div>
+
+                <div class="o-footer__additional">
+                    <p class="c-footer-additional">
+                        <a class="c-footer-additional__link" href="/privacy">Privacy</a>
+                        <a class="c-footer-additional__link" href="/cookies">Cookies</a>
+                        <a class="c-footer-additional__link" href="/trademark-rules">Trademark rules and brand guidelines</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript">
+// Constants, but we use `var` since `const` support is only in >=IE11
+var RESELLER_API_URL = 'https://api.resellers.raspberrypi.org';
+</script>
+
+<script type="text/javscript">
+    ga = __gaTracker;
+</script>
+
+<script type="text/javascript" id="cookiebanner" src="https://cdnjs.cloudflare.com/ajax/libs/cookie-banner/1.2.2/cookiebanner.min.js" data-bg="#e6e2dd" data-fg="#404040" data-link="#404040" data-moreinfo="https://www.raspberrypi.org/cookies" data-accept-on-scroll="true" data-message="We use cookies to ensure that we give you the best experience on our website. By continuing to visit this site you agree to our use of cookies." data-moreinfo-decoration="underline" integrity="sha384-ZtuZyMr5oH1P/r7ZKXXHFBkIZoNaDZ+aHMHxGUZWP0Zfwk6TgyUlgcR5QIx1kj1U" crossorigin="anonymous"></script>
+
+<script type='text/javascript' src='https://www.raspberrypi.org/app/plugins/wp-gallery-custom-links/wp-gallery-custom-links.js?ver=1.1'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/cookies-resolver.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/modal/modaal.min.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/modal/display-modal.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/geo/geoip2.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/geo/location-resolver.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/modal/product-modal.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/product.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/helpers.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/tracking.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/app/themes/mind-control/js/vimeo.ga.min.js?ver=1575644698'></script>
+<script type='text/javascript' src='https://www.raspberrypi.org/wp/wp-includes/js/wp-embed.min.js?ver=5.3'></script>
+<script async="async" type='text/javascript' src='https://www.raspberrypi.org/app/plugins/akismet/_inc/form.js?ver=4.1.3'></script>
+</body>
+</html>
+
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+Object Caching 101/329 objects using memcached
+Page Caching using memcached 
+Database Caching 132/223 queries in 0.194 seconds using memcached
+
+Served from: www.raspberrypi.org @ 2019-12-07 21:04:21 by W3 Total Cache
+-->

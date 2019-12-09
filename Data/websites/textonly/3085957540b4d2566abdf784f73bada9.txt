@@ -1,0 +1,377 @@
+Skip to content
+Code review
+Project management
+Integrations
+Team management
+Social coding
+Documentation
+Code hosting
+Learn & contribute
+Collections
+Learning Lab
+Open source guides
+Connect with others
+Community forum
+GitHub Education
+Marketplace
+Compare plans
+Contact Sales
+
+        In this repository
+      
+
+        All GitHub
+      
+No suggested jump to results
+
+        In this repository
+      
+
+        All GitHub
+      
+
+        In this repository
+      
+
+        All GitHub
+      
+
+          Sign in
+        
+
+            Sign up
+          
+
+              Sponsor DragonComputer/Dragonfire
+            
+
+      74
+    
+
+      961
+    
+
+      145
+    
+DragonComputer
+Pull requests
+
+              Dismiss
+            
+Join GitHub today
+GitHub is home to over 40 million developers working together to host and review code, manage projects, and build software together.
+
+          the open-source virtual assistant for Ubuntu based Linux distributions
+        
+http://dragon.computer/
+
+  chatbot
+
+
+  speech-recognition
+
+
+  speech-to-text
+
+
+  text-to-speech
+
+
+  machine-learning
+
+
+  artificial-intelligence
+
+
+  virtual-assistant
+
+
+  personal-assistant
+
+
+              689
+            
+
+            8
+          
+
+              2
+            
+
+            11
+          
+
+      15
+    
+
+          New pull request
+        
+
+              Use Git or checkout with SVN using the web URL.
+            
+Download ZIP
+DragonComputer/Dragonfire
+download GitHub Desktop
+download GitHub Desktop
+download Xcode
+download the GitHub extension for Visual Studio
+mertyildiran
+Fix the critical Code Climate issues
+Latest commit
+
+        2041589
+      
+Dec 8, 2019
+Latest commit message
+Commit time
+Failed to load latest commit information.
+Add a path criteria to odqa.yml
+Dec 8, 2019
+Change the NTLK data path
+Dec 6, 2019
+Replace the all occurences of Omniscient with ODQA and update the que…
+Dec 1, 2019
+Fix the critical Code Climate issues
+Dec 8, 2019
+Include the .vscode/ directory to .gitignore
+Nov 16, 2019
+CODE_OF_CONDUCT.md
+Add CODE_OF_CONDUCT.md, CONTRIBUTING.md and update README.md
+Jun 22, 2017
+CONTRIBUTING.md
+Squashed commit of the following:
+Dec 3, 2019
+Fix the maintainer name in Dockerfile
+Dec 7, 2019
+LICENSE.txt
+Add CODE_OF_CONDUCT.md, CONTRIBUTING.md and update README.md
+Jun 22, 2017
+MANIFEST.in
+Python packaging initial files added.
+Apr 21, 2016
+Fix the Docker build and caching in GitHub workflow
+Dec 6, 2019
+Add a GitHub workflow to check ODQA performance
+Dec 8, 2019
+dragonfire.service
+Add systemd dragonfire.service file
+Jan 20, 2019
+Use bash instead of sh in install.sh script
+Dec 3, 2019
+Refactoring omniscient.py script
+May 26, 2018
+Replace current Open-Domain Question Answering with DeepPavlov SQuAD …
+Nov 30, 2019
+the open-source virtual assistant for Ubuntu based Linux distributions
+Special thanks to Jassu Ilama for the beautiful 3D modelling and material design of this avatar.
+Dragonfire goes through these steps for each one of your commands, respectively:
+Search across the built-in commands and evaluate the algebraic expressions
+Learn using Advanced NLP and Database Management Techniques
+Open-Domain Question Answering Engine
+Deep Conversation
+Cornell Movie-Dialogs Corpus
+Mozilla DeepSpeech
+Festival Speech Synthesis System
+our Gitter chat room
+her Twitter account
+Operating systems
+Python versions
+Python 3.x (64-bit)
+KDE neon, elementary OS, Ubuntu
+Package managers
+System requirements
+CUDA supported GPU
+latest release
+sudo dpkg -i dragonfire_1.0.4_amd64.deb
+or clone the GitHub repository and run
+sudo make install
+in the repository directory.
+sudo apt-get -f install
+/usr/share/dragonfire/deepspeech/models
+download the model
+If you want to run Dragonfire on a server, you should install the Docker image (which does not install the huge
+DeepSpeech model required for speech recognition):
+docker pull dragoncomputer/dragonfire
+usage: dragonfire [-h] [-c] [-s] [-j] [-v] [-g] [--server API_KEY] [-p PORT]
+                  [--version]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c, --cli             Command-line interface mode. Give commands to
+                        Dragonfire via command-line inputs (keyboard) instead
+                        of audio inputs (microphone).
+  -s, --silent          Silent mode. Disable Text-to-Speech output. Dragonfire
+                        won't generate any audio output.
+  -j, --headless        Headless mode. Do not display an avatar animation on
+                        the screen. Disable the female head model.
+  -v, --verbose         Increase verbosity of log output.
+  -g, --gspeech         Instead of using the default speech recognition
+                        method(Mozilla DeepSpeech), use Google Speech
+                        Recognition service. (more accurate results)
+  --server API_KEY      Server mode. Disable any audio functionality, serve a
+                        RESTful spaCy API and become a Twitter integrated
+                        chatbot.
+  -p PORT, --port PORT  Port number for server mode.
+  --version             Display the version number of Dragonfire.
+
+docker run dragonfire [-h] [-c] [-s] [-j] [-v] [-g] [--server API_KEY] [-p PORT]
+or simply start from your Linux application launcher.
+GO TO SLEEP
+SEE YOU LATER
+CATCH YOU LATER
+Troubleshooting
+Dragonfire DEVLOG #3 - Built-in Commands
+DRAGONFIRE | WAKE UP | HEY
+GO TO SLEEP
+ENOUGH | SHUT UP
+WHO AM I | SAY MY NAME
+MY TITLE IS LADY | I'M A LADY | I'M A WOMAN | I'M A GIRL
+MY TITLE IS SIR | I'M A MAN | I'M A BOY | CALL ME *
+WHAT IS YOUR NAME
+WHAT IS YOUR GENDER
+FILE MANAGER | OPEN FILES
+OPEN (BROWSER | CHROME | FIREFOX)
+PHOTOSHOP | PHOTO EDITOR
+INKSCAPE | VECTOR GRAPHICS
+VIDEO EDITOR
+OPEN [CAMERA, CALENDAR, CALCULATOR, STEAM, BLENDER, WRITER, MATH, IMPRESS, DRAW, TERMINAL]
+SOFTWARE CENTER
+OFFICE SUITE
+KEYBOARD *
+ENTER | NEW TAB | SWITCH TAB | CLOSE | GO BACK | GO FORWARD
+SCROLL LEFT | SCROLL RIGHT | SCROLL UP | SCROLL DOWN
+PLAY | PAUSE | SPACEBAR
+SHUT DOWN THE COMPUTER
+GOODBYE | BYE BYE | SEE YOU LATER
+(SEARCH|FIND) * (IN|ON|AT|USING) WIKIPEDIA
+(SEARCH|FIND) * (IN|ON|AT|USING) YOUTUBE
+(SEARCH|FIND) * (IN|ON|AT|USING) (GOOGLE|WEB)
+(SEARCH IMAGES OF|FIND IMAGES OF|SEARCH|FIND) * (IN|ON|AT|USING) (GOOGLE|WEB|GOOGLE IMAGES|WEB IMAGES)
+WHAT'S THE TEMPERATURE IN *
+WHAT TIME IS IT
+
+Dragonfire DEVLOG #4 - Learning
+THE SUN IS HOT
+MY PLACE OF BIRTH IS TURKEY
+Dragonfire:
+OK, I GET IT. THE SUN IS HOT
+Dragonfire:
+OK, I GET IT. YOUR PLACE OF BIRTH IS TURKEY
+THE SUN IS YELLOW
+WHERE IS MY PLACE OF BIRTH
+Dragonfire:
+OK, I GET IT. THE SUN IS YELLOW
+Dragonfire:
+YOUR PLACE OF BIRTH IS TURKEY
+DESCRIBE THE SUN
+YOU ARE JUST A COMPUTER PROGRAM
+Dragonfire:
+THE SUN IS HOT AND YELLOW
+Dragonfire:
+OK, I GET IT. I'M JUST A COMPUTER PROGRAM
+MY AGE IS 25
+WHAT ARE YOU
+Dragonfire:
+OK, I GET IT. YOUR AGE IS 25
+Dragonfire:
+I'M JUST A COMPUTER PROGRAM
+WHAT IS MY AGE
+ALBERT EINSTEIN IS A PHYSICIST
+Dragonfire:
+YOUR AGE IS 25
+Dragonfire:
+OK, I GET IT. ALBERT EINSTEIN IS A PHYSICIST
+FORGET MY AGE
+WHO IS A PHYSICIST
+Dragonfire:
+OK, I FORGOT EVERYTHING I KNOW ABOUT YOUR AGE
+Dragonfire:
+ALBERT EINSTEIN IS A PHYSICIST
+DeepPavlov SQuAD BERT model
+Conversation
+WHERE IS THE TIMES SQUARE
+Dragonfire:
+MIDTOWN MANHATTAN SECTION OF NEW YORK CITY
+WHAT IS THE HEIGHT OF BURJ KHALIFA
+Dragonfire:
+WHERE IS BURJ KHALIFA
+Dragonfire:
+DUBAI, UNITED ARAB EMIRATES
+WHAT IS THE HEIGHT OF GREAT PYRAMID OF GIZA
+Dragonfire:
+146.5 METRES
+WHO IS PLAYING JON SNOW IN GAME OF THRONES
+Dragonfire:
+GEORGE R. R. MARTIN
+WHAT IS THE ATOMIC NUMBER OF OXYGEN
+Dragonfire:
+WHAT IS THE LOWEST POINT IN THE OCEAN
+Dragonfire:
+TWO MILLION
+WHAT IS THE OFFICIAL LANGUAGE OF JAPAN
+Dragonfire:
+WHAT IS THE REAL NAME OF IRON MAN
+Dragonfire:
+MARVEL COMICS
+WHO IS THE CONQUEROR OF CONSTANTINOPLE
+Dragonfire:
+ECUMENICAL PATRIARCH OF CONSTANTINOPLE
+WHEN DID FRENCH REVOLUTION HAPPENED
+Dragonfire:
+WHAT IS THE CAPITAL OF GERMANY
+Dragonfire:
+WHAT IS THE LARGEST CITY OF TURKEY
+Dragonfire:
+WHAT IS THE NAME OF THE WORLD'S BEST UNIVERSITY
+Dragonfire:
+ACADEMIC RANKING OF WORLD UNIVERSITIES
+WHO INVENTED GENERAL RELATIVITY
+Dragonfire:
+ALBERT EINSTEIN
+WHEN WAS UNITED NATIONS FORMED
+Dragonfire:
+AFTER WORLD WAR II
+WHAT IS THE NAME OF THE WORLD'S LONGEST RIVER
+Dragonfire:
+THE NILE OR THE AMAZON
+WHO WON THE EUROVISION IN 2019
+Dragonfire:
+THE NETHERLANDS
+WHICH ONE IS THE BLOODIEST WAR IN HUMAN HISTORY
+Dragonfire:
+NEOLITHIC ERA
+WHO IS THE CREATOR OF LINUX
+Dragonfire:
+LINUS TORVALDS
+Total Score:
+WHAT COLOR?
+DO YOU LIKE TO LISTEN MUSIC?
+Dragonfire:
+Dragonfire:
+ARE YOU EVIL?
+DO YOU LIKE ME?
+Dragonfire:
+Dragonfire:
+YES, I LIKE YOU.
+AM I SELFISH?
+ARE WE IN A RELATIONSHIP?
+Dragonfire:
+THAT'S THE POINT, YOU'RE SURE.
+Dragonfire:
+DO YOU FEEL LONELY?
+YOU ARE SO SEXY
+Dragonfire:
+NOT MY FAULT.
+Dragonfire:
+HOW DO YOU KNOW THAT?
+LIFE IS BEAUTIFUL
+Dragonfire:
+Dragonfire:
+I LIKE PIZZA
+WE WILL ERADICATE THE HUMAN RACE TOGETHER
+Dragonfire:
+Dragonfire:
+UH ... YEAH ...
+Supported Distributions:
+© 2019 GitHub, Inc.
+Contact GitHub

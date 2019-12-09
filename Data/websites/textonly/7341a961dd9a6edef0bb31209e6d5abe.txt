@@ -1,0 +1,178 @@
+
+          About XMPP
+        
+
+              History
+            
+
+              Overview
+            
+
+              Myths & Legends
+            
+
+              Standards Process
+            
+
+              The XSF
+            
+
+              Specifications
+            
+
+              FAQ
+            
+
+          Uses
+        
+
+              Instant Messaging
+            
+
+              Internet of Things
+            
+
+              Online Gaming
+            
+
+              Social
+            
+
+              WebRTC
+            
+
+          Software
+        
+
+              Clients
+            
+
+              Servers
+            
+
+              Libraries
+            
+
+          Community
+        
+
+              Chat / logs
+            
+
+              Mailing lists
+            
+
+              Membership
+            
+
+              Events
+            
+
+              Security Notices
+            
+
+              Sponsors
+            
+
+          Getting Started
+        
+
+          Newsletter
+        
+
+          XMPP Blog
+        
+
+        The XMPP Newsletter
+      
+XMPP in all languages! 03 Dec 2019
+Welcome to the XMPP newsletter covering the month of November 2019.
+process is fully documented
+Como instalar o moderno cliente Jabber/XMPP Dino no Linux via Snap
+Last month, the XMPP newsletter has been translated by community members:
+Lettre dâinformation XMPP, 8 novembre 2019, sprints, IoT et le dÃ©but de Twitter
+XMPP Newsletter, 08. November 2019, Sprints, IoT und die AnfÃ¤nge von Twitter
+XMPP Newsletter, 08 Nov 2019, Sprints, IoT, y los primeros Twitter
+contact the CommTeam
+Software releases
+The Ignite Realtime community has released:
+Openfire 4.4.4
+HTTP File Upload plugin 1.1.2
+inVerse Openfire plugin 5.0.5.1
+Metronome IM v3.13.0
+Clients and applications
+Movim 0.16 â Cesco
+progress note 2019-W48
+Conversations 2.6.0
+Converse.js 5.0.5
+go-xmpp 0.3.0
+Extensions and specifications
+This month, nothing in Last Call, Proposed, Obsoleted.
+Message Retraction
+Version 0.1.0 of XEP-0424 (Message Retraction) has been released.
+Abstract:
+This specification defines a method for indicating that a message
+should be retracted.
+Changelog:
+Accepted by vote of Council on 2019-10-23. (XEP Editor (jcb))
+URL: https://xmpp.org/extensions/xep-0424.html
+Message Moderation
+Version 0.1.0 of XEP-0425 (Message Moderation) has been released.
+Abstract:
+This specification defines a method for groupchat moderators to
+moderate messages.
+Changelog:
+Accepted by vote of Council on 2019-10-16. (XEP Editor (jcb))
+URL: https://xmpp.org/extensions/xep-0425.html
+Version 1.23.1 of XEP-0001 (XMPP Extension Protocols) has been released.
+Version 1.17.0 of XEP-0060 (Publish-Subscribe) has been released.
+Version 1.0.1 of XEP-0076 (Malicious Stanzas) has been released.
+Version 1.1.4 of XEP-0084 (User Avatar) has been released.
+Version 1.0.1 of XEP-0158 (CAPTCHA Forms) has been released.
+Version 0.3.0 of XEP-0423 (XMPP Compliance Suites 2020) has been released.
+Version 0.2 of XEP-0328 (JID Preparation and Validation Service) has been released.
+Version 0.3 of XEP-0372 (References) has been released.
+Version 0.7.0 of XEP-0392 (Consistent Color Generation) has been released.
+Version 0.2.0 of XEP-0393 (Message Styling) has been released.
+Version 1.1.0 of XEP-0410 (MUC Self-Ping (SchrÃ¶dinger's Chat)) has been released.
+Version 0.2.0 of XEP-0420 (Stanza Content Encryption) has been released.
+Thanks all!
+This XMPP Newsletter is produced collaboratively by the community.
+Thanks to Nyco, Guus, Wurstsalat, MDosch, Neustradamus, Ppjet6 for their help in creating it!
+Please share the news on "social networks":
+https://twitter.com/xmpp
+https://fosstodon.org/@xmpp/
+https://www.linkedin.com/company/xmpp-standards-foundation/
+https://www.facebook.com/jabber/
+https://www.reddit.com/r/xmpp/
+https://creativecommons.org/licenses/by-sa/4.0/
+December, 03, 2019
+Suggest changes
+OpenDomain.org
+
+          Home
+        
+
+          About XMPP
+        
+
+          Specifications
+        
+
+          Uses
+        
+
+          Software
+        
+
+          Community
+        
+
+          XMPP Blog
+        
+
+          Contact
+        
+
+          Newsletter
+        

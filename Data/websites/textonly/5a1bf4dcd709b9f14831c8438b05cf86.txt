@@ -1,0 +1,181 @@
+Skip to content
+Code review
+Project management
+Integrations
+Team management
+Social coding
+Documentation
+Code hosting
+Learn & contribute
+Collections
+Learning Lab
+Open source guides
+Connect with others
+Community forum
+GitHub Education
+Marketplace
+Compare plans
+Contact Sales
+
+        In this repository
+      
+
+        All GitHub
+      
+No suggested jump to results
+
+        In this repository
+      
+
+        All GitHub
+      
+
+        In this repository
+      
+
+        All GitHub
+      
+
+          Sign in
+        
+
+            Sign up
+          
+
+      2
+    
+
+      30
+    
+
+      0
+    
+Pull requests
+
+              Dismiss
+            
+Join GitHub today
+GitHub is home to over 40 million developers working together to host and review code, manage projects, and build software together.
+
+          Tool for displaying items in directories using different modes
+        
+
+              218
+            
+
+            1
+          
+
+              0
+            
+
+            0
+          
+
+          New pull request
+        
+
+              Use Git or checkout with SVN using the web URL.
+            
+Download ZIP
+madprops/lq
+download GitHub Desktop
+download GitHub Desktop
+download Xcode
+download the GitHub extension for Visual Studio
+Snippets mod
+Latest commit
+
+        c6e1afb
+      
+Dec 7, 2019
+Latest commit message
+Commit time
+Failed to load latest commit information.
+Sorting mods
+Dec 6, 2019
+Snippets mod
+Dec 8, 2019
+Snippets mod
+Dec 8, 2019
+Dec 3, 2019
+Snippets mod
+Dec 8, 2019
+Dec 6, 2019
+Nov 24, 2019
+Readme and loicense
+Nov 24, 2019
+Readme update
+Dec 6, 2019
+Dec 6, 2019
+build_linux.sh
+Nov 24, 2019
+buildinstall_linux.sh
+Nov 24, 2019
+copy_config.sh
+Exclude and config file and other stuff
+Nov 30, 2019
+help2html.sh
+Nov 25, 2019
+install_linux.sh
+Install script mod
+Dec 3, 2019
+Nov 29, 2019
+Mix file fixes
+Dec 7, 2019
+Dec 3, 2019
+Sorting mods
+Dec 6, 2019
+Exe colors and colors table mod
+Dec 4, 2019
+(Tested only on Linux)
+This is a directory/file listing tool.
+Similar to what ls and tree do, except it doesn't have all of their features.
+It has different modes to list the contents of a directory.
+Most item styles are customizable, you can set for instance that directories should be "bright red" in the config file.
+Click here to see all available flags
+This is how it normally looks.
+Items are separated in Directories, Files, and Executables.
+Symlinks are underlined.
+Executables are bold.
+This is a preset that turns on certain options to make it look like this.
+It enables --fluid, meaning files, directories, are not in their own block.
+Also removes titles with --no-titles.
+This is a preset that turns on certain options to make it look like this.
+It enables --fluid, --mix, and --no-titles.
+--mix means sort everything in a single list, disregarding type.
+Show items in a vertical list.
+Categorize results by letters.
+This shows directory content in a tree view:
+Show previews of text files.
+--snippets-length
+You can use regex to filter results.
+Just add re: to the filter.
+Of course you can just use a non regex string to do so.
+Here's using:
+--permissions
+Sorting is also possible. Either by size or modification date.
+--sizesort (-i)
+--datesort (-d)
+In Linux a config is placed in ~/config/lq/lq.conf
+It uses the TOML format.
+Right now it has sections to exclude paths
+and to change the color theme.
+It looks like this:
+exclude = [
+  ".git",
+  ".svn",
+  "node_modules"
+]
+
+Excluding files affects modes like --tree
+It can be specified multiple times.
+i.e myprogram --exclude=bigDir -e=.git -e=target
+It is checked as:
+full_path.contains(&"/{e}/")
+
+So if ".git" is excluded then
+and not show its content in the tree view.
+It's possible to override the default colors using the config file.
+© 2019 GitHub, Inc.
+Contact GitHub

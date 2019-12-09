@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>azdle's notes</title>
+  <link rel="stylesheet" href="/assets/css/screen.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <h1>Comparing Apples and Gnomes</h1>
+<p>I got my Librem 5 a few days ago and, understandably, when I tell people that their first question is, &quot;How is it?&quot; I always hesitate with how to answer that question because I'm not sure what people expectations are. And more of the point, I assume that most of the time they have unreasonable expectations. But, that might just be because I've done this dance before, with both the NeoFreerunner and the Firefox Flame.</p>
+<p>To be clear, you're not going to be able to replace your current smartphone with a Librem 5 as it exists today. (There's even a couple of bugs that mean you're not going to be able to replace your current feature phone, but those are software issues that should hopefully be fixed with an update soon.) There are lots of reasons why, lack of maturity of some OS features and lack of apps being the most preeminent, but I feel like focusing on those at the moment is missing the point of the Librem 5.</p>
+<p>The Librem 5 is the best free software phone, because it's the only one that exists right now. And that is a milestone enough that it should be commended.</p>
+<h1>Expectations</h1>
+<p>Obviously, I'd love to have this phone be 100% polished from the start, probably as much or more than just about anyone else outside of Purism. However, that was never going to happen. Creating a phone from scratch is an almost insurmountable problem, one that Purism made even harder by making the device in a way that they're expected to get a RYF certification from the FSF. The fact that they have succeeded as much as they have as a small company with extremely limited funding is simply amazing.</p>
+<p>I do think that part of the blame for for some people's unreasonable expectations belongs to Purism's marketing &amp; public relations. I think they originally overestimated what they would be able to accomplish in the time they gave themselves, as is almost always the way with large software projects. And they seem to be afraid to admit to things not going perfectly, and when they do there's always spin. There does at least seem to be hope on this front, they <a href="https://puri.sm/posts/librem-5-birchs-10kohm-resistor-fun-devices-prepping-for-shipping/">admitted there was a problem</a> and then <a href="https://puri.sm/posts/librem-5-birch-shipping-update-delay-of-just-a-few-days/">directly stated there would be a delay</a>. Hopefully they're able to keep this up and not let the flock of trolls, that this project has seemed to have acquired, get to them.</p>
+<p>I hope that that the non-trolls will give them some slack too. It's hard to completely open and honest about things that don't go the way you've planned. I have first-hand experience with delivering things previously promised things late. It sucks. And it's easy to fall into the trap of convincing yourself that you're still going to hit a deadline until the very last moment. Now that hardware is starting to be delivered to backers, hopefully some of the weird unrest will die down.</p>
+<h1>So, how is it?</h1>
+<p>With all that now said, lets answer the original question.</p>
+<h1>The Hardware is Good</h1>
+<p>The design of the phone is sexy. It feels super solid. The fit &amp; finish are much better than I was expecting after the descriptions given in the batch announcement blog post. There's a tiny bit of wiggle to the back panel, but that's really the only thing I can find to complain about it physically. The display is beautiful, the black-levels are amazing.</p>
+<h1>The Software's Foundations Are Good</h1>
+<p>The new UI created for this phone is super intuitive and it looks <em>good</em>. It's very responsive. The input lag and frame rate seem to be on par with my Nexus 5X running Lineage. The touch input seems to be basically flawless. Installing new apps just works as you'd expect. But it's just the standard PureOS software repository, so many of the the apps' UI won't always fit on the screen properly.</p>
+<h1>There are a Couple of Significant Known Issues</h1>
+<p>Power management is basically unimplemented. It's hard to parse out what exactly they mean by <a href="https://puri.sm/posts/librem-5-birch-shipping-announcement/">&quot;the Librem 5 hardware is sprinting around a track (when it should sit idle until you need it to sprint for a millisecond)&quot;</a>, but it sounds like there's no support for scaling the CPU frequency (but that's just a guess from my limited knowledge.) This means that the battery dies quickly and (because the power goes straight to the CPU) takes a long time to charge.</p>
+<p>The other is that call audio isn't routed to the speaker. I haven't personally hit this, I'm just using a data-only SIM and can't remember the last time I actually used a phone to make a voice call.</p>
+<p>The cameras don't seem to be enabled yet. Installing &amp; opening up Cheese, I just get a message saying &quot;No device found&quot;.</p>
+<h1>And the Rest of the Software Needs Polish</h1>
+<p>The keyboard is really basic. It's just simple &quot;button -&gt; letter&quot; keys. No predictions, no long-presses, no caps-lock. Notifications exist, but as far as I can tell don't seem to go anywhere once the initial pop-up disappears. (Though, this definitely exists in desktop Gnome, so I may just be missing it.) There don't seem to be many apps that are available that are made to fit the small screen size and there's no indication of which have been adapted</p>
+<p>There's also small things like when the phone is off, the charging LED doesn't come on until I tap the power button for ~a second, but it does still charge. Or the fact that kinetic scrolling the browser has too much dampening, I can't flick to the bottom of a page like I can with any other mobile browser.</p>
+<h1>What Just <em>Is</em></h1>
+<p>The phone is chonky. I measure it at 15.6 mm thick, 150.2 mm tall, and 75.2 mm wide. It's noticeably thick, but it's not hard to hold, definitely nicer than any of the recent ultra tall/wide flagship phones I've held recently. The chamfers of the back edges definitely help with hiding some of the bulk and give a place for your fingers to grab on on the far edge of the phone.</p>
+<p>It's interesting being able to see how far down the charging/booting LED on the front is. it's behind a bit of clear glass that allows you to see down into the hole the LED is at the bottom of. There's a good 4-5 mm between the front glass and the LED. So the thickness of the phone doesn't seem to be all down the modem &amp; wireless cards being socketed. (Although, I've never been able to see into a front indicator like this before, so maybe that's normal? And I guess I don't know <em>for sure</em> that the LED is attached to the mainboard, it could be daughterboard further away from the screen than the mainboard.)</p>
+<h1>Other Things</h1>
+<p>It <em>does</em> work as a web browsing device, I was reading reddit threads last night on it and forgot I was doing it on the Librem until I didn't have a saved password when I tried to login. I also really like the design of the browser, it has the important buttons at the bottom where they're easy to reach and the less important things at the top for when you do need them.</p>
+<p>My phone came with a pre-installed screen-protector (which had an additional dust cover on that), but it's clearly not made for this screen and it's not installed quite centered. It's lined up perfectly with one edge of the active display area, but it's not quite wide enough to get all the way to the other.</p>
+<p><a href="./screen-protector-bottom.jpg"><img src="./thumb.screen-protector-bottom.jpg" alt="" /></a></p>
+<p>I have a Google Fi data-only SIM installed. I had to manually setup the APN, but you have to do that for any phone not bought from fi. The data connection seems to be rather slow. <a href="https://fast.com">fast.com</a> says I'm getting 130 Kbps, but I think that might be related to the fact that I can't change the &quot;network mode&quot;, every time I try I get an &quot;Access Denied&quot; message, so I'm not sure it's actually using 4G.</p>
+<p>I can't find the Fractal (Matrix chat) app in the PureOS store. I guess it's not ready yet? I don't care if there's not E2E encryption yet, I know that's not ready. But, I run my own home server, so it makes little difference to me.</p>
+<p>It takes 10-12 seconds of holding the power button before it gives any indication that's it turning on. It does seem to actually just wait that long because holding the button for any less time doesn't cause it to actually turn on. I'm not sure why it's so long, but it doesn't really matter since once the battery drain issue if fixed, I'll rarely be turning it off or on.</p>
+<h1>In the End</h1>
+<p>Let me be clear, one last time, even with all the issues I've talked about above, I'm blown away by what Purism has been able to accomplish. This is a much more polished product than I expected when I backed, but I mostly expected a phone that would dump me to a shell I couldn't type into because, ya know, touchscreen. But again, even the current power issues aside, the ecosystem isn't ready for someone expecting to replace a current gen Android or iOS smartphone. However, all the basics are there and it seems to be a solid foundation for the future.</p>
+<p>Finally, I've gone back and forth on whether or not I want to post some of the current limitations of the phone because I know there are trolls who will take what I say and run with it, but I know there are people out there who just want to genuinely know how things are going. So this post so for those people. Just remember, don't feed the trolls.</p>
+<h1>More Random Pictures</h1>
+<p>All the photos in this post are <a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a>.</p>
+<p><a href="./DSC_1209.JPG"><img src="./thumb.DSC_1209.JPG" alt="" /></a>
+<a href="./DSC_1211.JPG"><img src="./thumb.DSC_1211.JPG" alt="" /></a>
+<a href="./DSC_1215.JPG"><img src="./thumb.DSC_1215.JPG" alt="" /></a>
+<a href="./DSC_1217.JPG"><img src="./thumb.DSC_1217.JPG" alt="" /></a>
+<a href="./DSC_1220.JPG"><img src="./thumb.DSC_1220.JPG" alt="" /></a>
+<a href="./DSC_1227.JPG"><img src="./thumb.DSC_1227.JPG" alt="" /></a>
+<a href="./DSC_1230.JPG"><img src="./thumb.DSC_1230.JPG" alt="" /></a>
+<a href="./DSC_1232.JPG"><img src="./thumb.DSC_1232.JPG" alt="" /></a>
+<a href="./DSC_1236.JPG"><img src="./thumb.DSC_1236.JPG" alt="" /></a>
+<a href="./DSC_1237.JPG"><img src="./thumb.DSC_1237.JPG" alt="" /></a>
+<a href="./DSC_1238.JPG"><img src="./thumb.DSC_1238.JPG" alt="" /></a>
+<a href="./DSC_1239.JPG"><img src="./thumb.DSC_1239.JPG" alt="" /></a>
+<a href="./DSC_1259.JPG"><img src="./thumb.DSC_1259.JPG" alt="" /></a>
+<a href="./DSC_1264.JPG"><img src="./thumb.DSC_1264.JPG" alt="" /></a></p>
+
+  <script>
+    (function() {
+      var script = document.createElement('script');
+      window.counter = 'https://azdle.goatcounter.com/count'
+      script.async = 1;
+      script.src = '//gc.zgo.at/count.min.js';
+
+      var ins = document.getElementsByTagName('script')[0];
+      ins.parentNode.insertBefore(script, ins)
+    })();
+  </script>
+</body>
+</html>

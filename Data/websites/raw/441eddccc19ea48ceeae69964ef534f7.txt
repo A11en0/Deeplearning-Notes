@@ -1,0 +1,1020 @@
+
+
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Methods to Accelerate Linux Kernel Development using Yocto Project and the NXP MCIMX8M-EVK</title>
+		<link rel="canonical" href="https://mindchasers.com/dev/yocto-mcimx8m-accel">
+		
+		
+		<link rel="image_src" href="https://mindchasers.com/static/images/linux/nfs_boot.png">
+		<meta property="og:image" content="https://mindchasers.com/static/images/linux/nfs_boot.png">
+		
+
+		<link rel="apple-touch-icon" href="/static/svg/mc_banner_2019_graphiconly.svg">
+		<link rel="apple-touch-icon" sizes="128x128" href="/static/images/mc-touch-icon-128x128.png">		
+		<link rel="apple-touch-icon" sizes="96x96" href="/static/images/mc-touch-icon-96x96.png">		
+		<link rel="apple-touch-icon" sizes="46x46" href="/static/images/mc-touch-icon-46x46.png">
+		<link rel="shortcut icon" href="/static/favicon.ico">
+		
+		 
+			<meta name="description" content="A discussion of techniques to accelerate development with the Linux Kernel and related when working with the Yocto Project and an NXP i.MX EVK system."> 
+		
+		
+		
+		<meta name="keywords" content="Linux, NXP, i.MX8, kernel, U-boot, NFS, TFTP">
+		
+		
+		<meta name="robots" content="index, follow">
+		
+		
+		
+		<!--  all css -->
+		<link rel="stylesheet" type="text/css" href="/static/css/base.min.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/mindchasers.min.css">
+
+		
+		
+		<link rel="stylesheet" type="text/css" href="/static/css/develop.min.css">
+		
+		
+		
+		<link rel="stylesheet" type="text/css" href="/static/css/comments.min.css">
+		
+
+
+		
+			<script>debugJS = false;</script>
+		   
+
+	</head>
+	<body>
+	
+	<div id="mc-content">
+	
+		<header class="mc-banner-top">
+		
+			<div class="mc-banner-top-left" >
+				
+					<div id="mc-banner-brain">
+						<a href="/"><img height="60" class="" src="/static/svg/mc_banner_2019_graphiconly.svg" alt="Mind Chasers Inc."></a>
+					</div>
+					<div id="mc-banner-mind-chasers">
+						<a href="/"><img height="18" class="" src="/static/images/mc_banner_2019_textonly.png" alt="Mind Chasers Inc."></a>
+					</div>
+				
+			</div>
+			
+			<div class="mc-banner-top-center" >
+			</div>
+			
+			<div class="mc-banner-top-right">
+				
+						
+				<a href="http://twitter.com/mindchasers" title="Follow Mind Chasers on Twitter" target="_blank">
+					<img class="mc-banner-icons" src="/static/images/share/Twitter_bird_logo_2012.svg" alt="Twitter">
+				</a>		
+			</div>
+		
+		</header> <!-- mc-banner-top -->
+	
+		<nav id="mc-menu">
+			<button class="mc-quiet" id="mc-menu-hamburger"></button>
+			<div id="mc-menu-bar-mobile">take control of your network</div>
+			<div id="mc-menu-dropdown">
+				<ul id="mc-menu-list">
+					<li><a href="/about">about</a></li>
+					<li><a href="/dev">tech articles</a></li>
+					<li><a href="/repos">open source</a></li> 
+					<li><a href="/forum">forum</a></li>
+					<li><a href="/education">education</a></li> 
+					<li><a href="mailto:info@mindchasers.com">contact us</a></li>
+				</ul>
+			</div>
+		</nav>
+	
+		<div id="mc-body" class="mc-develop" data-fragments="">
+			
+
+<article id="yocto-mcimx8m-accel" class="mc-article topic-container" itemscope itemtype="http://schema.org/TechArticle">
+	<h1 class="mc-article-title" itemprop="name">Methods to Accelerate Linux Kernel Development using Yocto Project and the NXP MCIMX8M-EVK </h1> 
+	<div>
+			<p class="mc-article-summary" itemprop="description"> 
+				A discussion of techniques to accelerate development with the Linux Kernel and related when working with the Yocto Project and an NXP i.MX EVK system.
+			</p>
+			<p class="mc-article-date">updated:  
+					<time datetime="2019-12-07" itemprop="dateModified">
+						Dec 07, 2019
+					</time>
+			</p>
+	</div>
+	
+	<svg class="mc-graphics-ad-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>	
+	
+
+	
+	<script>mcAds = "Adsense, AMZN";</script>
+	<div id="mc-ad-banner" class="ad-wrapper">
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-7570862832325226"
+     data-ad-slot="8091958884"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+	</div>
+		<svg class="mc-graphics-ad-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>	
+	
+	
+	
+	
+	
+	
+
+
+	<div itemprop="text" class="mc-article-body">
+		 
+
+<h2>Overview</h2>
+<p>
+	We recently began working with the NXP <a
+		href="https://www.nxp.com/design/development-boards/i.mx-evaluation-and-development-boards/evaluation-kit-for-the-i.mx-8m-applications-processor:MCIMX8M-EVK"
+		target="_blank">MCIMX8M-EVK</a> evaluation kit for the i.MX 8MQuad
+	processor. It's certainly an amazing system, and there is plenty of
+	documentation. However, we found some of the Yocto Linux related
+	documentation stale and confusing, so we are posting this article
+	regarding our steps to accelerate building, booting, and debugging the
+	Linux kernel, device tree, and root filesystem.
+</p>
+
+<p>
+	If you're new to Yocto or the MCIMX8M-EVK, you may want to first review
+	<a href="https://mindchasers.com/dev/yocto-mcimx8m-evk" target="_blank">Build,
+		Install, and Develop from Source with Yocto Linux and the NXP
+		MCIMX8M-EVK</a>.
+</p>
+
+<p>
+	Listed below are some important data points for working with the NXP <a
+		href="https://www.nxp.com/design/development-boards/i.mx-evaluation-and-development-boards/evaluation-kit-for-the-i.mx-8m-applications-processor:MCIMX8M-EVK"
+		target="_blank">MCIMX8M-EVK</a>:
+</p>
+<ul>
+
+	<li>i.MX 8MQuad is powered by a quad core 1.5 GHz ARM <a
+		href="https://www.arm.com/products/silicon-ip-cpu/cortex-a/cortex-a53"
+		target="_blank">CORTEX-A53</a> with an auxiliary ARM M4
+	</li>
+	<li>We are working with the NXP release "L4.14.98-2.0.0_ga". This
+		was developed using Yocto Project 2.5 (Sumo).</li>
+	<li>Sumo was released April 2018. Yocto Project is currently
+		developing a 3.0 release.</li>
+	<li>The very important <em>meta-fsl-bsp-release</em> Git repo is
+		hosted at <a
+		href="https://source.codeaurora.org/external/imx/meta-fsl-bsp-release"
+		target="_blank">https://source.codeaurora.org/external/imx/meta-fsl-bsp-release</a>.
+		This is referred to as the "i.MX release layer" and "i.MX BSP release
+		layer".
+	</li>
+
+	<li>The Yocto Machine (for conf files): <b>imx8mqevk</b></li>
+	<li>There is an EVKB and EVK. We are using the EVKB, and this has
+		an upgrade to the WIFI over the EVK. The PCB design files currently
+		posted on nxp.com are not for our EVKB.</li>
+</ul>
+
+
+<figure>
+	<img src="/static/images/nxp/mcimx8-evk.png" alt="EVK Board">
+	<figcaption>NXP MCIMX8M-EVK</figcaption>
+</figure>
+
+<p>In this article, we discuss the following steps in order:</p>
+<ol>
+	<li>Create a <a href="#yocto-create-toolchain">toolchain</a> for
+		use outside the Yocto Build Environment
+	</li>
+	<li><a href="#yocto-build-kernel">Build</a> the NXP linux-imx
+		kernel using the external SDK / toolchain</li>
+	<li>Use U-boot to <a href="#yocto-load-kernel">load the kernel</a>,
+		device tree, and rootfs using NFS
+	</li>
+	<li>Create and <a href="#yocto-share-patches">share kernel
+			patches</a> via email to speed collaboration
+	</li>
+</ol>
+
+<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+
+<h2 id="yocto-create-toolchain">Create a toolchain for building the
+	Linux kernel outside the Yocto project</h2>
+
+
+
+<p>
+	This section assumes that you have already successfully built the NXP
+	BSP using the Yocto Project. If you haven't, please review the steps
+	detailed in <a href="https://mindchasers.com/dev/yocto-mcimx8m-evk"
+		target="_blank">Build, Install, and Develop from Source with Yocto
+		Linux and the NXP MCIMX8M-EVK</a>.
+</p>
+<p>Build the GNU toolchain / SDK for the NXP BSP as shown below.
+	Note that our build machine is an Ubuntu Linux 18.04 Intel PC.</p>
+
+<pre class="mc-shell">
+$ cd /opt/nxp/
+$ source sources/poky/oe-init-build-env bld-wayland/
+
+$ bitbake fsl-image-qt5-validation-imx -c populate_sdk
+
+$ ls /opt/nxp/bld-wayland/tmp/work
+aarch64-mx8m-poky-linux  all-poky-linux        sdk-provides-dummy-nativesdk-pokysdk-linux  x86_64-linux
+aarch64-poky-linux       imx8mqevk-poky-linux  sdk-provides-dummy-target-poky-linux        x86_64-nativesdk-pokysdk-linux
+
+$ cd /opt/nxp/bld-wayland/tmp/deploy/sdk
+$ ls
+...
+fsl-imx-wayland-glibc-x86_64-fsl-image-qt5-validation-imx-aarch64-toolchain-4.14-sumo.sh
+...
+
+./fsl*.sh
+
+NXP i.MX Release Distro SDK installer version 4.14-sumo
+=======================================================
+Enter target directory for SDK (default: /opt/fsl-imx-wayland/4.14-sumo): 
+You are about to install the SDK to "/opt/fsl-imx-wayland/4.14-sumo". Proceed[Y/n]? Y
+Extracting SDK...............................................................................................done
+Setting it up...done
+SDK has been successfully set up and is ready to be used.
+Each time you wish to use the SDK in a new shell session, you need to source the environment setup script e.g.
+ $ . /opt/fsl-imx-wayland/4.14-sumo/environment-setup-aarch64-poky-linux
+</pre>
+
+<p>Since we're going to be using this toolchain primarily to build
+	the Linux Kernel, let's make the following change to the environment
+	script:</p>
+
+<pre class="mc-file">
+- export LDFLAGS="-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed"
++ export LDFLAGS="-O1 --hash-style=gnu --as-needed"
+</pre>
+
+<p>Now, let's source our toolchain environment, clone the linux-imx
+	kernel outside our Yocto tree, and give our toolchain a try:</p>
+
+<pre class="mc-shell">
+cd /build
+$ source /opt/fsl-imx-wayland/4.14-sumo/environment-setup-aarch64-poky-linux
+
+$ echo $CROSS_COMPILE
+aarch64-poky-linux-
+
+$ echo $ARCH
+arm64
+
+$ aarch64-poky-linux-gcc --version
+...
+aarch64-poky-linux-gcc (GCC) 7.3.0
+
+$ git clone https://source.codeaurora.org/external/imx/linux-imx.git
+Cloning into 'linux-imx'...
+
+$ cd linux-imx
+$ git checkout 5d6cbeaf
+...
+HEAD is now at 5d6cbeafb80c MLK-21447: ASoC: fsl_rpmsg_i2s: underrun in m4 for msg delayed
+
+$ make V=1 LOADADDR=20008000 O=build_evk/ defconfig
+...
+# configuration written to .config
+#
+make[1]: Leaving directory '/build/linux-imx/build_evk'
+
+$ find . -name '.config'
+./build_evk/.config
+</pre>
+
+<p>Note above that our build output is being written to
+	/build/linux-imx/build_evk</p>
+
+<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+
+<h2 id="yocto-build-kernel">Build the linux-imx kernel</h2>
+
+<p>Now that we have our toolchain and repo set up, let's build the
+	linux-imx kernel and modules:</p>
+
+<pre class="mc-shell">
+$ cd /build/linux-imx
+
+# build the kernel
+$ make V=1 LOADADDR=20008000 O=build_evk/
+
+# compile the kernel modules
+$ make V=1 LOADADDR=20008000 O=build_evk/ modules
+
+# install the modules
+$ make V=1 LOADADDR=20008000 O=build_evk/ modules_install INSTALL_MOD_PATH=modules
+
+$ ls build_evk/vmlinux
+build_evk/vmlinux
+
+$ ls build_evk/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk.dtb
+build_evk/arch/arm64/boot/dts/freescale/fsl-imx8mq-evk.dtb
+
+$ ls build_evk/modules/lib/modules/
+4.14.98-05983-g5d6cbeafb80c
+</pre>
+
+<p>
+	Before we move on, let's create a <a
+		href="http://cscope.sourceforge.net/" target="_blank">Cscope</a>
+	project to help with debugging and introspection:
+</p>
+
+<pre class="mc-shell">
+$ make V=1 LOADADDR=20008000 O=build_evk/ cscope
+
+$ cd build_evk
+$ cscope -d
+</pre>
+
+<p>Your terminal should become a Cscope command window. Try typing
+	in "start_kernel" into "Find this global definition". Cscope is
+	fantastic for a quick lookup on where structs and the like are defined.</p>
+
+<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+
+<h2 id="yocto-load-kernel">Use U-boot to perform an NFS boot</h2>
+
+<p>This section assumes you have connected your NXP EVKB to your
+	(Linux) PC via the Type-B USB connector. On Ubuntu Linux, we like
+	kermit.</p>
+<p>If you login after your EVK has already booted Linux, you'll get
+	a login as shown below. Log in and then reboot. Note that you'll want
+	to stop U-boot from booting again, so be ready to hit a key when you
+	see the U-boot shell prompt.</p>
+
+<pre class="mc-shell">
+NXP i.MX Release Distro 4.14-sumo imx8mqevk ttymxc0
+
+imx8mqevk login: 
+
+$ reboot
+...
+...
+...
+
+U-Boot 2018.03-imx_v2018.03_4.14.98_2.0.0_ga+g87a19df5e4 (Oct 19 2019 - 21:39:32 +0000)
+
+CPU:   Freescale i.MX8MQ rev2.1 1500 MHz (running at 1000 MHz)
+CPU:   Commercial temperature grade (0C to 95C) at 43C
+Reset cause: POR
+Model: Freescale i.MX8MQ EVK
+DRAM:  3 GiB
+TCPC:  Vendor ID [0x1fc9], Product ID [0x5110], Addr [I2C0 0x50]
+MMC:   FSL_SDHC: 0, FSL_SDHC: 1
+Loading Environment from MMC... OK
+No panel detected: default to HDMI
+Display: HDMI (1280x720)
+In:    serial
+Out:   serial
+Err:   serial
+
+ BuildInfo:
+  - ATF 1cb68fa
+  - U-Boot 2018.03-imx_v2018.03_4.14.98_2.0.0_ga+g87a19df5e4
+
+switch to partitions #0, OK
+mmc1 is current device
+flash target is MMC:1
+Net:   eth0: ethernet@30be0000
+Fastboot: Normal
+Normal Boot
+Hit any key to stop autoboot:  0 
+</pre>
+
+<p>
+	Do yourself a favor and increase <em>bootdelay</em> and save it:
+</p>
+
+<pre class="mc-shell">
+> setenv bootdelay 10 
+> saveenv
+Saving Environment to MMC... Writing to MMC(1)... OK
+</pre>
+
+
+<p>Let's take a look at our U-Boot environment:</p>
+
+<pre class="mc-shell">
+u-boot=> printenv
+baudrate=115200
+boot_fdt=try
+bootcmd=mmc dev ${mmcdev}; if mmc rescan; then if run loadbootscript; then run bootscript; else if run loadimage; then run mmcboot; else run netboot; fi; fi; else booti ${loadaddr} - ${fdt_addr}; fi
+bootcmd_mfg=run mfgtool_args;if iminfo ${initrd_addr}; then if test ${tee} = yes; then bootm ${tee_addr} ${initrd_addr} ${fdt_addr}; else booti ${loadaddr} ${initrd_addr} ${fdt_addr}; fi; else echo "Run fastboot ..."; fastboot 0; fi;
+bootdelay=2
+bootscript=echo Running bootscript from mmc ...; source
+console=ttymxc0,115200 earlycon=ec_imx6q,0x30860000,115200
+emmc_dev=0
+ethaddr=00:04:9f:06:12:fc
+ethprime=FEC
+fastboot_dev=mmc1
+fdt_addr=0x43000000
+fdt_file=fsl-imx8mq-evk.dtb
+fdt_high=0xffffffffffffffff
+fdtcontroladdr=fc8fee60
+image=Image
+initrd_addr=0x43800000
+initrd_high=0xffffffffffffffff
+jh_clk=
+jh_mmcboot=setenv fdt_file fsl-imx8mq-evk-root.dtb; setenv jh_clk clk_ignore_unused; if run loadimage; then run mmcboot; else run jh_netboot; fi;
+jh_netboot=setenv fdt_file fsl-imx8mq-evk-root.dtb; setenv jh_clk clk_ignore_unused; run netboot;
+kboot=booti
+loadaddr=0x40480000
+loadbootscript=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};
+loadfdt=fatload mmc ${mmcdev}:${mmcpart} ${fdt_addr} ${fdt_file}
+loadimage=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${image}
+mfgtool_args=setenv bootargs console=${console},${baudrate} rdinit=/linuxrc clk_ignore_unused
+mmcargs=setenv bootargs ${jh_clk} console=${console} root=${mmcroot}
+mmcautodetect=yes
+mmcboot=echo Booting from mmc ...; run mmcargs; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then booti ${loadaddr} - ${fdt_addr}; else echo WARN: Cannot load the DT; fi; else echo wait for boot; fi;
+mmcdev=1
+mmcpart=1
+mmcroot=/dev/mmcblk1p2 rootwait rw
+netargs=setenv bootargs ${jh_clk} console=${console} root=/dev/nfs ip=dhcp nfsroot=${serverip}:${nfsroot},v3,tcp
+netboot=echo Booting from net ...; run netargs;  if test ${ip_dyn} = yes; then setenv get_cmd dhcp; else setenv get_cmd tftp; fi; ${get_cmd} ${loadaddr} ${image}; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if ${get_cmd} ${fdt_addr} ${fdt_file}; then booti ${loadaddr} - ${fdt_addr}; else echo WARN: Cannot load the DT; fi; else booti; fi;
+script=boot.scr
+sd_dev=1
+soc_type=imx8mq
+</pre>
+
+<p>
+	Some necessary env vars we'll need for NFS boot are shown below. Note
+	that we're not going to make use of DHCP. Instead, we know and use the
+	static IP address for our EVK board. <em>serverip</em> is our TFTP
+	server that we'll set up below.
+</p>
+<pre class="mc-shell">
+u-boot=> setenv serverip &lt;NFS server IP addr&gt;
+u-boot=> setenv ipaddr &lt;target IP addr&gt;
+u-boot=> saveenv
+</pre>
+
+<p>
+	Before we set up our own env variables for <em>nfs_boot</em>, let's
+	take a closer look at what NXP configured by default:
+</p>
+
+<p>
+	And if we wanted to use the default NXP configuration to perform a
+	default boot, then we would use <em>boot</em>, which is basically the
+	same as 'run bootcmd':
+</p>
+
+<pre class="mc-shell">
+> printenv bootcmd
+bootcmd=mmc dev ${mmcdev}; if mmc rescan; then if run loadbootscript; then run bootscript; else if run loadimage; then run mmcboot; else run netboot; fi; fi; else booti ${loadaddr} - ${fdt_addr}; fi
+</pre>
+
+
+<p>
+	<em>loadimage</em>: load the Linux kernel image into RAM:
+</p>
+<pre class="mc-shell">
+u-boot=> fatload mmc 1:1 0x40480000 Image
+23007744 bytes read in 989 ms (22.2 MiB/s)
+</pre>
+
+
+<p>
+	<em>loadfdt</em>: load the Device Tree into RAM:
+</p>
+<pre class="mc-shell">
+u-boot=> fatload mmc 1:1 0x43000000 fsl-imx8mq-evk.dtb
+44727 bytes read in 16 ms (2.7 MiB/s)
+</pre>
+
+<p>
+	<em>mmcargs</em>: set console and root:
+</p>
+<pre class="mc-shell">
+setenv bootargs "console=ttymxc0,115200 earlycon=ec_imx6q,0x30860000,115200 root=/dev/mmcblk1p2 rootwait rw"
+</pre>
+
+<p>
+	Boot the Kernel with <em>booti</em>:
+</p>
+<pre class="mc-shell">
+booti 0x40480000 - 0x43000000
+</pre>
+
+<p>
+	We now know enough to create our <em>nfs_boot</em> env variable:
+</p>
+
+<pre class="mc-shell">
+u-boot=> setenv nfs_boot "tftp 0x40000000 evk/bsp/nfs.img; source 0x40000000"
+u-boot=> saveenv
+Saving Environment to MMC... Writing to MMC(1)... OK
+</pre>
+
+<p>
+	<em>nfs_boot</em> will perform a tftp of our "nfs.img" script from our
+	TFTP server. Once the script is loaded into RAM, the script will run it
+	using the <em>source</em> command.
+</p>
+
+<p>
+	Note that our <em>nfs_boot</em> requires that you set up a TFTP server
+	and configure your Linux box for NFS. If you don't know how to do this
+	on Ubuntu, then refer to the references at the bottom of this page.
+</p>
+
+
+<p>
+	We show below our TFTP script <em>nfs.txt</em> and how we build our our
+	<em>nfs.img</em> from <em>nfs.txt</em>:
+</p>
+<pre class="mc-shell">
+$ cd /build/tftp/evk/bsp
+$ more nfs.txt 
+setenv bootargs root=/dev/nfs nfsroot=192.168.3.75:/build/rootfs/evk/rootfs,v4,tcp ip=192.168.3.99:192.168.3.75:192.168.3.1:255.255.255.0:i
+mx8mqevk:eth0:off console=ttymxc0,115200 earlycon=ec_imx6q,0x30860000,115200 
+tftp 0x40480000 evk/bsp/Image
+tftp 0x43000000 evk/bsp/fsl-imx8mq-evk.dtb
+booti 0x40480000 - 0x43000000
+
+$ mkimage -T script -C none -n "uboot load script" -d nfs.txt nfs.img
+</pre>
+
+<p>
+	Note that <em>mkimage</em> is available on Ubuntu in the "u-boot-tools"
+	package:
+</p>
+
+<pre class="mc-shell">
+$ sudo apt install u-boot-tools
+</pre>
+
+<p>
+	As you can see in the script above, we're booting our kernel, device
+	tree, and rootfs over the network. Some details on our <em>nfs.txt</em>
+	script:
+</p>
+<ul>
+	<li>192.168.3.75: Our TFTP/NFS server, which is also our Ubuntu
+		18.04 build machine</li>
+	<li>192.168.3.99: Our NXP EVK</li>
+	<li>192.168.3.1: Our Ethernet gateway</li>
+	<li>/build/rootfs/evk/rootfs: local rootfs folder copied from
+		Yocto Project build</li>
+</ul>
+
+<p>
+	We copy <em>Image</em> and <em>fsl-imx8mq-evk.dtb</em> from our <em>build_evk</em>
+	folder to the location specified in our script under our local TFTP
+	root folder. However, our rootfs is reused from our Yocto Project build
+	of the NXP BSP. We copy the entire rootfs folder to a location that can
+	be mounted via NFS and change the owernship to root as shown below:
+</p>
+
+<pre class="mc-shell">
+$ cd /opt/nxp/bld-wayland/tmp/work/imx8mqevk-poky-linux/fsl-image-qt5-validation-imx/1.0-r0
+$ sudo cp -r rootfs &lt;nfs rootfs folder&gt;
+$ cd &lt;nfs rootfs folder&gt;
+$ sudo chown -R root:root *
+</pre>
+
+<p>Once these steps are complete, we can perform an NFS boot as
+	follows:</p>
+<pre class="mc-shell">
+> run nfs_boot
+Using ethernet@30be0000 device
+TFTP from server 192.168.3.75; our IP address is 192.168.3.99
+Filename 'evk/bsp/nfs.img'.
+Load address: 0x40000000
+Loading: #
+	 63.5 KiB/s
+done
+Bytes transferred = 393 (189 hex)
+## Executing script at 40000000
+Using ethernet@30be0000 device
+TFTP from server 192.168.3.75; our IP address is 192.168.3.99
+Filename 'evk/bsp/Image'.
+Load address: 0x40480000
+Loading: #################################################################
+	 #################################################################
+	 ...
+	 #######
+	 4.2 MiB/s
+done
+Bytes transferred = 23327232 (163f200 hex)
+Using ethernet@30be0000 device
+TFTP from server 192.168.3.75; our IP address is 192.168.3.99
+Filename 'evk/bsp/fsl-imx8mq-evk.dtb'.
+Load address: 0x43000000
+Loading: #########
+	 418.9 KiB/s
+done
+Bytes transferred = 44646 (ae66 hex)
+## Flattened Device Tree blob at 43000000
+   Booting using the fdt blob at 0x43000000
+   Using Device Tree in place at 0000000043000000, end 000000004300de65
+
+Starting kernel ...
+</pre>
+
+<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+
+<h2 id="yocto-share-patches">Create and share patches via email</h2>
+
+<p>Below we show modifying the linux-imx kernel, creating a patch,
+	and emailing it using Git tools:</p>
+
+<pre class="mc-shell">
+# add a printk to mx6s_capture.c and diff it
+$ git diff drivers/media/platform/mxc/capture/mx6s_capture.c
+..
+@@ -2018,6 +2021,8 @@ static int mx6s_csi_probe(struct platform_device *pdev)
+ 
+        csi_dev->vdev = vdev;
+ 
++       printk("CSI Bridge base regs=0x%lx\n",csi_dev->regbase);
++
+        video_set_drvdata(csi_dev->vdev, csi_dev);
+        mutex_lock(&amp;csi_dev-&gt;lock);
+
+# create a dev branch for custom patches
+$ git checkout -b development
+M	drivers/media/platform/mxc/capture/mx6s_capture.c
+
+$ git add drivers/media/platform/mxc/capture/mx6s_capture.c
+
+$ git commit -m 'add a printk to probe'
+
+$ git format-patch -1
+0001-add-a-printk-to-probe.patch
+
+$ git send-email --to &lt;recipient&gt; --suppress-cc=all 0001-add-a-printk-to-probe.patch
+</pre>
+
+<p>
+	On the receiving side, the recipient can save the patch to the <em>linux-imx</em>
+	folder and apply as shown:
+</p>
+
+<pre class="mc-shell">
+$ git am &lt; 0001-add-a-printk-to-probe.patch
+Applying: add a printk to probe
+</pre>
+
+<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+
+<h2>Summary</h2>
+
+<p>
+	In this article, we have shown various ways that we accelerate
+	development with the NXP <em>linux-imx</em> kernel. These tips also
+	apply in general to any embedded Linux kernel.
+</p>
+
+<p>
+	It should be noted that we can modify the <em>linux-imx</em> kernel
+	source and rebuild &amp; reboot in typically less than five minutes on
+	a quad-core Intel I7, 16GB RAM, and a magnetic drive, which is a modest
+	build machine by today's standards.
+</p>
+
+<p>We'll continue to update this article as we continue building our
+	expertise with the NXP MCIMX8M-EVK.</p>
+
+<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+
+
+<h2>References and Resources</h2>
+<ul>
+	<li><a href="https://www.kernel.org/doc/html/latest/"
+		target="_blank">Linux Kernel documentation</a></li>
+	<li>Ask Ubuntu: <a
+		href="https://askubuntu.com/questions/201505/how-do-i-install-and-run-a-tftp-server"
+		target="_blank">How do I install and run a TFTP server?</a>
+	</li>
+	<li>Ubuntu <a
+		href="https://help.ubuntu.com/stable/serverguide/network-file-system.html"
+		target="_blank">Network File System (NFS)</a></li>
+	<li><a href="http://man7.org/linux/man-pages/man5/nfs.5.html"
+		target="_blank">man nfs</a></li>
+	<li><a
+		href="https://www.kernel.org/doc/Documentation/filesystems/nfs/nfsroot.txt"
+		target="_blank">Mounting the root filesystem via NFS (nfsroot)</a></li>
+	<li><a href="http://cscope.sourceforge.net/" target="_blank">Cscope</a></li>
+</ul>
+
+<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+
+<h2>Acronyms and Terms</h2>
+<ul>
+	<li>OCRAM: On-Chip RAM Memory Controller</li>
+	<li>OP-TEE: Open Portable Trusted Execution Environment</li>
+	<li>SPL: Second Program Loader</li>
+	<li>SRC: i.MX8 System Reset Controller</li>
+	<li>TCM: Tightly-Coupled-Memory</li>
+	<li>TZ: Trust Zone</li>
+
+</ul>
+
+
+	</div>
+
+
+	
+
+
+	
+	<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+<p>
+	Didn't find an answer to your question? Post your issue below or in our <span class="mc-highlight-green">new</span> <a 
+		href="/forum" target="_blank">FORUM</a>, and we'll try our best to
+	help you find a solution.
+</p>
+
+<p>
+	And please note that we update our site daily with new content related to our open source
+	approach to network security and system design. If you would like to be
+	notified about these changes, then please follow us on <a
+		href="https://twitter.com/Mindchasers" target="_blank">Twitter</a> and
+	join our <a class="mc-mail-list-focus" href="#mc-mail-list">mailing
+		list</a>.
+</p>
+	
+	<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+	
+	
+	<h2>Related articles on this site:</h2>
+	<table id="mc-table-related" class="mc-table-striped"> 
+		
+		<tr>
+			<td class="mc-col-title"><a href="/dev/linux-basic-networking" target="_blank">Linux Command Line Tips for Networking</a></td>
+			<td class="mc-col-summary">Various Notes and Examples for Using and Managing a Network from the Linux Command Line</td>
+		</tr>
+		
+		<tr>
+			<td class="mc-col-title"><a href="/dev/linux-using" target="_blank">Linux Command Line Tips</a></td>
+			<td class="mc-col-summary">Various Notes on Using and Managing a Linux System from the Command Line</td>
+		</tr>
+		
+		<tr>
+			<td class="mc-col-title"><a href="/dev/yocto-dnf" target="_blank">Use DNF Package Manager on a Yocto Linux Development System</a></td>
+			<td class="mc-col-summary">We show an example of the use of DNF package manager along with supporting notes with our Yocto-built T1040RDB development board.</td>
+		</tr>
+		
+		<tr>
+			<td class="mc-col-title"><a href="/dev/yocto-mcimx8m-evk" target="_blank">Build, Install, and Develop from Source with Yocto Linux and the NXP MCIMX8M-EVK</a></td>
+			<td class="mc-col-summary">We are documenting how we build a Yocto Linux image with the NXP MCIMX8M-EVK evaluation kit for the i.MX 8MQuad processor.</td>
+		</tr>
+		
+	</table>
+	<div class="mc-buffer"></div>
+	
+	
+</article>
+
+
+	
+	<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+	
+<div class="mc-box-share">
+	<div class="mc-box-share-left">
+		<div class="mc-note-share">share</div>
+		<div class="mc-box-share-links-wrapper">
+			<div class="mc-box-share-link">
+				<a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//www.mindchasers.com/dev/&title=Methods%2520to%2520Accelerate%2520Linux%2520Kernel%2520Development%2520using%2520Yocto%2520Project%2520and%2520the%2520NXP%2520MCIMX8M-EVK&summary=A%2520discussion%2520of%2520techniques%2520to%2520accelerate%2520development%2520with%2520the%2520Linux%2520Kernel%2520and%2520related%2520when%2520working%2520with%2520the%2520Yocto%2520Project%2520and%2520an%2520NXP%2520i.MX%2520EVK%2520system.&source=https%3A//www.mindchasers.com">
+				<img src="/static/images/share/linkedin_32.png" alt="LinkedIn Share"></a>
+			</div>
+			<div class="mc-box-share-link">
+				<a href="https://twitter.com/intent/tweet?text=Methods%20to%20Accelerate%20Linux%20Kernel%20Development%20using%20Yocto%20Project%20and%20the%20NXP%20MCIMX8M-EVK&url=https%3A//www.mindchasers.com/dev/">
+				<img src="/static/images/share/twitter_32.png" alt="Share on Twitter"/></a>
+			</div>
+		</div>
+		
+		<div class="mc-buffer"></div>
+
+		<div class="mc-note-share">subscribe to mailing list:</div>
+		<div class="mc-box-mail-list">
+		
+			<form class="mc-box-mail-list-left" enctype="multipart/form-data">
+				<input type="hidden" name="csrfmiddlewaretoken" value="w4O2sMBVFEg8w0RLNcA592VE6qSPqxu7IYL4c8pGUqqI2THBxKNhrVFiuD2qX0X8"> 
+				<input id="mc-mail-list-input" type="email" name="address">
+				<p class="mc-box-mail-list-response"></p>
+			</form>
+		
+			<div class="mc-box-mail-list-right">
+		
+			</div>
+		</div>		
+	</div> <!-- share left -->
+
+
+	<div class="mc-box-share-right">
+	</div>
+</div>
+
+	
+
+	
+		<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+		<div id="mc-ad-panel-amzn">
+			<div id="amzn-assoc-ad-175efee3-69d9-4dd4-a707-1870497e0ac5"></div><script async src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&adInstanceId=175efee3-69d9-4dd4-a707-1870497e0ac5"></script>
+		</div>
+	
+	
+	<svg class="mc-graphics-line-divider ">
+	<line x1="0" y1="0" x2="2000" y2="0" />
+</svg>
+	
+	<div id="mc-comments-cont">
+		
+		
+		<div class="mc-buffer"></div>
+		<div id="mc-comment-form-cont">
+			<div id="mc-comment-0">
+	<div id="mc-comment-form-instructions">
+		
+		<h2>Please help us improve this article by adding your comment or
+			question:</h2>
+		
+	</div>
+
+	 
+	 
+	
+
+	<form novalidate id="mc-comment-form" action="." enctype="multipart/form-data">
+		<input type="hidden" name="csrfmiddlewaretoken" value="w4O2sMBVFEg8w0RLNcA592VE6qSPqxu7IYL4c8pGUqqI2THBxKNhrVFiuD2qX0X8"> <input type="hidden" value=0 name="parent_id"> 
+		<input type="hidden" value=yocto-mcimx8m-accel name="cname"> 
+		<input type="hidden" value=0 name="ctype">
+
+		<!-- name -->
+		<div class="mc-comment-author">
+			<input type="text" name="name" placeholder="name" class="mc-input" required id="id_name"> 
+			
+		</div>
+
+		<!-- email  -->
+		<div class="mc-comment-email">
+			<input type="email" name="email" placeholder="email address" class="mc-input" required id="id_email">
+			<div class="mc-comment-note">your email address will be kept
+				private</div>
+			
+		</div>
+
+		<!-- summary for question -->
+		
+
+		<div class="mc-comment-summary">
+			 
+		</div>
+
+
+		<!-- body -->
+		<div class="mc-comment-body">
+			<textarea name="body" cols="40" rows="10" placeholder="comment" class="mc-input" required id="id_body">
+</textarea> 
+			
+		</div>
+		
+		<div class="mc-comment-errors">
+			
+		</div>
+
+		<!-- image / file upload -->
+		
+		<div class="mc-comment-button">
+			<button id="mc-auth-signin">Sign in</button>
+			<span class="mc-comment-note">authenticate with a 3rd party
+				for enhanced features, such as image upload</span>
+		</div>
+		
+
+		<!-- notify -->
+		<div class="mc-comment-checkbox">
+			<input type="checkbox" name="notify" class="mc-checkbox" id="id_notify" checked> <label class="" for="id_notify">notify me of a reply</label>
+		</div>
+
+		<div class="mc-comment-button">
+			<button class="" value="submit">Submit</button>
+		</div>
+		</form>
+</div>
+		</div>
+	</div>
+	<div class="mc-buffer"></div>
+
+
+
+
+		</div>
+		
+	</div>	<!-- #mc-content -->
+		
+	<footer>
+			<div id="mc-footer-left"></div>
+			<div id="mc-footer-center">&copy; 2019 Mind Chasers Inc.</div>
+			<div id="mc-footer-right">
+				<div class="mc-footer-item"><a href="mailto:info@mindchasers.com">contact us</a></div>
+				<div id="mc-privacy-policy" class="mc-footer-item"><a href=".">privacy policy</a></div>
+			</div>
+	</footer>
+	
+	<!-- 
+		
+	 -->
+		
+		<div id="mc-modal">
+			<div id="mc-modal-backdrop"></div>
+			<div id="mc-modal-body">
+				<button class="mc-quiet" id="mc-modal-close">close</button>
+			</div>
+		</div>
+	
+		<div class="mc-cal">
+			<div class="mc-cal-backdrop"></div>
+			<div class="mc-cal-body">
+				<div class="mc-cal-hdr-icon" data-dir="prev">
+					<img src="/static/images/icons-svg/arrow-l-white.svg" alt="previous month">
+				</div>
+				<div class="mc-cal-hdr-month"></div>
+				<div class="mc-cal-hdr-icon" data-dir="next">
+					<img src="/static/images/icons-svg/arrow-r-white.svg" alt="next month">
+				</div>
+				<div class="mc-cal-hdr2">Su</div>
+				<div class="mc-cal-hdr2">Mo</div>
+				<div class="mc-cal-hdr2">Tu</div>
+				<div class="mc-cal-hdr2">Wd</div>
+				<div class="mc-cal-hdr2">Th</div>
+				<div class="mc-cal-hdr2">Fr</div>
+				<div class="mc-cal-hdr2">Sa</div>
+			</div>
+		</div>
+	
+		<div id="mc-loading">
+			<img src="/static/images/loading.gif" alt="loading">
+		</div>
+	
+		
+	
+		<script src="/static/js/mindchasers.min.js"></script>
+		
+		
+			<script  src="/static/js/comments.min.js"></script>
+		
+	
+		
+		
+		
+		
+		
+		
+		
+			<script  src="/static/js/develop.min.js"></script>
+		
+		
+		
+	
+	</body>
+</html>
+
+
+

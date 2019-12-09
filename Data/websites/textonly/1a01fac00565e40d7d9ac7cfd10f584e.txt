@@ -1,0 +1,40 @@
+Skip to content
+GNOME Shell & Mutter Dev
+Development blog for GNOME Shell and Mutter
+December 3, 2019
+This Month in Mutter & GNOME Shell | November 2019
+GNOME Shell
+GNOME Shell saw many improvements during November. The commit log was dominated by cleanups, but a few improvements and polishments also found their way into the code.
+batch of bugfixes
+hiding the spinner
+fix to invalidate properly when dealing with scaling changes
+properly displayed in the messaging menu
+doesn’t mistakenly show an overflow indicator when the list of windows fits the screen size
+Libcroco Removal
+importing the source files into St.
+App Grid Improvements
+fix to dragging application icons
+A nice visual improvement landed on the page indicator of the icon grid.
+https://blogs.gnome.org/shell-dev/files/2019/12/page-indicator.webm
+System Font
+respects the system font
+For Mutter, November highlights were the introduction of regional clipping in Cogl, and big code cleanups.
+Regional Clipping
+When applications and GNOME Shell draw themselves, they communicate which parts of their contents changed. That information allows Mutter to submit only the changed contents to the monitor, which is an important optimization.
+Example of GNOME Clocks being partially redrawn. The changed parts are painted in red.
+Until GNOME 3.34, Mutter would calculate the bounding rectangle between all the regions that changed:
+Mutter would submit the bounding box of all updated regions (in blue). In many situations, such as the above, that would include more than necessary.
+update multiple regions independently
+The regions that Mutter submits (in blue) now matches the regions that really changed in the first picture (in red)
+This yielded a significant improvement too! Under some circumstances, this change alone can reduce the time to submit frames by up to 44%.
+Shadow Buffer
+shadow buffer
+Other Highlights
+Drag n’ Drop
+memory leak fixes
+hot plugging
+full screen
+Post navigation
+Previous Post
+
+		Proudly powered by WordPress	

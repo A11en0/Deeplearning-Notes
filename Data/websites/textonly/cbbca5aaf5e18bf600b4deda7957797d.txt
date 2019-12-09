@@ -1,0 +1,131 @@
+
+											            
+TDF Statutes
+LibreOffice Home
+Discover LibreOffice
+LibreOffice DevCentral
+TDF Ledgers
+Annual Report
+LibreOffice Flyers
+Press Releases
+Press Clippings
+Merchandise
+Donation help
+Improvements in LibreOffice’s PowerPoint presentation support
+Development
+LibreOffice
+Ilmari Lauhakangas
+OpenDocument
+pseudo-“standards” with cryptic and obfuscated contents
+we announced an initiative to improve the support of PPT and PPTX files in LibreOffice
+ilmari.lauhakangas@libreoffice.org
+Import/export
+Stephan Bergmann (Red Hat):
+Speed up loading a PPT file with equation objects
+Noel Grandin (Collabora):
+Speed up loading a PPT file with equation objects
+Miklos Vajna (Collabora):
+Add PPTX import/export for semi-transparent shape text
+Transparent text before Miklos’s implementation
+Transparent text after Miklos’s implementation
+PPTX import: don’t set shape fill from the style in case the background fill is already set
+Shape fill before Miklos’s fix
+Shape fill after Miklos’s fix
+PPTX import: fixed duplication of math objects
+Math objects before Miklos’s fix
+Math objects after Miklos’s fix
+Tamás Zolnai (Collabora):
+PPTX export: don’t change shape’s background transparency
+Background transparency before Tamás’s fix
+Background transparency after Tamás’s fix
+PPTX export: don’t lose the gradient background fill of a slide
+Gradient fill after Tamás’s fix
+Xisco Faulí (TDF):
+PPTX import: display shapes with washout mode
+Shapes not displayed before Xisco’s fix
+Shapes displayed after Xisco’s fix
+PPTX export: handle image colour/graphics modes correctly
+Colour modes handled incorrectly before Xisco’s fix
+Colour modes handled correctly after Xisco’s fix
+PPTX import: don’t lose text highlighting in table cells
+Text highlighting not displayed before Xisco’s fix
+Text highlighting displayed after Xisco’s fix
+PPTX export: save text highlighting
+No highlighting before Xisco’s fix
+Highlighting after Xisco’s fix
+PPTX import: respect no fill colour for text
+Text visible before Xisco’s fix
+Text invisible after Xisco’s fix
+Gülşah Köse (Collabora):
+PPTX import: implement z-rotation of 3D text transformation
+Text not rotated before Gülşah’s implementation
+Text rotated after Gülşah’s implementation
+PPTX export: preserve textbox rotation attribute
+Text goes bonkers before Gülşah’s fix
+Text stays put after Gülşah’s fix
+Tamás Bunth (Collabora):
+PPTX import: custom date as custom XTextField
+Dates before Tamás’s fix
+Dates after Tamás’s fix
+Mark Hung (PPT/X team):
+PPTX import/export: handle complex text properly
+PPTX import: reset font settings, if necessary
+Text before Mark’s fix
+Text after Mark’s fix
+Luke Deller (PPT/X team):
+PPTX import: Fix IsTransparent() for unloaded graphics
+Blue line not displayed before Luke’s fix
+Blue line displayed after Luke’s fix
+Housekeeping
+Julien Nabet:
+Save/restore locking properly in ImplSdPPTImport::Import
+sd: prefix members of SdrPowerPointImport
+cppcheck: fix 2 funcArgOrderDifferent
+Mike Kaganski (Collabora):
+PPTX export: disable undo during save
+Thanks to everyone for their great work!
+Related Posts
+No Responses
+Cancel reply
+Your email address will not be published.
+Save my name, email, and website in this browser for the next time I comment.
+Privacy Policy
+Subscribe to Blog Posts
+To receive an email when blog posts are published, you must confirm that you have carefully read and agreed to The Document Foundation's Privacy Policy
+Privacy Policy
+Privacy Policy
+QA/Dev Report: November 2019
+Improvements in LibreOffice’s PowerPoint presentation support
+Celebrating International Volunteer Day
+Fixed a terrible regression
+Month of LibreOffice, November 2019: The winners!
+LibreOffice monthly recap: November 2019
+Local event update: LibreOffice at OpenFest in Sofia, Bulgaria
+Filter by months and years in Calc pivot table
+Skia branch merged to master
+2019-11-25 Monday.
+Entries feed
+Comments feed
+WordPress.org
+Creative Commons Attribution-Share Alike 3.0 License
+LibreOffice
+The Document Foundation
+Trademark Policy
+Legal Information
+Impressum (Legal Info)
+Privacy Policy
+Privacy Tools
+MyThemeShop
+The Document Foundation Blog
+MyThemeShop
+Back to Top ↑
+To continue navigation on the website, you need to acknowledge our privacy policy by clicking on the "Privacy Preferences" on the right of this message and following the instructions contained in the dialogue which will open above this banner.
+Privacy Preferences
+Privacy Preference Center
+Consent Management
+Privacy Policy
+Consent Management
+Privacy Policy
+Privacy Policy
+We use only those functional cookies which are absolutely necessary to ensure that we give you the best navigation experience on our website. If you continue to use this site we will assume that you are happy with them.
+Check the Privacy Policy

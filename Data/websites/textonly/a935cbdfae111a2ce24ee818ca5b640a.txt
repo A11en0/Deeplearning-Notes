@@ -1,0 +1,141 @@
+OpenWrt 19.07.0 second release candidate
+Installing and Using OpenWrt
+
+                December 2, 2019,  6:32pm
+              
+Highlights in OpenWrt 19.07.0-rc2
+126 commits
+previous release candidate 19.07.0-rc1
+19.07.0-rc1 release candidate
+Linux kernel
+Hostapd update
+Device support bugfixes
+Security fixes
+Sysupgrade bugfix
+Added support
+Disable image generation
+ImageBuilder
+/lib/upgrade/stage2
+/usr/share/libubox/jshn.sh
+install_file
+Known issues:
+Images for some device became too big to support a persistent overlay, causing such models to lose configuration after a reboot. If you experience this problem, please report the affected device and consider downgrading to OpenWrt 18.06 or using the Image Builder to pack a smaller custom image
+luci-compat
+file a bug report
+https://openwrt.org/releases/19.07/notes-19.07.0-rc2
+https://downloads.openwrt.org/releases/19.07.0-rc2/targets/
+OpenWrt 19.07.0 first release candidate
+Any one else running a R7800 with 19.07.0-rc2?
+elvisimprsntr
+
+                December 3, 2019,  2:46am
+              
+25+ hours, so far, so good.
+1846×762 30 KB
+
+            
+dynasticorpheus
+
+                December 3, 2019,  5:52pm
+              
+Getting extreme jitter/latency (ping from router to device) when moving the pads (e.g. send a lot of packets I guess) on my Google Stadia controller which is connected via 5GHZ wifi. No problems whatsoever when using rc-1 nor when using usb cable instead of WIFI.
+Can someone provide hints at what packages I should look first to try and pinpoint the issue as part of creating a bug report?
+edit: device = wrt3200acm / wrt32x
+beerisnotacrime
+
+                December 3, 2019, 10:20am
+              
+@dynasticorpheus
+This is a screnshot where i ping the stadia controller, connected to 5ghz wifi, from the router itself.
+In red you can see ping spikes when i move pads on the controller.
+No issues on OpenWrt 19.07.0-rc1 r10649-c4fdb377a2
+790×1548 327 KB
+
+            
+
+                December 3, 2019,  1:44pm
+              
+Upgraded TP-Link WDR 4300 from RC1 to RC2. All looking fine atm.
+
+                December 3, 2019,  4:28pm
+              
+which device is this?
+dynasticorpheus
+
+                December 3, 2019,  5:53pm
+              
+wrt3200acm / wrt32x
+
+                December 4, 2019,  6:34am
+              
+Failed to create CGI process: Out of memory.
+When I disable 5ghz radio in 1 minutes before error (under ~12mb) memory gets back to the normal (~30mb)
+When 5ghz radio disabled there is no problem.
+2.4 ghz works flawlessly.
+Tp-link Archer C60 v2, 19.07.0-rc2-ath79 snapshot. Out of memory
+beerisnotacrime
+
+                December 4, 2019,  9:03am
+              
+
+                December 4, 2019, 12:57pm
+              
+rc2 working fine without issues on EdgeRouter X (home gateway) and Linksys EA8500 (AP wired to EdgeRouter X).
+rc2 not working on EA6350v3 (AP wired to EdgeRouter X).  Memory usage starts high and climbs until the oom_reaper does it's thing and starts killing processes after 12-24 hours.  Tried: rc1, snapshots, replacing ath10k-4019-ct with non-ct packages on rc2, full reset and reconfigure with minimum packages installed (just luci and luci-stats): same issue with all preceding debug attempts.  Details in bug report and other posts.  I won't repeat that here.
+castillofrancodamian
+
+                December 4, 2019,  5:13pm
+              
+I have version 1 of Archer C60 with ath79 and I installed ath10k and not ath10k-ct because it became unstable.
+
+                December 5, 2019,  4:07pm
+              
+If i want to try the same, i need just to remove "*-ct" and install no "-ct" via opkg and restart router, or there are some fancy settings to do?
+castillofrancodamian
+
+                December 5, 2019,  4:58pm
+              
+I also did that and after restarting it does not turn on the radio. So I had to create my firmware image with ImageBuilder.
+
+                December 5, 2019,  7:56pm
+              
+I manually remove the -ct driver and firmware (luci-system-software)
+kmod-ath10k-ct
+ath10k-firmware-qca9xxx-ct
+and then manually install classic drivers
+kmod-ath10k
+ath10k-firmware-qca9xxx
+Mostly followed by a restart.
+I find the classic driver to be more stable than the -ct ones.
+
+                December 6, 2019, 10:52am
+              
+I find the classic driver to be more stable than the -ct ones.
+Just the opposite for my ipq4018 EA6350v3.  A few clients would not connect due to connection delays and 5G signal to noise and speed were much worse when I tried the classic drivers.  That, and the classic drivers did not fix the system crashes.  Many months ago, snapshot and pre-rc1 19.07 worked well on my EA6350v3, but currently it's just not usable.
+
+                December 6, 2019, 12:21pm
+              
+Using a TP-Link c2600.  Had to revert to 18.06.05 from 19.07 rc2.  The latter was causing terrible delays in wifi, such that streaming services frequently resorted to the spinning wheel of frustration.  Once some time had passed, ~30 seconds or so, operation would resume normally.  I use my router strictly as an AP hardwired to a Netgate pfsense sg-1100.  Upon reverting to 18.06.05 (which process was very smooth), problem has gone away.
+
+                December 6, 2019, 12:50pm
+              
+Did you try switching from the new default ath10k-ct back to traditional ath10k?
+
+                December 6, 2019,  1:28pm
+              
+Hmmm... not sure about that.  What I did was to reflash the rc2 firmware with the sysupgrade 18.06.05 version for the c2600.  Does that make sense?
+
+                December 6, 2019,  2:37pm
+              
+It was my aggressive ublock rules, sorry for the noise!
+
+                December 6, 2019,  5:36pm
+              
+Sure, it makes sense for now to get back to a stable working router. But: 18.06 will get out of security patch maintenance in the future and then you may want to upgrade to 19.07, sooner or later.
+If you have stability problems specifically with ath10k**-ct**, then you could switch to traditional ath10k (no -ct) to see, if that helps.
+Maybe also a bug report what the stability problem symptoms are could be of help so that 19.07 problems could get fixed.
+next page →
+Categories 
+FAQ/Guidelines 
+Terms of Service 
+Privacy Policy 

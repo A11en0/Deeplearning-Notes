@@ -1,0 +1,78 @@
+News & Events
+Why Purism?
+Documentation
+Librem 5 USA
+December 5, 2019
+Manufacturing Operations and Logistics
+Press Releases
+Product or service launch
+Supply chain
+Latest Posts
+Kyle Rankin
+Librem Social
+Librem 5 USA
+ - December 5, 2019
+Anti-interdiction Services
+ - October 29, 2019
+PureBoot Best Practices
+ - October 22, 2019
+Announcing the Librem 5 USA–the same freedom, security, and privacy-respecting phone, now with Made in USA electronic fabrication
+from the Birch batch
+importance of protecting the digital supply chain
+PureBoot Bundle–tamper-evident firmware straight from our facility
+one of the most important computers many people own is their smart phone
+Librem 5 devkits in the USA
+Librem Key production to the same US facility
+new USA-produced version of the Librem 5 phone!
+“Having a secure auditable US based supply chain including parts procurement, fabrication, testing, assembly, and fulfillment all from within the same facility is the best possible security story.” — Todd Weaver
+Librem 5 USA
+Librem 5 PCBA
+Pre-order now
+check out our product page
+Recent Posts
+Librem 5 on the Free Software Foundation’s Ethical Tech Gift Giving Guide
+Librem 5 USA
+coreboot 4.11: Leaving No Librem Behind
+Purism Closes $2.5m Note Series
+A Different Kind of Transparency
+Related Content
+Librem 5 on the Free Software Foundation’s Ethical Tech Gift Giving Guide
+Librem 5 USA
+coreboot 4.11: Leaving No Librem Behind
+A Different Kind of Transparency
+Black Friday & Cyber Monday 2019 Laptop Specials
+Advanced readers
+Battery life
+Benchmarks and testing
+Boot and BIOS
+Chipsets and components
+Communications infrastructure
+Crowdfunding
+Customer Feedback
+FLOSS applications
+Giving and contributing back
+Linux kernel
+Newsletter and status updates
+Physical robustness
+Power management
+Product or service launch
+Reverse engineering
+Social media
+Software freedom
+Supply chain
+Testimonials and user stories
+this-should-be-a-page
+Tips and tricks
+User empowerment
+User experience design
+User interaction design
+Wireless and networking
+Enterprise@Purism
+German Linux laptops
+About Purism
+Get involved
+Warrant Canary
+Want to get announcements & news digests once in a while?
+You will receive an automated e-mail you will need to reply to to confirm your subscription.
+3D renders are artist renderings, for illustration purposes. Images and specifications are subject to change depending on manufacturing requirements.
+Unless otherwise noted, contents created by the Purism team on this website are copyleft with a CC-by-SA 4.0 license.

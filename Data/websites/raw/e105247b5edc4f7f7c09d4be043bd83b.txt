@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html> <head>
+	<title> Chris&#39;s Wiki :: blog/linux/PCIeTopologyAndLanes </title>
+	<link href="/~cks/dwiki/dwiki.css" rel="stylesheet" type="text/css"> 
+	<meta name="viewport" content="width=device-width">
+	<link rel="alternate" type="application/atom+xml" href="/~cks/space/blog/?atom">
+	
+</head>
+<body>
+<div id="header">
+	<div class="left"><a href="/~cks/">Chris Siebenmann</a> ::
+<span class="breadcrumbs"><a href="/~cks/space/">CSpace</a> &raquo;
+       <a href="/~cks/space/blog/">blog</a> &raquo;
+       <a href="/~cks/space/blog/linux/">linux</a> &raquo;
+       PCIeTopologyAndLanes</span></div>
+	<div class="right">Welcome, guest.</div>
+</div>
+
+<div id="documentbody">
+<div class="wtblog">
+<div class="maintext"> 
+	   <div class="wikitext titlehack"><h2>Looking into your system's PCIe slot topology and PCIe lane count under Linux</h2>
+
+	<div class="posttitle" style="opacity: 0.6;"><small>December  5, 2019</small></div>
+</div>
+<div class="wikitext"><p>Suppose, <a href="/~cks/space/blog/tech/PCIeSlotsLimitations">not hypothetically</a>, that
+you want to understand the PCIe slot and bus topology of your Linux
+system and also work out how many PCIe lanes important things have
+been given. Sometimes the PCIe lane count doesn't matter, but things
+like NVMe drives may have lower latency under load and perform
+better if they get their full number of PCIe lanes (generally four
+lanes, 'x4'). You can do this under Linux, but it's not as
+straightforward as you'd like.</p>
+
+<p>The easiest way to see PCIe topology is with '<code>lspci -tv</code>', which
+shows you how PCIe slots relate to each other and also what's in
+them. On <a href="/~cks/space/blog/linux/WorkMachine2017">my office machine</a> with the first
+configuration of PCIE to NVMe adapter card, this looked like the
+following:</p>
+
+<pre style="white-space: pre-wrap;">
+-[0000:00]-+-00.0  Advanced Micro Devices, Inc. [AMD] Family 17h (Models 00h-0fh) Root Complex
+           +-00.2  [...]
+           +-01.0  [...]
+           +-01.1-[01]----00.0  Kingston Technology Company, Inc. Device 2263
+           +-01.3-[02-09]--+-00.0  Advanced Micro Devices, Inc. [AMD] X370 Series Chipset USB 3.1 xHCI Controller
+           |               +-00.1  Advanced Micro Devices, Inc. [AMD] X370 Series Chipset SATA Controller
+           |               \-00.2-[03-09]--+-00.0-[04]----00.0  Kingston Technology Company, Inc. Device 2263
+           |                               +-02.0-[05]--
+           |                               +-03.0-[06]----00.0  Intel Corporation 82572EI Gigabit Ethernet Controller (Copper)
+           |                               +-04.0-[07]----00.0  ASMedia Technology Inc. ASM1143 USB 3.1 Host Controller
+           |                               +-06.0-[08]----00.0  Intel Corporation I211 Gigabit Network Connection
+           |                               \-07.0-[09]--
+           +-02.0  [...]
+           +-03.0  [...]
+           +-03.1-[0a]--+-00.0  Advanced Micro Devices, Inc. [AMD/ATI] Lexa PRO [Radeon 540/540X/550/550X / RX 540X/550/550X]
+           |            \-00.1  Advanced Micro Devices, Inc. [AMD/ATI] Baffin HDMI/DP Audio [Radeon RX 550 640SP / RX 560/560X]
+           +-04.0  [...]
+[...]
+</pre>
+
+<p>(By the way, the PCIe numbers shown here have no resemblance to the
+numbers in the output of plain '<code>lspci</code>'. Also, I have left out the
+text for a lot of 'PCIe Dummy Host Bridge' devices and a couple of
+others.)</p>
+
+<p>The two Kingston PCIe devices are the two NVMe drives. The first
+one listed is in the motherboard M.2 slot; the second one listed
+is on its adapter card in a PCIe x16 @ x4 slot driven by the X370
+chipset instead of directly by the CPU. Although it's not obvious
+from the topology listing, one of the Intel Ethernets is on the
+motherboard (but driven through the X370 chipset) and the other is
+a card in a PCIe x1 slot.</p>
+
+<p>Now here's the same machine with the PCIe adapter for the second
+NVMe drive moved to a PCIe x16 @ x8 GPU card slot:</p>
+
+<pre style="white-space: pre-wrap;">
+-[0000:00]-+-00.0  Advanced Micro Devices, Inc. [AMD] Family 17h (Models 00h-0fh) Root Complex
+           +-00.2  [...]
+           +-01.0  [...]
+           +-01.1-[01]----00.0  Kingston Technology Company, Inc. Device 2263
+           +-01.3-[02-09]--+-00.0  Advanced Micro Devices, Inc. [AMD] X370 Series Chipset USB 3.1 xHCI Controller
+           |               +-00.1  Advanced Micro Devices, Inc. [AMD] X370 Series Chipset SATA Controller
+           |               \-00.2-[03-09]--+-00.0-[04]--
+           |                               +-02.0-[05]--
+           |                               +-03.0-[06]----00.0  Intel Corporation 82572EI Gigabit Ethernet Controller (Copper)
+           |                               +-04.0-[07]----00.0  ASMedia Technology Inc. ASM1143 USB 3.1 Host Controller
+           |                               +-06.0-[08]----00.0  Intel Corporation I211 Gigabit Network Connection
+           |                               \-07.0-[09]--
+           +-02.0  [...]
+           +-03.0  [...]
+           +-03.1-[0a]--+-00.0  Advanced Micro Devices, Inc. [AMD/ATI] Lexa PRO [Radeon 540/540X/550/550X / RX 540X/550/550X]
+           |            \-00.1  Advanced Micro Devices, Inc. [AMD/ATI] Baffin HDMI/DP Audio [Radeon RX 550 640SP / RX 560/560X]
+           +-03.2-[0b]----00.0  Kingston Technology Company, Inc. Device 2263
+           +-04.0  [...]
+[...]
+</pre>
+
+<p>It's pretty clear that the second NVMe drive has shifted its position
+in the topology fairly significantly, and given that we have '03.1' and
+'03.2' labels for the Radeon GPU and the NVMe drive, it's not hard to
+guess that it's now in one of a pair of GPU slots. It's also clearly no
+longer under the X370 chipset, but instead is now on the same (PCIe)
+level as the first NVMe drive.</p>
+
+<p>Working out how many PCIe lanes a card wants and how many it's
+actually getting is harder and more annoying. As far as I know,
+the best way of finding it out is to look carefully through the
+output of '<code>lspci -vv</code>' for the device you're interested in and
+focus on the <code>LnkCap</code> and <code>LnkSta</code> portions, which will list what
+the card is capable of and what it actually got. For example, for
+my PCIe to NVMe adapter card in its first location (the first
+topology), where it was choked down from PCIe x4 to x2, this
+looks like the following:</p>
+
+<pre style="white-space: pre-wrap;">
+04:00.0 Non-Volatile memory controller: Kingston Technology Company, Inc. Device 2263 (rev 03) (prog-if 02 [NVM Express])
+ [...]
+   LnkCap: Port #0, Speed 8GT/s, Width x4, ASPM L1, Exit Latency L1 &lt;8us
+           ClockPM+ Surprise- LLActRep- BwNot- ASPMOptComp+
+ [...]
+   LnkSta: Speed 5GT/s (downgraded), Width x2 (downgraded)
+           TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+ [...]
+</pre>
+
+<p>This says that it could do PCIe x4 at 8GT/s (which is PCIe 3.0) but
+was downgraded to PCIe x2 at 5GT/s (which is PCIe 2.0). In the PCIe
+adapter's new location in a GPU card slot where the NVMe drive could
+get full speed, the <code>LnkCap</code> didn't change but the <code>LnkSta</code> changed
+to:</p>
+
+<pre style="white-space: pre-wrap;">
+   LnkSta: Speed 8GT/s (ok), Width x4 (ok)
+           TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+</pre>
+
+<p>So now the NVMe drive is getting x4 PCIE 3.0.</p>
+
+<p>In general, searching '<code>lspci -vv</code>' output for 'downgraded' can be
+interesting. For example, on <a href="/~cks/space/blog/linux/WorkMachine2017">my office machine</a>, the Radeon GPU
+reports the following in both PCIe topologies:</p>
+
+<pre style="white-space: pre-wrap;">
+0a:00.0 VGA compatible controller: Advanced Micro Devices, Inc. [AMD/ATI] Lexa PRO [Radeon 540/540X/550/550X / RX 540X/550/550X] (rev c7) (prog-if 00 [VGA controller])
+ [...]
+   LnkCap: Port #1, Speed 8GT/s, Width x8, ASPM L1, Exit Latency L1 &lt;1us
+           ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+ [...]
+   LnkSta: Speed 2.5GT/s (downgraded), Width x8 (ok)
+           TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+ [...]
+</pre>
+
+<p>I have no idea why the Radeon GPU has apparently been downgraded
+from PCIe 3.0 all the way to what looks like PCIe 1.0, although it
+may be because it's probably behind a 'PCIe GPP Bridge' that has
+also been downgraded to 2.5 GT/s. Perhaps I've missed some BIOS
+setting that is affecting things (BIOS settings can apparently
+influence this part of PCIe, as they do many bits of it). For my
+relatively basic X usage, this downgrade may not matter, but having
+noticed it I'm now curious and somewhat irritated.  If my card can
+do PCIe 3.0, I want to be getting PCIe 3.0 if at all possible.</p>
+
+<p>(Additional reading on this PCIe stuff under Linux includes <a href="https://unix.stackexchange.com/questions/393/how-to-check-how-many-lanes-are-used-by-the-pcie-card">here</a>,
+<a href="https://superuser.com/questions/693964/can-i-find-out-if-pci-e-slot-is-1-0-2-0-or-3-0-in-linux-terminal">here</a>,
+and <a href="https://askubuntu.com/questions/20256/how-can-i-determine-which-gpu-card-is-running-at-pci-express-2-0-x16-which-is">here</a>.
+As usual, I'm writing this down so that I have it for reference the
+next time I need to poke around in this area.)</p>
+</div>
+<div class="commenttools">(<a href="/~cks/space/blog/linux/PCIeTopologyAndLanes?showcomments#comments">One comment</a>.)</div>
+	<small>Written on <a href="/~cks/space/blog/2019/12/05/">05</a> <a href="/~cks/space/blog/2019/12/">December</a> <a href="/~cks/space/blog/2019/">2019</a>.</small> <br>
+<table border=0 width="100%"> 
+<tr> <td width="50%" style="padding-right: 0.5em"> <table> <tr> <td> &laquo; </td> <td> <a href="/~cks/space/blog/tech/PCIeSlotsLimitations">Desktop motherboards can have fewer useful PCIe slots than they seem to</a> </td> </tr> </table> </td>
+     <td width="50%" style="padding-left: 0.5em; border-left: 1px dotted;"> <table> <tr> <td> <a href="/~cks/space/blog/linux/PCIeLspciBusAddresses">PCIe bus addresses, <code>lspci</code>, and working out your PCIe bus topology</a> </td> <td> &raquo; </td> </tr> </table> </td> </tr>
+</table>
+</div>
+<div class="sidebar">
+	<div class="readme"> <div class="wikitext"><p>These are my <a href="/~cks/space/blog/">WanderingThoughts</a> <br>
+(<a href="/~cks/space/AboutBlog">About the blog</a>)</p>
+
+<p><a href="/~cks/space/blog/__Index">Full index of entries</a> <br>
+<a href="/~cks/space/blog/__RecentComments">Recent comments</a></p>
+
+<p>This is part of <a href="/~cks/space/FrontPage">CSpace</a>, and is written by <a href="/~cks/space/People/ChrisSiebenmann">ChrisSiebenmann</a>. <br>
+Twitter: <a href="https://twitter.com/thatcks/">@thatcks</a> <br>
+Mastodon: <a href="https://mastodon.social/@cks">@cks</a></p>
+
+<p align="center">* * *</p>
+
+<p>Categories: <a href="/~cks/space/blog/links/">links</a>, <a href="/~cks/space/blog/linux/">linux</a>, <a href="/~cks/space/blog/programming/">programming</a>, <a href="/~cks/space/blog/python/">python</a>, <a href="/~cks/space/blog/snark/">snark</a>, <a href="/~cks/space/blog/solaris/">solaris</a>, <a href="/~cks/space/blog/spam/">spam</a>, <a href="/~cks/space/blog/sysadmin/">sysadmin</a>, <a href="/~cks/space/blog/tech/">tech</a>, <a href="/~cks/space/blog/unix/">unix</a>, <a href="/~cks/space/blog/web/">web</a> <br>
+Also: <a href="/~cks/space/blog/__Topics">(Sub)topics</a></p>
+
+<p>This is a <a href="/~cks/space/dwiki/DWiki">DWiki</a>. <br>
+<a href="/~cks/space/help/GettingAround">GettingAround</a> <br>
+(<a href="/~cks/space/help/Help">Help</a>)</p>
+</div> </div>
+<div class="sidesearch" style="font-size: small"> <form method=get action="/~cks/space/">Search: <input name=search size=15></form> </div>
+</div>
+</div>
+ 
+</div>
+
+<hr> Page tools: <a href="/~cks/space/blog/linux/PCIeTopologyAndLanes?source" rel="nofollow">View Source</a>, <a href="/~cks/space/blog/linux/PCIeTopologyAndLanes?writecomment" rel="nofollow">Add Comment</a>. 
+<div class="bottombar">
+	<div class="left"><form method=get action="/~cks/space/">Search: <input name=search size=15></form></div>
+	<div class="right"><form method=post action="/~cks/space/.login">
+Login: <input name=login size=10>
+Password: <input type=password name=password size=10>
+<input type=hidden name=view value=login>
+<input type=hidden name=page value="blog/linux/PCIeTopologyAndLanes">
+<input type=submit value="Login"></form></div> <div class="clear"></div>
+</div>
+<div id="atomfeeds">Atom Syndication: <a type="application/atom+xml" href="/~cks/space/blog/linux/PCIeTopologyAndLanes?atomcomments" rel="nofollow">Recent Comments</a>.</div>
+
+<hr> Last modified: Thu Dec  5 00:21:22 2019 <br>
+<address>This dinky wiki is brought to you by the Insane Hackers
+Guild, Python sub-branch.</address>
+</body>
+</html>

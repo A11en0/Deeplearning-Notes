@@ -1,0 +1,129 @@
+Skip to content
+Code review
+Project management
+Integrations
+Team management
+Social coding
+Documentation
+Code hosting
+Learn & contribute
+Collections
+Learning Lab
+Open source guides
+Connect with others
+Community forum
+GitHub Education
+Marketplace
+Compare plans
+Contact Sales
+
+        In this repository
+      
+
+        All GitHub
+      
+No suggested jump to results
+
+        In this repository
+      
+
+        All GitHub
+      
+
+        In this repository
+      
+
+        All GitHub
+      
+
+          Sign in
+        
+
+            Sign up
+          
+
+      26
+    
+
+      612
+    
+
+      27
+    
+Pull requests
+
+              Dismiss
+            
+Join GitHub today
+GitHub is home to over 40 million developers working together to host and review code, manage projects, and build software together.
+
+          The xkcd font
+        
+https://cdn.rawgit.com/ipython/xkcd-f…
+
+              39
+            
+
+            1
+          
+
+              0
+            
+
+            0
+          
+
+          New pull request
+        
+
+              Use Git or checkout with SVN using the web URL.
+            
+Download ZIP
+ipython/xkcd-font
+download GitHub Desktop
+download GitHub Desktop
+download Xcode
+download the GitHub extension for Visual Studio
+Merge pull request
+from Daniel-Mietchen/patch-1
+fixed a typo
+Latest commit
+
+        5632fde
+      
+Aug 24, 2017
+Latest commit message
+Commit time
+Failed to load latest commit information.
+Added the ipython/xkcd-font deploy key, and left a hook for other own…
+Jun 18, 2017
+xkcd-script
+Retry making a deterministic ttf - it is currently date dependent. (
+Jun 19, 2017
+Added an ipsum sample for the xkcd font. (
+Jun 18, 2017
+Auto generated font from Randall's handwriting (
+Jun 15, 2017
+.travis.yml
+Added the ipython/xkcd-font deploy key, and left a hook for other own…
+Jun 18, 2017
+Added original sources/license
+Aug 27, 2013
+Aug 24, 2017
+preview.html
+Added a html based preview of the xkcd-script font.
+Jun 20, 2017
+fix the pesky kerning
+xkcd Script
+xkcd Script
+xkcd Script
+handwriting sample
+live preview
+xkcd-script/README
+xkcd "The Pace of Modern Life" (April 1st, 2013)
+xkcd Script
+Read more...
+Creative Commons Attribution-NonCommercial 3.0 License
+xkcd-script
+© 2019 GitHub, Inc.
+Contact GitHub

@@ -1,0 +1,702 @@
+Skip to content
+Code review
+Project management
+Integrations
+Team management
+Social coding
+Documentation
+Code hosting
+Learn & contribute
+Collections
+Learning Lab
+Open source guides
+Connect with others
+Community forum
+GitHub Education
+Marketplace
+Compare plans
+Contact Sales
+
+        In this repository
+      
+
+        All GitHub
+      
+No suggested jump to results
+
+        In this repository
+      
+
+        All GitHub
+      
+
+        In this repository
+      
+
+        All GitHub
+      
+
+          Sign in
+        
+
+            Sign up
+          
+
+              Sponsor systemd/systemd
+            
+
+      340
+    
+
+      5.8k
+    
+
+      1.9k
+    
+Pull requests
+
+              Dismiss
+            
+Join GitHub today
+GitHub is home to over 40 million developers working together to host and review code, manage projects, and build software together.
+
+    
+    New issue
+  
+Have a question about this project?
+Pick a username
+Email Address
+Sign up for GitHub
+terms of service
+privacy statement
+
+        systemd-homed
+      
+systemd-homed
+
+          +35,017
+        
+
+          −1,026
+        
+
+          237
+        
+
+        82
+      
+
+          3
+        
+
+            160
+        
+Conversation
+
+    Copy link
+  
+
+    Quote reply
+  
+
+      Member
+    
+Nov 20, 2019
+Yupp, as presented at AllSystemsGo! 2019, here it is! Should be pretty complete, with LUKS and fscrypt backends, with PKCS#11 yubikey unlocking, key suspending during system sleep, and lots and lots of other fancy features.
+new-feature
+Nov 20, 2019
+force-pushed
+
+    poettering:homed
+
+  
+Nov 20, 2019
+Nov 20, 2019
+vagrant: add dependencies for systemd-homed
+
+      
+
+    
+systemd/systemd#14096
+
+              This comment has been minimized.
+
+        
+Sign in to view
+
+    Copy link
+  
+
+    Quote reply
+  
+
+      Member
+    
+Nov 20, 2019
+
+            edited
+        
+CI summary:
+Following scripts have to be updated with the new deps:
+fuzzbuzz.sh
+semaphore-runner.sh
+archlinux_systemd_ci: ../src/shared/user-record.c:185:30: error: unused variable 'k' [-Werror,-Wunused-variable]
+    archlinux_systemd_ci:         _cleanup_free_ char *k = NULL;
+    archlinux_systemd_ci:                              ^
+    archlinux_systemd_ci: ../src/shared/user-record.c:311:30: error: unused variable 'k' [-Werror,-Wunused-variable]
+    archlinux_systemd_ci:         _cleanup_free_ char *k = NULL;
+    archlinux_systemd_ci:                              ^
+    archlinux_systemd_ci: ../src/shared/user-record.c:338:30: error: unused variable 'k' [-Werror,-Wunused-variable]
+    archlinux_systemd_ci:         _cleanup_free_ char *k = NULL;
+    archlinux_systemd_ci:                              ^
+    archlinux_systemd_ci: ../src/shared/user-record.c:365:30: error: unused variable 'k' [-Werror,-Wunused-variable]
+    archlinux_systemd_ci:         _cleanup_free_ char *k = NULL;
+    archlinux_systemd_ci:                              ^
+    archlinux_systemd_ci: ../src/shared/user-record.c:390:30: error: unused variable 'k' [-Werror,-Wunused-variable]
+    archlinux_systemd_ci:         _cleanup_free_ char *k = NULL;
+    archlinux_systemd_ci:                              ^
+    archlinux_systemd_ci: 5 errors generated.
+
+libfdisk-dev
+libpwquality-dev
+p11-kit (libp11-kit-dev?)
+
+              This comment has been minimized.
+
+        
+Sign in to view
+
+    Copy link
+  
+
+    Quote reply
+  
+
+      Member
+    
+Nov 21, 2019
+
+              This comment has been minimized.
+
+        
+Sign in to view
+
+    Copy link
+  
+
+    Quote reply
+  
+
+      Member
+    
+Nov 21, 2019
+Also, looks like the systemd-homed and systemd-logind services timeout throughout the integration testsuite:
+Nov 21 01:06:01 systemd-testsuite systemd[301]: serial-getty@ttyS0.service: Executing: /sbin/agetty -o '-p -- \u' --keep-baud 115200,38400,9600 ttyS0 vt220
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Failed to get initial list of names: Connection timed out
+Nov 21 01:07:27 systemd-testsuite kernel: kauditd_printk_skb: 3 callbacks suppressed
+Nov 21 01:07:27 systemd-testsuite kernel: audit: type=1130 audit(1574294847.246:15): pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-homed comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=failed'
+Nov 21 01:07:27 systemd-testsuite audit[1]: SERVICE_START pid=1 uid=0 auid=4294967295 ses=4294967295 msg='unit=systemd-homed comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=failed'
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Event source manager-sync-bus-names (type defer) returned error, disabling: Connection timed out
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-logind.service: Got notification message from PID 305 (WATCHDOG=1)
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-logind.service: Got notification message from PID 305 (READY=1, STATUS=Processing requests...)
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-journald.service: Got notification message from PID 266 (FDSTORE=1)
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-journald.service: Added fd 57 (n/a) to fd store.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-homed.service: Got notification message from PID 292 (WATCHDOG=1)
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-journald.service: Got notification message from PID 266 (WATCHDOG=1)
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Received SIGCHLD from PID 292 (systemd-homed).
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Child 292 (systemd-homed) died (code=exited, status=1/FAILURE)
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-homed.service: Child 292 belongs to systemd-homed.service.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-homed.service: Main process exited, code=exited, status=1/FAILURE
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-homed.service: Failed with result 'exit-code'.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-homed.service: Service will not restart (restart setting)
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-homed.service: Changed start -> failed
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-homed.service: Job 63 systemd-homed.service/start finished, result=failed
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Failed to start Home Manager.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-homed.service: Unit entered failed state.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-homed.service: Consumed 1.129s CPU time.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-homed.service: Control group is empty.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-journald.service: Received EPOLLHUP on stored fd 56 (stored), closing.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: n/a: New incoming connection.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: n/a: Connections of user 0: 1 (of 1024 max)
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-21: varlink: setting state idle-server
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-logind.service: start operation timed out. Terminating.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-logind.service: Changed start -> stop-sigterm
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-logind.service: Got notification message from PID 305 (WATCHDOG=1)
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-61: Got POLLHUP from socket.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-61: varlink: changing state idle-server → pending-disconnect
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-61: varlink: changing state pending-disconnect → processing-disconnect
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-61: varlink: changing state processing-disconnect → disconnected
+Nov 21 01:07:27 systemd-testsuite systemd[1]: systemd-journald.service: Received EPOLLHUP on stored fd 57 (stored), closing.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-21: New incoming message: {"method":"io.systemd.UserDatabase.GetMemberships","parameters":{"userName":"systemd-timesync","service":"io.systemd.DynamicUser"},"more":true}
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-21: varlink: changing state idle-server → processing-method-more
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-21: Sending message: {"error":"io.systemd.UserDatabase.NoRecordFound","parameters":{}}
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-21: varlink: changing state processing-method-more → processed-method
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-21: varlink: changing state processed-method → idle-server
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Processing of bus failed, closing down: Connection timed out
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Bus bus-api-system: changing state AUTHENTICATING → CLOSING
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Failed to process message type=error sender=org.freedesktop.DBus destination=n/a path=n/a interface=n/a member=n/a cookie=4294967295 reply_cookie=1 signature=s error-name=org.freedesktop.DBus.Error.NoReply error-message=Connection terminated: Connection timed out
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Unable to add match type='signal',sender='org.freedesktop.DBus',path='/org/freedesktop/DBus',interface='org.freedesktop.DBus',member='NameOwnerChanged',arg0='org.freedesktop.home1', failing connection: Connection terminated
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-21: Got POLLHUP from socket.
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-21: varlink: changing state idle-server → pending-disconnect
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-21: varlink: changing state pending-disconnect → processing-disconnect
+Nov 21 01:07:27 systemd-testsuite systemd[1]: varlink-21: varlink: changing state processing-disconnect → disconnected
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Unexpected error response from GetNameOwner: Connection terminated
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Unable to add match type='signal',sender='org.freedesktop.DBus',path='/org/freedesktop/DBus',interface='org.freedesktop.DBus',member='NameOwnerChanged',arg0='org.freedesktop.login1', failing connection: Connection terminated
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Unexpected error response from GetNameOwner: Connection terminated
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Unable to add match type='signal',sender='org.freedesktop.DBus',path='/org/freedesktop/DBus',interface='org.freedesktop.systemd1.Activator',member='ActivationRequest', failing connection: Connection terminated
+Nov 21 01:07:27 systemd-testsuite systemd[1]: Unable to request name, failing connection: Connection terminated
+
+this journal file
+force-pushed
+
+    poettering:homed
+
+  
+Nov 21, 2019
+
+              This comment has been minimized.
+
+        
+Sign in to view
+
+    Copy link
+  
+
+    Quote reply
+  
+
+      Member
+    
+Nov 21, 2019
+Also, another bunch of warnings from llvm/clang:
+    archlinux_systemd_ci: ../src/home/homework-directory.c:33:53: error: unused variable 'embedded_json' [-Werror,-Wunused-variable]
+    archlinux_systemd_ci:         _cleanup_(json_variant_unrefp) JsonVariant *embedded_json = NULL;
+    archlinux_systemd_ci:                                                     ^
+    archlinux_systemd_ci: 1 error generated.
+    archlinux_systemd_ci: [696/1587] Compiling C object 'systemd-homework@exe/src_home_homework-cifs.c.o'.
+    archlinux_systemd_ci: FAILED: systemd-homework@exe/src_home_homework-cifs.c.o 
+    ...
+    archlinux_systemd_ci: ../src/home/homework-cifs.c:107:30: error: unused variable 'fstype' [-Werror,-Wunused-variable]
+    archlinux_systemd_ci:         _cleanup_free_ char *fstype = NULL;
+    archlinux_systemd_ci:                              ^
+    archlinux_systemd_ci: 1 error generated.
+    archlinux_systemd_ci: [697/1587] Compiling C object 'systemd-homework@exe/src_home_homework-fscrypt.c.o'.
+    archlinux_systemd_ci: FAILED: systemd-homework@exe/src_home_homework-fscrypt.c.o 
+    ...
+    archlinux_systemd_ci: ../src/home/homework-fscrypt.c:291:30: error: unused variable 'xattr_buf' [-Werror,-Wunused-variable]
+    archlinux_systemd_ci:         _cleanup_free_ char *xattr_buf = NULL;
+    archlinux_systemd_ci:                              ^
+    archlinux_systemd_ci: ../src/home/homework-fscrypt.c:465:41: error: unused variable 'hex' [-Werror,-Wunused-variable]
+    archlinux_systemd_ci:         _cleanup_free_ char *d = NULL, *hex = NULL, *salt_xattr = NULL;
+    archlinux_systemd_ci:                                         ^
+    archlinux_systemd_ci: ../src/home/homework-fscrypt.c:465:54: error: unused variable 'salt_xattr' [-Werror,-Wunused-variable]
+    archlinux_systemd_ci:         _cleanup_free_ char *d = NULL, *hex = NULL, *salt_xattr = NULL;
+    archlinux_systemd_ci:                                                      ^
+    archlinux_systemd_ci: 3 errors generated.
+
+force-pushed
+
+    poettering:homed
+
+  
+Nov 21, 2019
+Nov 21, 2019
+agent: bump the upstream CentOS 7 job to CentOS 8
+
+      
+
+    
+systemd/systemd#14096
+Nov 21, 2019
+force-pushed
+
+    poettering:homed
+
+  
+Nov 21, 2019
+Nov 21, 2019
+agent: bump the upstream CentOS 7 job to CentOS 8
+
+      
+
+    
+systemd/systemd#14096
+Nov 21, 2019
+agent: bump the upstream CentOS 7 job to CentOS 8
+
+      
+
+    
+systemd/systemd#14096
+
+              This comment has been minimized.
+
+        
+Sign in to view
+
+    Copy link
+  
+
+    Quote reply
+  
+Nov 21, 2019
+introduces 7 alerts
+view on LGTM.com
+new alerts:
+3 for Comparison result is always the same
+2 for FIXME comment
+2 for Use of potentially dangerous function
+force-pushed
+
+    poettering:homed
+
+  
+Nov 21, 2019
+
+              This comment has been minimized.
+
+        
+Sign in to view
+
+    Copy link
+  
+
+    Quote reply
+  
+Nov 21, 2019
+introduces 3 alerts
+view on LGTM.com
+new alerts:
+2 for Use of potentially dangerous function
+1 for FIXME comment
+
+              This comment has been minimized.
+
+        
+Sign in to view
+
+    Copy link
+  
+
+    Quote reply
+  
+
+      Member
+    
+Nov 21, 2019
+libcryptsetup
+libcryptsetup
+HAVE_LIBCRYPTSETUP
+libcryptsetup
+libcryptsetup
+[fuzz-unit-file-build]: meson.build:996:8: ERROR: Invalid version of dependency, need 'libcryptsetup' ['>= 2.0.0'] found '1.6.6'.
+
+Azure documentation
+vmImage: 'ubuntu-latest'
+
+              This comment has been minimized.
+
+        
+Sign in to view
+
+    Copy link
+  
+
+    Quote reply
+  
+
+      Member
+    
+Nov 21, 2019
+
+            edited
+        
+infra/helper.py
+infra/helper.py
+systemd-homed
+force-pushed
+
+    poettering:homed
+
+  
+Nov 22, 2019
+Nov 22, 2019
+
+              This comment has been minimized.
+
+        
+Sign in to view
+
+    Copy link
+  
+
+    Quote reply
+  
+Nov 22, 2019
+introduces 3 alerts
+view on LGTM.com
+new alerts:
+2 for Use of potentially dangerous function
+1 for FIXME comment
+
+        84 hidden items
+      
+
+        Load more…
+      
+Aug 9, 2019
+logind: honour per-user stopDelayUSec property
+
+      
+
+    
+pam-systemd: port to pam_bus_log_{create|parse}_error() and pam_log_o…
+
+      
+
+    
+pam-systemd: share bus connection with pam_systemd_home if we can
+
+      
+
+    
+Let's use the pam-util.h provided helpers to acquire them.
+pam-systemd: port over to use a UserRecord structure
+
+      
+
+    
+Later on this allows us to set various session properties from user
+record.
+pam-systemd: normalize return values of append_session_xyz()
+
+      
+
+    
+Let's propagate the PAM errors we got.
+pam-systemd: apply user record properties to session
+
+      
+
+    
+This way any component providing us with JSON user record data can use
+this for automatic resource management and other session properties.
+sleep: automatically lock all home directories when suspending
+
+      
+
+    
+udev: mark all ccid/security devices with a special tag
+
+      
+
+    
+This adds a udev tag that is supposed to be attached to all devices
+that might potentially expose a PKCS#11 slot, i.e. CCID smartcards and
+similar. We can then use the appearance of devices of this type as
+trigger to rescan PKCS#11 slots.
+cryptsetup: add native pkcs#11 support to cryptsetup
+
+      
+
+    
+This adds a new crypttab option for volumes "pkcs11-uri=" which takes a
+PKCS#11 URI. When used the key stored in the line's key file is
+decrypted with the private key the PKCS#11 URI indiciates.
+
+This means any smartcard that can store private RSA keys is usable for
+unlocking LUKS devices.
+man: add homectl(1) man page
+
+      
+
+    
+man: add systemd-homed man page
+
+      
+
+    
+man: add man page for sd_bus_message_sensitive()
+
+      
+
+    
+man: document pam_systemd_home
+
+      
+
+    
+man: document new pam_systemd features in man page
+
+      
+
+    
+This also updates the suggested PAM snippet in a number of way:
+
+1. Be closer to the logic nowadays implemented in Fedora where the
+   auth/account/password stacks are all finished off with
+   pam_{deny|permit}.so
+
+2. Make pam_unix.so just "sufficient" instead of "required" (paving
+   ground for pam_systemd_home.so being hooked in as additional
+   sufficient module.
+
+3. Only do pam_nologin in the "account" stack, since it's about account
+   validity really.
+
+4. Use modern parameters to pam_unix when changing passwords, i.e.
+   sha512 and shadow, and use already set up passwords (preparing ground
+   for pam_systemd_home again)
+man: document userdbctl(1)
+
+      
+
+    
+man: document systemd-userdbd.service
+
+      
+
+    
+man: document pkcs#11 hookup in /etc/crypttab
+
+      
+
+    
+man: document the new nss-systemd behaviour
+
+      
+
+    
+(This also changes the suggested /etc/nsswitch.conf line to use for
+hooking up nss-system to use glibc's [SUCCESS=merge] feature so that we
+can properly merge group membership lists).
+docs: document homed UID range
+
+      
+
+    
+docs: document the home directory format
+
+      
+
+    
+docs: add documentation for JSON user records
+
+      
+
+    
+docs: add documentation for JSON group records, too
+
+      
+
+    
+docs: add documentation for the varlink user/group APIs
+
+      
+
+    
+
+      
+
+    
+WIP: downgrade libcryptsetup dependency for now
+
+      
+
+    
+WIP: CI dependencies
+
+      
+
+    
+test update
+
+      
+
+    
+Loading status checks…
+force-pushed
+
+    poettering:homed
+
+  
+Dec 6, 2019
+
+              This comment has been minimized.
+
+        
+Sign in to view
+
+    Copy link
+  
+
+    Quote reply
+  
+Dec 6, 2019
+introduces 3 alerts
+view on LGTM.com
+new alerts:
+2 for Use of potentially dangerous function
+1 for FIXME comment
+Dec 6, 2019
+
+          View changes
+        
+
+      src/home/homework-fscrypt.c
+    
+
+                This comment has been minimized.
+
+          
+Sign in to view
+
+              Copy link
+            
+
+              Quote reply
+            
+Dec 6, 2019
+
+      Contributor
+    
+https://www.kernel.org/doc/html/latest/filesystems/fscrypt.html
+Since systemd-homed is new code, if you don't mind requiring kernel v5.4+ for fscrypt to be used with systemd-homed, you might want to consider supporting v2 encryption policies only.
+Note that the other fscrypt maintainers and I aren't planning to add any new features to v1 encryption policies and the process-subscribed keyring based API for fscrypt.  They're maintained for backwards compatibility only.
+It also looks like systemd-homed never "locks" the directory after it's been unlocked.  With the new FS_IOC_REMOVE_ENCRYPTION_KEY ioctl it would be easy to do
+Sign up for free
+to join this conversation on GitHub
+Sign in to comment
+
+    Reviewers
+  
+
+    Assignees
+  
+
+    No one assigned
+
+
+    Labels
+  
+new-feature
+
+    Milestone
+  
+
+      11 participants
+    
+Add this suggestion to a batch that can be applied as a single commit.
+This suggestion is invalid because no changes were made to the code.
+Suggestions cannot be applied while the pull request is closed.
+Suggestions cannot be applied while viewing a subset of changes.
+Only one suggestion per line can be applied in a batch.
+Add this suggestion to a batch that can be applied as a single commit.
+Applying suggestions on deleted lines is not supported.
+You must change the existing code in this line in order to create a valid suggestion.
+Outdated suggestions cannot be applied.
+This suggestion has been applied or marked resolved.
+Suggestions cannot be applied from pending reviews.
+Suggestions cannot be applied on multi-line comments.
+© 2019 GitHub, Inc.
+Contact GitHub

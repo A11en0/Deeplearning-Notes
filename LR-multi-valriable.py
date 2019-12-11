@@ -86,4 +86,3 @@ alpha = 0.1
 epoch = 5
 w, J_history = gradientDescent(X, y, w, alpha, epoch)
 print(w)
-

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+<!-- 2019-12-19 Thu 14:07 -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《面向社交网络数据的主题跟踪算法与系统实现》</title>
+<meta name="generator" content="Org mode">
+<meta name="author" content="葛宇航">
+<link rel="stylesheet" href="https://gongzhitaao.org/orgcss/org.css" type="text/css">
+<style>code {font-family:Monospace; font-size:90%; background-color: #eee} body {font-size:14pt}</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">《面向社交网络数据的主题跟踪算法与系统实现》
+<br>
+<span class="subtitle">毕业设计计划书 (进度跟踪)</span>
+</h1>
+<div class="abstract">
+<p>
+
+</p>
+
+<p>
+毕业设计计划书《面向社交网络数据的主题跟踪算法与系统实现》， 同时用于跟踪记录整个学习过程。 采用Emacs Org-mode 编写， 使用 agenda 进行日程管理。项目托管地址：<a href="https://github.com/A11en0/Deeplearning-Notes.git">https://github.com/A11en0/Deeplearning-Notes.git</a> 
+</p>
+
+</div>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org99a590f">1. <span class="todo STARTED">STARTED</span> 理论知识学习 (2019-12-01 - 2020-2-01)</a>
+<ul>
+<li><a href="#org224494a">1.1. <span class="todo STARTED">STARTED</span> 待学习知识清单</a></li>
+<li><a href="#orgbfec700">1.2. <span class="todo STARTED">STARTED</span> 阅读论文《基于Wikipedia语料扩展的短文本数据流分类方法研究》</a></li>
+<li><a href="#orgf624d5d">1.3. <span class="todo TODO">TODO</span> 阅读英文论文</a></li>
+</ul>
+</li>
+<li><a href="#org4405be2">2. <span class="todo WAITING">WAITING</span> 编码与实现 (2020-2-01 - 2020-3-01)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="WAITING">WAITING</span></span></a>
+<ul>
+<li><a href="#orgfc5fe1f">2.1. 爬虫获取数据</a></li>
+<li><a href="#org9479b8a">2.2. 算法模型实现</a></li>
+<li><a href="#org8a6e4f8">2.3. Web实现</a></li>
+</ul>
+</li>
+<li><a href="#orge8b6eac">3. <span class="todo WAITING">WAITING</span> 撰写论文 (2020-3-01 - 2020-4-01)</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org99a590f" class="outline-2">
+<h2 id="org99a590f"><span class="section-number-2">1</span> <span class="todo STARTED">STARTED</span> 理论知识学习 (2019-12-01 - 2020-2-01)</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org224494a" class="outline-3">
+<h3 id="org224494a"><span class="section-number-3">1.1</span> <span class="todo STARTED">STARTED</span> 待学习知识清单</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org1f6293c" class="outline-5">
+<h5 id="org1f6293c">短文本分类、数据流分类</h5>
+</div>
+<div id="outline-container-org24c0eb1" class="outline-5">
+<h5 id="org24c0eb1">主题模型</h5>
+<div class="outline-text-5" id="text-org24c0eb1">
+</div>
+</div>
+<div id="outline-container-org4792c23" class="outline-5">
+<h5 id="org4792c23">LDA</h5>
+<div class="outline-text-5" id="text-org4792c23">
+</div>
+</div>
+<div id="outline-container-org65e333b" class="outline-5">
+<h5 id="org65e333b">OnlineBTM</h5>
+<div class="outline-text-5" id="text-org65e333b">
+</div>
+</div>
+<div id="outline-container-org5a33327" class="outline-5">
+<h5 id="org5a33327">特征选择</h5>
+</div>
+<div id="outline-container-org327879c" class="outline-5">
+<h5 id="org327879c">半监督学习</h5>
+</div>
+<div id="outline-container-org136e698" class="outline-5">
+<h5 id="org136e698">聚类</h5>
+</div>
+<div id="outline-container-org57fbdb8" class="outline-5">
+<h5 id="org57fbdb8">分类器</h5>
+<div class="outline-text-5" id="text-org57fbdb8">
+</div>
+<ul class="org-ul">
+<li><a id="orgb8e71b8"></a>SVM<br></li>
+<li><a id="org02a4fe9"></a>随机森林<br></li>
+<li><a id="org4ea83db"></a>贝叶斯网络<br></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbfec700" class="outline-3">
+<h3 id="orgbfec700"><span class="section-number-3">1.2</span> <span class="todo STARTED">STARTED</span> 阅读论文《基于Wikipedia语料扩展的短文本数据流分类方法研究》</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org0a65264" class="outline-4">
+<h4 id="org0a65264"><span class="section-number-4">1.2.1</span> 前言 短文本数据流分类的问题与挑战</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ol class="org-ol">
+<li>文本长度短</li>
+<li><b>特征高维稀疏</b></li>
+<li>没有足够的语义信息 &#x2013;&gt; 文本稀疏性问题</li>
+<li>数据产生速度快、数量大，随时间产生潜在的漂移问题</li>
+<li>难以使用传统批处理算法快速适应</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org0ab9ef6" class="outline-4">
+<h4 id="org0ab9ef6"><span class="section-number-4">1.2.2</span> 第一章 有监督的短文本分类方法</h4>
+<div class="outline-text-4" id="text-1-2-2">
+</div>
+<div id="outline-container-org2307e85" class="outline-5">
+<h5 id="org2307e85">基于搜索引擎的短分类方法</h5>
+<div class="outline-text-5" id="text-org2307e85">
+<dl class="org-dl">
+<dt>实验步骤</dt><dd><ol class="org-ol">
+<li>使用 Web 搜索扩充短文本 <b>ExpaNet</b></li>
+<li>将短文本和获取的相关文档均用词向量表示</li>
+<li>将上述的的词向量丢进 <b>注意力机制（soft/hard attention）中</b>, 从而获得检索记忆，用于确定哪些文档是值得研究的</li>
+<li>最后借助 <b>GRU模型</b> 根据注意力机制整合原始短文本</li>
+<li>可通过多次迭代上述过程，丰富短文本语义信息， <b>缓解稀疏性问题</b></li>
+</ol></dd>
+
+<dt>缺点</dt><dd><ol class="org-ol">
+<li>影响文本质量</li>
+<li>耗时</li>
+</ol></dd>
+</dl>
+
+<p>
+tips：实验中是否需要使用Web扩充文本技术
+</p>
+</div>
+</div>
+
+<div id="outline-container-org26c0f16" class="outline-5">
+<h5 id="org26c0f16">基于主题模型的短文本分类方法</h5>
+<div class="outline-text-5" id="text-org26c0f16">
+<dl class="org-dl">
+<dt>Phan等 (10) 提出的基于隐含主题的框架用于扩展短文本</dt><dd>借助 <b>LDA</b> 主题模型从外部语料库中挖掘隐含主题, 构建主题模型推断短文本主题分布, 选择概率高的主题扩展到短文本中，从而丰富语义信息</dd>
+
+<dt>Bouzaiz (11) 借助 LDA 模型从单词和文本两个层面扩展短文本</dt><dd>减少随机特征的选择, 利用特征间语义关系构建随机森林</dd>
+
+<dt>Vo和Ock (12) 从多种语料库中挖掘隐含主题</dt><dd>考虑短文本和其他词的语义关系寻找最适合主题扩展短文本</dd>
+
+<dt>Zhang (13) 提出新的短文本分类框架</dt><dd>该框架中新的词对应的主题会被视作新词整合进短文本</dd>
+
+<dt>Chen (14) 基于LDA和K近邻来提升短文本分类方法</dt><dd><p>
+发现基于词袋模型的表示方法会导致某些不具备相同术语的短文本很难被正确分类, 基于LDA和K近邻，若两个文本某些术语具有相同的几个隐藏主题，则考虑文本之间相似，然后借助 K近邻方法进行分类
+</p>
+
+<p>
+<b>解决的问题： 借助LDA主题模型扩展短文本，缓解了数据稀疏性问题缺点： LDA本身依赖词袋模型的假设，忽略短文本数据中的语序和短语</b>
+</p></dd>
+
+<dt>Sun (15) 主题的N-gram模型（TNG）</dt><dd>基于上下文语义发现主题和短语的模型, 借助 <b>TNG</b> 构建一个 <b>特征扩展库</b>, 提出一种短文本的 <b>主题权值向量</b> 计算方法 &#x2013;&gt; 获得短文本 <b>主题倾向</b>, 根据主题倾向从特征扩展库中选择合适的词和短语扩展短文本</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org9e8e402" class="outline-5">
+<h5 id="org9e8e402">基于隐藏规则和统计信息的短文本分类方法</h5>
+<div class="outline-text-5" id="text-org9e8e402">
+<dl class="org-dl">
+<dt>Kim (16) 基于语义标注的语言独立核方法（LIS）</dt><dd>LIS在不需要语法标签和词汇数据库，有效的分类短文本数据</dd>
+
+<dt>Gao (17) 引入结构化的稀疏表示 </dt><dd>提出凸包项点选择方法，减少数据相关性和冗余性，提高分类有效性</dd>
+
+<dt>Zhang (18) 研究基于词汇关联规则的短文本分类方法</dt><dd>首先挖掘训练集中存在的强关联规则,然后将规则加入短文本特征中提高短文本的特征密度，提高短文本准确性
+h</dd>
+<dt>Rao (19) 提出一种主题级最大熵模型（TME）缓解短文本稀疏性</dt><dd>用于短文本的 <b>社交情感分类</b>,*TME*通过挖掘短隐含主题、多重情感标签、众多读者的共同评分生成主题级特征,通过将特征映射到概念空间解决 <b>最大熵原理</b> 中的过拟合问题</dd>
+</dl>
+
+<p>
+<b>上述基于隐藏规则和统计信息，虽充分挖掘了短文本数据自身的隐藏规则和统计信息，但短文本本身存在的语义信息不足问题依然没有解决，因此分类效果难以大幅提升</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org453e439" class="outline-5">
+<h5 id="org453e439">基于深度学习相关技术的短文本分类方法</h5>
+</div>
+</div>
+
+<div id="outline-container-orgc0509f8" class="outline-4">
+<h4 id="orgc0509f8"><span class="section-number-4">1.2.3</span> 第二章 有监督的短文本数据流分类方法</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<dl class="org-dl">
+<dt>Bouaziz (25) 提出LGLM模型，通过不断更新分类器提高数据流分类</dt><dd></dd>
+</dl>
+
+<p>
+首先，根据初始训练集训练随机森林分类器，其次，当有数据到来时先利用初始分类器进行分类，同时结合主动学习方法将分错的短文本加入训练集，通过计算先前数据集和当前数据集信息增益的差值决定时候更新分类模型
+</p>
+
+<dl class="org-dl">
+<dt>Ren(26)提出分层多标签短文本数据流分类</dt><dd></dd>
+</dl>
+
+<p>
+首先，基于实体链接和查询语句的排序方法扩展短文本，然后，通过将主题分成动态全局主题和局部主题构建动态概率主题分布。最后，使用基于块的结构优化策略分类短文本
+</p>
+
+<dl class="org-dl">
+<dt>Li(27)提出一种增量式的集成模型适应短文本数据流</dt><dd></dd>
+</dl>
+
+<p>
+首先，使用公开语义网络Probase用于扩展特征空间
+</p>
+<ul class="org-ul">
+<li>引入更多的基于短文本隐藏术语的语义上下文信息弥补数据的稀疏性</li>
+<li>同时减少噪音影响</li>
+<li>消除所有术语的歧义</li>
+</ul>
+<p>
+基于概念簇的主题漂移检测算法用于追踪数据流中的主题漂移，构建增量式的集成模型预测短文本数据流
+</p>
+</div>
+</div>
+
+<div id="outline-container-org89b1d1d" class="outline-4">
+<h4 id="org89b1d1d"><span class="section-number-4">1.2.4</span> 第三章 基于文本扩展和漂移检测的短文本数据流分类算法研究 (本文实现方法)</h4>
+<div class="outline-text-4" id="text-1-2-4">
+</div>
+<div id="outline-container-org643810a" class="outline-5">
+<h5 id="org643810a">解决短文本稀疏性问题：</h5>
+<div class="outline-text-5" id="text-org643810a">
+<dl class="org-dl">
+<dt>传统方法:</dt><dd></dd>
+</dl>
+<p>
+LDA 主题模型， 挖掘隐藏主题从Wiki扩展短文本
+</p>
+
+<p>
+借助短文本数据本身潜在的规则和统计信息扩展短文本
+</p>
+
+<dl class="org-dl">
+<dt>存在的问题:</dt><dd></dd>
+</dl>
+<p>
+上述方法属于批处理算法，但由于社交平台产生的海量短文本数据量巨大，容易造成维度灾难，且随时间推移容易发生潜在漂移现象，因此批处理算法很难满足数据流分类的需求。为了分类短文本数据流，在线主题模型 OnlineBTM(Online Biterm topic model)被提出。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf49cb28" class="outline-5">
+<h5 id="orgf49cb28">OnlineBTM (Online Biterm topic model)  在线主题模型</h5>
+<div class="outline-text-5" id="text-orgf49cb28">
+<p>
+该模型根据等时间片原则，将短文本数据流划分为数据块，而每个数据块则是根据词对共现原则构建模型用以发现隐藏主题。
+</p>
+
+<p>
+这里biterm 表示出现在短文本中的 <b>无序词对</b> 。但是词对比词更加稀疏，并且，OnlineBTM 未考虑概念漂移。
+</p>
+
+<dl class="org-dl">
+<dt>两个问题</dt><dd>1. 维度灾难;  2. 概念漂移</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-org235e9ff" class="outline-5">
+<h5 id="org235e9ff">本文针对上述两种问题提出基于OnlineBTM的新算法</h5>
+<div class="outline-text-5" id="text-org235e9ff">
+<p>
+实验步骤:
+</p>
+
+<ol class="org-ol">
+<li>使用Wikipedia作为外部语聊库获取相同主题的数据扩展短文本</li>
+<li>借助OnlineBTM选择有代表性的主题而非词来表示扩展后的短文本</li>
+<li>根据类标签将用于构建集成模型的数据块划分为类簇</li>
+<li>计算新的数据块与每个类簇的语义距离</li>
+<li>选择最小的语义距离值判断新数据块相对用于构建集成模型的数据块是否发生了概念漂移</li>
+<li><p>
+根据是否发生概念漂移更新集成模型
+</p>
+
+<p>
+疑问 1： 如何获得有类标签的数据？（爬取数据后通过人工标注是否工作量过大？）
+</p>
+
+<p>
+疑问 2： H个基分类器可以相同吗？如何将分类器集成？分类器数量过多是否影响效率
+</p></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org9ba1945" class="outline-5">
+<h5 id="org9ba1945">基于主题的概念漂移检测算法</h5>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf624d5d" class="outline-3">
+<h3 id="orgf624d5d"><span class="section-number-3">1.3</span> <span class="todo TODO">TODO</span> 阅读英文论文</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+review &amp; survey &amp; tutorial &amp; 综述
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4405be2" class="outline-2">
+<h2 id="org4405be2"><span class="section-number-2">2</span> <span class="todo WAITING">WAITING</span> 编码与实现 (2020-2-01 - 2020-3-01)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="WAITING">WAITING</span></span></h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgfc5fe1f" class="outline-3">
+<h3 id="orgfc5fe1f"><span class="section-number-3">2.1</span> 爬虫获取数据</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+拟采用Python Scrapy 框架
+</p>
+
+
+<table id="orga6dc6ba">
+<caption class="t-above"><span class="table-number">Table 1:</span> Just use as a template</caption>
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Utility</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><a href="https://www.lri.fr/~filliatr/bibtex2html/">bibtex2html</a></td>
+<td class="org-left">Export citations in bib files, if any, to html.</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.mathjax.org/">MathJax</a></td>
+<td class="org-left">Render math equations.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org9479b8a" class="outline-3">
+<h3 id="org9479b8a"><span class="section-number-3">2.2</span> 算法模型实现</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+拟采用SVM OnlineBTM 集成模型
+</p>
+</div>
+<div id="outline-container-org6c202bc" class="outline-4">
+<h4 id="org6c202bc"><span class="section-number-4">2.2.1</span> Table</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<table>
+<caption class="t-above"><span class="table-number">Table 2:</span> Table Caption</caption>
+
+<colgroup>
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">\(N\)</th>
+<th scope="col" class="org-right">\(N^2\)</th>
+<th scope="col" class="org-right">\(N^3\)</th>
+<th scope="col" class="org-right">\(N^4\)</th>
+<th scope="col" class="org-right">\(\sqrt n\)</th>
+<th scope="col" class="org-right">\(\sqrt[4]N\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">4</td>
+<td class="org-right">8</td>
+<td class="org-right">16</td>
+<td class="org-right">1.4142</td>
+<td class="org-right">1.1892</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">9</td>
+<td class="org-right">27</td>
+<td class="org-right">81</td>
+<td class="org-right">1.7321</td>
+<td class="org-right">1.3161</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgfe5bbb0" class="outline-4">
+<h4 id="orgfe5bbb0"><span class="section-number-4">2.2.2</span> Math</h4>
+<div class="outline-text-4" id="text-2-2-2">
+\begin{align}
+\mathcal{F}(a) &= \frac{1}{2\pi i}\oint_\gamma \frac{f(z)}{z - a}\,dz\\
+\int_D (\nabla\cdot \mathcal{F})\,dV &=\int_{\partial D}\mathcal{F}\cdot n\, dS
+\end{align}
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org8a6e4f8" class="outline-3">
+<h3 id="org8a6e4f8"><span class="section-number-3">2.3</span> Web实现</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+拟采用Python Django 框架
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge8b6eac" class="outline-2">
+<h2 id="orge8b6eac"><span class="section-number-2">3</span> <span class="todo WAITING">WAITING</span> 撰写论文 (2020-3-01 - 2020-4-01)</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: 葛宇航</p>
+<p class="date">Created: 2019-12-19 Thu 14:07</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

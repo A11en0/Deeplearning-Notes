@@ -25,6 +25,34 @@ SCHEDULED: <2019-12-01 Sun>
 - State "STARTED"    from              [2019-12-19 Thu 12:52]
 :END:
 **** 短文本分类、数据流分类
+- Concept Drift 概念漂移
+
+在一些情景下，X(输入)和y(输出)之间的映射关系y=f(X)是随着时间变化的，在训练集和测试集上的f完全不一样，这样就会出现我们在离线测试调好的模型上线就不work的情况。
+
+#+BEGIN_QUOTE
+In most challenging data analysis applications, data evolve over time and must be analyzed in near real time. Patterns and relations in such data often evolve over(演化) time, thus, models built for analyzing such data quickly become obsolete over(过时) time. In machine learning and data mining this phenomenon is referred to as concept drift.
+
+-- An overview of concept drift applications, 2016.
+#+END_QUOTE 
+
+concept drift在机器学习中是比较棘手的问题，最通用的解决思路就是通过历史数据分析，抽象出数据的pattern随时间变化的规律，其中可能包括若干趋势和周期的混杂信号。但多数情况下，f随时间的变化有很强的随机性，我们很难预测。
+
+举个例子，在一个气象要素的时间序列中往往会包含各种时间尺度的信号，如日~周尺度的天气系统变化，季节尺度的变化，年际~年代际的ENSO信号，以及百年尺度的全球变暖信号等。假设我们要做一个温度预测的模型，通过历史数据训练得到温度的预测模型T=f(X)，如果我们的历史数据不足一年，我们可能就捕捉不到季节变化的信号，比如用春夏秋的数据训练的模型很可能在冬季就不work；如果我们有1年的历史数据训练了，那可能ENSO这样的周期影响就会让我们的模型confusing；而且全球变暖一直在加剧，也许我们的模型在未来的场景下温度预测就偏低了(真实的温度在变高)。这些就是concept drift导致的我们的模型在未来场景下不work的一些可能性。
+
+解决办法:
+1. 使用静态的模型检测是否存在Concept drift;
+   假设数据满足独立同分布，建立baseline模型作为评估基准。这个模型就是一个静态的模型(static model)，默认假设随着时间的变化，X和y的映射规律y=f(X)都是一致的。可以通过这个模型去检测是否存在concept drift，以及后续应对方案的有效性。
+   
+2. 定期的加入新数据更新模型。在加入新数据的时候，也可以进一步筛选出最适合的样本进行retrain，在一些特殊的场景中，用最近的一小部分历史数据进行训练可以学到概念漂移后最新的X, y映射规律，得出更适合的模型(可以用一个滑窗进行检验)。当然，每次有新数据可以不需要每次都重新训练，可以用之前的模型热启动，基于之前的训练基础接着训练。
+
+3. 也可以在训练之前，根据时序给样本不同的权重，时间越新的样本权重可以给大一点，越老的数据可以减少权重。
+
+4. 用最新的数据，训练一个新模型对baseline model(static model)的预测结果打补丁，思路上有点类似于boosting。
+
+5. 建立规则，在预测的时候选择合适的模型。可以在训练期根据不同的策略训练出一些子模型，这些模型也许各有所长，我们可以通过分析规律，制定模型选择的规则进行预测。比如对于一些突变的场景，我们可以建模判断什么情况下会导致突变。可用于对static model 的修正。
+
+6. 可以参考时间序列的一些前处理方式，如去趋势，去周期等方式对数据进行前处理，然后再进行模型训练。可参考ARIMA模型的设计理念。其实，整体的周期和趋势变化的规律，可以直接通过添加完整周期的样本进行训练学到，这种情况严格意义上来说也不属于concept drift。如季节变化，我们可以通过一整年的数据，添加季节的相关特征进行模型训练。但对于一些数据没法覆盖全周期的情景，我们还是可以参考常用的时间序列前处理方法来消除未来数据分布变化带来的模型性能下降的影响。
+
 **** 主题模型
 :LOGBOOK:
 - State "STARTED"    from              [2019-12-19 Thu 12:54]

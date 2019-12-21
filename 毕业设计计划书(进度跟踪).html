@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="cn">
 <head>
-<!-- 2019-12-19 Thu 15:07 -->
+<!-- 2019-12-21 Sat 20:39 -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>《面向社交网络数据的主题跟踪算法与系统实现》</title>
@@ -99,78 +99,124 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge012246">1. <span class="todo STARTED">STARTED</span> 理论知识学习 (2019-12-01 - 2020-2-01)</a>
+<li><a href="#org926d384">1. <span class="todo STARTED">STARTED</span> 理论知识学习 (2019-12-01 - 2020-2-01)</a>
 <ul>
-<li><a href="#org3c884a1">1.1. <span class="todo STARTED">STARTED</span> 待学习知识清单</a></li>
-<li><a href="#org5263eea">1.2. <span class="todo STARTED">STARTED</span> 阅读论文《基于Wikipedia语料扩展的短文本数据流分类方法研究》</a></li>
-<li><a href="#orgbb264e0">1.3. <span class="todo TODO">TODO</span> 阅读英文论文</a></li>
+<li><a href="#org318a6c9">1.1. <span class="todo STARTED">STARTED</span> 待学习知识清单</a></li>
+<li><a href="#orge23c350">1.2. <span class="todo STARTED">STARTED</span> 阅读论文《基于Wikipedia语料扩展的短文本数据流分类方法研究》</a></li>
+<li><a href="#orgb217b16">1.3. <span class="todo TODO">TODO</span> 阅读英文论文</a></li>
 </ul>
 </li>
-<li><a href="#org9cdc749">2. <span class="todo WAITING">WAITING</span> 编码与实现 (2020-2-01 - 2020-3-01)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="WAITING">WAITING</span></span></a>
+<li><a href="#orgedea631">2. <span class="todo WAITING">WAITING</span> 编码与实现 (2020-2-01 - 2020-3-01)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="WAITING">WAITING</span></span></a>
 <ul>
-<li><a href="#org7fea7ea">2.1. 爬虫获取数据</a></li>
-<li><a href="#org37295cf">2.2. 算法模型实现</a></li>
-<li><a href="#orgfb08e64">2.3. Web实现</a></li>
+<li><a href="#orgfca2436">2.1. 爬虫获取数据</a></li>
+<li><a href="#orgb27027c">2.2. 算法模型实现</a></li>
+<li><a href="#orgb3f74c1">2.3. Web实现</a></li>
 </ul>
 </li>
-<li><a href="#org3d44c33">3. <span class="todo WAITING">WAITING</span> 撰写论文 (2020-3-01 - 2020-4-01)</a></li>
+<li><a href="#org3c8c5d8">3. <span class="todo WAITING">WAITING</span> 撰写论文 (2020-3-01 - 2020-4-01)</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge012246" class="outline-2">
-<h2 id="orge012246"><span class="section-number-2">1</span> <span class="todo STARTED">STARTED</span> 理论知识学习 (2019-12-01 - 2020-2-01)</h2>
+<div id="outline-container-org926d384" class="outline-2">
+<h2 id="org926d384"><span class="section-number-2">1</span> <span class="todo STARTED">STARTED</span> 理论知识学习 (2019-12-01 - 2020-2-01)</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org3c884a1" class="outline-3">
-<h3 id="org3c884a1"><span class="section-number-3">1.1</span> <span class="todo STARTED">STARTED</span> 待学习知识清单</h3>
+<div id="outline-container-org318a6c9" class="outline-3">
+<h3 id="org318a6c9"><span class="section-number-3">1.1</span> <span class="todo STARTED">STARTED</span> 待学习知识清单</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org38b5632" class="outline-5">
-<h5 id="org38b5632">短文本分类、数据流分类</h5>
+<div id="outline-container-org479a52e" class="outline-5">
+<h5 id="org479a52e">短文本分类、数据流分类</h5>
+<div class="outline-text-5" id="text-org479a52e">
+<ul class="org-ul">
+<li>Concept Drift 概念漂移</li>
+</ul>
+
+<p>
+在一些情景下，X(输入)和y(输出)之间的映射关系y=f(X)是随着时间变化的，在训练集和测试集上的f完全不一样，这样就会出现我们在离线测试调好的模型上线就不work的情况。
+</p>
+
+<blockquote>
+<p>
+In most challenging data analysis applications, data evolve over time and must be analyzed in near real time. Patterns and relations in such data often evolve over(演化) time, thus, models built for analyzing such data quickly become obsolete over(过时) time. In machine learning and data mining this phenomenon is referred to as concept drift.
+</p>
+
+<p>
+&#x2013; An overview of concept drift applications, 2016.
+</p>
+</blockquote>
+
+<p>
+concept drift在机器学习中是比较棘手的问题，最通用的解决思路就是通过历史数据分析，抽象出数据的pattern随时间变化的规律，其中可能包括若干趋势和周期的混杂信号。但多数情况下，f随时间的变化有很强的随机性，我们很难预测。
+</p>
+
+<p>
+举个例子，在一个气象要素的时间序列中往往会包含各种时间尺度的信号，如日~周尺度的天气系统变化，季节尺度的变化，年际~年代际的ENSO信号，以及百年尺度的全球变暖信号等。假设我们要做一个温度预测的模型，通过历史数据训练得到温度的预测模型T=f(X)，如果我们的历史数据不足一年，我们可能就捕捉不到季节变化的信号，比如用春夏秋的数据训练的模型很可能在冬季就不work；如果我们有1年的历史数据训练了，那可能ENSO这样的周期影响就会让我们的模型confusing；而且全球变暖一直在加剧，也许我们的模型在未来的场景下温度预测就偏低了(真实的温度在变高)。这些就是concept drift导致的我们的模型在未来场景下不work的一些可能性。
+</p>
+
+<p>
+解决办法:
+</p>
+<ol class="org-ol">
+<li>使用静态的模型检测是否存在Concept drift;
+假设数据满足独立同分布，建立baseline模型作为评估基准。这个模型就是一个静态的模型(static model)，默认假设随着时间的变化，X和y的映射规律y=f(X)都是一致的。可以通过这个模型去检测是否存在concept drift，以及后续应对方案的有效性。</li>
+
+<li>定期的加入新数据更新模型。在加入新数据的时候，也可以进一步筛选出最适合的样本进行retrain，在一些特殊的场景中，用最近的一小部分历史数据进行训练可以学到概念漂移后最新的X, y映射规律，得出更适合的模型(可以用一个滑窗进行检验)。当然，每次有新数据可以不需要每次都重新训练，可以用之前的模型热启动，基于之前的训练基础接着训练。</li>
+
+<li>也可以在训练之前，根据时序给样本不同的权重，时间越新的样本权重可以给大一点，越老的数据可以减少权重。</li>
+
+<li>用最新的数据，训练一个新模型对baseline model(static model)的预测结果打补丁，思路上有点类似于boosting。</li>
+
+<li>建立规则，在预测的时候选择合适的模型。可以在训练期根据不同的策略训练出一些子模型，这些模型也许各有所长，我们可以通过分析规律，制定模型选择的规则进行预测。比如对于一些突变的场景，我们可以建模判断什么情况下会导致突变。可用于对static model 的修正。</li>
+
+<li>可以参考时间序列的一些前处理方式，如去趋势，去周期等方式对数据进行前处理，然后再进行模型训练。可参考ARIMA模型的设计理念。其实，整体的周期和趋势变化的规律，可以直接通过添加完整周期的样本进行训练学到，这种情况严格意义上来说也不属于concept drift。如季节变化，我们可以通过一整年的数据，添加季节的相关特征进行模型训练。但对于一些数据没法覆盖全周期的情景，我们还是可以参考常用的时间序列前处理方法来消除未来数据分布变化带来的模型性能下降的影响。</li>
+</ol>
 </div>
-<div id="outline-container-org31c9b15" class="outline-5">
-<h5 id="org31c9b15">主题模型</h5>
-<div class="outline-text-5" id="text-org31c9b15">
+</div>
+
+<div id="outline-container-org6305060" class="outline-5">
+<h5 id="org6305060">主题模型</h5>
+<div class="outline-text-5" id="text-org6305060">
 </div>
 </div>
-<div id="outline-container-org85468a4" class="outline-5">
-<h5 id="org85468a4">LDA</h5>
-<div class="outline-text-5" id="text-org85468a4">
+<div id="outline-container-org7112cc4" class="outline-5">
+<h5 id="org7112cc4">LDA</h5>
+<div class="outline-text-5" id="text-org7112cc4">
 </div>
 </div>
-<div id="outline-container-orge5740c1" class="outline-5">
-<h5 id="orge5740c1">OnlineBTM</h5>
-<div class="outline-text-5" id="text-orge5740c1">
+<div id="outline-container-orgaa5fb19" class="outline-5">
+<h5 id="orgaa5fb19">OnlineBTM</h5>
+<div class="outline-text-5" id="text-orgaa5fb19">
 </div>
 </div>
-<div id="outline-container-orge8b40b8" class="outline-5">
-<h5 id="orge8b40b8">特征选择</h5>
+<div id="outline-container-org45412e7" class="outline-5">
+<h5 id="org45412e7">特征选择</h5>
 </div>
-<div id="outline-container-org11aa7d2" class="outline-5">
-<h5 id="org11aa7d2">半监督学习</h5>
+<div id="outline-container-org51b61a1" class="outline-5">
+<h5 id="org51b61a1">半监督学习</h5>
 </div>
-<div id="outline-container-org658de0b" class="outline-5">
-<h5 id="org658de0b">聚类</h5>
+<div id="outline-container-orge513b2c" class="outline-5">
+<h5 id="orge513b2c">聚类</h5>
 </div>
-<div id="outline-container-orgd80bff8" class="outline-5">
-<h5 id="orgd80bff8">分类器</h5>
-<div class="outline-text-5" id="text-orgd80bff8">
+<div id="outline-container-org034e126" class="outline-5">
+<h5 id="org034e126">分类器</h5>
+<div class="outline-text-5" id="text-org034e126">
 </div>
 <ul class="org-ul">
-<li><a id="org64f7f18"></a>SVM<br></li>
-<li><a id="orgfeda2f5"></a>随机森林<br></li>
-<li><a id="orga454f6c"></a>贝叶斯网络<br></li>
+<li><a id="org657e65c"></a>SVM<br></li>
+<li><a id="orga6b6467"></a>随机森林<br></li>
+<li><a id="orgf1dc164"></a>贝叶斯网络<br></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org5263eea" class="outline-3">
-<h3 id="org5263eea"><span class="section-number-3">1.2</span> <span class="todo STARTED">STARTED</span> 阅读论文《基于Wikipedia语料扩展的短文本数据流分类方法研究》</h3>
+<div id="outline-container-orge23c350" class="outline-3">
+<h3 id="orge23c350"><span class="section-number-3">1.2</span> <span class="todo STARTED">STARTED</span> 阅读论文《基于Wikipedia语料扩展的短文本数据流分类方法研究》</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
-<div id="outline-container-orgc570eea" class="outline-4">
-<h4 id="orgc570eea"><span class="section-number-4">1.2.1</span> 前言 短文本数据流分类的问题与挑战</h4>
+<div id="outline-container-org1133000" class="outline-4">
+<h4 id="org1133000"><span class="section-number-4">1.2.1</span> 前言 短文本数据流分类的问题与挑战</h4>
 <div class="outline-text-4" id="text-1-2-1">
 <ol class="org-ol">
 <li>文本长度短</li>
@@ -182,13 +228,13 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org1bbadb7" class="outline-4">
-<h4 id="org1bbadb7"><span class="section-number-4">1.2.2</span> 第一章 有监督的短文本分类方法</h4>
+<div id="outline-container-org85b30cf" class="outline-4">
+<h4 id="org85b30cf"><span class="section-number-4">1.2.2</span> 第一章 有监督的短文本分类方法</h4>
 <div class="outline-text-4" id="text-1-2-2">
 </div>
-<div id="outline-container-org16ff40b" class="outline-5">
-<h5 id="org16ff40b">基于搜索引擎的短分类方法</h5>
-<div class="outline-text-5" id="text-org16ff40b">
+<div id="outline-container-org433e635" class="outline-5">
+<h5 id="org433e635">基于搜索引擎的短分类方法</h5>
+<div class="outline-text-5" id="text-org433e635">
 <dl class="org-dl">
 <dt>实验步骤</dt><dd><ol class="org-ol">
 <li>使用 Web 搜索扩充短文本 <b>ExpaNet</b></li>
@@ -210,9 +256,9 @@ tips：实验中是否需要使用Web扩充文本技术
 </div>
 </div>
 
-<div id="outline-container-org99310a9" class="outline-5">
-<h5 id="org99310a9">基于主题模型的短文本分类方法</h5>
-<div class="outline-text-5" id="text-org99310a9">
+<div id="outline-container-org4bff619" class="outline-5">
+<h5 id="org4bff619">基于主题模型的短文本分类方法</h5>
+<div class="outline-text-5" id="text-org4bff619">
 <dl class="org-dl">
 <dt>Phan等 (10) 提出的基于隐含主题的框架用于扩展短文本</dt><dd>借助 <b>LDA</b> 主题模型从外部语料库中挖掘隐含主题, 构建主题模型推断短文本主题分布, 选择概率高的主题扩展到短文本中，从而丰富语义信息</dd>
 
@@ -235,9 +281,9 @@ tips：实验中是否需要使用Web扩充文本技术
 </div>
 </div>
 
-<div id="outline-container-org284cf7f" class="outline-5">
-<h5 id="org284cf7f">基于隐藏规则和统计信息的短文本分类方法</h5>
-<div class="outline-text-5" id="text-org284cf7f">
+<div id="outline-container-orgb0cb825" class="outline-5">
+<h5 id="orgb0cb825">基于隐藏规则和统计信息的短文本分类方法</h5>
+<div class="outline-text-5" id="text-orgb0cb825">
 <dl class="org-dl">
 <dt>Kim (16) 基于语义标注的语言独立核方法（LIS）</dt><dd>LIS在不需要语法标签和词汇数据库，有效的分类短文本数据</dd>
 
@@ -254,13 +300,13 @@ h</dd>
 </div>
 </div>
 
-<div id="outline-container-org4151e7b" class="outline-5">
-<h5 id="org4151e7b">基于深度学习相关技术的短文本分类方法</h5>
+<div id="outline-container-org5c5f377" class="outline-5">
+<h5 id="org5c5f377">基于深度学习相关技术的短文本分类方法</h5>
 </div>
 </div>
 
-<div id="outline-container-org0e96f10" class="outline-4">
-<h4 id="org0e96f10"><span class="section-number-4">1.2.3</span> 第二章 有监督的短文本数据流分类方法</h4>
+<div id="outline-container-org699252f" class="outline-4">
+<h4 id="org699252f"><span class="section-number-4">1.2.3</span> 第二章 有监督的短文本数据流分类方法</h4>
 <div class="outline-text-4" id="text-1-2-3">
 <dl class="org-dl">
 <dt>Bouaziz (25) 提出LGLM模型，通过不断更新分类器提高数据流分类</dt><dd></dd>
@@ -296,13 +342,13 @@ h</dd>
 </div>
 </div>
 
-<div id="outline-container-org14781f1" class="outline-4">
-<h4 id="org14781f1"><span class="section-number-4">1.2.4</span> 第三章 基于文本扩展和漂移检测的短文本数据流分类算法研究 (本文实现方法)</h4>
+<div id="outline-container-orgb0fa6f1" class="outline-4">
+<h4 id="orgb0fa6f1"><span class="section-number-4">1.2.4</span> 第三章 基于文本扩展和漂移检测的短文本数据流分类算法研究 (本文实现方法)</h4>
 <div class="outline-text-4" id="text-1-2-4">
 </div>
-<div id="outline-container-org4a398c6" class="outline-5">
-<h5 id="org4a398c6">解决短文本稀疏性问题：</h5>
-<div class="outline-text-5" id="text-org4a398c6">
+<div id="outline-container-org0acc661" class="outline-5">
+<h5 id="org0acc661">解决短文本稀疏性问题：</h5>
+<div class="outline-text-5" id="text-org0acc661">
 <dl class="org-dl">
 <dt>传统方法:</dt><dd></dd>
 </dl>
@@ -323,9 +369,9 @@ LDA 主题模型， 挖掘隐藏主题从Wiki扩展短文本
 </div>
 </div>
 
-<div id="outline-container-orgbf436c9" class="outline-5">
-<h5 id="orgbf436c9">OnlineBTM (Online Biterm topic model)  在线主题模型</h5>
-<div class="outline-text-5" id="text-orgbf436c9">
+<div id="outline-container-org4b0a9ae" class="outline-5">
+<h5 id="org4b0a9ae">OnlineBTM (Online Biterm topic model)  在线主题模型</h5>
+<div class="outline-text-5" id="text-org4b0a9ae">
 <p>
 该模型根据等时间片原则，将短文本数据流划分为数据块，而每个数据块则是根据词对共现原则构建模型用以发现隐藏主题。
 </p>
@@ -340,9 +386,9 @@ LDA 主题模型， 挖掘隐藏主题从Wiki扩展短文本
 </div>
 </div>
 
-<div id="outline-container-orgfa4a40d" class="outline-5">
-<h5 id="orgfa4a40d">本文针对上述两种问题提出基于OnlineBTM的新算法</h5>
-<div class="outline-text-5" id="text-orgfa4a40d">
+<div id="outline-container-org8ea6606" class="outline-5">
+<h5 id="org8ea6606">本文针对上述两种问题提出基于OnlineBTM的新算法</h5>
+<div class="outline-text-5" id="text-org8ea6606">
 <p>
 实验步骤:
 </p>
@@ -368,15 +414,15 @@ LDA 主题模型， 挖掘隐藏主题从Wiki扩展短文本
 </div>
 </div>
 
-<div id="outline-container-org3497c75" class="outline-5">
-<h5 id="org3497c75">基于主题的概念漂移检测算法</h5>
+<div id="outline-container-orgb8a87d3" class="outline-5">
+<h5 id="orgb8a87d3">基于主题的概念漂移检测算法</h5>
 </div>
 </div>
 </div>
 
 
-<div id="outline-container-orgbb264e0" class="outline-3">
-<h3 id="orgbb264e0"><span class="section-number-3">1.3</span> <span class="todo TODO">TODO</span> 阅读英文论文</h3>
+<div id="outline-container-orgb217b16" class="outline-3">
+<h3 id="orgb217b16"><span class="section-number-3">1.3</span> <span class="todo TODO">TODO</span> 阅读英文论文</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 review &amp; survey &amp; tutorial &amp; 综述
@@ -385,12 +431,12 @@ review &amp; survey &amp; tutorial &amp; 综述
 </div>
 </div>
 
-<div id="outline-container-org9cdc749" class="outline-2">
-<h2 id="org9cdc749"><span class="section-number-2">2</span> <span class="todo WAITING">WAITING</span> 编码与实现 (2020-2-01 - 2020-3-01)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="WAITING">WAITING</span></span></h2>
+<div id="outline-container-orgedea631" class="outline-2">
+<h2 id="orgedea631"><span class="section-number-2">2</span> <span class="todo WAITING">WAITING</span> 编码与实现 (2020-2-01 - 2020-3-01)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="WAITING">WAITING</span></span></h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org7fea7ea" class="outline-3">
-<h3 id="org7fea7ea"><span class="section-number-3">2.1</span> 爬虫获取数据</h3>
+<div id="outline-container-orgfca2436" class="outline-3">
+<h3 id="orgfca2436"><span class="section-number-3">2.1</span> 爬虫获取数据</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 拟采用Python Scrapy 框架
@@ -398,16 +444,16 @@ review &amp; survey &amp; tutorial &amp; 综述
 </div>
 </div>
 
-<div id="outline-container-org37295cf" class="outline-3">
-<h3 id="org37295cf"><span class="section-number-3">2.2</span> 算法模型实现</h3>
+<div id="outline-container-orgb27027c" class="outline-3">
+<h3 id="orgb27027c"><span class="section-number-3">2.2</span> 算法模型实现</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 拟采用SVM OnlineBTM 集成模型
 </p>
 </div>
 
-<div id="outline-container-org08dccb8" class="outline-4">
-<h4 id="org08dccb8"><span class="section-number-4">2.2.1</span> Math (Just a template, NO MEANING!)</h4>
+<div id="outline-container-orgd55621d" class="outline-4">
+<h4 id="orgd55621d"><span class="section-number-4">2.2.1</span> Math (Just a template, NO MEANING!)</h4>
 <div class="outline-text-4" id="text-2-2-1">
 \begin{align}
 \mathcal{F}(a) &= \frac{1}{2\pi i}\oint_\gamma \frac{f(z)}{z - a}\,dz\\
@@ -418,8 +464,8 @@ review &amp; survey &amp; tutorial &amp; 综述
 </div>
 
 
-<div id="outline-container-orgfb08e64" class="outline-3">
-<h3 id="orgfb08e64"><span class="section-number-3">2.3</span> Web实现</h3>
+<div id="outline-container-orgb3f74c1" class="outline-3">
+<h3 id="orgb3f74c1"><span class="section-number-3">2.3</span> Web实现</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 拟采用Python Django 框架
@@ -455,13 +501,13 @@ review &amp; survey &amp; tutorial &amp; 综述
 </div>
 </div>
 
-<div id="outline-container-org3d44c33" class="outline-2">
-<h2 id="org3d44c33"><span class="section-number-2">3</span> <span class="todo WAITING">WAITING</span> 撰写论文 (2020-3-01 - 2020-4-01)</h2>
+<div id="outline-container-org3c8c5d8" class="outline-2">
+<h2 id="org3c8c5d8"><span class="section-number-2">3</span> <span class="todo WAITING">WAITING</span> 撰写论文 (2020-3-01 - 2020-4-01)</h2>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: 葛宇航</p>
-<p class="date">Created: 2019-12-19 Thu 15:07</p>
+<p class="date">Created: 2019-12-21 Sat 20:39</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

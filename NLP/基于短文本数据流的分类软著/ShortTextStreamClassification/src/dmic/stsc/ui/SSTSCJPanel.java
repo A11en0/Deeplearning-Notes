@@ -68,7 +68,6 @@ public class SSTSCJPanel extends JPanel
 	JComboBox etopicNumJComboBox;
 	JComboBox ewordsNumJComboBox;
 
-	
 	JTextField aJTextField;
 	JTextField bJTextField;
 	JTextField lamadaJTextField;
@@ -605,8 +604,8 @@ public class SSTSCJPanel extends JPanel
 			}
 			return true;
 		}
-		
 	}
+
 	class SSTSCThread extends Thread
 	{
 		public void run()

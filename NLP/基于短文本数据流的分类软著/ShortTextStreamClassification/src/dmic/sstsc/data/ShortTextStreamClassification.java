@@ -103,6 +103,7 @@ public class ShortTextStreamClassification {
 		dir = externalCorpusFile + File.separator + "Vectorization" + File.separator;
 		docWordIndexDir = dir + "indexChunks" + File.separator;
 		adjustVectorizationFormat();
+
 		// online BTM
 		printResultJTextArea.append("特征表示开始...\n");
 		printResultJTextArea.setCaretPosition(printResultJTextArea.getText().length()); 
@@ -228,15 +229,16 @@ public class ShortTextStreamClassification {
 		vWordsNum = wordMap.size();
 		daysNum = docsNum;
 		FileTools.isChartPathExist(dir);
+
 		String classMapFileName = dir + "classmap.txt";
 		FileTools.writeFile(classMapFileName, classMapToString(classMap));
 		
 		String wordMapFileName = dir + "wordmap.txt";
 		FileTools.writeFile(wordMapFileName, wordMapToString(wordMap));
+
 		String classIdFileName = dir + "classId.txt";
 		FileTools.writeFile(classIdFileName, classIdToString(shortTexts.classId));
 		FileTools.writeFiles(docWordIndexDir, chunkIndexs);
-		
 	}
 
 	private String[] classIdToString(List<Integer> classId) 

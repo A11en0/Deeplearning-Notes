@@ -67,6 +67,7 @@ public class EnsembleClassification {
 			
 			//预测新数据块并返回概念漂移检测结果
 			double[] cpResult = predict(vy, vx);
+
 			// 根据概念漂移结果解析集成模型的更新方向
 			int inx = 0;
 			int old = Integer.MIN_VALUE;

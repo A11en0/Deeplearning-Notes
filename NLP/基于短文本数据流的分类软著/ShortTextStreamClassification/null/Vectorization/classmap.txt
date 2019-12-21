@@ -1,0 +1,8 @@
+business	2
+sports	7
+health	6
+education-science	0
+engineering	5
+culture-arts-entertainment	3
+computers	1
+politics-society	4
